@@ -1,0 +1,25 @@
+<beans xmlns="http://xfire.codehaus.org/config/1.0">
+  <service>
+  	<name>OneCMDBService</name>
+  	<namespace>http://www.onecmdb.org/OneCMDBService</namespace>
+  	<serviceClass>
+  		org.onecmdb.core.utils.wsdl.IOneCMDBWebService
+  	</serviceClass>
+  	<implementationClass>
+  		org.onecmdb.core.utils.wsdl.IOneCMDBWebService
+  	</implementationClass>
+  	<inHandlers>
+  		<handler
+  			handlerClass="org.codehaus.xfire.demo.handlers.CheckVersionHandler" />
+  	</inHandlers>
+  	<properties>
+  		<property key="writeXsiType">true</property>
+  		<property key="overrideTypesList">
+  			<list xmlns="">
+  				<value>org.onecmdb.core.utils.graph.query.ItemOffspringSelector</value>
+  			</list>
+  		</property>
+  	</properties>
+  </service>
+</beans>
+

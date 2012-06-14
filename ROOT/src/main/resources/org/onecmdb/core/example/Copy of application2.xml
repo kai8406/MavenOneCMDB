@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE 
+	beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+
+	<bean id="onecmdb" class="org.onecmdb.core.internal.firstgo.OneCmdb">
+		<property name="daoReader"><ref bean="daoHibbe"/></property>
+		<property name="changeControl"><ref bean="ccb"/></property>
+
+		<property name="services">
+		<list>
+				<ref bean="ciservice"/>
+				<ref bean="policyService"/>
+		</list>
+		
+		</property>
+	</bean>
+
+	
+	<bean id="ciservice" class="org.onecmdb.core.internal.firstgo.CiService" init-method="init">
+		<property name="daoReader"><ref bean="daoHibbe"/></property>
+		<property name="rootCiAlias"><value>ROOT</value></property>
+		<property name="rootRelationCiAlias"><value>RELATIONS</value></property>
+	</bean>
+
+	<bean id="policyService" class="org.onecmdb.core.internal.policy.CiPolicyService">
+		<property name="ciService"><ref bean="ciservice"/></property>
+	</bean>
+
+	<bean id="daoHibbe" class="org.onecmdb.core.internal.storage.hibernate.HibernateDao" destroy-method="destory">
+		<property name="sessionFactory" ref="mySessionFactory"/>
+		<property name="interceptor" ref="daoReaderInterceptor"/>
+	</bean>
+	
+
+
+	<bean id="ccb" class="org.onecmdb.core.internal.ccb.OneCmdbCcb" init-method="init">
+		<property name="daoReader"><ref bean="daoHibbe"/></property>
+		<property name="daoWriter"><ref bean="daoHibbe"/></property>
+		<property name="startupTransaction"><ref bean="bootTx"/></property>
+		<property name="rfcWorkers">
+			<list>
+				<ref bean="ciRfcWorker"/>
+				<ref bean="attributeRfcWorker"/>
+				<ref bean="createRootCiRfcWorker"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="auth" class="org.onecmdb.core.internal.firstgo.AuthenticationBean">
+	<property name="username"><value>kalle</value></property>
+	<property name="password"><value>*****</value></property>
+	</bean>
+	
+
+	<bean id="HSQLInMemDataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:onecmdb" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+	</bean>
+	
+	<bean id="HSQLDataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:hsql://localhost:9001/onecmdb" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+	</bean>
+	
+	<bean id="DB2DataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:hsql://localhost:9001/onecmdb" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+	</bean>
+	
+	<bean id="daoReaderInterceptor" class="org.onecmdb.core.internal.storage.hibernate.DaoReaderInterceptor">
+	</bean>
+	
+	<bean id="mySessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="HSQLInMemDataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>org/onecmdb/core/internal/storage/hibernate/mapping/Ci.hbm.xml</value>
+				<value>org/onecmdb/core/internal/storage/hibernate/mapping/RFC.hbm.xml</value> 
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.HSQLDialect
+				</prop>
+				 <prop key="show_sql">
+				 	true
+				 </prop>
+        		<prop key="transaction.factory_class">
+	             	org.hibernate.transaction.JDBCTransactionFactory
+    	    	</prop>
+	       		<prop key="hibernate.cache.provider_class">
+             		org.hibernate.cache.HashtableCacheProvider
+        		</prop>
+	        	<prop key="hibernate.hbm2ddl.auto">
+	        		create-drop
+	        	</prop>
+			</props>
+		</property>
+		<property name="entityInterceptor" ref="daoReaderInterceptor"/>
+	</bean>
+
+
+	<!--  RFC HANDLING -->
+	<bean id="ciRfcWorker" class="org.onecmdb.core.internal.ccb.workers.SimpleCiRfcWorker">
+		<property name="policyService"><ref bean="policyService"/></property>
+	</bean>
+	<bean id="createRootCiRfcWorker" class="org.onecmdb.core.internal.ccb.workers.SimpleCreateRootRfcWorker">
+		<property name="policyService"><ref bean="policyService"/></property>
+	</bean>
+	<bean id="attributeRfcWorker" class="org.onecmdb.core.internal.ccb.workers.SimpleAttributeRfcWorker">
+		<property name="policyService"><ref bean="policyService"/></property>
+	</bean>
+
+	
+
+	
+	<!--  Configuring Root Ci's -->
+	<bean id="bootTx" class="org.onecmdb.core.internal.ccb.CmdbTransaction">
+		<property name="rfc">
+		<list>
+			<bean class="org.onecmdb.core.internal.ccb.rfc.RFCNewRootCi">
+				<!-- root
+				<constructor-arg index="0">
+					<ref bean="rootci2"/>
+				</constructor-arg>
+				 -->
+				<property name="alias"> <value>ROOT</value> </property>
+				<property name="rfcs">
+				<list>
+					<bean
+						class="org.onecmdb.core.internal.ccb.rfc.RFCNewAttribute">
+						<property name="name">
+							<value>icon</value>
+						</property>
+						<property name="type">
+							<ref bean="xsdURI"/>
+						</property>
+						<property name="value">
+							<value>file:///icons/ci.gif</value>
+						</property>
+					</bean>
+
+					<bean
+						class="org.onecmdb.core.internal.ccb.rfc.RFCNewAttribute">
+						<property name="name">
+							<value>name</value>
+						</property>
+						<property name="type">
+							<ref bean="xsdString"/>
+						</property>
+					</bean>
+					
+					<bean
+						class="org.onecmdb.core.internal.ccb.rfc.RFCNewCi">
+						<property name="alias"><value>RELATIONS</value></property>
+						<property name="rfcs">
+						<list>
+							<bean class="org.onecmdb.core.internal.ccb.rfc.RFCModifyDervideAttributeValue">
+									<property name="attributeName"><value>icon</value></property>
+									<property name="value"><value>file:///icons/references.gif</value></property>
+							</bean>		 
+							<bean
+								class="org.onecmdb.core.internal.ccb.rfc.RFCNewAttribute">
+								<property name="name">
+									<value>target</value>
+								</property>
+								<property name="type">
+									<ref bean="xsdRef" />
+								</property>
+							</bean>
+							
+							<bean
+								class="org.onecmdb.core.internal.ccb.rfc.RFCNewAttribute">
+								<property name="name">
+									<value>source</value>
+								</property>
+								<property name="type">
+									<ref bean="xsdRef" />
+								</property>
+							</bean>
+			
+						</list>
+						</property>	
+					</bean>
+
+				</list>
+				</property>
+			</bean>	
+		</list>
+		</property>
+	</bean>
+	
+	<!--  
+    <bean id="rootci2" class="org.onecmdb.core.internal.firstgo.ConfigurationItem">
+    	<property name="itemId"><value>0</value></property>
+	</bean>
+ 
+    <bean id="rootconnection" class="org.onecmdb.core.internal.firstgo.ConfigurationItem">
+    	<property name="itemId"><value>1</value></property>
+	</bean>
+    -->
+	<bean id="xsdString" class="org.onecmdb.core.draft.SimpleType">
+		<property name="type"><value>xs:string</value></property>
+	</bean>
+	<bean id="xsdRef" class="org.onecmdb.core.draft.SimpleType">
+		<property name="type"><value>xs:long</value></property>
+	</bean>
+	<bean id="xsdUri" class="org.onecmdb.core.draft.SimpleType">
+		<property name="type"><value>xs:anyURI</value></property>
+	</bean>
+	
+   
+</beans>

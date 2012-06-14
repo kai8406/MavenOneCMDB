@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE 
+	beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- 
+	Definition of the default schema provider.
+	Need to specify the folowing beans:
+		defaultProvider
+ -->
+ 
+<beans default-dependency-check="none">
+	<bean id="defaultProvider" class="org.onecmdb.core.utils.xml.XmlParser">
+		<property name="URLs">
+			<list>
+				<!-- The datacenter schema
+				<value>classpath:models/OneCMDB_CI_Templates.xml</value>
+				<value>classpath:models/OneCMDB_Reference_Templates.xml</value>
+				<value>classpath:models/OneCMDB_Transform_Templates.xml</value>
+				<value>classpath:models/OneCMDB_NMAP_Transform_Instances.xml</value>
+				<value>classpath:models/OneCMDB_ServiceOperation_Templates.xml</value>
+				<value>classpath:models/OneCMDB_CI_Job_Instances.xml</value>
+ 				-->
+				<!-- NOTE: Remove these two lines if no demo instances shoule be included! 
+				<value>classpath:models/Basic_Model_demo_CI_instances.xml</value>
+				<value>classpath:models/Basic_Model_demo_Incidents.xml</value>
+				-->
+				<value>classpath:models/MDR_MODEL.xml</value>
+				<value>classpath:models/Transform_Model.xml</value>
+				
+			</list>
+		</property>
+	</bean>
+</beans>

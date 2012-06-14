@@ -1,0 +1,13 @@
+<module>
+
+	<!-- Inherit the OneCMDB Toolkit -->                  
+	<inherits name='org.onecmdb.ui.gwt.toolkit.OneCMDBApplication'/>
+
+	<!-- Specify the app entry point class.                   -->
+	<entry-point class='org.onecmdb.ui.gwt.modeller.client.OneCMDBModelCreator'/>
+
+  	<!--  Use default style sheet -->
+   <stylesheet src='onecmdb-toolkit.css'/>
+   <stylesheet src='OneCMDBModelCreator.css'/>
+
+</module>

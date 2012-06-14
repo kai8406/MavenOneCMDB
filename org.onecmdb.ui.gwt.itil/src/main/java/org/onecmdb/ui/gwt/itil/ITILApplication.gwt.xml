@@ -1,0 +1,11 @@
+<module>
+
+	<!-- Inherit the OneCMDB Toolkit -->                  
+	<inherits name='org.onecmdb.ui.gwt.toolkit.OneCMDBApplication'/>
+	
+	<!-- Specify the app entry point class.                   -->
+	<entry-point class='org.onecmdb.ui.gwt.itil.client.ITILApplication'/>
+
+	<stylesheet src='onecmdb-toolkit.css'/>
+    <stylesheet src='ITILApplication.css'/>
+</module>

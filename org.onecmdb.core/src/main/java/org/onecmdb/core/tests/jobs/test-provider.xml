@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE 
+	beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- 
+	Definition of the default schema provider.
+	Need to specify the folowing beans:
+		defaultProvider
+ -->
+ 
+<beans default-dependency-check="none">
+	<bean id="defaultProvider" class="org.onecmdb.core.utils.xml.XmlParser">
+		<property name="URLs">
+			<list>
+				
+				<!--
+				<value>res:PolicySchema.xml</value>  
+				<value>res:WorkflowSchema.xml</value>				
+				
+				
+				<value>res:UnspscCategories.xml</value>
+				<value>res:VanillaSchema.xml</value>
+				<value>res:VanillaInstances.xml</value>
+	
+				<value>res:KpiWorkflowProcesses.xml</value>
+				<value>res:LokomoAgentSchema.xml</value>
+				<value>res:ServernetFacilities.xml</value>
+				
+				  
+				<value>res:MyDataCenterSchema.xml</value>
+				<value>res:MyDataCenterInstances.xml</value>
+				
+				<value>res:DebugSchema.xml</value>
+				<value>res:DebugInstances.xml</value>
+				
+				
+				-->
+				
+				
+			</list>
+		</property>
+	</bean>
+</beans>

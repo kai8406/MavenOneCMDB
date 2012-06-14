@@ -1,0 +1,1483 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<onecmdb>
+<!-- Built in templates and instances are defines in XML files in subdirectories of org.onecmdb.core.internal -->  
+<templates>
+  <!-- Common templates -->
+	<template alias="Folder" displayName="Folder">
+		<derivedFrom>
+			<ref alias="Ci"/>
+		</derivedFrom>
+		<description>This is the master template for your folders.</description>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+	
+	<template alias="Resource" displayName="Resource">
+		<derivedFrom>
+			<ref alias="Ci"/>
+		</derivedFrom>
+		<description>This is the master template for your data center templates.</description>
+		<setSimpleValue attAlias="icon">resource</setSimpleValue>
+	</template>
+	
+	<template alias="MyDataCenterRef" displayName="MyDataCenterRef">
+		<derivedFrom>
+			<ref alias="Reference"/>
+		</derivedFrom>
+		<description>This is the master template for your references.</description>
+		<setSimpleValue attAlias="icon">reference</setSimpleValue>
+	</template>
+	
+	<template alias="Uses" displayName="Uses">
+		<derivedFrom>
+			<ref alias="MyDataCenterRef"/>
+		</derivedFrom>
+		<description>This is a general CI dependency reference.</description>
+		<setSimpleValue attAlias="icon">reference</setSimpleValue>
+	</template>
+	
+	<template alias="ImportModel" displayName="ImportModel">
+		<derivedFrom>
+			<ref alias="JobProcess"/>
+		</derivedFrom>
+		<description>This job imports configuration items from an XML file.</description>
+		<attribute attAlias="importUrl">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">job</setSimpleValue>
+		<setSimpleValue attAlias="javaClass">org.onecmdb.core.internal.job.workflow.sample.UrlImportProcess</setSimpleValue>
+	</template>
+
+	<template alias="ExportModel" displayName="ExportModel">
+		<derivedFrom>
+			<ref alias="JobProcess"/>
+		</derivedFrom>
+		<description>This job exports configuration items to an XML file.</description>
+		<attribute attAlias="instances">
+			<description>Export Instances if set.</description>
+			<simpleType>xs:boolean</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="exportFile">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="rootAlias">
+			<description>Export all CIs based on this template (enter alias). Will export this and descendants according to
+			the templates/instances attributes.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="templates">
+			<description>Export Templates if set.</description>
+			<simpleType>xs:boolean</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">job</setSimpleValue>
+		<setSimpleValue attAlias="javaClass">org.onecmdb.core.internal.job.workflow.sample.ExportModelProcess</setSimpleValue>
+	</template>
+	
+  <!-- Basic templates -->
+	<template alias="OS" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>This CI defines one Operating System</description>
+		<attribute attAlias="F_Financial_Info" displayName="Financial Info">
+			<description>Financial info about this CI</description>
+			<complexType>
+				<ref alias="Financials"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Name" displayName="Name">
+			<description>Name of this software</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_DSL_Entry" displayName="DSL Entry">
+			<description>Link to the correct software package in the DSL</description>
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_Vendor" displayName="Vendor">
+			<description>The vendor name for this OS.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_Family" displayName="OS Family">
+			<description>The family name for this OS.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		
+		<attribute attAlias="C_Target_CPU" displayName="Target CPU">
+			<description>CPU type this software is aimed for</description>
+			<complexType>
+				<ref alias="CPU"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="E_Maintenance_Info" displayName="Maintenance Info">
+			<description>Maintenance info for this software</description>
+			<complexType>
+				<ref alias="Maintenance"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Version" displayName="Version">
+			<description>Version number for this software</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">package</setSimpleValue>
+		<setSimpleValue attAlias="A_Name">OS</setSimpleValue>
+	</template>
+	
+	<template alias="Location" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>This CI specifies a data center location.</description>
+		<attribute attAlias="A_Name" displayName="Name">
+			<description>Name of this location</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">resource</setSimpleValue>
+		<setSimpleValue attAlias="A_Name">Location</setSimpleValue>
+	</template>
+	<template alias="HardwareType" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>This CI specifies the type of hardware.</description>
+		<attribute attAlias="A_Name" displayName="Name">
+			<description>The name of this hardware type</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name">Hardware Type</setSimpleValue>
+	</template>
+	
+	<template alias="Hardware" displayName="${A_Name} ${L_IP_Address}">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>This CI specifies a hardware that has a network connection.</description>
+		<attribute attAlias="F_Serial_Number" displayName="Serial Number">
+			<description>Serial number for this specific hardware</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="M_Hostname" displayName="Hostname">
+			<description>Hostname associated with this hardware</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="K_Software" displayName="Software">
+			<description>Installed software packages on this hardware</description>
+			<complexType>
+				<ref alias="Software"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Type" displayName="Type">
+			<description>The type of this hardware.</description>
+			<complexType>
+				<ref alias="HardwareType"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		
+		<attribute attAlias="G_CPU_Type" displayName="CPU Type">
+			<description>Type of CPU in this hardware</description>
+			<complexType>
+				<ref alias="CPU"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="N_Maintenance_Info" displayName="Maintenance Info">
+			<description>Maintenance info for this hardware</description>
+			<complexType>
+				<ref alias="Maintenance"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Name" displayName="Name">
+			<description>The name of this hardware</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Location" displayName="Location">
+			<description>Data center where this hardware is located</description>
+			<complexType>
+				<ref alias="Location"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_Operational_Status" displayName="Operational Status">
+			<description>Select between Not installed/Under test/In production</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="E_Manufacturer" displayName="Manufacturer">
+			<description>The manufacturer of this </description>
+			<complexType>
+				<ref alias="Company"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="L_IP_Address" displayName="IP Address">
+			<description>IP Address associated with this </description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="L_MAC_Address" displayName="MAC Address">
+			<description>MAC Address associated with this </description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+
+		<attribute attAlias="H_RAM_Size" displayName="RAM Size (MB)">
+			<description>Size of RAM memory in megabytes (MB)</description>
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="J_OS" displayName="OS">
+			<description>Operating system installed on this </description>
+			<complexType>
+				<ref alias="OS"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="O_Financial_Info" displayName="Financial Info">
+			<description>Financial info for this </description>
+			<complexType>
+				<ref alias="Financials"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_Used_By" displayName="Used By">
+			<description>Customer using this </description>
+			<complexType>
+				<ref alias="Company"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="I_HD_Size" displayName="HD Size (GB)">
+			<description>Size of hard disk in gigabytes (GB)</description>
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon"></setSimpleValue>
+		<setSimpleValue attAlias="A_Name">Hardware</setSimpleValue>
+	</template>
+	
+  <template alias="Financials" displayName="Financials">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>This CI contains financial information for one or several pieces of equipment or software packages.</description>
+		<attribute attAlias="B_Purchase_Date" displayName="Purchase Date">
+			<description>Date when this item was purchased</description>
+			<simpleType>xs:date</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="E_Purchase_Contract" displayName="Purchase Contract">
+			<description>Link to the purchase contract document</description>
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_Maintenance_Fee" displayName="Maintenance Fee (USD/year)">
+			<description>The fee for maintenance in USD per year</description>
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_Depreciation" displayName="Depreciation (years)">
+			<description>Depreciation expressed in number of years</description>
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Purchase_Price" displayName="Purchase Price (USD)">
+			<description>The purchase price in USD for this item</description>
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">asset</setSimpleValue>
+	</template>
+	
+	<template alias="CPU" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>This CI specifies one type of CPU.</description>
+		<attribute attAlias="A_Name" displayName="Name">
+			<description>Name of this CPU type</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">device</setSimpleValue>
+		<setSimpleValue attAlias="A_Name">CPU</setSimpleValue>
+	</template>
+	
+	<template alias="Software" displayName="${A_Name} ${B_Version} ">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>This CI specifies one software package.</description>
+		<attribute attAlias="G_Financial_Info" displayName="Financial Info">
+			<description>Financial info for this software</description>
+			<complexType>
+				<ref alias="Financials"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="E_DSL_Entry" displayName="DSL Entry">
+			<description>Link to the correct software package in the DSL</description>
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Version" displayName="Version">
+			<description>Version number for this software</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Name" displayName="Name">
+			<description>Name of this software</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_Host_OS" displayName="Host OS">
+			<description>Operating system this software is intended for</description>
+			<complexType>
+				<ref alias="OS"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		
+		<attribute attAlias="C_Port" displayName="Port">
+			<description>Port that this software listens to</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		
+		<attribute attAlias="C_Protocol" displayName="Protocol">
+			<description>Protocol for the software port.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		
+		<attribute attAlias="C_Host_CPU" displayName="Host CPU">
+			<description>Type of CPU this software is intended for</description>
+			<complexType>
+				<ref alias="CPU"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		
+		
+		<attribute attAlias="F_Maintenance_Info" displayName="Maintenance Info">
+			<description>Maintenance info for this software</description>
+			<complexType>
+				<ref alias="Maintenance"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">package</setSimpleValue>
+		<setSimpleValue attAlias="A_Name">Software</setSimpleValue>
+	</template>
+	
+  <template alias="Person" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>This CI describes one person.</description>
+		<attribute attAlias="A_Name" displayName="Name">
+			<description>This person´s name</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_Telephone" displayName="Telephone">
+			<description>Telephone number to this person</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Organisation" displayName="Organisation">
+			<description>Which organisation (company) this person belongs to</description>
+			<complexType>
+				<ref alias="Company"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_Email" displayName="Email">
+			<description>This person´s e-mail address</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		
+		<attribute attAlias="E_OneCMDBAccount" displayName="CMDB Account">
+			<description>If this person have a OneCMDB account.</description>
+			<complexType>
+				<ref alias="CMDBAccount"/>
+				<refType><ref alias="Uses" /></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		
+		<setSimpleValue attAlias="icon">people</setSimpleValue>
+		<setSimpleValue attAlias="A_Name">Person</setSimpleValue>
+	</template>
+	
+	<template alias="Maintenance" displayName="Maintenance">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>This CI contains maintenance information for one or several pieces of equipment or software packages.</description>
+		<attribute attAlias="D_Maintenance_Agreement" displayName="Maintenance Agreement">
+			<description>Link to the maintenance agreement document</description>
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Specialist" displayName="Specialist (internal)">
+			<description>The internal specialist for technical issues regarding this item</description>
+			<complexType>
+				<ref alias="Person"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_Maintenance_Level" displayName="Maintenance Level">
+			<description>Select between None/5x8/7x24</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Maintenance_Org" displayName="Maintenance Org">
+			<description>The organisation (company) that maintains this item</description>
+			<complexType>
+				<ref alias="Company"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">maintenance</setSimpleValue>
+	</template>
+	
+	<template alias="Company" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>This CI describes one company.</description>
+		<attribute attAlias="C_Telephone" displayName="Telephone">
+			<description>Main telephone number to this company</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Web_Address" displayName="Web Address">
+			<description>Web address (URL) to this company</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Name" displayName="Name">
+			<description>Name of this company</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">resource</setSimpleValue>
+		<setSimpleValue attAlias="A_Name">Company</setSimpleValue>
+	</template>
+	
+	<template alias="CompanyFolder" displayName="Company Folder">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>This folder lists companies (customers, suppliers etc).</description>
+		<attribute attAlias="Companies" displayName="Companies">
+			<description>List of companies (customers, suppliers etc)</description>
+			<complexType>
+				<ref alias="Company"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+	
+  <template alias="HardwareFolder" displayName="Hardware Folder">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>This folder lists s.</description>
+		<attribute attAlias="Hardwares" displayName="Hardwares">
+			<description>List of Hardwares</description>
+			<complexType>
+				<ref alias="Hardware"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+	
+	<template alias="PersonFolder" displayName="Person Folder">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>This folder lists persons (users, specialists, etc).</description>
+		<attribute attAlias="Persons" displayName="Persons">
+			<description>List of persons (users, specialists, etc)</description>
+			<complexType>
+				<ref alias="Person"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+	
+	<template alias="OSFolder" displayName="OS Folder">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>This folder lists Operating Systems.</description>
+		<attribute attAlias="OS" displayName="OS">
+			<description>List of Operating Systems</description>
+			<complexType>
+				<ref alias="OS"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+	
+	<template alias="SoftwareFolder" displayName="Software Folder">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>This folder lists software packages.</description>
+		<attribute attAlias="Software" displayName="Software">
+			<description>List of software packages</description>
+			<complexType>
+				<ref alias="Software"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+	
+	<template alias="DataCenterFolder" displayName="Basic Data Center">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>This folder contains configuration items of a basic data center at an imaginary company called Acme, Inc.</description>
+		<attribute attAlias="OS" displayName="OS:es">
+			<description>This folder lists Operating Systems</description>
+			<complexType>
+				<ref alias="OSFolder"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="Hardwares" displayName="Hardwares">
+			<description>This folder lists Hardware</description>
+			<complexType>
+				<ref alias="HardwareFolder"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="Persons" displayName="Persons">
+			<description>This folder lists persons (users, specialists, etc)</description>
+			<complexType>
+				<ref alias="PersonFolder"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="Software" displayName="Software">
+			<description>This folder lists software packages</description>
+			<complexType>
+				<ref alias="SoftwareFolder"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="Companies" displayName="Companies">
+			<description>This folder lists companies (customers, suppliers etc)</description>
+			<complexType>
+				<ref alias="CompanyFolder"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+</templates>
+
+<instances>
+<!-- Note, instance displayName and descriptions are copied from the templates according to default policies.
+     That is, if you set displayName or description below they will not be used. -->
+
+  <!-- Common instances -->
+  <ImportModel alias="defaultImport">
+		<javaClass>org.onecmdb.core.internal.job.workflow.sample.UrlImportProcess</javaClass>
+		<importUrl>file:///tmp/BasicModel.xml</importUrl>
+		<icon>job</icon>
+	</ImportModel>
+	
+	<ExportModel alias="defaultExport">
+		<javaClass>org.onecmdb.core.internal.job.workflow.sample.ExportModelProcess</javaClass>
+		<rootAlias>Root</rootAlias>
+		<instances>true</instances>
+		<templates>true</templates>
+		<exportFile>/tmp/ExportedModel.xml</exportFile>
+		<icon>job</icon>
+	</ExportModel>
+	
+	<JobManualTrigger alias="manualImportTrigger">
+		<icon>job</icon>
+		<process><ref alias="defaultImport"/></process>
+	</JobManualTrigger>
+	
+	<JobManualTrigger alias="manualExportTrigger">
+		<icon>job</icon>
+		<process><ref alias="defaultExport"/></process>
+	</JobManualTrigger>
+	
+	<!-- Hardware types defined -->
+	<HardwareType alias="ServerHwType">
+		<A_Name>Server</A_Name>
+	</HardwareType>
+	<HardwareType alias="UnknownHwType">
+		<A_Name>Unknown</A_Name>
+	</HardwareType>
+	<HardwareType alias="DesktopHwType">
+		<A_Name>Desktop</A_Name>
+	</HardwareType>
+	<HardwareType alias="PortableHwType">
+		<A_Name>Portable</A_Name>
+	</HardwareType>
+	<HardwareType alias="RouterHwType">
+		<A_Name>Router</A_Name>
+	</HardwareType>
+	<HardwareType alias="SwitchHwType">
+		<A_Name>Switch</A_Name>
+	</HardwareType>
+	<HardwareType alias="PrinterHwType">
+		<A_Name>Printer</A_Name>
+	</HardwareType>
+	
+	<!-- Basic instances -->
+	<OS alias="Linux">
+		<E_Maintenance_Info><ref alias="Swmaint"/></E_Maintenance_Info>
+		<C_Target_CPU><ref alias="Intel"/></C_Target_CPU>
+		<D_DSL_Entry>http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_OS_Package.txt</D_DSL_Entry>
+		<B_Version>Enterprise Version 3</B_Version>
+		<F_Financial_Info><ref alias="Swfin3"/></F_Financial_Info>
+		<A_Name>Linux</A_Name>
+	</OS>
+	<OS alias="Solaris">
+		<E_Maintenance_Info><ref alias="Swmaint"/></E_Maintenance_Info>
+		<C_Target_CPU><ref alias="Sparc"/></C_Target_CPU>
+		<D_DSL_Entry>http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_OS_Package.txt</D_DSL_Entry>
+		<B_Version>8.0</B_Version>
+		<F_Financial_Info><ref alias="Swfin2"/></F_Financial_Info>
+		<A_Name>Solaris</A_Name>
+	</OS>
+	<OS alias="Winxp">
+		<E_Maintenance_Info><ref alias="Swmaint"/></E_Maintenance_Info>
+		<C_Target_CPU><ref alias="Intel"/></C_Target_CPU>
+		<D_DSL_Entry>http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_OS_Package.txt</D_DSL_Entry>
+		<B_Version>SP2</B_Version>
+		<F_Financial_Info><ref alias="Swfin1"/></F_Financial_Info>
+		<A_Name>Windows XP</A_Name>
+	</OS>
+	<CPU alias="Intel">
+		<A_Name>Intel</A_Name>
+	</CPU>
+	<CPU alias="Sparc">
+		<A_Name>Sparc</A_Name>
+	</CPU>
+	<CPU alias="Unknowncpu">
+		<A_Name>Unknown</A_Name>
+	</CPU>
+	<Financials alias="Hwfin1">
+		<D_Maintenance_Fee>800</D_Maintenance_Fee>
+		<C_Depreciation>5</C_Depreciation>
+		<B_Purchase_Date>2006-03-01</B_Purchase_Date>
+		<A_Purchase_Price>10000</A_Purchase_Price>
+		<E_Purchase_Contract>http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Purchase_Contract.pdf</E_Purchase_Contract>
+	</Financials>
+	<Financials alias="Hwfin2">
+		<D_Maintenance_Fee>2200</D_Maintenance_Fee>
+		<C_Depreciation>5</C_Depreciation>
+		<B_Purchase_Date>2006-08-15</B_Purchase_Date>
+		<A_Purchase_Price>20000</A_Purchase_Price>
+		<E_Purchase_Contract>http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Purchase_Contract.pdf</E_Purchase_Contract>
+	</Financials>
+	<Financials alias="Hwfin3">
+		<D_Maintenance_Fee>450</D_Maintenance_Fee>
+		<C_Depreciation>5</C_Depreciation>
+		<B_Purchase_Date>2005-10-01</B_Purchase_Date>
+		<A_Purchase_Price>6000</A_Purchase_Price>
+		<E_Purchase_Contract>http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Purchase_Contract.pdf</E_Purchase_Contract>
+	</Financials>
+	<Financials alias="Swfin1">
+		<D_Maintenance_Fee>24000</D_Maintenance_Fee>
+		<C_Depreciation>3</C_Depreciation>
+		<B_Purchase_Date>2006-04-01</B_Purchase_Date>
+		<A_Purchase_Price>120000</A_Purchase_Price>
+		<E_Purchase_Contract>http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Purchase_Contract.pdf</E_Purchase_Contract>
+	</Financials>
+	<Financials alias="Swfin2">
+		<D_Maintenance_Fee>3500</D_Maintenance_Fee>
+		<C_Depreciation>3</C_Depreciation>
+		<B_Purchase_Date>2006-10-01</B_Purchase_Date>
+		<A_Purchase_Price>15000</A_Purchase_Price>
+		<E_Purchase_Contract>http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Purchase_Contract.pdf</E_Purchase_Contract>
+	</Financials>
+	<Financials alias="Swfin3">
+		<D_Maintenance_Fee>110</D_Maintenance_Fee>
+		<C_Depreciation>3</C_Depreciation>
+		<B_Purchase_Date>2005-09-10</B_Purchase_Date>
+		<A_Purchase_Price>500</A_Purchase_Price>
+		<E_Purchase_Contract>http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Purchase_Contract.pdf</E_Purchase_Contract>
+	</Financials>
+	<Financials alias="Swfin4">
+		<D_Maintenance_Fee>5000</D_Maintenance_Fee>
+		<C_Depreciation>0</C_Depreciation>
+		<B_Purchase_Date>2006-02-01</B_Purchase_Date>
+		<A_Purchase_Price>0</A_Purchase_Price>
+		<E_Purchase_Contract>http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Purchase_Contract.pdf</E_Purchase_Contract>
+	</Financials>
+	<Software alias="Apache">
+		<G_Financial_Info><ref alias="Swfin4"/></G_Financial_Info>
+		<F_Maintenance_Info><ref alias="Swmaint"/></F_Maintenance_Info>
+		<D_Host_OS><ref alias="Solaris"/></D_Host_OS>
+		<E_DSL_Entry>http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</E_DSL_Entry>
+		<B_Version>3.4</B_Version>
+		<C_Host_CPU><ref alias="Sparc"/></C_Host_CPU>
+		<A_Name>Apache</A_Name>
+	</Software>
+	<Software alias="Tomcat">
+		<G_Financial_Info><ref alias="Swfin4"/></G_Financial_Info>
+		<F_Maintenance_Info><ref alias="Swmaint"/></F_Maintenance_Info>
+		<D_Host_OS><ref alias="Linux"/></D_Host_OS>
+		<E_DSL_Entry>http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</E_DSL_Entry>
+		<B_Version>2.3.4</B_Version>
+		<C_Host_CPU><ref alias="Intel"/></C_Host_CPU>
+		<A_Name>Tomcat</A_Name>
+	</Software>
+	<Software alias="Mysql">
+		<G_Financial_Info><ref alias="Swfin3"/></G_Financial_Info>
+		<F_Maintenance_Info><ref alias="Swmaint"/></F_Maintenance_Info>
+		<D_Host_OS><ref alias="Linux"/></D_Host_OS>
+		<E_DSL_Entry>http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</E_DSL_Entry>
+		<B_Version>4.7</B_Version>
+		<C_Host_CPU><ref alias="Intel"/></C_Host_CPU>
+		<A_Name>MySQL</A_Name>
+	</Software>
+	<Software alias="Oraclefin">
+		<G_Financial_Info><ref alias="Swfin1"/></G_Financial_Info>
+		<F_Maintenance_Info><ref alias="Swmaint"/></F_Maintenance_Info>
+		<D_Host_OS><ref alias="Linux"/></D_Host_OS>
+		<E_DSL_Entry>http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</E_DSL_Entry>
+		<B_Version>9.4</B_Version>
+		<C_Host_CPU><ref alias="Intel"/></C_Host_CPU>
+		<A_Name>Oracle Financials</A_Name>
+	</Software>
+	<Software alias="Exchange">
+		<G_Financial_Info><ref alias="Swfin2"/></G_Financial_Info>
+		<F_Maintenance_Info><ref alias="Swmaint"/></F_Maintenance_Info>
+		<D_Host_OS><ref alias="Winxp"/></D_Host_OS>
+		<E_DSL_Entry>http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</E_DSL_Entry>
+		<B_Version>2003</B_Version>
+		<C_Host_CPU><ref alias="Intel"/></C_Host_CPU>
+		<A_Name>MS Exchange</A_Name>
+	</Software>
+	<Hardware alias="Alpha">
+		<J_OS><ref alias="Solaris"/></J_OS>
+		<D_Operational_Status>In production</D_Operational_Status>
+		<L_IP_Address>212.100.105.105</L_IP_Address>
+		<C_Used_By><ref alias="Acme"/></C_Used_By>
+		<M_Hostname>mail.acme.com</M_Hostname>
+		<A_Name>Alpha</A_Name>
+		<F_Serial_Number>S-12-845-77865</F_Serial_Number>
+		<O_Financial_Info><ref alias="Hwfin1"/></O_Financial_Info>
+		<N_Maintenance_Info><ref alias="Hwmaint"/></N_Maintenance_Info>
+		<B_Location><ref alias="LA"/></B_Location>
+		<I_HD_Size>160</I_HD_Size>
+		<E_Manufacturer><ref alias="Sun"/></E_Manufacturer>
+		<G_CPU_Type><ref alias="Sparc"/></G_CPU_Type>
+		<H_RAM_Size>1024</H_RAM_Size>
+		<K_Software><ref alias="Apache"/></K_Software>
+		<A_Type><ref alias="ServerHwType"/></A_Type>
+	</Hardware>
+	<Hardware alias="Bravo">
+		<J_OS><ref alias="Solaris"/></J_OS>
+		<D_Operational_Status>In production</D_Operational_Status>
+		<L_IP_Address>212.100.105.110</L_IP_Address>
+		<C_Used_By><ref alias="Acme"/></C_Used_By>
+		<A_Name>Bravo</A_Name>
+		<F_Serial_Number>S-87-387-11156</F_Serial_Number>
+		<O_Financial_Info><ref alias="Hwfin1"/></O_Financial_Info>
+		<B_Location><ref alias="LA"/></B_Location>
+		<I_HD_Size>320</I_HD_Size>
+		<N_Maintenance_Info><ref alias="Hwmaint"/></N_Maintenance_Info>
+		<E_Manufacturer><ref alias="Sun"/></E_Manufacturer>
+		<G_CPU_Type><ref alias="Sparc"/></G_CPU_Type>
+		<H_RAM_Size>2048</H_RAM_Size>
+		<K_Software><ref alias="Apache"/></K_Software>
+		<A_Type><ref alias="ServerHwType"/></A_Type>
+	</Hardware>
+	<Hardware alias="Charlie">
+		<J_OS><ref alias="Linux"/></J_OS>
+		<D_Operational_Status>Under test</D_Operational_Status>
+		<L_IP_Address>212.100.120.003</L_IP_Address>
+		<C_Used_By><ref alias="Acme"/></C_Used_By>
+		<A_Name>Charlie</A_Name>
+		<F_Serial_Number>D-9876-1265</F_Serial_Number>
+		<O_Financial_Info><ref alias="Hwfin1"/></O_Financial_Info>
+		<B_Location><ref alias="NY"/></B_Location>
+		<I_HD_Size>160</I_HD_Size>
+		<N_Maintenance_Info><ref alias="Hwmaint"/></N_Maintenance_Info>
+		<E_Manufacturer><ref alias="Dell"/></E_Manufacturer>
+		<G_CPU_Type><ref alias="Intel"/></G_CPU_Type>
+		<H_RAM_Size>1024</H_RAM_Size>
+		<K_Software><ref alias="Mysql"/></K_Software>
+		<A_Type><ref alias="ServerHwType"/></A_Type>
+	</Hardware>
+	<Hardware alias="Delta">
+		<J_OS><ref alias="Linux"/></J_OS>
+		<D_Operational_Status>In production</D_Operational_Status>
+		<L_IP_Address>212.100.220.134</L_IP_Address>
+		<C_Used_By><ref alias="Dummycust"/></C_Used_By>
+		<A_Name>Delta</A_Name>
+		<F_Serial_Number>D-4456-7680</F_Serial_Number>
+		<O_Financial_Info><ref alias="Hwfin1"/></O_Financial_Info>
+		<B_Location><ref alias="NY"/></B_Location>
+		<I_HD_Size>480</I_HD_Size>
+		<N_Maintenance_Info><ref alias="Hwmaint"/></N_Maintenance_Info>
+		<E_Manufacturer><ref alias="Dell"/></E_Manufacturer>
+		<G_CPU_Type><ref alias="Intel"/></G_CPU_Type>
+		<H_RAM_Size>1024</H_RAM_Size>
+		<K_Software><ref alias="Oraclefin"/></K_Software>
+		<A_Type><ref alias="ServerHwType"/></A_Type>
+	</Hardware>
+	<Hardware alias="Echo">
+		<J_OS><ref alias="Winxp"/></J_OS>
+		<D_Operational_Status>In production</D_Operational_Status>
+		<L_IP_Address>212.100.103.145</L_IP_Address>
+		<C_Used_By><ref alias="Dummycust"/></C_Used_By>
+		<A_Name>Echo</A_Name>
+		<F_Serial_Number>D-1167-7632</F_Serial_Number>
+		<O_Financial_Info><ref alias="Hwfin1"/></O_Financial_Info>
+		<B_Location><ref alias="AT"/></B_Location>
+		<I_HD_Size>480</I_HD_Size>
+		<N_Maintenance_Info><ref alias="Hwmaint"/></N_Maintenance_Info>
+		<E_Manufacturer><ref alias="Dell"/></E_Manufacturer>
+		<G_CPU_Type><ref alias="Intel"/></G_CPU_Type>
+		<H_RAM_Size>4096</H_RAM_Size>
+		<K_Software><ref alias="Exchange"/></K_Software>
+		<A_Type><ref alias="ServerHwType"/></A_Type>
+	</Hardware>
+	<Company alias="Acme">
+		<B_Web_Address>http://www.acme.com</B_Web_Address>
+		<C_Telephone>(415) 345 6500</C_Telephone>
+		<A_Name>Acme, Inc</A_Name>
+	</Company>
+	<Company alias="Itsuppgroup">
+		<B_Web_Address>http://www.itsupp.com</B_Web_Address>
+		<C_Telephone>(212) 868 1000</C_Telephone>
+		<A_Name>IT Support Group, Inc</A_Name>
+	</Company>
+	<Company alias="Computercomp">
+		<B_Web_Address>http://www.compcomp.com</B_Web_Address>
+		<C_Telephone>(349) 100 2222</C_Telephone>
+		<A_Name>Computer Company, Inc.</A_Name>
+	</Company>
+	<Company alias="Dummycust">
+		<B_Web_Address>http://www.dumcust.com</B_Web_Address>
+		<C_Telephone>(505) 888 3500</C_Telephone>
+		<A_Name>Dummy Customer, Inc.</A_Name>
+	</Company>
+	<Company alias="Dell">
+		<B_Web_Address>http://www.dell.com</B_Web_Address>
+		<C_Telephone>(265) 345 2000</C_Telephone>
+		<A_Name>Dell Computers</A_Name>
+	</Company>
+	<Company alias="Sun">
+		<B_Web_Address>http://www.sun.com</B_Web_Address>
+		<C_Telephone>(234) 200 4444</C_Telephone>
+		<A_Name>Sun</A_Name>
+	</Company>
+	<Person alias="Jsmith">
+		<D_Telephone>(415) 345 6514</D_Telephone>
+		<B_Organisation><ref alias="Acme"/></B_Organisation>
+		<C_Email>js@acme.com</C_Email>
+		<A_Name>John Smith</A_Name>
+		<E_OneCMDBAccount><ref alias="account-jsmith" /></E_OneCMDBAccount>
+	</Person>
+	<Person alias="Dgould">
+		<D_Telephone>(415) 345 6515</D_Telephone>
+		<B_Organisation><ref alias="Acme"/></B_Organisation>
+		<C_Email>dg@acme.com</C_Email>
+		<A_Name>Donna Gould</A_Name>
+	</Person>
+	
+	<CMDBAccount alias="account-jsmith">
+		<username>jsmith</username>
+		<password>1qaz1qaz</password>
+		<enabled>true</enabled>
+	</CMDBAccount>
+	
+	<Maintenance alias="Hwmaint">
+		<B_Maintenance_Org><ref alias="Itsuppgroup"/></B_Maintenance_Org>
+		<A_Specialist><ref alias="Jsmith"/></A_Specialist>
+		<C_Maintenance_Level>7x24</C_Maintenance_Level>
+		<D_Maintenance_Agreement>http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Maintenance_Agreement.pdf</D_Maintenance_Agreement>
+	</Maintenance>
+	<Maintenance alias="Swmaint">
+		<B_Maintenance_Org><ref alias="Itsuppgroup"/></B_Maintenance_Org>
+		<A_Specialist><ref alias="Dgould"/></A_Specialist>
+		<C_Maintenance_Level>5x8</C_Maintenance_Level>
+		<D_Maintenance_Agreement>http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Maintenance_Agreement.pdf</D_Maintenance_Agreement>
+	</Maintenance>
+	<Location alias="AT">
+		<A_Name>Atlanta</A_Name>
+	</Location>
+	<Location alias="LA">
+		<A_Name>Los Angeles</A_Name>
+	</Location>
+	<Location alias="NY">
+		<A_Name>New York</A_Name>
+	</Location>
+	<CompanyFolder alias="CompanyFolder1">
+		<Companies><ref alias="Acme"/></Companies>
+		<Companies><ref alias="Itsuppgroup"/></Companies>
+		<Companies><ref alias="Computercomp"/></Companies>
+		<Companies><ref alias="Dummycust"/></Companies>
+		<Companies><ref alias="Dell"/></Companies>
+		<Companies><ref alias="Sun"/></Companies>
+	</CompanyFolder>
+	<HardwareFolder alias="HardwareFolder1">
+		<Hardwares><ref alias="Alpha"/></Hardwares>
+		<Hardwares><ref alias="Bravo"/></Hardwares>
+		<Hardwares><ref alias="Charlie"/></Hardwares>
+		<Hardwares><ref alias="Delta"/></Hardwares>
+		<Hardwares><ref alias="Echo"/></Hardwares>
+	</HardwareFolder>	
+	<PersonFolder alias="PersonFolder1">
+		<Persons><ref alias="Jsmith"/></Persons>
+		<Persons><ref alias="Dgould"/></Persons>
+	</PersonFolder>
+	<OSFolder alias="OSFolder1">
+		<OS><ref alias="Linux"/></OS>
+		<OS><ref alias="Solaris"/></OS>
+		<OS><ref alias="Winxp"/></OS>
+	</OSFolder>
+	<SoftwareFolder alias="SoftwareFolder1">
+		<Software><ref alias="Apache"/></Software>
+		<Software><ref alias="Tomcat"/></Software>
+		<Software><ref alias="Mysql"/></Software>
+		<Software><ref alias="Oraclefin"/></Software>
+		<Software><ref alias="Exchange"/></Software>
+	</SoftwareFolder>
+	<DataCenterFolder alias="DataCenter">
+		<Companies><ref alias="CompanyFolder1"/></Companies>
+		<Hardwares><ref alias="HardwareFolder1"/></Hardwares>
+		<Persons><ref alias="PersonFolder1"/></Persons>
+		<OS><ref alias="OSFolder1"/></OS>
+		<Software><ref alias="SoftwareFolder1"/></Software>
+	</DataCenterFolder>
+	
+	
+	<!-- NMAP Transform information start -->
+		<DataSet alias="nmap-transform">
+			<instanceSelector>
+				<ref>
+					<ForwardInstanceSelector alias="nmap-fw-1">
+						<name>Nmap</name>
+					</ForwardInstanceSelector>
+				</ref>
+			</instanceSelector>
+			
+			<attributeSelector>
+				<ref>
+					<ComplexAttributeSelector>
+						<name>os-folder</name>
+						<dataSet>
+							<ref alias="os-folder-discovery" />
+						</dataSet>
+					</ComplexAttributeSelector>
+				</ref>
+			</attributeSelector>
+			<attributeSelector>
+				<ref>
+					<ComplexAttributeSelector>
+						<name>software-folder</name>
+						<dataSet>
+							<ref alias="software-folder-discovery" />
+						</dataSet>
+					</ComplexAttributeSelector>
+				</ref>
+			</attributeSelector>
+			<attributeSelector>
+				<ref>
+					<ComplexAttributeSelector>
+						<name>hardware-folder</name>
+						<dataSet>
+							<ref alias="hardware-folder-discovery" />
+						</dataSet>
+					</ComplexAttributeSelector>
+				</ref>
+			</attributeSelector>
+				
+		</DataSet>
+		
+		<DataSet alias="os-folder-discovery">
+			<instanceSelector>
+				<ref>
+					<XPathInstanceSelector>
+						<name>os folder</name>
+						<xpath>/*</xpath>
+						<template>OSFolder</template>
+						<instance>OSFolder1</instance>
+					</XPathInstanceSelector>
+				</ref>
+			</instanceSelector>
+			
+			<attributeSelector>
+				<ref>
+					<XPathComplexAttributeSelector>
+						<name>OS</name>
+						<dataSet>
+							<ref alias="nmap-os" />
+						</dataSet>
+						<xpath>//host/os</xpath>
+					</XPathComplexAttributeSelector>
+				</ref>
+			</attributeSelector>
+		</DataSet>
+		
+		<DataSet alias="software-folder-discovery">
+			<instanceSelector>
+				<ref>
+					<XPathInstanceSelector>
+						<name>software folder</name>
+						<xpath>/*</xpath>
+						<template>SoftwareFolder</template>
+						<instance>SoftwareFolder1</instance>
+					</XPathInstanceSelector>
+				</ref>
+			</instanceSelector>
+			
+			<attributeSelector>
+				<ref>
+					<XPathComplexAttributeSelector>
+						<name>Software</name>
+						<dataSet>
+							<ref alias="nmap-software" />
+						</dataSet>
+						<xpath>//host/ports/port[state[@state='open']]</xpath>
+					</XPathComplexAttributeSelector>
+				</ref>
+			</attributeSelector>
+		</DataSet>
+		
+		<DataSet alias="hardware-folder-discovery">
+			<instanceSelector>
+				<ref>
+					<XPathInstanceSelector>
+						<name>hardware folder</name>
+						<xpath>/*</xpath>
+						<template>HardwareFolder</template>
+						<instance>HardwareFolder1</instance>
+					</XPathInstanceSelector>
+				</ref>
+			</instanceSelector>
+			
+			<attributeSelector>
+				<ref>
+					<ComplexAttributeSelector>
+						<name>Hardwares</name>
+						<dataSet>
+							<ref alias="nmap-hardware" />
+						</dataSet>
+					</ComplexAttributeSelector>
+				</ref>
+			</attributeSelector>
+		</DataSet>
+	
+		<DataSet alias="nmap-hardware">
+			<instanceSelector>
+				<ref>
+					<XPathInstanceSelector>
+						<name>hosts</name>
+						<xpath>//host[status[@state='up']]</xpath>
+						<template>Hardware</template>
+					</XPathInstanceSelector>
+				</ref>
+			</instanceSelector>
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector>
+						<name>L_IP_Address</name>
+						<xpath>address[@addrtype='ipv4']/@addr</xpath>
+						<naturalKey>true</naturalKey>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+		
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector>
+						<name>M_Hostname</name>
+						<xpath>hostnames/hostname/@name</xpath>
+						<naturalKey>false</naturalKey>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector>
+						<name>L_MAC_Address</name>
+						<xpath>address[@addrtype='mac']/@addr</xpath>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+
+			<attributeSelector>
+				<ref>
+					<ComplexAttributeSelector>
+						<name>K_Software</name>
+						<dataSet>
+							<ref alias="nmap-software" />
+						</dataSet>
+					</ComplexAttributeSelector>
+				</ref>
+			</attributeSelector>
+
+			<attributeSelector>
+				<ref>
+					<ComplexAttributeSelector>
+						<name>J_OS</name>
+						<dataSet>
+							<ref alias="nmap-os" />
+						</dataSet>
+					</ComplexAttributeSelector>
+				</ref>
+			</attributeSelector>
+
+
+		</DataSet>
+
+		<DataSet alias="nmap-software">
+			<instanceSelector>
+				<ref>
+					<XPathInstanceSelector>
+						<name>Software</name>
+						<xpath>ports/port[state[@state='open']]</xpath>
+						<template>Software</template>
+					</XPathInstanceSelector>
+				</ref>
+			</instanceSelector>
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector>
+						<name>C_Port</name>
+						<xpath>@portid</xpath>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector>
+						<name>C_Protocol</name>
+						<xpath>@protocol</xpath>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector>
+						<name>A_Name</name>
+						<xpath>service/@name</xpath>
+						<naturalKey>true</naturalKey>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+		</DataSet>
+
+		<DataSet alias="nmap-os">
+			<instanceSelector>
+				<ref>
+					<XPathInstanceSelector>
+						<name>os</name>
+						<xpath>os</xpath>
+						<template>OS</template>
+					</XPathInstanceSelector>
+				</ref>
+			</instanceSelector>
+
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector>
+						<name>A_Name</name>
+						<xpath>osmatch/@name</xpath>
+						<naturalKey>true</naturalKey>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector>
+						<name>C_Vendor</name>
+						<xpath>osclass/@vendor</xpath>
+						<naturalKey>true</naturalKey>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector>
+						<name>C_Family</name>
+						<xpath>osclass/@osfamily</xpath>
+						<naturalKey>true</naturalKey>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+		</DataSet>
+		<!-- NMAP Transform information end -->
+</instances>
+</onecmdb>

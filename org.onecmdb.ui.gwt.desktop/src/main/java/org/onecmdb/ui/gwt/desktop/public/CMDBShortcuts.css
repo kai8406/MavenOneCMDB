@@ -1,0 +1,147 @@
+/** Add css rules here for your shortcuts here. */
+#x-shortcuts dt a {
+  width: 64px;
+  display: block;
+  color: blue;
+  text-decoration: none;
+}
+
+#x-shortcuts dt div {
+  width: 100%;
+  color: blue;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+#shortcuts-model-designer img {
+  width: 48px;
+  height: 48px;
+  background-image: url(onecmdb/content/Content/Images/shortcuts/classnew_48x48.png);
+}
+
+#shortcuts-model-open img {
+  width: 48px;
+  height: 48px;
+  background-image: url(onecmdb/content/Content/Images/shortcuts/open_48x48.png);
+
+}
+
+#shortcuts-default img {
+  width: 48px;
+  height: 48px;
+  background-image: url(onecmdb/content/Content/Images/shortcuts/default-applications-capplet_48x48.png);
+}
+
+#shortcut-model-overview img {
+  width: 32px;
+  height: 32px;
+  background-image: url(onecmdb/content/Content/Images/shortcuts/dia_32x32.png) !important;
+}
+
+
+#shortcut-customview img {
+	width: 32px;
+	height: 32px;
+  background-image: url(onecmdb/content/Content/Images/shortcuts/view_right_32x32.png) !important;
+}
+
+#shortcut-import-model img {
+	width: 32px;
+	height: 32px;
+  background-image: url(onecmdb/content/Content/Images/shortcuts/agt_add-to-desktop_32x32.png) !important;
+}
+
+
+#shortcut-mdr img {
+	width: 32px;
+	height: 32px;
+  background-image: url(onecmdb/content/Content/Images/shortcuts/db_add_32x32.png) !important;
+}
+
+#shortcut-cmdb-view img {
+	width: 32px;
+	height: 32px;
+  background-image: url(onecmdb/content/Content/Images/shortcuts/advancedsettings_32x32.png) !important;
+}
+
+#shortcut-custom-view img {
+	width: 32px;
+	height: 32px;
+  background-image: url(onecmdb/content/Content/Images/shortcuts/spreadsheet_48x48.png) !important;
+}
+
+#shortcut-custom-reports img {
+	width: 32px;
+	height: 32px;
+  background-image: url(onecmdb/content/Content/Images/shortcuts/document_32x32.png) !important;
+}
+
+#shortcut-cmdb-help img {	
+	width: 32px;
+	height: 32px;
+  background-image: url(onecmdb/content/Content/Images/shortcuts/contents_32x32.png) !important;
+}
+
+
+
+
+.menuitem-icon-file-editor {
+	background-image: url(onecmdb/content/Content/Images/icons/folder_wrench_16x16.png) !important;
+}
+
+.menuitem-icon-report {
+	background-image: url(onecmdb/content/Content/Images/icons/document_16x16.png) !important;
+}
+.menuitem-icon-import {
+	background-image: url(onecmdb/content/Content/Images/icons/import_wiz_16x16.gif) !important;
+}
+
+.menuitem-icon-export {
+	background-image: url(onecmdb/content/Content/Images/icons/export_wiz_16x16.gif) !important;
+}
+
+.menuitem-icon-onecmdb {
+	background-image: url(onecmdb/content/Content/Images/icons/onecmdblogo-small16.gif) !important;
+}
+ 
+ .menuitem-icon-help {   
+  background-image: url(onecmdb/content/Content/Images/icons/help_contents_16x16.gif) !important;
+}
+.menuitem-icon-folder {   
+  background-image: url(onecmdb/content/Content/Images/icons/folder_16x16.png) !important;
+}
+.menuitem-icon-modeloverview {
+  background-image: url(onecmdb/content/Content/Images/icons/template16.gif) !important;
+}
+.menuitem-icon-instanceoverview {
+  background-image: url(onecmdb/content/Content/Images/icons/overview_obj_16x16.gif) !important;
+}	
+.menuitem-icon-accounts {   
+  background-image: url(onecmdb/content/Content/Images/icons/people16.gif) !important;
+}
+.menuitem-icon-mdr {
+  background-image: url(onecmdb/content/Content/Images/icons/DB_dev_perspective_16x16.gif) !important;
+}
+.menuitem-icon-design {
+  background-image: url(onecmdb/content/Content/Images/icons/designer_16x16.png) !important;
+}
+.menuitem-icon-customview {
+  background-image: url(onecmdb/content/Content/Images/icons/view_choose_16x16.png) !important;
+}
+.menuitem-icon-modeldesign {
+  background-image: url(onecmdb/content/Content/Images/icons/opentype_16x16.gif) !important;
+}
+.menuitem-icon-widget-list {
+  background-image: url(onecmdb/content/Content/Images/icons/widget_doc_16x16.png) !important;
+}
+
+.menuitem-icon-system {
+  background-image: url(onecmdb/content/Content/Images/icons/applications-system_16x16.png) !important;
+}
+.menuitem-icon-admin {
+  background-image: url(onecmdb/content/Content/Images/icons/preferences-system_16x16.png) !important;
+}
+
+
+

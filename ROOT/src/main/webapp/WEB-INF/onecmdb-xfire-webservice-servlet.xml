@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	 
+	<bean id="webServiceImpl" class="org.onecmdb.core.utils.wsdl.OneCMDBWebServiceImpl">
+		<!--  Handler to OneCMDB Context -->
+		<property name="oneCmdb"><bean parent="onecmdb"/></property>
+	</bean>
+
+
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="urlMap">
+            <map>
+                <entry key="/onecmdb">
+                    <ref bean="oneCMDBWebService"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    
+    <!-- Declare a parent bean with all properties common to both services -->
+    <bean id="oneCMDBWebService" class="org.codehaus.xfire.spring.remoting.XFireExporter">
+        <property name="serviceFactory">
+            <ref bean="xfire.serviceFactory"/>
+        </property>
+        <property name="xfire">
+            <ref bean="xfire"/>
+        </property>
+        <property name="style">
+            <value>rpc</value>
+        </property>
+        <property name="serviceBean">
+            <ref bean="webServiceImpl"/>
+        </property>
+        <property name="serviceClass">
+            <value>org.onecmdb.core.utils.wsdl.IOneCMDBWebService</value>
+        </property>
+        <!--  
+          <property name="properties">
+         <map>
+             <entry key="writeXsiType">
+                 <value type="java.lang.Boolean">true</value>
+                 </entry>
+             <entry key="overrideTypesList">
+                 <list>
+		 			<value>org.onecmdb.core.utils.graph.query.ItemOffspringSelector</value>
+		 			<value>org.onecmdb.core.utils.graph.query.ItemRelationSelector</value>
+		 			<value>org.onecmdb.core.utils.graph.query.ItemAliasSelector</value>
+		
+		 			<value>org.onecmdb.core.utils.graph.query.ItemGroupConstraint</value>
+		 			<value>org.onecmdb.core.utils.graph.query.ItemAndGroupConstraint</value>
+		 			<value>org.onecmdb.core.utils.graph.query.ItemOrGroupConstraint</value>
+		 			<value>org.onecmdb.core.utils.graph.query.RelationConstraint</value>
+	 				
+	 				<value>org.onecmdb.core.utils.graph.query.AttributeConstraint</value>
+	 				<value>org.onecmdb.core.utils.graph.query.AttributeValueConstraint</value>
+                	
+                	<value>org.onecmdb.core.utils.graph.query.constraint.ItemIdConstraint</value>
+                	<value>org.onecmdb.core.utils.graph.query.constraint.RFCTargetConstraint</value>
+                	
+                	
+                 </list>
+             </entry>
+         </map>
+        </property>
+   		-->
+   	
+    </bean>
+</beans>

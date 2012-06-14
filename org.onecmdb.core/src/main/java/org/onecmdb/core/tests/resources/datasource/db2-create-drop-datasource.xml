@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE 
+	beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- 
+	Definition of the datasource.
+	Need to specify the folowing beans:
+		dataSource - defines driver/url/user/pwd
+		hibernateProperties - defines the db dialect
+		shutdownDb - true if hsql in process else false.
+
+ -->
+ 
+<beans default-dependency-check="none">	
+	<!-- 
+		Exmaple definition of DB2 datasource, not tested!!!
+	 -->	
+	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.ibm.db2.jcc.DB2Driver" />
+		<property name="url" value="jdbc:db2://trivia.lokomo.com:50000/onecmdb" />
+		<property name="username" value="db2inst1" />
+		<property name="password" value="onlyme" />
+		<property name="connectionProperties">
+			<props>
+				<prop key="shutdownDb">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="hibernateProperties" class="org.onecmdb.core.internal.storage.HibernateProperty">
+		<property name="properties">
+				<props>
+					<prop key="hibernate.dialect">
+						org.hibernate.dialect.DB2Dialect
+					</prop>
+					<prop key="show_sql">true</prop>
+					<prop key="transaction.factory_class">
+						org.hibernate.transaction.JDBCTransactionFactory
+					</prop>
+					<prop key="hibernate.cache.provider_class">
+						org.hibernate.cache.HashtableCacheProvider
+					</prop>
+					<prop key="hibernate.hbm2ddl.auto">
+						create-drop
+					</prop>
+				</props>
+		</property>
+	</bean>
+	
+</beans>

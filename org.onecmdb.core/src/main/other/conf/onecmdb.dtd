@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT instances EMPTY>
+
+<!ELEMENT onecmdb (templates|instances)*>
+
+<!ELEMENT templates (template)*>
+
+<!ELEMENT template (description | derivedFrom | attribute | setSimpleValue | setComplexValue)+>
+<!ATTLIST template
+	alias CDATA #REQUIRED
+	displayName CDATA #IMPLIED
+>
+<!ELEMENT derivedFrom (ref)>
+
+<!ELEMENT attribute (simpleType?, complexType?, policy?, description?)>
+<!ATTLIST attribute
+	attAlias CDATA #REQUIRED
+	displayName CDATA #IMPLIED
+>
+<!ELEMENT simpleType (#PCDATA)>
+<!ELEMENT complexType (ref, refType?)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT policy (minOccurs?, maxOccurs?, required?)>
+<!ELEMENT maxOccurs (#PCDATA)>
+<!ELEMENT minOccurs (#PCDATA)>
+<!ELEMENT required EMPTY>
+
+<!ELEMENT setSimpleValue (#PCDATA)>
+<!ATTLIST setSimpleValue
+	attAlias CDATA #REQUIRED
+>
+
+<!ELEMENT setComplexValue (ref)>
+<!ATTLIST setComplexValue
+	attAlias CDATA #REQUIRED
+>
+
+<!ELEMENT ref EMPTY>
+<!ATTLIST ref
+	alias CDATA #REQUIRED
+>
+
+<!ELEMENT refType (ref)>
+
+
+

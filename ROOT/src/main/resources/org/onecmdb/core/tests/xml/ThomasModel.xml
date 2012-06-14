@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<onecmdb>
+<templates>
+	<template alias="Thomas" displayName="Thomas">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>Thomas simple model		</description>
+
+		<setSimpleValue attAlias="icon">resource</setSimpleValue>
+	</template>
+	<template alias="Persont" displayName="Persont">
+		<derivedFrom>
+			<ref alias="Thomas"/>
+		</derivedFrom>
+		<description>Person		</description>
+
+		<setSimpleValue attAlias="icon">resource</setSimpleValue>
+	</template>
+	<template alias="Financialst" displayName="Financialst">
+		<derivedFrom>
+			<ref alias="Thomas"/>
+		</derivedFrom>
+		<description>Financials		</description>
+
+		<setSimpleValue attAlias="icon">resource</setSimpleValue>
+	</template>
+	<template alias="OSt" displayName="OS">
+		<derivedFrom>
+			<ref alias="Thomas"/>
+		</derivedFrom>
+		<description>Operating System		</description>
+
+		<setSimpleValue attAlias="icon">resource</setSimpleValue>
+	</template>
+	<template alias="CPUt" displayName="CPU + ${A.Name}">
+		<derivedFrom>
+			<ref alias="Thomas"/>
+		</derivedFrom>
+		<description>CPU type		</description>
+
+		<attribute attAlias="A.Name">
+			<description>Name</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A.Name"></setSimpleValue>
+		<setSimpleValue attAlias="icon">resource</setSimpleValue>
+	</template>
+	<template alias="Maintenancet" displayName="Maintenancet">
+		<derivedFrom>
+			<ref alias="Thomas"/>
+		</derivedFrom>
+		<description>Maintenance		</description>
+
+		<setSimpleValue attAlias="icon">resource</setSimpleValue>
+	</template>
+	<template alias="Companyt" displayName="Companyt">
+		<derivedFrom>
+			<ref alias="Thomas"/>
+		</derivedFrom>
+		<description>Company		</description>
+
+		<setSimpleValue attAlias="icon">resource</setSimpleValue>
+	</template>
+	<template alias="Locationt" displayName="Locationt">
+		<derivedFrom>
+			<ref alias="Thomas"/>
+		</derivedFrom>
+		<description>Location of system		</description>
+
+		<setSimpleValue attAlias="icon">resource</setSimpleValue>
+	</template>
+	<template alias="Servert" displayName="Servert">
+		<derivedFrom>
+			<ref alias="Thomas"/>
+		</derivedFrom>
+		<description>Server		</description>
+
+		<attribute attAlias="O.Financial_Info">
+			<description>Financial Info</description>
+			<complexType>
+				<ref alias="Financialst"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="L.IP_Address">
+			<description>IP Address</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="K.Software">
+			<description>Software</description>
+			<complexType>
+				<ref alias="Softwaret"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D.Operational_Status">
+			<description>Operational Status</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="N.Maintenance_Info">
+			<description>Maintenance</description>
+			<complexType>
+				<ref alias="Maintenancet"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="I.HD_Size">
+			<description>HD Size (GB)</description>
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="G.CPU_Type">
+			<description>CPU Type</description>
+			<complexType>
+				<ref alias="CPUt"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="H.RAM_Size">
+			<description>RAM Size</description>
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C.Used_By">
+			<description>Used By</description>
+			<complexType>
+				<ref alias="Companyt"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="M.Hostname">
+			<description>Hostname</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="J.OS">
+			<description>OS</description>
+			<complexType>
+				<ref alias="OSt"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="F.Serial_Number">
+			<description>Serial Number</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B.Location">
+			<description>Location</description>
+			<complexType>
+				<ref alias="Locationt"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A.Name">
+			<description>Name</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="E.Manufacturer">
+			<description>Manufacturer</description>
+			<complexType>
+				<ref alias="Companyt"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A.Name"></setSimpleValue>
+		<setSimpleValue attAlias="D.Operational_Status"></setSimpleValue>
+		<setSimpleValue attAlias="F.Serial_Number"></setSimpleValue>
+		<setSimpleValue attAlias="L.IP_Address"></setSimpleValue>
+		<setSimpleValue attAlias="M.Hostname"></setSimpleValue>
+		<setSimpleValue attAlias="icon">server</setSimpleValue>
+	</template>
+	<template alias="Softwaret" displayName="Softwaret">
+		<derivedFrom>
+			<ref alias="Thomas"/>
+		</derivedFrom>
+		<description>Software		</description>
+
+		<setSimpleValue attAlias="icon">resource</setSimpleValue>
+	</template>
+</templates>
+<instances>
+	<CPUt alias="id-ffffffff84b01eb2" displayName="CPU + ${A.Name}">
+		<A.Name>Intel</A.Name>
+		<icon>resource</icon>
+	</CPUt>
+</instances>
+</onecmdb>

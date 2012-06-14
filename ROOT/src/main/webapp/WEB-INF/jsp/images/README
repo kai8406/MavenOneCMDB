@@ -1,0 +1,23 @@
+
+OneCmdb entities are expected to expose an attribute called `icon' which is
+supposed to map to an image inside this directory. Each image is named as:
+
+	<basename><size>.<ext>
+
+The basename is what is found as value from the icon attribute. In cases when
+the basename is missing, ``unknown'' is used as basename, and shpuld point a 
+generic icon describing the _unknown_.
+
+Sizes are expected to include:
+
+* 16 - for SMALL  16px sizes
+* 32 - for MEDIUM 32px sizes
+* 48 - for LARGE  48px sizes
+
+The extensions supported are (in search order):
+
+* gif
+* png
+* jpg
+* jpeg
+ 

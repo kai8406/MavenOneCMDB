@@ -1,0 +1,207 @@
+/** Add css rules here for your application. */
+body {
+ 
+  font-family:arial,sans-serif
+}
+
+div,td {
+  color:#000000
+}
+
+a:link {
+  color:#0000cc
+}
+     
+a:visited {
+  color:#551a8b
+}
+
+a:active {
+  color:#ff0000
+}
+
+button {
+  display: block;
+  font-size: 16pt
+}
+
+.widePanel {
+  width: 100%
+}
+
+.cmdb-version-text {
+	font-size: 10px;
+	padding-right: 3px;
+	text-align: right;
+}
+
+.desktop {
+}
+
+.label-right {
+	padding-left: 20px;
+}
+
+.save-icon {
+	background-image: url(images/save_edit.gif) !important;
+}	
+.restore-icon {
+	background-image: url(images/undo_edit.gif) !important;
+}
+.help-icon {
+	background-image: url(images/help_contents_16x16.gif) !important;
+}	
+.add-attribute-icon {
+	background-image: url(images/add_att.gif) !important;
+}	
+.add-icon {
+	background-image: url(images/add_att.gif) !important;
+}	
+
+.delete-icon {
+	background-image: url(images/delete_obj.gif) !important;
+}	
+
+.refresh-icon {
+	background-image: url(images/nav_refresh.gif) !important;
+}
+
+.compare-icon {
+	background-image: url(images/compare_view.gif) !important;
+}
+
+.commit-icon {
+	background-image: url(images/composite_change.gif) !important;
+}
+
+.search-icon {
+	background-image: url(images/search_16x16.png) !important;
+}
+
+.open-icon {
+	background-image: url(images/openbrwsr_16x16.gif) !important;
+}
+
+.close-icon {
+	background-image: url(images/cancel_16x16.png) !important;
+}
+
+.cancel-icon {
+	background-image: url(images/cancel_16x16.png) !important;
+}
+.start-icon {
+	background-image: url(images/start_task_16x16.gif) !important;
+}
+.stop-icon {
+	background-image: url(images/stop_16x16.png) !important;
+}
+.classify-icon {
+	background-image: url(images/move_16x16.png) !important;
+}
+.list-items-icon {
+	background-image: url(images/list-items.gif) !important;
+}
+
+.select-icon {
+	background-image: url(images/selectdata_16x16.gif) !important;
+}
+.clear-icon {
+	background-image: url(images/clear_16x16.gif) !important;
+}
+.config-icon {
+	background-image: url(images/configure_16x16.png) !important;
+}
+
+
+.feedback-good {
+	background-image: url(images/emoticon_smile.png) !important;
+}
+.feedback-bad {
+	background-image: url(images/emoticon_unhappy.png) !important;
+}
+.update-icon {
+	background-image: url(images/update_wiz_16x16.gif) !important;
+}
+.register-icon {
+	background-image: url(images/registry_16x16.gif) !important;
+}
+
+.about-icon {
+	background-image: url(images/information_16x16.png) !important;
+}
+.feedback-icon {
+	background-image: url(images/16-tag-pencil_16x16.png) !important;
+}
+.desktop-icon {
+	background-image: url(images/desktop22_16x16.png) !important;
+}
+.desktop-lock-icon {
+	background-image: url(images/lock_16x16.png) !important;
+}
+
+
+.lock-icon {
+	background-image: url(images/locked_16x16.png)  !important;
+}
+.unlock-icon {
+	background-image: url(images/edit_16x16.png) !important;
+}
+.unlock-delete-icon {
+	background-image: url(images/deletecell_16x16.png) !important;
+}
+
+.mdr-config-open-icon {
+	background-image: url(images/job16.gif) !important;
+}	
+.reject-icon {
+	background-image: url(images/reject_16x16.png) !important;
+}
+
+
+.export-icon {
+	background-image: url(images/open_16x16.png) !important;
+}
+
+.property-icon {
+	background-image: url(images/properties_16x16.gif) !important;
+}
+
+
+.file-icon {
+	background-image: url(images/file_obj.gif) !important;
+}
+
+.gwt-DisclosurePanel {
+	 background-color: grey;
+}
+
+.gwt-DisclosurePanel-open {
+	
+}
+
+.gwt-DisclosurePanel-closed {
+}
+
+.gwt-DisclosurePanel .header,
+.gwt-DisclosurePanel .header a,
+.gwt-DisclosurePanel .header td {
+  text-decoration: none;  /* Remove underline from header */
+  color: black; 
+  cursor: pointer;
+  cursor: hand;
+ 
+}
+
+.gwt-DisclosurePanel .content {
+  border-left: 3px solid #e8eef7;
+  padding: 4px 0px 4px 8px;
+  margin-left: 6px;
+}
+
+.property-panel-background {
+	background-color: #DFE8F6;
+}
+	
+.ci-id-panel {
+	background-color: #DFE8F6;
+}

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+	<templates>
+		<template alias="ImportModel" displayName="ImportModel">
+			<derivedFrom>
+				<ref alias="JobProcess" />
+			</derivedFrom>
+			<description>
+				This job imports configuration items from an XML file.
+			</description>
+			<attribute attAlias="importUrl">
+				<simpleType>xs:string</simpleType>
+				<policy>
+					<maxOccurs>unbound</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			<setSimpleValue attAlias="icon">job</setSimpleValue>
+			<setSimpleValue attAlias="javaClass">
+				org.onecmdb.core.internal.job.workflow.sample.UrlImportProcess
+			</setSimpleValue>
+		</template>
+
+		<template alias="ExportModel" displayName="ExportModel">
+			<derivedFrom>
+				<ref alias="JobProcess" />
+			</derivedFrom>
+			<description>
+				This job exports configuration items to an XML file.
+			</description>
+			<attribute attAlias="instances">
+				<description>Export Instances if set.</description>
+				<simpleType>xs:boolean</simpleType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="exportFile">
+				<simpleType>xs:string</simpleType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="rootAlias">
+				<description>
+					Export all CIs based on this template (enter alias).
+					Will export this and descendants according to the
+					templates/instances attributes.
+				</description>
+				<simpleType>xs:string</simpleType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="templates">
+				<description>Export Templates if set.</description>
+				<simpleType>xs:boolean</simpleType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			<setSimpleValue attAlias="icon">job</setSimpleValue>
+			<setSimpleValue attAlias="javaClass">
+				org.onecmdb.core.internal.job.workflow.sample.ExportModelProcess
+			</setSimpleValue>
+		</template>
+	</templates>
+	<instances>
+		<!-- Common Job instances, to support export/import -->
+		<ImportModel alias="defaultImport">
+			<javaClass>
+				org.onecmdb.core.internal.job.workflow.sample.UrlImportProcess
+			</javaClass>
+			<importUrl>file:///tmp/BasicModel.xml</importUrl>
+			<icon>job</icon>
+		</ImportModel>
+
+		<ExportModel alias="defaultExport">
+			<javaClass>
+				org.onecmdb.core.internal.job.workflow.sample.ExportModelProcess
+			</javaClass>
+			<rootAlias>Root</rootAlias>
+			<instances>true</instances>
+			<templates>true</templates>
+			<exportFile>/tmp/ExportedModel.xml</exportFile>
+			<icon>job</icon>
+		</ExportModel>
+
+		<JobManualTrigger alias="manualImportTrigger">
+			<icon>job</icon>
+			<process>
+				<ref alias="defaultImport" />
+			</process>
+		</JobManualTrigger>
+
+		<JobManualTrigger alias="manualExportTrigger">
+			<icon>job</icon>
+			<process>
+				<ref alias="defaultExport" />
+			</process>
+		</JobManualTrigger>
+
+
+		
+	
+	</instances>
+</onecmdb>

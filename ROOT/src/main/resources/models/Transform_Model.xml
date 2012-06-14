@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+	<templates>
+		<template alias="TransformReference">
+			<derivedFrom>
+				<ref alias="Reference"/>
+			</derivedFrom>
+		</template>
+		
+		<template alias="Transform" displayName="Transform">
+			<derivedFrom>
+				<ref alias="Root"/>
+			</derivedFrom>
+			<description>Root for all transform objects</description>			
+
+			<attribute attAlias="javaClass" displayName="Java Class Name">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+		</template>
+		
+		<template alias="DataSet" displayName="DataSet::${name}">
+			<derivedFrom>
+				<ref alias="Transform"/>
+			</derivedFrom>
+		
+			<description>A DataSet contains information of a transform a data source to CMDB instances</description>			
+			<attribute attAlias="name" displayName="Name">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			
+			<attribute attAlias="parent">
+				<description>Select a parent dataset. All AttributeSelectors will be used from the parent.</description>
+				<complexType>
+					<ref alias="DataSet"/>
+					<refType><ref alias="TransformReference"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			
+				
+			<attribute attAlias="instanceSelector">
+				<description>Select one instance from the data source</description>
+				<complexType>
+					<ref alias="InstanceSelector"/>
+					<refType><ref alias="TransformReference"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+		
+			<attribute attAlias="attributeSelector">
+				<description>Select one attribute value from the data source</description>
+				<complexType>
+					<ref alias="AttributeSelector"/>
+					<refType><ref alias="TransformReference"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>unbound</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.DataSet</setSimpleValue>
+		</template>
+
+		<template alias="DataSetSelector" displayName="DataSet::${name}">
+			<derivedFrom>
+				<ref alias="DataSet"/>
+			</derivedFrom>
+			<description>A DataSetSelector selects dataset according pattern matching</description>			
+			
+			<attribute attAlias="dataSetMatcher" displayName="DataSetMatcher">
+				<complexType>
+					<ref alias="DataSetMatcher"/>
+					<refType><ref alias="TransformReference"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>unbound</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+				
+			</attribute>
+			<attribute attAlias="defaultDataSet" displayName="Default DataSet">
+				<complexType>
+					<ref alias="DataSet"/>
+					<refType><ref alias="TransformReference"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.DataSetSelector</setSimpleValue>
+		</template>
+	
+		<template alias="DataSetMatcher" displayName="DataSet::${name}">
+			<derivedFrom>
+				<ref alias="Transform"/>
+			</derivedFrom>
+			<description>Matches a dataset from a regexp and an attribute selector</description>			
+			
+		</template>
+		<template alias="RegExprMatcher" displayName="DataSet::${name}">
+			<derivedFrom>
+				<ref alias="DataSetMatcher"/>
+			</derivedFrom>
+			<description>Matches a dataset from a regexp and an attribute selector</description>	
+			
+			<attribute attAlias="attributeSelector" displayName="Attribute Selector">
+				<complexType>
+					<ref alias="AttributeSelector"/>
+					<refType><ref alias="TransformReference"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="dataSet" displayName="DataSet">
+				<complexType>
+					<ref alias="DataSet"/>
+					<refType><ref alias="TransformReference"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="regExpr" displayName="Reg Expr.">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			<attribute attAlias="lowerCase" displayName="Lower Case">
+				<simpleType>xs:boolean</simpleType>
+			</attribute>	
+
+			<setSimpleValue attAlias="lowerCase">true</setSimpleValue>
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.matcher.RegExprMatcher</setSimpleValue>
+		</template>
+	
+	
+		<template alias="InstanceSelector" displayName="${template}::${name}">
+			<derivedFrom>
+				<ref alias="Transform"/>
+			</derivedFrom>
+		
+			<description>Abstract InstanceSelector queries the data source for instances</description>			
+			
+			<attribute attAlias="name" displayName="Name">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			
+			<attribute attAlias="template" displayName="Template">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			
+			<attribute attAlias="instance" displayName="Instance">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			
+		</template>
+		
+		<template alias="EmptyInstanceSelector" displayName="${name}">
+			<derivedFrom>
+				<ref alias="InstanceSelector"/>
+			</derivedFrom>
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.EmptyInstanceSelector</setSimpleValue>
+		</template>
+		
+		<template alias="AttributeSelector" displayName="${name}">
+			<derivedFrom>
+				<ref alias="Transform"/>
+			</derivedFrom>
+		
+			<description>Attribute Selector's queries the data source for attribute value(s)</description>			
+			
+			<attribute attAlias="name" displayName="Name">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			
+			<attribute attAlias="naturalKey" displayName="Natural Key">
+				<simpleType>xs:boolean</simpleType>
+			</attribute>	
+			
+		</template>
+
+		<template alias="ComplexAttributeSelector">
+			<derivedFrom>
+				<ref alias="AttributeSelector"/>
+			</derivedFrom>
+		
+			<description>DataSet selector, deviding the row into another object(s)</description>			
+			<attribute attAlias="dataSet" displayName="Data Set">
+				<complexType>
+					<ref alias="DataSet"/>
+					<refType><ref alias="TransformReference"/></refType>
+				</complexType>
+			</attribute>	
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.ComplexAttributeSelector</setSimpleValue>
+		</template>
+		
+		<!-- XPATH specific -->
+		<template alias="XPathComplexAttributeSelector">
+			<derivedFrom>
+				<ref alias="ComplexAttributeSelector"/>
+			</derivedFrom>
+			<attribute attAlias="xpath" displayName="XPath">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.xml.XPathComplexAttributeSelector</setSimpleValue>
+	
+		</template>
+		
+		<template alias="XPathAttributeSelector">
+			<derivedFrom>
+				<ref alias="AttributeSelector"/>
+			</derivedFrom>
+		
+			<description>XPath column selector queries the row for value(s)</description>			
+			<attribute attAlias="xpath" displayName="XPath">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.xml.XPathAttributeSelector</setSimpleValue>
+		</template>
+		
+		<template alias="XPathInstanceSelector">
+			
+			<derivedFrom>
+				<ref alias="InstanceSelector"/>
+			</derivedFrom>
+		
+			<description>XPath row selector queries data source for value(s)</description>			
+			
+			<attribute attAlias="xpath" displayName="XPath">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			
+			<attribute attAlias="templatePath" displayName="Template XPath">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			
+			
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.xml.XPathInstanceSelector</setSimpleValue>
+			
+		</template>
+		<!-- CSV Specific -->
+		<template alias="CSVInstanceSelector">
+			<derivedFrom>
+				<ref alias="InstanceSelector"/>
+			</derivedFrom>
+		
+			<description>CSV instance selects each row as a new instance</description>			
+			
+			<attribute attAlias="delimiter" displayName="Delimter">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			
+			<attribute attAlias="templateColString" displayName="Template column">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			
+			
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.csv.CSVInstanceSelector</setSimpleValue>
+		</template>
+	
+		<template alias="CSVAttributeSelector">
+			
+			<derivedFrom>
+				<ref alias="AttributeSelector"/>
+			</derivedFrom>
+		
+			<description>CSV attribute selector a column from a CSV row.</description>			
+			
+			<attribute attAlias="colDelimiter" displayName="Column Delimter">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			
+			<attribute attAlias="colIndexStr" displayName="Column">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			
+			<attribute attAlias="colName" displayName="Column">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.csv.CSVAttributeSelector</setSimpleValue>
+		</template>
+		
+		<template alias="AttributeExpressionSelector">
+			
+			<derivedFrom>
+				<ref alias="AttributeSelector"/>
+			</derivedFrom>
+		
+			<description>AttributeExpressionSelector selects one or more values into a expression string</description>			
+			
+			<attribute attAlias="expression" displayName="Expression">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			
+			<attribute attAlias="selector" displayName="Attribute Selectors">
+				<complexType>
+					<ref alias="AttributeSelector"/>
+					<refType><ref alias="TransformReference"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>unbound</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>	
+			
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.AttributeExpressionSelector</setSimpleValue>
+		</template>
+		
+		
+		<!-- JDBC Selectors -->
+		<template alias="JDBCInstanceSelector">
+			<derivedFrom>
+				<ref alias="InstanceSelector"/>
+			</derivedFrom>
+		
+			<description>JDBC instance selects each row(s) from a JDBC data source</description>			
+			<attribute attAlias="templateColString" displayName="Template Column">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			<attribute attAlias="templateColName" displayName="Template Column Name">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.jdbc.JDBCInstanceSelector</setSimpleValue>
+		</template>
+	
+		<template alias="JDBCAttributeSelector">
+			
+			<derivedFrom>
+				<ref alias="AttributeSelector"/>
+			</derivedFrom>
+		
+			<description>JDBC attribute selects each col as a new attribute</description>			
+			
+			<attribute attAlias="colString" displayName="Column Number">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			
+			<attribute attAlias="colName" displayName="Column Name">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.jdbc.JDBCAttributeSelector</setSimpleValue>
+		</template>
+		
+		
+		<template alias="ForwardInstanceSelector">
+			
+			<derivedFrom>
+				<ref alias="InstanceSelector"/>
+			</derivedFrom>
+		
+			<description>Forward instance selector, can be used to group many dataset together</description>			
+			
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.ForwardInstanceSelector</setSimpleValue>
+			
+		</template>
+		
+		<template alias="DefaultAttributeSelector">
+			<derivedFrom>
+				<ref alias="AttributeSelector"/>
+			</derivedFrom>
+		
+			<description>Default value attribute selector</description>			
+			<attribute attAlias="value"  displayName="Default Value">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			<attribute attAlias="complex"  displayName="Complex Value">
+				<simpleType>xs:boolean</simpleType>
+			</attribute>	
+			
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.DefaultAttributeValueSelector</setSimpleValue>
+		</template>
+	
+		
+		
+		
+		<template alias="DataSource" displayName="Data Source">
+			<derivedFrom>
+				<ref alias="Transform"/>
+			</derivedFrom>
+		</template>
+		
+		<template alias="ResourceDataSource" displayName="URL Resource Data Source">
+			<derivedFrom>
+				<ref alias="DataSource"/>
+			</derivedFrom>
+			
+			<attribute attAlias="url" displayName="Resource URL">
+				<simpleType>xs:anyURI</simpleType>
+			</attribute>	
+		</template>
+		
+		<template alias="XMLDataSource" displayName="XML Resource Data Source">
+			<derivedFrom>
+				<ref alias="ResourceDataSource"/>
+			</derivedFrom>
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.xml.XMLDataSource</setSimpleValue>
+		</template>
+		
+		<template alias="CSVDataSource" displayName="CSV Resource Data Source">
+			<derivedFrom>
+				<ref alias="ResourceDataSource"/>
+			</derivedFrom>
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.csv.CSVDataSource</setSimpleValue>	
+		</template>
+		<template alias="ExcelDataSource" displayName="Excel Resource Data Source">
+			<derivedFrom>
+				<ref alias="ResourceDataSource"/>
+			</derivedFrom>
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.utils.transform.excel.ExcelDataSource</setSimpleValue>	
+		</template>
+		
+	</templates>
+
+</onecmdb>

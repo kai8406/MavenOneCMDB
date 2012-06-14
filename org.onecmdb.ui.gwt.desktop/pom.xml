@@ -1,0 +1,517 @@
+<!--
+Notes:
+    OneCMDB is an Open Source CMDB, Configuration Management Database
+        published under GPL Version 2.
+    Its homepage is:
+        http://www.onecmdb.org/
+
+    And these compiling projects and Maven scripts
+        are made by Konca Fung with the purpose of researching and
+        are made from the source codes package contained in OneCMDB installation folder.
+    
+    The homepage of Konca Fung is:
+        http://www.konca.com/
+
+                                                    Konca Fung
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.onecmdb</groupId>
+	<artifactId>onecmdb-desktop</artifactId>
+	<packaging>war</packaging>
+	<version>2.1.0</version>
+	<name>onecmdb-desktop</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<gwtVersion>1.7.1</gwtVersion>
+	</properties>
+
+	<!-- include the GWT-Maven repo as plugin, and as standard -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>gwt-maven</id>
+			<url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo</url>
+		</pluginRepository>
+	</pluginRepositories>
+	<repositories>
+		<repository>
+			<id>gwt-maven</id>
+			<url>
+            http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/
+          </url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.onecmdb</groupId>
+			<artifactId>onecmdb-core</artifactId>
+			<version>2.1.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>hibernate-annotations</artifactId>
+					<groupId>org.hibernate</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>hibernate</artifactId>
+					<groupId>org.hibernate</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>acegi-security</artifactId>
+					<groupId>org.acegisecurity</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-jxpath</artifactId>
+					<groupId>commons-jxpath</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>mail</artifactId>
+					<groupId>javax.mail</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xfire-core</artifactId>
+					<groupId>org.codehaus.xfire</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>toplink-api</artifactId>
+					<groupId>com.oracle.toplink</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xercesImpl</artifactId>
+					<groupId>xerces</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xml-apis</artifactId>
+					<groupId>xml-apis</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.onecmdb</groupId>
+			<artifactId>onecmdb-utils</artifactId>
+			<version>0.9.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>hibernate-annotations</artifactId>
+					<groupId>org.hibernate</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>hibernate</artifactId>
+					<groupId>org.hibernate</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>acegi-security</artifactId>
+					<groupId>org.acegisecurity</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-jxpath</artifactId>
+					<groupId>commons-jxpath</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xfire-core</artifactId>
+					<groupId>org.codehaus.xfire</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>toplink-api</artifactId>
+					<groupId>com.oracle.toplink</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.onecmdb</groupId>
+			<artifactId>onecmdb-nagios-utils</artifactId>
+			<version>1.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>jgroups-all</artifactId>
+					<groupId>jgroups</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-hibernate</artifactId>
+			<version>1.2.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>1.2.8</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-lang</artifactId>
+					<groupId>commons-lang</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-support</artifactId>
+			<version>1.2.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>1.2.8</version>
+		</dependency>
+
+		<!-- GWT deps (from central repo) -->
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-servlet</artifactId>
+			<version>${gwtVersion}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<version>${gwtVersion}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwtVersion}</version>
+			<classifier>${platform}-libs</classifier>
+			<type>zip</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwtVersion}</version>
+			<classifier>${platform}</classifier>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.1</version>
+			<scope>test</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.extjs</groupId>
+			<artifactId>gxt</artifactId>
+			<version>1.2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>xmlbeans</groupId>
+			<artifactId>xbean</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>2.5.1-final-20040804</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-xjc</artifactId>
+			<version>2.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxb</groupId>
+			<artifactId>jsr173_api</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.xfire</groupId>
+			<artifactId>xfire-all</artifactId>
+			<version>1.2.6</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>xfire-aegis</artifactId>
+					<groupId>org.codehaus.xfire</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xfire-ws-security</artifactId>
+					<groupId>org.codehaus.xfire</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xfire-core</artifactId>
+					<groupId>org.codehaus.xfire</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xfire-java5</artifactId>
+					<groupId>org.codehaus.xfire</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xfire-generator</artifactId>
+					<groupId>org.codehaus.xfire</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xfire-xmlbeans</artifactId>
+					<groupId>org.codehaus.xfire</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xfire-annotations</artifactId>
+					<groupId>org.codehaus.xfire</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xfire-jaxws</artifactId>
+					<groupId>org.codehaus.xfire</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xfire-spring</artifactId>
+					<groupId>org.codehaus.xfire</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>opensymphony</groupId>
+			<artifactId>oscache</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>1.6</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>xml-apis</artifactId>
+					<groupId>xml-apis</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>ojb</groupId>
+			<artifactId>db-ojb</artifactId>
+			<version>1.0.3</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-lang</artifactId>
+					<groupId>commons-lang</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>xml-apis</artifactId>
+					<groupId>xml-apis</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>1.2.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.oracle.toplink</groupId>
+			<artifactId>toplink-api</artifactId>
+			<version>1.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.prefuse</groupId>
+			<artifactId>prefuse</artifactId>
+			<version>beta-20071021</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>jboss</groupId>
+			<artifactId>jboss-common</artifactId>
+			<version>4.0.2</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>xercesImpl</artifactId>
+					<groupId>xerces</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>webdavlib</artifactId>
+					<groupId>slide</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>jboss</groupId>
+			<artifactId>jboss-cache</artifactId>
+			<version>1.2.2</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>jboss-system</artifactId>
+					<groupId>jboss</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jboss-minimal</artifactId>
+					<groupId>jboss</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jboss-common</artifactId>
+					<groupId>jboss</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jboss-j2se</artifactId>
+					<groupId>jboss</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>concurrent</artifactId>
+					<groupId>concurrent</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jgroups-all</artifactId>
+					<groupId>jgroups</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.woodstox</groupId>
+			<artifactId>wstx-asl</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.0</version>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<finalName>onecmdb-desktop</finalName>
+
+		<plugins>
+			<!-- tell the compiler we can use 1.5 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+
+			<!-- configure the GWT-Maven plugin -->
+			<!-- <plugin> <groupId>com.totsp.gwt</groupId> <artifactId>maven-googlewebtoolkit2-plugin</artifactId> 
+				<version>2.0-RC1</version> <configuration> <logLevel>INFO</logLevel> <compileTargets> 
+				<value>com.totsp.sample.Application</value> </compileTargets> <runTarget>com.totsp.sample.Application/Application.html</runTarget> 
+				<style>DETAILED</style> <noServer>false</noServer> <extraJvmArgs>-Xmx512m</extraJvmArgs> 
+				<i18nConstantsNames> <value>com.totsp.sample.client.AppConstants</value> 
+				</i18nConstantsNames> <i18nMessagesNames> <value>com.totsp.sample.client.AppMessages</value> 
+				</i18nMessagesNames> <gwtVersion>${gwtVersion}</gwtVersion> </configuration> 
+				<executions> <execution> <goals> <goal>mergewebxml</goal> <goal>i18n</goal> 
+				<goal>compile</goal> <goal>test</goal> </goals> </execution> </executions> 
+				</plugin> -->
+			<!-- Use the dependency plugin to unpack gwt-dev-PLATFORM-libs.zip -->
+			<!-- (this is a replacement for the old "automatic" mode - useful if you 
+				don't have GWT installed already, or you just want a maven way to handle 
+				gwt deps) -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-dependency-plugin</artifactId> 
+				<executions> <execution> <id>unpack</id> <phase>compile</phase> <goals> <goal>unpack</goal> 
+				</goals> <configuration> <artifactItems> <artifactItem> <groupId>com.google.gwt</groupId> 
+				<artifactId>gwt-dev</artifactId> <version>${gwtVersion}</version> <classifier>${platform}-libs</classifier> 
+				<type>zip</type> <overWrite>false</overWrite> <outputDirectory>${settings.localRepository}/com/google/gwt/gwt-dev/${gwtVersion}</outputDirectory> 
+				</artifactItem> </artifactItems> </configuration> </execution> </executions> 
+				</plugin> -->
+			<!-- If you want to use the target/web.xml file mergewebxml produces, 
+				tell the war plugin to use it. Also, exclude what you want from the final 
+				artifact here. -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-war-plugin</artifactId> 
+				<configuration> <webXml>target/web.xml</webXml> <warSourceExcludes>.gwt-tmp/**</warSourceExcludes> 
+				</configuration> </plugin> -->
+		</plugins>
+
+	</build>
+
+	<!-- profiles (with activation per platform) -->
+	<profiles>
+		<profile>
+			<id>gwt-dev-windows</id>
+			<properties>
+				<platform>windows</platform>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<os>
+					<family>windows</family>
+				</os>
+			</activation>
+		</profile>
+		<profile>
+			<id>gwt-dev-mac</id>
+			<properties>
+				<platform>mac</platform>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<os>
+					<family>mac</family>
+				</os>
+			</activation>
+		</profile>
+		<profile>
+			<id>gwt-dev-linux</id>
+			<properties>
+				<platform>linux</platform>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<os>
+					<name>linux</name>
+				</os>
+			</activation>
+		</profile>
+	</profiles>
+
+</project>

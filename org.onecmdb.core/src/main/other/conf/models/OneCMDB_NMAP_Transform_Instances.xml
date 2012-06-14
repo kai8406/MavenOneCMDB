@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+	<instances>
+		<!-- NMAP Transform information start -->
+		<DataSet alias="nmap-transform">
+			<instanceSelector>
+				<ref>
+					<ForwardInstanceSelector alias="nmap-fw-1">
+						<name>Nmap</name>
+					</ForwardInstanceSelector>
+				</ref>
+			</instanceSelector>
+			
+			<attributeSelector>
+				<ref>
+					<ComplexAttributeSelector alias="nmap-fw-system">
+						<name>systems</name>
+						<dataSet>
+							<ref alias="nmap-system" />
+						</dataSet>
+					</ComplexAttributeSelector>
+				</ref>
+			</attributeSelector>
+			<attributeSelector>
+				<ref>
+					<ComplexAttributeSelector alias="nmap-fw-os">
+						<name>systems</name>
+						<dataSet>
+							<ref alias="nmap-os" />
+						</dataSet>
+					</ComplexAttributeSelector>
+				</ref>
+			</attributeSelector>
+			<attributeSelector>
+				<ref>
+					<ComplexAttributeSelector alias="nmap-fw-serverapplication">
+						<name>systems</name>
+						<dataSet>
+							<ref alias="nmap-serverapplication" />
+						</dataSet>
+					</ComplexAttributeSelector>
+				</ref>
+			</attributeSelector>
+		</DataSet>
+		
+		
+		<!-- Transform <host> tag to a System CI -->	
+		<DataSet alias="nmap-system">
+			<instanceSelector>
+				<ref>
+					<XPathInstanceSelector alias="nmap-system-instance-selector">
+						<name>hosts</name>
+						<xpath>//host[status[@state='up']]</xpath>
+						<template>System</template>
+					</XPathInstanceSelector>
+				</ref>
+			</instanceSelector>
+			
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector alias="nmap-system-attribute-ipaddress">
+						<name>BA_IPAddress</name>
+						<xpath>address[@addrtype='ipv4']/@addr</xpath>
+						<naturalKey>true</naturalKey>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+		
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector alias="nmap-system-attribute-hostname">
+						<name>BB_Hostname</name>
+						<xpath>hostnames/hostname/@name</xpath>
+						<naturalKey>false</naturalKey>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector alias="nmap-system-attribute-macaddress">
+						<name>BC_MAC_Address</name>
+						<xpath>address[@addrtype='mac']/@addr</xpath>
+						<naturalKey>true</naturalKey>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+		</DataSet>
+
+		<DataSet alias="nmap-serverapplication">
+			<instanceSelector>
+				<ref>
+					<XPathInstanceSelector alias="nmap-applicationserver-instance-selector">
+						<name>ServerApplication</name>
+						<xpath>//host[status[@state='up']]/ports/port[state[@state='open']]</xpath>
+						<template>ServerApplication</template>
+					</XPathInstanceSelector>
+				</ref>
+			</instanceSelector>
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector alias="nmap-applicationserver-attribute-port">
+						<name>D_Port</name>
+						<xpath>@portid</xpath>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector alias="nmap-applicationserver-attribute-protocol">
+						<name>D_Protocol</name>
+						<xpath>@protocol</xpath>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector alias="nmap-applicationserver-attribute-name">
+						<name>A_Name</name>
+						<xpath>service/@name</xpath>
+						<naturalKey>true</naturalKey>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+
+			<!--  Reference to OS TODO: --> 
+			<attributeSelector>
+				<ref>
+					<XPathComplexAttributeSelector alias="nmap-applicationserver-attribute-installedon">
+						<name>H_InstalledOn</name>
+						<dataSet>
+							<ref alias="nmap-os" />
+						</dataSet>
+						<xpath>../../os</xpath>
+						<naturalKey>true</naturalKey>
+					</XPathComplexAttributeSelector>
+				</ref>
+			</attributeSelector>
+		</DataSet>
+
+		<DataSet alias="nmap-os">
+			<instanceSelector>
+				<ref>
+					<XPathInstanceSelector alias="nmap-os-instance-selector">
+						<name>os</name>
+						<xpath>//host[status[@state='up']]/os</xpath>
+						<template>OS</template>
+					</XPathInstanceSelector>
+				</ref>
+			</instanceSelector>
+
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector alias="nmap-os-attribute-name">
+						<name>A_Name</name>
+						<xpath>osmatch/@name</xpath>
+						<naturalKey>true</naturalKey>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+			
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector alias="nmap-os-attribute-family">
+						<name>B_Family</name>
+						<xpath>osclass/@osfamily</xpath>
+						<naturalKey>true</naturalKey>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+			
+			<!--  Reference to System to do. -->		
+			<attributeSelector>
+				<ref>
+					<XPathComplexAttributeSelector alias="nmap-os-attribute-installedon">
+						<name>H_InstalledOn</name>
+						<dataSet>
+							<ref alias="nmap-system" />
+						</dataSet>
+						<xpath>..</xpath>
+						<naturalKey>true</naturalKey>
+					</XPathComplexAttributeSelector>
+				</ref>
+			</attributeSelector>
+		</DataSet>
+		
+		<!-- NMAP Transform information end -->
+	</instances>
+</onecmdb>

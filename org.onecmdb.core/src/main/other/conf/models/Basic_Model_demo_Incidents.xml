@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+<templates>
+</templates>
+<instances>
+	<ITIL_Problem alias="ITIL_Problem-6" id="-6211513044448689661" displayName="${status} ${ID}  ${title}">
+		Problem 6  Oracle Financials does not support chinese characters
+		<description>Users complain that text can not be input with chinese characters.</description>
+		<actionHistory id="2919755507715492748"><ref alias="ActionHistory-31"/></actionHistory>
+		<title id="-6277101654324992560">Oracle Financials does not support chinese characters</title>
+		<status id="-3630991375528659734"><ref alias="problemStatus_Problem"/></status>
+		<priority id="3217980256570753386"><ref alias="level-medium"/></priority>
+		<ticketIssuer id="-591345290871002636"><ref alias="Jsmith"/></ticketIssuer>
+		<ID>6</ID>
+	</ITIL_Problem>
+	<ITIL_Problem alias="ITIL_Problem-5" id="7756208320470174770" displayName="${status} ${ID}  ${title}">
+		Known Error 5  No mails received
+		<description>Error code or error message from mail client when POPing e-mails.</description>
+		<actionHistory id="1640010375504016628"><ref alias="ActionHistory-28"/></actionHistory>
+		<actionHistory id="-716163035864649088"><ref alias="ActionHistory-22"/></actionHistory>
+		<reportDate id="7050544619185422680">2007-10-24T00:18:21</reportDate>
+		<title id="-8479787310449057083">No mails received</title>
+		<status id="3058737171622403442"><ref alias="problemStatus_KnownError"/></status>
+		<priority id="-2219512867292068506"><ref alias="level-low"/></priority>
+		<ticketIssuer id="4829233062110202365"><ref alias="Jsmith"/></ticketIssuer>
+		<solution id="-8527577394097257372">Change POP-server-setting in mail client software to &quot;pop3.acme.com&quot;</solution>
+		<ID id="-5488292958798267411">5</ID>
+	</ITIL_Problem>
+	<ITIL_Problem alias="ITIL_Problem-1" id="3822056069832373387" displayName="${status} ${ID}  ${title}">
+		Known Error 1  Server Bravo need more memory
+		<description>Too many processes causes system to swap all the time.</description>
+		<actionHistory id="5819801316822820306"><ref alias="ActionHistory-24"/></actionHistory>
+		<actionHistory id="2204868093024126187"><ref alias="ActionHistory-23"/></actionHistory>
+		<actionHistory id="6521231970141195254"><ref alias="ActionHistory-25"/></actionHistory>
+		<reportDate id="-2282268136632865513">2007-10-23T23:57:03</reportDate>
+		<title id="-3195454311757490977">Server Bravo need more memory</title>
+		<affectedCIs id="2688019388744844175"><ref alias="Service-3"/></affectedCIs>
+		<affectedCIs id="-3087754806725713216"><ref alias="Server-2"/></affectedCIs>
+		<status id="-7689398338862246436"><ref alias="problemStatus_KnownError"/></status>
+		<priority id="-6751021364455565723"><ref alias="level-high"/></priority>
+		<solution id="2402956188214509367">When CPU load exceeds 70%, do not allow new users to connect. Will work properly again when new RAM is installed.</solution>
+		<ID id="-6923219212857971235">1</ID>
+		<ticketIssuer id="6562309608890460108"><ref alias="Jsmith"/></ticketIssuer>
+	</ITIL_Problem>
+	<ITIL_Problem alias="ITIL_Problem-2" id="-6419329886240309610" displayName="${status} ${ID}  ${title}">
+		Known Error 2  Problem to save files on SAN
+		<description>Parts of the SAN is not accessible. Probably a diskproblem.</description>
+		<actionHistory id="7130416078646634712"><ref alias="ActionHistory-16"/></actionHistory>
+		<actionHistory id="8530538945783033079"><ref alias="ActionHistory-15"/></actionHistory>
+		<reportDate id="-4111550197835408693">2007-10-24T00:00:06</reportDate>
+		<title id="6043246427734763344">Problem to save files on SAN</title>
+		<affectedCIs id="-1251948475113955923"><ref alias="Service-2"/></affectedCIs>
+		<status id="-1917032168646431231"><ref alias="problemStatus_KnownError"/></status>
+		<priority id="4084435264386697213"><ref alias="level-high"/></priority>
+		<ID id="-5133056111561411888">2</ID>
+		<ticketIssuer id="7517661248638113233"><ref alias="Jsmith"/></ticketIssuer>
+		<solution id="-6511908399502919088">Do not use SAN partition /docs/internal</solution>
+	</ITIL_Problem>
+	<ITIL_Problem alias="ITIL_Problem-7" id="2878613076530512564" displayName="${status} ${ID}  ${title}">
+		Problem 9  No backup of MySQL database
+		<description>The CRM database in MySQL is not backed up. A backup schedule must be implemented.</description>
+		<title id="3304537621351959913">No backup of MySQL database</title>
+		<affectedCIs id="5507206615585070832"><ref alias="Server-3"/></affectedCIs>
+		<status id="6309063475469035938"><ref alias="problemStatus_Problem"/></status>
+		<priority id="-2873857203644306536"><ref alias="level-medium"/></priority>
+		<ticketIssuer id="2964223605099413825"><ref alias="Jsmith"/></ticketIssuer>
+		<ID>7</ID>
+	</ITIL_Problem>
+	<ITIL_Problem alias="ITIL_Problem-4" id="-3066867283809515003" displayName="${status} ${ID}  ${title}">
+		Problem 4  Lack of RAM
+		<description>The server has no free memory.</description>
+		<actionHistory id="4521714752654793281"><ref alias="ActionHistory-30"/></actionHistory>
+		<actionHistory id="-5151305075580320468"><ref alias="ActionHistory-27"/></actionHistory>
+		<actionHistory id="-6223640246750632593"><ref alias="ActionHistory-17"/></actionHistory>
+		<reportDate id="-6479307509258972">2007-10-24T00:02:34</reportDate>
+		<title id="6723056510363960031">Lack of RAM</title>
+		<status id="2534698800494173216"><ref alias="problemStatus_Problem"/></status>
+		<priority id="682739110003699723"><ref alias="level-medium"/></priority>
+		<solution id="-5643134721174240771"></solution>
+		<ID id="8801403738572756638">4</ID>
+		<ticketIssuer id="3647149434810387467"><ref alias="Jsmith"/></ticketIssuer>
+	</ITIL_Problem>
+	<ITIL_Problem alias="ITIL_Problem-3" id="345655195185403328" displayName="${status} ${ID}  ${title}">
+		Known Error 3  New Problem: Firewall blocks requests
+		<description>Many web requests are stopped and this probably happens because someone has changed the fw-rules.</description>
+		<actionHistory id="6048263054352859644"><ref alias="ActionHistory-18"/></actionHistory>
+		<actionHistory id="6420692492928109244"><ref alias="ActionHistory-26"/></actionHistory>
+		<reportDate id="6120237827264078973">2007-10-24T00:01:30</reportDate>
+		<title id="5344141686878204899">New Problem: Firewall blocks requests</title>
+		<status id="-8276927228219097718"><ref alias="problemStatus_KnownError"/></status>
+		<priority id="-7538613007528789172"><ref alias="level-medium"/></priority>
+		<ID id="-8746683080064823220">3</ID>
+		<ticketIssuer id="5243346601473338034"><ref alias="Jsmith"/></ticketIssuer>
+		<solution id="4621952653802169127">Use alternative webservers until further notice.</solution>
+	</ITIL_Problem>
+	<ITIL_Incident alias="ITIL_Incident-6" id="-6084449457908659866" displayName="Incident ${ID} ${title}">
+		Incident 6 Timeout on webpages on the extranet
+		<description>Error 404 in the browser when accessing webpages on the extranet.</description>
+		<actionHistory id="5032202469725109428"><ref alias="ActionHistory-6"/></actionHistory>
+		<reportDate id="9159189014761482092">2007-10-23T23:35:55</reportDate>
+		<affectedCIs id="-1655815813875581710"><ref alias="Server-2"/></affectedCIs>
+		<title id="7220862595837384700">Timeout on webpages on the extranet</title>
+		<problem id="5632519324934433375"><ref alias="ITIL_Problem-1"/></problem>
+		<reportedBy id="2819836063751922604"><ref alias="Jsmith"/></reportedBy>
+		<status id="-5503375172287334492"><ref alias="incidentStatus_KnownError"/></status>
+		<priority id="-6977551859843642643"><ref alias="level-medium"/></priority>
+		<ticketIssuer id="-3941048619844518879"><ref alias="Jsmith"/></ticketIssuer>
+		<ID id="2409197312418092093">6</ID>
+	</ITIL_Incident>
+	<ITIL_Incident alias="ITIL_Incident-8" id="-1421163965794218960" displayName="Incident ${ID} ${title}">
+		Incident 8 Backup has failed
+		<description>Backup software terminated with error message &quot;Not enough diskspace&quot;.</description>
+		<actionHistory id="4583423847203773827"><ref alias="ActionHistory-8"/></actionHistory>
+		<reportDate id="6686535852183477345">2007-10-23T23:38:40</reportDate>
+		<title id="-2658148064760063278">Backup has failed</title>
+		<affectedCIs id="-7596086832096058697"><ref alias="Server-2"/></affectedCIs>
+		<problem id="-7066554304255478686"><ref alias="ITIL_Problem-1"/></problem>
+		<reportedBy id="4604077276386584968"><ref alias="Dgould"/></reportedBy>
+		<status id="-5223942261584010062"><ref alias="incidentStatus_KnownError"/></status>
+		<priority id="-6169301343081027429"><ref alias="level-medium"/></priority>
+		<ticketIssuer id="1780176489305257365"><ref alias="Jsmith"/></ticketIssuer>
+		<ID id="-2911473027445597395">8</ID>
+	</ITIL_Incident>
+	<ITIL_Incident alias="ITIL_Incident-3" id="-7116232003758723285" displayName="Incident ${ID} ${title}">
+		Incident 3 Problem to access the Intranet
+		<description>The user can not log on to the network</description>
+		<actionHistory id="-1658910473896653422"><ref alias="ActionHistory-3"/></actionHistory>
+		<reportDate id="-7378179559608968158">2007-10-23T23:30:39</reportDate>
+		<title id="8615608756649076332">Problem to access the Intranet</title>
+		<affectedCIs id="-2255295263743771990"><ref alias="Service-3"/></affectedCIs>
+		<reportedBy id="6957279938698202760"><ref alias="Person-2"/></reportedBy>
+		<status id="917092660398362026"><ref alias="incidentStatus_UI"/></status>
+		<priority id="8226590514435373138"><ref alias="level-low"/></priority>
+		<ID id="-4107346334009147982">3</ID>
+		<ticketIssuer id="-4423347251688183331"><ref alias="Jsmith"/></ticketIssuer>
+	</ITIL_Incident>
+	<ITIL_Incident alias="ITIL_Incident-2" id="-2431860752661527026" displayName="Incident ${ID} ${title}">
+		Incident 2 Can not send e-mails
+		<description>Get error code 34 when sending mails from Outlook.</description>
+		<actionHistory id="-2660638996533065981"><ref alias="ActionHistory-2"/></actionHistory>
+		<reportDate id="8777418120891863019">2007-10-23T23:20:02</reportDate>
+		<title id="-6040037841942225922">Can not send e-mails</title>
+		<reportedBy id="-120805791953807164"><ref alias="Person-1"/></reportedBy>
+		<status id="-8769809375253905254"><ref alias="incidentStatus_UI"/></status>
+		<priority id="934434614876514853"><ref alias="level-medium"/></priority>
+		<ticketIssuer id="-7282001148120380799"><ref alias="Jsmith"/></ticketIssuer>
+		<ID id="-5081626728115806871">2</ID>
+	</ITIL_Incident>
+	<ITIL_Incident alias="ITIL_Incident-14" id="5985270470789665205" displayName="Incident ${ID} ${title}">
+		Incident 14 No mails received
+		<description>No mails received when POPing. MS Outlook displays an error code.</description>
+		<actionHistory id="5855125133247045730"><ref alias="ActionHistory-20"/></actionHistory>
+		<actionHistory id="6183026587536606270"><ref alias="ActionHistory-21"/></actionHistory>
+		<actionHistory id="-6377731821984784224"><ref alias="ActionHistory-19"/></actionHistory>
+		<reportDate id="8780650049639566496">2007-10-24T00:16:26</reportDate>
+		<title id="1724948095729271674">No mails received</title>
+		<affectedCIs id="-3908372983294816060"><ref alias="Service-4"/></affectedCIs>
+		<problem id="2978323051399735796"><ref alias="ITIL_Problem-5"/></problem>
+		<reportedBy id="2477247126463456244"><ref alias="Person-1"/></reportedBy>
+		<status id="-6147991155464465004"><ref alias="incidentStatus_KnownError"/></status>
+		<priority id="6495723926634289532"><ref alias="level-high"/></priority>
+		<ticketIssuer id="-6970564031698383952"><ref alias="Jsmith"/></ticketIssuer>
+		<ID id="-7308584781164565459">14</ID>
+	</ITIL_Incident>
+	<ITIL_Incident alias="ITIL_Incident-9" id="-6023771227425403977" displayName="Incident ${ID} ${title}">
+		Incident 9 Server busy
+		<description>The server is 98% busy. Applications time out.</description>
+		<actionHistory id="2903436327611965525"><ref alias="ActionHistory-9"/></actionHistory>
+		<reportDate id="-3612873044495556009">2007-10-23T23:40:06</reportDate>
+		<affectedCIs id="-7490312788276611225"><ref alias="Server-4"/></affectedCIs>
+		<title id="-4259348181329201679">Server busy</title>
+		<reportedBy id="-3665642734033572264"><ref alias="Person-4"/></reportedBy>
+		<status id="-1660480334123564878"><ref alias="incidentStatus_UI"/></status>
+		<priority id="-1110846801016299614"><ref alias="level-high"/></priority>
+		<ticketIssuer id="-5829303099776429944"><ref alias="Jsmith"/></ticketIssuer>
+		<ID id="8168618754975268346">9</ID>
+	</ITIL_Incident>
+	<ITIL_Incident alias="ITIL_Incident-5" id="-8202268408093508717" displayName="Incident ${ID} ${title}">
+		Incident 5 Can not find documents stored on fileserver
+		<description>The user can not find documents stored yesterday on the fileserver.</description>
+		<actionHistory id="-3449964344845076814"><ref alias="ActionHistory-5"/></actionHistory>
+		<reportDate id="-8422592588330484412">2007-10-23T23:33:33</reportDate>
+		<affectedCIs id="2092607040169700202"><ref alias="Service-2"/></affectedCIs>
+		<title id="2003790880754334297">Can not find documents stored on fileserver</title>
+		<reportedBy id="-783079689075232326"><ref alias="Dgould"/></reportedBy>
+		<status id="1540706924451593669"><ref alias="incidentStatus_UI"/></status>
+		<priority id="-5426179283573795655"><ref alias="level-high"/></priority>
+		<ID id="-7529305821802224165">5</ID>
+		<ticketIssuer id="-8100074061325358206"><ref alias="Jsmith"/></ticketIssuer>
+	</ITIL_Incident>
+	<ITIL_Incident alias="ITIL_Incident-11" id="-3963139238388183739" displayName="Incident ${ID} ${title}">
+		Incident 11 Wants MS Office installed on PC
+		<description>Wants help to install the new MS Office suite on her PC</description>
+		<actionHistory id="-6323659338400993793"><ref alias="ActionHistory-11"/></actionHistory>
+		<reportDate id="-3426291869778818838">2007-10-23T23:43:21</reportDate>
+		<title id="-4571254383135203119">Wants MS Office installed on PC</title>
+		<reportedBy id="-6915680680515056119"><ref alias="Person-2"/></reportedBy>
+		<status id="-2168916340660818609"><ref alias="incidentStatus_UI"/></status>
+		<priority id="5738464944912173558"><ref alias="level-medium"/></priority>
+		<ticketIssuer id="-8682849442139413459"><ref alias="Jsmith"/></ticketIssuer>
+		<ID id="-7296060008253690523">11</ID>
+	</ITIL_Incident>
+	<ITIL_Incident alias="ITIL_Incident-12" id="-4729135652033541720" displayName="Incident ${ID} ${title}">
+		Incident 12 Firewall blocks requests
+		<description>HTTP requests seem to be blocked by the firewall.</description>
+		<actionHistory id="54715924839619387"><ref alias="ActionHistory-12"/></actionHistory>
+		<reportDate id="8614810702841456074">2007-10-23T23:44:37</reportDate>
+		<affectedCIs id="5269915494188188558"><ref alias="Server-2"/></affectedCIs>
+		<title id="9126131071166572213">Firewall blocks requests</title>
+		<problem id="4889723851787848921"><ref alias="ITIL_Problem-3"/></problem>
+		<reportedBy id="-5779983896637502929"><ref alias="Person-1"/></reportedBy>
+		<status id="-4821506291459626803"><ref alias="incidentStatus_KnownError"/></status>
+		<priority id="-8564090952782461170"><ref alias="level-high"/></priority>
+		<ID id="971679767247825646">12</ID>
+		<ticketIssuer id="-8609780216860375282"><ref alias="Jsmith"/></ticketIssuer>
+	</ITIL_Incident>
+	<ITIL_Incident alias="ITIL_Incident-7" id="7677410130526279694" displayName="Incident ${ID} ${title}">
+		Incident 7 Forgot password
+		<description>User has forgotten his password to the mailservice.</description>
+		<actionHistory id="5913850094864009210"><ref alias="ActionHistory-7"/></actionHistory>
+		<reportDate id="-3365882724263616700">2007-10-23T23:36:58</reportDate>
+		<affectedCIs id="7431846359504373462"><ref alias="Service-3"/></affectedCIs>
+		<title id="-6201506471609285819">Forgot password</title>
+		<reportedBy id="-1252132010994795655"><ref alias="Person-1"/></reportedBy>
+		<status id="-1865473469538436196"><ref alias="incidentStatus_Closed"/></status>
+		<priority id="7554503388495740293"><ref alias="level-high"/></priority>
+		<ID id="-3064402844867248375">7</ID>
+		<ticketIssuer id="5357056317272288527"><ref alias="Jsmith"/></ticketIssuer>
+	</ITIL_Incident>
+	<ITIL_Incident alias="ITIL_Incident-4" id="-8563492789158386084" displayName="Incident ${ID} ${title}">
+		Incident 4 No toner in printer
+		<description>The laser printer on floor 3 is running low of toner.</description>
+		<actionHistory id="6296244113727954924"><ref alias="ActionHistory-4"/></actionHistory>
+		<reportDate id="6577467274727422543">2007-10-23T23:31:42</reportDate>
+		<title id="-3517215440766990184">No toner in printer</title>
+		<reportedBy id="312539271580054853"><ref alias="Person-1"/></reportedBy>
+		<status id="-6219771359445025700"><ref alias="incidentStatus_UI"/></status>
+		<priority id="-7265996869972793231"><ref alias="level-low"/></priority>
+		<ID id="7936797016788419850">4</ID>
+		<ticketIssuer id="-5963911394133800704"><ref alias="Jsmith"/></ticketIssuer>
+	</ITIL_Incident>
+	<ITIL_Incident alias="ITIL_Incident-13" id="-9051770107577049746" displayName="Incident ${ID} ${title}">
+		Incident 13 Lack of RAM
+		<description>End of memory on server???</description>
+		<actionHistory id="5265416592389392585"><ref alias="ActionHistory-13"/></actionHistory>
+		<actionHistory id="2271054084596238277"><ref alias="ActionHistory-29"/></actionHistory>
+		<reportDate id="-8146452206928078946">2007-10-23T23:47:41</reportDate>
+		<title id="-3385677235630344870">Lack of RAM</title>
+		<affectedCIs id="1882124582559742789"><ref alias="Server-4"/></affectedCIs>
+		<problem id="-1934443408649728817"><ref alias="ITIL_Problem-4"/></problem>
+		<reportedBy id="4634921622896497926"><ref alias="Dgould"/></reportedBy>
+		<status id="-5660094811461726941"><ref alias="incidentStatus_Problem"/></status>
+		<priority id="-1091169979507238842"><ref alias="level-high"/></priority>
+		<ticketIssuer id="6453573149129001654"><ref alias="Jsmith"/></ticketIssuer>
+		<ID id="-1094159623307897630">13</ID>
+	</ITIL_Incident>
+	<ITIL_Incident alias="ITIL_Incident-10" id="-2581486584780844717" displayName="Incident ${ID} ${title}">
+		Incident 10 Problem to save files on SAN
+		<description>Can not save files on &quot;D:&quot; (network disk).</description>
+		<actionHistory id="-3521855164336536724"><ref alias="ActionHistory-10"/></actionHistory>
+		<reportDate id="114687075706378310">2007-10-23T23:42:05</reportDate>
+		<affectedCIs id="-2877865758196968753"><ref alias="Server-3"/></affectedCIs>
+		<affectedCIs id="2318799147078596577"><ref alias="Desktop-1"/></affectedCIs>
+		<title id="3783446717064718491">Problem to save files on SAN</title>
+		<problem id="-2151619415911638775"><ref alias="ITIL_Problem-2"/></problem>
+		<reportedBy id="5544395576038410723"><ref alias="Jsmith"/></reportedBy>
+		<status id="796392958895334910"><ref alias="incidentStatus_KnownError"/></status>
+		<priority id="3082206317345256696"><ref alias="level-medium"/></priority>
+		<ticketIssuer id="-5408778067844630437"><ref alias="Jsmith"/></ticketIssuer>
+		<ID id="8560493022032019419">10</ID>
+	</ITIL_Incident>
+	<ITIL_Incident alias="ITIL_Incident-1" id="-6614977841899955881" displayName="Incident ${ID} ${title}">
+		Incident 1 Disk full
+		<description>No space left on the built-in harddisk</description>
+		<actionHistory id="8412346650169262952"><ref alias="ActionHistory-14"/></actionHistory>
+		<actionHistory id="-1667270104466614644"><ref alias="ActionHistory-1"/></actionHistory>
+		<reportDate id="-3467046572840834095">2007-10-23T23:19:06</reportDate>
+		<affectedCIs id="-2407402250357663604"><ref alias="Desktop-2"/></affectedCIs>
+		<title id="-6684898951090240733">Disk full</title>
+		<reportedBy id="-6368848283780802435"><ref alias="Dgould"/></reportedBy>
+		<status id="-6408631270306572528"><ref alias="incidentStatus_Closed"/></status>
+		<priority id="1467745021370580359"><ref alias="level-medium"/></priority>
+		<ID id="9097273998942844808">1</ID>
+		<ticketIssuer id="3983770263834408894"><ref alias="Jsmith"/></ticketIssuer>
+	</ITIL_Incident>
+		<ActionHistory alias="ActionHistory-24" id="-1875048431653766277" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-25T18:38:55 John Smith :  Marked this as a Known Problem
+		<description>Root for all Service Management objects</description>
+		<actionDate id="1524431916544841916">2007-10-25T18:38:55</actionDate>
+		<actionIssuer id="-4352411166378042759"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="6960561877204304872">Marked this as a Known Problem</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-23" id="-6314834337451621394" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-25T18:36:32 John Smith :  Need to check if memory can be expanded
+		<description>Root for all Service Management objects</description>
+		<actionDate id="1076621379827000920">2007-10-25T18:36:32</actionDate>
+		<actionIssuer id="7704810899175632158"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="2976456457053213862">Need to check if memory can be expanded</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-26" id="-8107640978126516265" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-25T18:39:39 John Smith :  Marked this as a Known Problem
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-3946099438478836902">2007-10-25T18:39:39</actionDate>
+		<actionIssuer id="7678941420552186892"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="-5374141382776227718">Marked this as a Known Problem</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-25" id="-8809201315086762253" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-25T18:39:23 John Smith :  Marked this as a Known Problem
+		<description>Root for all Service Management objects</description>
+		<actionDate id="2460336979345554306">2007-10-25T18:39:23</actionDate>
+		<actionIssuer id="-4326892088307251564"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="8883119866989999353">Marked this as a Known Problem</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-3" id="1510371558967313765" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-23T23:52:39 John Smith :  Mail new password to Jill
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-8683794748936472647">2007-10-23T23:52:39</actionDate>
+		<actionIssuer id="-7521715799962403694"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="-1251216475914630528">Mail new password to Jill</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-22" id="-149121434821523943" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-24T00:20:42 John Smith :  Marked this as a Known Problem
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-1202856110530823649">2007-10-24T00:20:42</actionDate>
+		<actionIssuer id="-8249479029373436303"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="1142026842238476477">Marked this as a Known Problem</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-5" id="-6247595712057262274" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-23T23:55:54 John Smith :  Helped user to search the SAN. Files are found but SAN is very slow, causes timeout.
+		<description>Root for all Service Management objects</description>
+		<actionDate id="7571815274235162170">2007-10-23T23:55:54</actionDate>
+		<actionIssuer id="7710329892400575706"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="5533023189418089657">Helped user to search the SAN. Files are found but SAN is very slow, causes timeout.</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-27" id="-583332444053794287" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-25T18:40:26 John Smith :  Must check what consumes all memory
+		<description>Root for all Service Management objects</description>
+		<actionDate id="3715725922746571286">2007-10-25T18:40:26</actionDate>
+		<actionIssuer id="-3923820675350431032"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="9017055485066981201">Must check what consumes all memory</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-30" id="6170158740285430294" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-25T18:50:38 John Smith :  Application DB_cleaner eats memory!!??
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-7155933022315465170">2007-10-25T18:50:38</actionDate>
+		<actionIssuer id="441226731870611590"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="-6855486934740591212">Application DB_cleaner eats memory!!??</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-14" id="-297387787718904307" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-24T00:03:32 John Smith :  Now enough diskspace
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-6731238851510644397">2007-10-24T00:03:32</actionDate>
+		<actionIssuer id="-8802363563948745407"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="-5962971413425010014">Now enough diskspace</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-21" id="4889449307761345713" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-24T00:18:21 John Smith :  Saved as a problem
+		<description>Root for all Service Management objects</description>
+		<actionDate id="8214630548767635776">2007-10-24T00:18:21</actionDate>
+		<actionIssuer id="-6395365496182541510"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="-6253867336874792242">Saved as a problem</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-16" id="-4907564624009316279" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-24T00:10:33 John Smith :  Marked this as a Known Problem
+		<description>Root for all Service Management objects</description>
+		<actionDate id="7489659045649605539">2007-10-24T00:10:33</actionDate>
+		<actionIssuer id="39526433406214440"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="-6509190039843727204">Marked this as a Known Problem</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-28" id="1409614193724386195" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-25T18:40:46 John Smith :  Marked this as a Known Problem
+		<description>Root for all Service Management objects</description>
+		<actionDate id="5440448683722330091">2007-10-25T18:40:46</actionDate>
+		<actionIssuer id="-8987481198325776340"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="1255798234342701208">Marked this as a Known Problem</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-17" id="-6268981301389079133" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-24T00:12:45 John Smith :  Need to expand memory
+		<description>Root for all Service Management objects</description>
+		<actionDate id="2459090159065326699">2007-10-24T00:12:45</actionDate>
+		<actionIssuer id="-7433314848222057736"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="8529691904913077575">Need to expand memory</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-2" id="-154079763750088483" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-23T23:51:59 John Smith :  User shall re-boot his PC and call back
+		<description>Root for all Service Management objects</description>
+		<actionDate id="2065638430718235422">2007-10-23T23:51:59</actionDate>
+		<actionIssuer id="7405125250251172128"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="8401512096946377293">User shall re-boot his PC and call back</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-1" id="-4554267126302762071" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-23T23:50:47 John Smith :  The user shall try to remove old files
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-6074624818788443088">2007-10-23T23:50:47</actionDate>
+		<actionIssuer id="99590005232296882"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="-7548648629314901951">The user shall try to remove old files</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-20" id="-8773501938031992513" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-24T00:17:48 John Smith :  User shall re-install MS Outlook
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-1223613505348822191">2007-10-24T00:17:48</actionDate>
+		<actionIssuer id="-339317700117813322"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="-2150478268645044649">User shall re-install MS Outlook</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-8" id="-8501006190521311647" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-23T23:58:53 John Smith :  Mark it as a problem
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-1543831351679281424">2007-10-23T23:58:53</actionDate>
+		<actionIssuer id="-2466765765561667575"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="-6504683774377718148">Mark it as a problem</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-7" id="9190499090478280103" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-23T23:57:57 John Smith :  New password is sent through snail-mail
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-2807409914521381854">2007-10-23T23:57:57</actionDate>
+		<actionIssuer id="-3834106610507131804"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="7769026566861289514">New password is sent through snail-mail</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-12" id="-7210292543572336" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-24T00:01:30 John Smith :  Saved as a problem
+		<description>Root for all Service Management objects</description>
+		<actionDate id="3920845836714160350">2007-10-24T00:01:30</actionDate>
+		<actionIssuer id="5576540120123361713"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="2082619781958677103">Saved as a problem</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-15" id="3809582854517666621" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-24T00:06:46 John Smith :  Called service technician
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-6868748854850733300">2007-10-24T00:06:46</actionDate>
+		<actionIssuer id="-8409783715557271724"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="-7737372291734400963">Called service technician</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-31" id="-6807887228441719849" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-25T18:59:39 John Smith :  I have changed the settings for character set in the application. Did not help...
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-1196185529831634475">2007-10-25T18:59:39</actionDate>
+		<actionIssuer id="146067623199091953"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="3988215164778204967">I have changed the settings for character set in the application. Did not help...</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-29" id="2588366898015965610" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-25T18:45:46 John Smith :  Mark it as a problem
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-7859693889315003696">2007-10-25T18:45:46</actionDate>
+		<actionIssuer id="-6194319020184970074"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="-5239866704661019357">Mark it as a problem</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-19" id="-213071064715735583" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-24T00:17:29 John Smith :  User shall restart his PC
+		<description>Root for all Service Management objects</description>
+		<actionDate id="9142714374675841249">2007-10-24T00:17:29</actionDate>
+		<actionIssuer id="3944888274730263963"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="-3131270038357420748">User shall restart his PC</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-9" id="3255894581507458487" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-23T23:59:32 John Smith :  Zombie process takes all CPU
+		<description>Root for all Service Management objects</description>
+		<actionDate id="8333356377980962957">2007-10-23T23:59:32</actionDate>
+		<actionIssuer id="-3638812699235833442"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="3446773073729447609">Zombie process takes all CPU</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-6" id="998901490401766458" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-23T23:57:03 John Smith :  Saved as a problem
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-5828362703099084589">2007-10-23T23:57:03</actionDate>
+		<actionIssuer id="-523896979343051653"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="3066231458043860953">Saved as a problem</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-13" id="591358728045457111" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-24T00:02:34 John Smith :  Saved as a problem
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-539378595862713402">2007-10-24T00:02:34</actionDate>
+		<actionIssuer id="-1580129148772644242"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="-6213174268642854118">Saved as a problem</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-18" id="-1817170551395860091" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-24T00:14:02 John Smith :  Marked this as a Known Problem
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-5378374779758829893">2007-10-24T00:14:02</actionDate>
+		<actionIssuer id="4969223202878947909"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="1807505009432801676">Marked this as a Known Problem</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-4" id="-3218692321002889957" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-23T23:53:24 John Smith :  Someone will change toner tomorrow.
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-6370600781459852621">2007-10-23T23:53:24</actionDate>
+		<actionIssuer id="3135173975951102291"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="1764099737730181815">Someone will change toner tomorrow.</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-11" id="-5020346980066352939" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-24T00:00:50 John Smith :  Someone from backoffice will assist next week
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-6447738884730888845">2007-10-24T00:00:50</actionDate>
+		<actionIssuer id="377513255586561936"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="-823933852643660876">Someone from backoffice will assist next week</actionMessage>
+	</ActionHistory>
+	<ActionHistory alias="ActionHistory-10" id="6129829413892568461" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+		2007-10-24T00:00:05 John Smith :  Saved as a problem
+		<description>Root for all Service Management objects</description>
+		<actionDate id="-459274236640358471">2007-10-24T00:00:05</actionDate>
+		<actionIssuer id="-2086934567782619344"><ref alias="Jsmith"/></actionIssuer>
+		<actionMessage id="-7448266902676898813">Saved as a problem</actionMessage>
+	</ActionHistory>
+	
+</instances>
+</onecmdb>

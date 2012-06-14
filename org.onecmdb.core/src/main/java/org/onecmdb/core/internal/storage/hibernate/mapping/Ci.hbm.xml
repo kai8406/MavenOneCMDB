@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.onecmdb.core.internal.model">
+        
+        
+        <class
+        	name="ConfigurationItem"
+        	polymorphism="explicit"
+        	table="CI">
+        	<id name="longId" column="id" type="long">
+        		<generator
+        			class="org.onecmdb.core.internal.storage.hibernate.ItemIdGetter" />
+        	</id>        	
+        	<property name="derivedFromId" type="long">
+	        	<column name="derivedFromId"
+		        	index="derivedFromId_ci_idx"/>
+        	</property>
+        	<property name="displayNameExpression" column="displayName" type="string"/>
+        	<property name="alias" type="string">
+        	        	<column name="alias" 
+        		index="alias_ci_idx"/>  
+        	</property>
+        	
+    		<property name="gid" type="long">
+    			<column name="gid" index="gid_ci_idx"/>
+    		</property>
+    		
+        	<property name="templatePath" type="string">
+        	        	<column name="path" 
+        		index="path_ci_idx(1024)" length="1024"/>  
+        	</property>
+     
+     		<!--  
+        	<property name="readPermission" type="string">
+        	        	<column name="readPermission" 
+        		index="readperm_ci_idx(1024)" length="1024"/>  
+        	</property>
+     
+        	<property name="writePermission" type="string">
+        	        	<column name="writePermission" 
+        		index="writeperm_ci_idx(1024)" length="1024"/>  
+        	</property>
+     
+        	<property name="deletePermission" type="string">
+        	        	<column name="deletePermission" 
+        		index="deleteperm_ci_idx(1024)" length="1024"/>  
+        	</property>
+        	-->
+        	  
+        	<property name="isBlueprint" type="boolean"/> 
+        	<property name="description" type="string">
+        		<column name="description" length="1024"/>
+        	</property>     	
+        
+        	<property name="sourceId" type="long" />
+        	<property name="sourceAttributeId" type="long" />
+        	<property name="targetId" type="long" />
+        	<property name="sourceTemplatePath" type="string">
+        		<column name="sourceTemplatePath" length="1024"/>
+        	</property>
+        	<property name="targetTemplatePath" type="string">
+        		<column name="targetTemplatePath" length="1024"/>
+        	</property>
+        	
+        	<property name="lastModified" type="timestamp"/>
+        	<property name="createTime" type="timestamp"/>
+        
+        </class>
+        
+        <!--  
+        <union-subclass name="RelationItem"
+        	extends="ConfigurationItem" table="Relation">        	
+        	<property name="sourceId" type="long" />
+        	<property name="sourceAttributeId" type="long" />
+        	<property name="targetId" type="long" />
+        	<property name="sourceTemplatePath" type="string">
+        		<column name="sourceTemplatePath" length="1024"/>
+        	</property>
+        	<property name="targetTemplatePath" type="string">
+        		<column name="targetTemplatePath" length="1024"/>
+        	</property>
+        </union-subclass>
+        -->
+        <class
+        	name="BasicAttribute"
+        	polymorphism="explicit"
+        	table="Attribute">
+        	<id name="longId" column="id" type="long">
+        		<generator
+        			class="org.onecmdb.core.internal.storage.hibernate.ItemIdGetter" />
+        	</id>
+        	<property name="derivedFromId" type="long">
+        		<column name="derivedFromId"
+		        	index="derivedFromId_atr_idx"/>
+        	</property>
+        	<property name="displayNameExpression" column="displayName" type="string"/>
+        	<property name="alias" type="string">
+        		<column name="alias" index="alias_atr_idx"/>  
+        	</property>
+        	<property name="complexValue" type="boolean"/> 
+        	<property name="isBlueprint" type="boolean"/> 
+        	<property name="description" type="string">
+        		<column name="description" length="1024"/>
+        	</property>     	
+        	
+        	<property name="typeName" type="string" />
+        	<property name="referenceTypeName" column="reftypename" type="string" />
+        	
+        	<property name="valueAsString" type="string">
+        		<column name="valueAsString" length="1024"
+        			index="valueAsString_atr_idx(1024)"/>  
+        	</property>
+        	
+        	<property name="valueAsLong" type="long">
+        		<column name="valueAsLong" index="valueAsLong_atr_idx"/>  
+        	</property>
+  
+        	<property name="valueAsDate" type="timestamp">
+        	</property>
+        	
+        	<property name="ownerId" type="long">
+        		<column name="ownerId" index="ownerId_atr_idx"/>  
+        	</property>
+        	
+        	<property name="maxOccurs" type="int" />
+        	<property name="minOccurs" type="int" />
+       
+        	<property name="lastModified" type="timestamp"/>
+        	<property name="createTime" type="timestamp"/>
+        	
+        </class>
+       	
+       <!--  
+        <union-subclass name="BasicAttribute"
+        	extends="ConfigurationItem" table="Attribute">        	
+        	<property name="typeName" type="string" />
+        	<property name="referenceTypeName" column="reftypename" type="string" />
+        	<property name="valueAsString" type="text"/>
+        	<property name="ownerId" type="long" />
+        	<property name="maxOccurs" type="int" />
+        	<property name="minOccurs" type="int" />
+        </union-subclass>
+	
+	  -->
+	<!--  
+        <union-subclass name="AbstractAttribute" extends="ConfigurationItem">
+        	<property name="ownerId" type="long" />
+        	<property name="typeName" type="string" />
+        	<property name="name" type="string" />
+        </union-subclass>
+
+        <union-subclass name="BasicAttribute"
+        	extends="AbstractAttribute">
+        	<property name="valueAsString" type="text"/>
+        </union-subclass>
+        -->
+</hibernate-mapping>

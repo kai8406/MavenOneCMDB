@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+
+<beans>
+
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<!-- <property name="alwaysUseFullPath" value="true" /> -->
+		<property name="mappings">
+			<props>
+				<prop key="/http/*">remoteController</prop>
+				<prop key="/classpath/**">classpathController</prop>
+			</props>
+		
+		</property>
+	</bean>
+
+
+	<!--  {{{ Controllers -->
+	<bean id="classpathController" class="org.onecmdb.web.remote.ClassPathController"
+		init-method="init">
+	</bean>
+	
+	<!--  
+		Controller for the remote request  
+		The controller will handle request names:
+		../http/auth?
+		../http/query?
+		../http/update?
+		../http/delete?
+	-->
+	<bean id="remoteController" class="org.onecmdb.web.remote.RemoteController"
+	init-method="init">
+		<!--  Handler to OneCMDB Context -->
+		<property name="oneCmdb"><bean parent="onecmdb"/></property>
+		
+		<property name="methodNameResolver" >
+			<bean 
+				class="org.springframework.web.servlet.mvc.multiaction.InternalPathMethodNameResolver">
+				<property name="prefix" value="" />
+				<property name="suffix" value="Handler" />
+			</bean>
+		</property>
+	</bean>
+	
+
+	<!-- Controllers }}} -->
+</beans>

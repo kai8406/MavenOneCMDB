@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.onecmdb.core.internal.ccb.rfc">
+	
+	<class name="org.onecmdb.core.internal.ccb.CmdbTransaction" table="CMDBTX">
+		<id name="longId" column="id" type="long">
+			<generator
+				class="org.onecmdb.core.internal.storage.hibernate.ItemIdGetter" />
+		</id>
+		<property name="name" type="string"/>
+		<property name="status" type="int"/>
+		<property name="issuer" type="string"/>
+		<property name="insertTs" type="timestamp"/>
+		<property name="beginTs" type="timestamp"/>	
+		<property name="endTs" type="timestamp"/>
+		<property name="rejectCause" type="string"/>
+		<property name="ciModified" type="int"/>
+		<property name="ciAdded" type="int"/>
+		<property name="ciDeleted" type="int"/>
+		
+	</class>
+	
+	<class name="RFC" table="RFC">
+		<id name="id" column="id" type="long">
+			<generator
+				class="org.onecmdb.core.internal.storage.hibernate.ItemIdGetter" />
+		</id>
+		<discriminator column="RFC_TYPE" type="string"/>
+		
+		<property name="parentId" type="long" />
+		<property name="targetId" type="long" />
+		<property name="targetCIId" type="long" />
+		<property name="targetAlias" type="string" />
+		<property name="txId" type="long" />
+		<property name="ts" type="timestamp" />
+	</class>
+
+	<subclass name="RFCNewRootCi" extends="RFC" discriminator-value="NEWROOT">
+	</subclass>
+
+	<subclass name="RFCNewCi" extends="RFC" discriminator-value="NEWCI">
+	</subclass>
+
+	<subclass name="RFCDestroy" extends="RFC" discriminator-value="DESTROY">
+		<property name="destroyedAlias" type="string"/>
+		<property name="destroyedId" type="long"/>
+		<property name="wasCi" type="boolean"/>
+		
+	</subclass>
+	
+	<subclass name="org.onecmdb.core.internal.ccb.CiModifiable" extends="RFC" discriminator-value="CIMODIFY">
+	</subclass>
+
+	<subclass name="org.onecmdb.core.internal.ccb.AttributeModifiable" extends="RFC" discriminator-value="ATTMODIFY">
+	</subclass>
+
+	<subclass name="RFCNewAttribute" extends="RFC" discriminator-value="NEWATTRIBUTE">
+	</subclass>
+	
+	<subclass name="RFCModifyAlias" extends="RFC" discriminator-value="MODALIAS">
+		<property name="newAlias" type="string" />
+		<property name="oldAlias" type="string" />
+	</subclass>
+	
+	<subclass name="RFCModifyIsTemplate" extends="RFC" discriminator-value="MODISTEMPLATE">
+		<property name="newTemplate" type="boolean" />
+		<property name="oldTemplate" type="boolean" />
+	</subclass>
+	
+	<subclass name="RFCModifyDescription" extends="RFC" discriminator-value="MODDESC">
+		<property name="description" type="string">
+			<column name="description" length="1024"/>
+		</property>
+	</subclass>
+	
+	<subclass name="RFCModifyDisplayNameExpression" extends="RFC" discriminator-value="MODDISPL">
+		<property name="newDisplayNameExpression" type="string" />
+		<property name="oldDisplayNameExpression" type="string" />
+	</subclass>
+
+	<subclass name="RFCMoveCi" extends="RFC" discriminator-value="MOVECI">
+		<property name="fromId" type="long"/>
+		<property name="toId" type="long" />
+		<property name="toAlias" type="string" />
+		
+	</subclass>
+
+	<subclass name="RFCModifyAttributeReferenceType" extends="RFC" discriminator-value="MODREFTYPE">
+		<property name="oldReferenceTypeAlias" type="string" />
+		<property name="newReferenceTypeAlias" type="string" />
+	</subclass>
+
+	<subclass name="RFCModifyAttributeType" extends="RFC" discriminator-value="MODATYPE">
+		<property name="oldTypeAlias" type="string" />
+		<property name="newTypeAlias" type="string" />
+	</subclass>
+
+	<subclass name="RFCModifyMaxOccurs" extends="RFC" discriminator-value="MODMAXOCCURS">
+    	<property name="oldMaxOccurs" type="integer"/>
+    	<property name="newMaxOccurs" type="integer"/>
+    </subclass>
+	
+	<subclass name="RFCModifyMinOccurs" extends="RFC" discriminator-value="MODMINOCCURS">
+    	<property name="oldMinOccurs" type="integer"/>
+    	<property name="newMinOccurs" type="integer"/>
+    </subclass>
+	
+	<subclass name="RFCModifyAttributeValue" extends="RFC" discriminator-value="MODVALUE">
+    	<property name="oldValue" type="string">
+    		<column name="oldValue" length="1024"/>
+    	</property>
+    	<property name="newValue" type="string">
+    		<column name="newValue" length="1024"/>
+    	</property>
+    	
+    	<property name="newValueAsAlias" type="string"/>
+    </subclass>
+
+	<subclass name="RFCModifyDerivedAttributeValue" extends="RFC" discriminator-value="MODDERVALUE">
+    	<property name="value" type="string">
+	    	<column name="value" length="1024"/>
+    	</property>
+    	
+    	<property name="index" column="indx" type="integer"/>
+    	<property name="alias" type="string"/>
+    	<property name="valueAsAlias" type="string"/>
+    </subclass>
+    
+    <subclass name="RFCMoveAttribute" extends="RFC" discriminator-value="MOVEATT">
+    	<property name="oldOwnerId" type="long"/>
+    	<property name="newOwnerId" type="long"/>
+    </subclass>
+
+    <subclass name="RFCAddAttribute" extends="RFC" discriminator-value="ADDATT">
+    	<property name="alias" type="string"/>
+    </subclass>
+	
+     
+     <subclass name="RFCNewReference" extends="RFC" discriminator-value="NEWREFERENCE">
+    	<property name="sourceAttributeId" type="long"/>
+    	<property name="referenceTarget" type="string"/>
+    </subclass>
+</hibernate-mapping>

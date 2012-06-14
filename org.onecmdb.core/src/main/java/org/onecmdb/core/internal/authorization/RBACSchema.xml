@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+<!DOCTYPE onecmdb SYSTEM "onecmdb.dtd">
+ -->
+<onecmdb>
+	<templates>
+	
+		<template alias="RBAC" displayName="RBAC">
+			<derivedFrom><ref alias="Root"/></derivedFrom>
+			<description>This describes the RBAC objects in OneCMDB.</description>
+		</template>
+		
+		
+		
+		<template alias="CMDBRole" displayName="${name}">
+			<derivedFrom><ref alias="RBAC"/></derivedFrom>
+			<description>This describes one role in OneCMDB.</description>
+			
+			<attribute attAlias="name" displayName="Name">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			
+			<attribute attAlias="permission" displayName="Permissions">
+				<description>The permissions connected to this role</description>
+				<complexType>
+					<ref alias="CMDBSecurityPermission"/>
+					<refType><ref alias="Reference"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>unbound</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<setSimpleValue attAlias="name">Role</setSimpleValue>
+		</template>
+
+		<template alias="CMDBSecurityGroup" displayName="${name}">
+			<derivedFrom><ref alias="RBAC"/></derivedFrom>
+			<description>This describes one group in OneCMDB.</description>
+			<attribute attAlias="children" displayName="Children Group(s)">
+				<description>The child security groups</description>
+				<complexType>
+					<ref alias="CMDBSecurityGroup"/>
+					<refType><ref alias="Reference"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>unbound</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="name" displayName="Group Name">
+				<description>The symbolic name for this security group</description>
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="name">SecurityGroup</setSimpleValue>
+		</template>
+
+		<template alias="CMDBSecurityPermission" displayName="CMDBSecurityPermissions">
+			<derivedFrom><ref alias="RBAC"/></derivedFrom>
+			<description>This describes one role in OneCMDB.</description>
+		</template>
+		
+		<template alias="CMDBSecurityGroupPermission" displayName="SGP R[${read}]W[${write}]C[${create}]D[${delete}]">
+			<derivedFrom><ref alias="CMDBSecurityPermission"/></derivedFrom>
+			<description>This describes one group permission in OneCMDB.</description>
+				
+			<attribute attAlias="group" displayName="Group">
+				<description>The permissions connected to this role</description>
+				<complexType>
+					<ref alias="CMDBSecurityGroup"/>
+					<refType><ref alias="Reference"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>unbound</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			
+			<attribute attAlias="read" displayName="Read">
+				<description>Read permission the groups</description>
+				<simpleType>xs:boolean</simpleType>
+			</attribute>
+			<attribute attAlias="write" displayName="Write">
+				<description>Write permission the groups</description>
+				<simpleType>xs:boolean</simpleType>
+			</attribute>
+			<attribute attAlias="delete" displayName="Delete">
+				<description>Delete permission the groups</description>
+				<simpleType>xs:boolean</simpleType>
+			</attribute>
+			<attribute attAlias="create" displayName="Create">
+				<description>Create permission the groups</description>
+				<simpleType>xs:boolean</simpleType>
+			</attribute>
+		</template>
+
+	</templates>
+	
+	<instances>
+		<CMDBSecurityGroup alias="RootGroup">
+			<name>RootGroup</name>
+		</CMDBSecurityGroup>
+		<!--  
+		<CMDBRole alias="Role_CMDBAdmin">
+			<permission><ref alias="AdminGroupPermission"/></permission>
+		</CMDBRole>
+	
+		<CMDBRole alias="Role_CMDBReadOnly">
+			<permission><ref alias="ReadonlyGroupPermission"/></permission>
+		</CMDBRole>
+		
+		<CMDBSecurityGroupPermission alias="AdminGroupPermission">
+			<read>true</read>
+			<write>true</write>
+			<delete>true</delete>
+			<create>true</create>
+			<group><ref alias="RootGroup"/></group>
+		</CMDBSecurityGroupPermission>
+		
+		<CMDBSecurityGroupPermission alias="ReadonlyGroupPermission">
+			<read>true</read>
+			<write>false</write>
+			<delete>false</delete>
+			<create>false</create>
+			<group><ref alias="RootGroup"/></group>
+		</CMDBSecurityGroupPermission>
+		-->
+	</instances>
+
+</onecmdb>

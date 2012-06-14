@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+	<templates>
+		<!-- Root CI Template Defienitions -->
+		<template alias="Organisation" displayName="${name}">
+			<derivedFrom><ref alias="Ci"/></derivedFrom>
+			<attribute attAlias="name">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="name">Organisation</setSimpleValue>
+		</template>
+		
+		<template alias="Resource">
+			<derivedFrom><ref alias="Ci"/></derivedFrom>
+		</template>
+		
+		<template alias="Platform" displayName="${name}">
+			<derivedFrom><ref alias="Resource"/></derivedFrom>
+			<attribute attAlias="name">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="name">Component</setSimpleValue>
+		</template>
+	
+		
+		<template alias="Segment" displayName="${name}">
+			<derivedFrom><ref alias="Ci"/></derivedFrom>
+			<attribute attAlias="name">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="name">Segment</setSimpleValue>
+		</template>
+		
+		
+		<template alias="Service" displayName="${name}">
+			<derivedFrom><ref alias="Ci"/></derivedFrom>
+			<attribute attAlias="provideSystems">
+				<complexType>
+					<ref alias="System" />
+					<refType><ref alias="ComposedOf"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>unbound</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="consumedBy">
+				<complexType>
+					<ref alias="Organisation" />
+					<refType><ref alias="UsedBy"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>unbound</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="name">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="name">Service</setSimpleValue>
+		</template>
+	
+		<!-- System Template Definitions -->
+		<template alias="System" displayName="${entityName}">
+			<derivedFrom><ref alias="Resource"/></derivedFrom>
+			<attribute attAlias="entityName">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="mainFunction">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="entityName">System</setSimpleValue>
+		</template>
+		
+		
+	
+	</templates>
+	
+</onecmdb>

@@ -1,0 +1,47 @@
+<Changes>
+	<CIChange>
+		<status>Modified</status>
+		<localName>name</localName>
+		<localAlias>alias</localAlias>
+		<remoteName></remoteName>
+		<remoteAlias></remoteAlias>
+		<AttributeChanges>
+			<AttributeChange>
+				<alias>A1</alias>
+				<status>EQ</status>
+				<ValueChange>
+						<status>EQ</status>
+						<localValue></localValue>
+						<remoteValue></remoteValue>
+				</ValueChange>
+			</AttributeChange>
+			
+			<AttributeChange>
+				<alias>A1</alias>
+				<status>Modified</status>
+			
+				<ValueChange>
+						<status>EQ</status>
+						<localValue></localValue>
+						<remoteValue></remoteValue>
+				</ValueChange>
+				<ValueChange>
+						<status>Modified</status>
+						<localValue>Kalle</localValue>
+						<remoteValue>Petter</remoteValue>
+				</ValueChange>
+				<ValueChange>
+						<status>Removed</status>
+						<localValue></localValue>
+						<remoteValue>Test</remoteValue>
+				</ValueChange>
+				
+				<ValueChange>
+						<status>Added</status>
+						<localValue>Test</localValue>
+						<remoteValue></remoteValue>
+				</ValueChange>
+			</AttributeChange>
+		</AttributeChanges>
+	</CIChange>
+</Changes>

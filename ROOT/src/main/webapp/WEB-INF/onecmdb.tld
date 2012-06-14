@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+
+
+  <description>OneCMDB Tag Library</description>
+  <display-name>OneCMDB</display-name>
+  <tlib-version>1.1</tlib-version>
+  <short-name>OneCMDB</short-name>
+  <uri>http://www.onecmdb.org/uri</uri>
+
+
+  <tag>
+  	<name>graph</name>
+  	<tag-class>org.onecmdb.web.tags.GraphTag</tag-class>
+  	<body-content>JSP</body-content>
+  	<attribute>
+  		<name>ci</name>
+  		<required>false</required>
+  		<rtexprvalue>true</rtexprvalue>
+  	</attribute>
+  	<attribute>
+  		<name>depth</name>
+  		<required>false</required>
+  		<rtexprvalue>true</rtexprvalue>
+  	</attribute>
+  	<attribute>
+  		<name>relationType</name>
+  		<required>false</required>
+  		<rtexprvalue>true</rtexprvalue>
+  	</attribute>
+  </tag>
+
+</taglib>

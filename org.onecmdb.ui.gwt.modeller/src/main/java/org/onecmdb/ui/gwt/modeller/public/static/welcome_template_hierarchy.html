@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>OneCMDB</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+.style1 {font-family: Arial, Helvetica, sans-serif}
+-->
+</style>
+</head>
+<body>
+<h2 align="left" class="style1">The Template Hierarchy </h2>
+<p align="left" class="style1">The tree view in the leftmost pane displays all Templates in the current OneCMDB model. Note that this includes user defined templates as well as model specific templates and system (internal) templates. As you can see, all models start with a Root Template From here and down all templates are structured in an object-oriented (class-oriented) fashion. This means that the Root Template contains a few, generic attributes. Templates on the level below the root inherit all attributes from it, and so in. A template (child) always inherits from the template above it (parent). For each level down the templates become more and more specialized and rich. For example, new attributes can be added, new references created or attribute values can be filled in.</p>
+<p align="left" class="style1">The number within parenthesis behind each template name in the tree view states how many instances that exists on this level. I.e. based on this level&acute;s template, or any other template (child) further down in the tree. If you click on a template a table is displayed showing general info, attributes, references and instances based on this template. If you click on the tiny down-arrow besides the template name you get a submenu with choices for creating a new child template, a new instance based on this template or to delete the current template.</p>
+<p align="left" class="style1">The template names may not be that easy to understand. Here is a brief introduction. </p>
+<table width="1004">
+  <tr>
+    <td class="style1">&nbsp;</td>
+    <td class="style1"><strong>Name</strong></td>
+    <td class="style1"><strong>Short explanation</strong></td>
+    <td class="style1">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="43" class="style1"><p>&nbsp;</p></td>
+    <td width="170" class="style1"><p>Account</p></td>
+    <td width="646" class="style1"><p>Here you find OneCMDB login accounts</p></td>
+    <td width="117" class="style1"><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td class="style1"><p>&nbsp;</p></td>
+    <td class="style1"><p>CI</p></td>
+    <td class="style1"><p>Here you find all templates and instances that are CI:s</p></td>
+    <td class="style1"><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td class="style1"><p>&nbsp;</p></td>
+    <td class="style1"><p>Job</p></td>
+    <td class="style1"><p>Here you find system related information that relate to jobs in OneCMDB </p></td>
+    <td class="style1"><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td class="style1"><p>&nbsp;</p></td>
+    <td class="style1"><p>OneCMDB Config</p></td>
+    <td class="style1"><p>Here you find system related information that relate to the OneCMDB configuration </p></td>
+    <td class="style1"><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td class="style1"><p>&nbsp;</p></td>
+    <td class="style1"><p>Policy</p></td>
+    <td class="style1"><p>Here you find system related information that relate to policies in OneCMDB </p></td>
+    <td class="style1"><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td class="style1"><p>&nbsp;</p></td>
+    <td class="style1"><p>Reference</p></td>
+    <td class="style1"><p>Here you find all templates and instances that are References (for instance between CI:s) </p></td>
+    <td class="style1"><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td class="style1"><p>&nbsp;</p></td>
+    <td class="style1"><p>Service Management </p></td>
+    <td class="style1"><p>Here you find things specific for a few of the user applications </p></td>
+    <td class="style1"><p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td class="style1"><p>&nbsp;</p></td>
+    <td class="style1"><p>Transform</p></td>
+    <td class="style1"><p>Here is system information used when for instance transforming import files</p></td>
+    <td class="style1"><p>&nbsp;</p></td>
+  </tr>
+</table>
+<p align="left" class="style1">Hence, the CI section is a good place to start. Avoid the system related sections unless you are really sure what you are doing.</p>
+</body>
+</html>

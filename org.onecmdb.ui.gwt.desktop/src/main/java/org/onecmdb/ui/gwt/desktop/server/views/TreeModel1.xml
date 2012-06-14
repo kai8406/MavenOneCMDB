@@ -1,0 +1,11 @@
+
+<TreeModel name="Open Ports on a server">
+	<description>
+	</description>
+	<Folder type="Server">
+		<Folder type="Interface" direction="InBound" visable="false">
+			<Folder type="IPEndPoint" direction="InBound">
+			</Folder>
+		</Folder>
+	</Folder>	
+</TreeModel>

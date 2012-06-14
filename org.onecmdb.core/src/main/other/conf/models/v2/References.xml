@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+	<templates>
+		<template alias="CIReference">
+			<derivedFrom><ref alias="Reference"/></derivedFrom>
+		</template>
+		<template alias="ComposedOf">
+			<derivedFrom><ref alias="CIReference"/></derivedFrom>
+		</template>
+		<template alias="BelongsTo">
+			<derivedFrom><ref alias="CIReference"/></derivedFrom>
+		</template>
+		<template alias="PartOf">
+			<derivedFrom><ref alias="CIReference"/></derivedFrom>
+		</template>
+		<template alias="Uses">
+			<derivedFrom><ref alias="CIReference"/></derivedFrom>
+		</template>
+		<template alias="UsedBy">
+			<derivedFrom><ref alias="CIReference"/></derivedFrom>
+		</template>
+		
+	</templates>
+</onecmdb>

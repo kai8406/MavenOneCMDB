@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+<!DOCTYPE onecmdb SYSTEM "onecmdb.dtd">
+ -->
+<onecmdb>
+	<templates>
+    <!--  Reference definition -->
+		<template alias="Reference" displayName="Reference">
+			<derivedFrom><ref alias="Root"/></derivedFrom>
+			<description>Master template for references.</description>			
+			<attribute attAlias="target" displayName="Target">
+				<description>The target of this reference</description>
+				<complexType>
+					<ref alias="Root"/>
+				</complexType>
+			</attribute>
+			<attribute attAlias="source" displayName="Source">
+				<description>The source of this reference</description>
+				<complexType>
+					<ref alias="Root"/>
+				</complexType>
+			</attribute>
+			
+			<setSimpleValue attAlias="icon">reference</setSimpleValue>
+		</template>
+	
+		<template alias="CIReference" displayName="CIReference">
+			<derivedFrom><ref alias="Reference"/></derivedFrom>
+			<description>Master template for CI references.</description>			
+			<setSimpleValue attAlias="icon">reference</setSimpleValue>
+		</template>
+	</templates>
+	
+</onecmdb>

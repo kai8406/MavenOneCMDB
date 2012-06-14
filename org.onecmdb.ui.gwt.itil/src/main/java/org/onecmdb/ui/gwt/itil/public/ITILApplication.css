@@ -1,0 +1,25 @@
+
+.incident-action-header {
+	float: left;
+	width: 20em;
+	font-size: smaller;
+	font-style: bold;
+	padding-bottom: 5px; 
+	
+}
+
+.incident-action-input {
+	float: left;
+	width: 20em;
+	margin-top: 5px; 
+	margin-bottom: 10px; 
+	
+}
+
+.incident-action-select {
+	border-top: 1px solid #AAAAAA;
+	font-size: smaller;
+	float: left;
+	width: 20em;
+	padding-top: 5px; 
+}

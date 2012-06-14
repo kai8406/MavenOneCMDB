@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+<!DOCTYPE onecmdb SYSTEM "onecmdb.dtd">
+ -->
+<onecmdb>
+	<templates>
+	
+		<!--  Refrence Definition -->
+		<template alias="JobReference" displayName="JobReference">
+			<derivedFrom><ref alias="Reference"/></derivedFrom>
+		</template>
+		
+		<template alias="JobTriggerReference" displayName="JobTriggerReference">
+			<derivedFrom><ref alias="JobReference"/></derivedFrom>
+		</template>
+	
+		<template alias="JobProcessReference" displayName="JobProcessReference">
+			<derivedFrom><ref alias="JobReference"/></derivedFrom>
+		</template>
+		
+		
+		<!-- Root Job Template -->
+		<template alias="Job" displayName="Job">
+			<derivedFrom><ref alias="Root"/></derivedFrom>
+			<description>The master template for Jobs. You also need a trigger to start a job.</description>
+			<setSimpleValue attAlias="icon">job</setSimpleValue>
+		</template>
+		
+		<!--  Trigger definition -->
+		<template alias="JobTrigger" displayName="JobTrigger">
+			<derivedFrom><ref alias="Job"/></derivedFrom>
+			<description>Master template for job triggers. To start a job a trigger is required.</description>			
+			<attribute attAlias="process" name="Process to trigger">
+				<complexType>
+					<ref alias="JobProcess"/>
+					<refType><ref alias="JobTriggerReference"/></refType>
+				</complexType>
+			</attribute>
+			<attribute attAlias="start" name="Last triggered">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="stop" name="Last ended">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="user" name="User">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="password" name="Password">
+				<simpleType>xs:password</simpleType>
+			</attribute>
+			
+		</template>
+		
+		<template alias="JobManualTrigger" displayName="JobManuallyTrigger">
+			<derivedFrom><ref alias="JobTrigger"/></derivedFrom>
+			<description>Template for manual triggers. Use this template if you want to start a job with the Start button.</description>			
+		</template>
+		
+		<template alias="JobSchedulareTrigger" displayName="JobSchedulareTrigger">
+			<derivedFrom><ref alias="JobTrigger"/></derivedFrom>
+			<description>Master template for scheduled triggers.</description>
+		</template>
+		
+		<template alias="JobCronTrigger" displayName="JobCronTrigger">
+			<derivedFrom><ref alias="JobSchedulareTrigger"/></derivedFrom>
+			<description>Cron like trigger.</description>			
+			<attribute attAlias="cronExpression" displayName="Cron Expression">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+		</template>
+		
+		<template alias="JobIntervallTrigger" displayName="JobIntervallTrigger">
+			<derivedFrom><ref alias="JobSchedulareTrigger"/></derivedFrom>
+			<description>A basic intervall trigger.</description>			
+			<attribute attAlias="startDelay" displayName="Start Delay">
+				<simpleType>xs:integer</simpleType>
+			</attribute>
+			<attribute attAlias="repeateIntervall" displayName="Repeate Intervall">
+				<simpleType>xs:integer</simpleType>
+			</attribute>
+			<attribute attAlias="repeateCount" displayName="Repeate Count">
+				<simpleType>xs:integer</simpleType>
+			</attribute>
+		</template>
+	
+		<!-- Job Process -->
+		<template alias="JobProcess" displayName="JobProcess">
+			<derivedFrom><ref alias="Job"/></derivedFrom>
+			<description>Master template for definitions of jobs.</description>
+			<attribute attAlias="javaClass" name="Java class">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="start" name="Last Started">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="stop" name="Last Stopped">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="state">
+				<description>Internal state of a process (IDLE|RUNNING).</description>
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="status">
+				<description>Internal status of a process Started|Completed|Failed</description>
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="progress">
+				<description>Progress information that the external job program controls. Value can be any text.</description>
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="progressPercentage">
+				<description>Progress that the external job program controls, value from 0 to 100</description>
+				<simpleType>xs:integer</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="state">IDLE</setSimpleValue>
+		</template>
+	</templates>
+</onecmdb>

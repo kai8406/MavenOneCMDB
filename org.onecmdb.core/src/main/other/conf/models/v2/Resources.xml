@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+	<templates>
+		<!-- Application Template Defienitions -->
+				
+		<template alias="Application">
+			<derivedFrom><ref alias="ResourceUnit"/></derivedFrom>
+		</template>
+		
+		<template alias="DatabaseContainer">
+			<derivedFrom><ref alias="Application"/></derivedFrom>
+		</template>
+		
+		<template alias="WebAppContainer">
+			<derivedFrom><ref alias="Application"/></derivedFrom>
+		</template>
+		
+		<template alias="RuntimeEnvironemnt">
+			<derivedFrom><ref alias="Application"/></derivedFrom>
+		</template>
+		
+		<!-- OS template definitions -->
+		<template alias="OS">
+			<derivedFrom><ref alias="ResourceUnit"/></derivedFrom>
+		</template>
+		<template alias="Linux">
+			<derivedFrom><ref alias="OS"/></derivedFrom>
+		</template>
+		<template alias="Windows">
+			<derivedFrom><ref alias="OS"/></derivedFrom>
+		</template>
+		<template alias="Solaris">
+			<derivedFrom><ref alias="OS"/></derivedFrom>
+		</template>
+		<template alias="CiscoIOS">
+			<derivedFrom><ref alias="OS"/></derivedFrom>
+		</template>
+		
+		<!-- Logical Component -->
+		<template alias="OSComponent">
+			<derivedFrom><ref alias="Component"/></derivedFrom>
+		</template>
+		<template alias="FileSystem">
+			<derivedFrom><ref alias="OSComponent"/></derivedFrom>
+		</template>
+		
+		<template alias="ApplicationComponent">
+			<derivedFrom><ref alias="Component"/></derivedFrom>
+		</template>
+		
+		<template alias="DatabaseInstance">
+			<derivedFrom><ref alias="ApplicationComponent"/></derivedFrom>
+		</template>
+		<template alias="Servlet">
+			<derivedFrom><ref alias="ApplicationComponent"/></derivedFrom>
+		</template>
+		<template alias="WebApp">
+			<derivedFrom><ref alias="ApplicationComponent"/></derivedFrom>
+		</template>
+		
+		<!-- Platform Component -->
+		<template alias="PlatformUnit">
+			<derivedFrom><ref alias="ResourceUnit"/></derivedFrom>
+		</template>
+		<template alias="PrinterUnit">
+			<derivedFrom><ref alias="PlatformUnit"/></derivedFrom>
+		</template>
+		<template alias="ComputerUnit">
+			<derivedFrom><ref alias="PlatformUnit"/></derivedFrom>
+		</template>
+		<template alias="NetworkUnit">
+			<derivedFrom><ref alias="PlatformUnit"/></derivedFrom>
+		</template>
+		
+		<!-- Physical Component -->
+		<template alias="PlatformComponent">
+			<derivedFrom><ref alias="Component"/></derivedFrom>
+		</template>
+		
+		<template alias="Disk">
+			<derivedFrom><ref alias="PlatformComponent"/></derivedFrom>
+		</template>
+		
+		<template alias="CPU">
+			<derivedFrom><ref alias="PlatformComponent"/></derivedFrom>
+		</template>
+	</templates>
+	
+</onecmdb>

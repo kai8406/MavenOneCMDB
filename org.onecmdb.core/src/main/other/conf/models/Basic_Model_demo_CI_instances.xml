@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+<templates>
+</templates>
+<instances>
+
+	<CMDBAccount alias="account-jsmith">
+		<username>jsmith</username>
+		<password>1qaz</password>
+		<enabled>true</enabled>
+	</CMDBAccount>
+	
+	<WinXP_SP2 alias="WinXP_SP2-1" id="-3078933625494602946" displayName="${A_Name} ${B_Version} (on ${H_InstalledOn})">
+		Windows XP SP2 (on Alpha 212.100.105.105)
+		<description>This CI defines a Windows XP Operating System. The OS is installed on a System.</description>
+		<D_LicenseKey id="8668764421554138572">MSWR-1234-8765</D_LicenseKey>
+		<F_Maintenance id="1019432500900311093"><ref alias="Maintenance-5"/></F_Maintenance>
+		<C_DSLEntry id="-7196934158047858910">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_OS_Package.txt</C_DSLEntry>
+		<E_Service id="5595045520153769352"><ref alias="Service-6"/></E_Service>
+		<B_Family id="2932115256468485173">Windows</B_Family>
+		<G_Financial id="5803673467987559203"><ref alias="Financial-4"/></G_Financial>
+		<H_InstalledOn id="2439682771103353911"><ref alias="Server-1"/></H_InstalledOn>
+		<B_Version id="-2914927326600021379">SP2</B_Version>
+		<A_Name id="6781562351566193095">Windows XP</A_Name>
+		<icon>mswindows</icon>
+		
+	</WinXP_SP2>
+	<WinXP_SP2 alias="WinXP_SP2-2" id="741432988709493759" displayName="${A_Name} ${B_Version} (on ${H_InstalledOn})">
+		Windows XP SP2 (on Charlie 212.100.120.003)
+		<description>This CI defines a Windows XP Operating System. The OS is installed on a System.</description>
+		<D_LicenseKey id="406787147343481024">MSWR-1234-8765</D_LicenseKey>
+		<F_Maintenance id="8679865954629847520"><ref alias="Maintenance-5"/></F_Maintenance>
+		<E_Service id="-4481265188045101022"><ref alias="Service-6"/></E_Service>
+		<C_DSLEntry id="1560723119060713167">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_OS_Package.txt</C_DSLEntry>
+		<B_Family id="8525777241160152694">Windows</B_Family>
+		<G_Financial id="-463329415105344084"><ref alias="Financial-4"/></G_Financial>
+		<H_InstalledOn id="-7125361164039463824"><ref alias="Server-3"/></H_InstalledOn>
+		<B_Version id="4249652663330718524">SP2</B_Version>
+		<A_Name id="4756303385831539223">Windows XP</A_Name>
+		<icon>mswindows</icon>
+	</WinXP_SP2>
+	<WinXP_SP1 alias="WinXP_SP1-1" id="2282636793544055885" displayName="${A_Name} ${B_Version} (on ${H_InstalledOn})">
+		Windows XP SP1 (on Jsmith Desktop 212.100.95.23)
+		<description>This CI defines a Windows XP Operating System. The OS is installed on a System.</description>
+		<D_LicenseKey id="2462922618703425849">MSHJ-6543-6789</D_LicenseKey>
+		<F_Maintenance id="7226372004444526867"><ref alias="Maintenance-5"/></F_Maintenance>
+		<E_Service id="-5392648097071894184"><ref alias="Service-6"/></E_Service>
+		<C_DSLEntry id="-3927556468056748885">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_OS_Package.txt</C_DSLEntry>
+		<B_Family id="5941616388337782862">Windows</B_Family>
+		<G_Financial id="8178838877177745377"><ref alias="Financial-4"/></G_Financial>
+		<H_InstalledOn id="-7668487402800051394"><ref alias="Desktop-1"/></H_InstalledOn>
+		<B_Version id="4876972827679220067">SP1</B_Version>
+		<A_Name id="4474405318857490371">Windows XP</A_Name>
+		<icon>mswindows</icon>
+	</WinXP_SP1>
+	<WinXP_SP1 alias="WinXP_SP1-2" id="-2865904504154737853" displayName="${A_Name} ${B_Version} (on ${H_InstalledOn})">
+		Windows XP SP1 (on Dgould Desktop 212.100.23.76)
+		<description>This CI defines a Windows XP Operating System. The OS is installed on a System.</description>
+		<D_LicenseKey id="-8034988946479263504">MSHJ-6543-6789</D_LicenseKey>
+		<F_Maintenance id="-414335206866513021"><ref alias="Maintenance-5"/></F_Maintenance>
+		<E_Service id="84765467852036936"><ref alias="Service-6"/></E_Service>
+		<C_DSLEntry id="-6539916688965534321">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_OS_Package.txt</C_DSLEntry>
+		<B_Family id="4259887617327917680">Windows</B_Family>
+		<G_Financial id="-7513489765757485024"><ref alias="Financial-4"/></G_Financial>
+		<H_InstalledOn id="4868919213297814338"><ref alias="Desktop-2"/></H_InstalledOn>
+		<B_Version id="-4190532062897295037">SP1</B_Version>
+		<A_Name id="-3176019588125129898">Windows XP</A_Name>
+		<icon>mswindows</icon>
+	</WinXP_SP1>
+	<RedHatLinuxV4 alias="RedHatLinuxV4-2" id="-6075478200010049143" displayName="${A_Name} ${B_Version} (on ${H_InstalledOn})">
+		Red Hat Linux 4 (on Delta 212.100.220.134)
+		<description>This CI defines a Red Hat Linux Operating System. It is installed on a System.</description>
+		<D_LicenseKey id="4045998976868395052">GHJU-7688-MOVF</D_LicenseKey>
+		<F_Maintenance id="312423142210367056"><ref alias="Maintenance-4"/></F_Maintenance>
+		<C_DSLEntry id="139605084329007360">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_OS_Package.txt</C_DSLEntry>
+		<E_Service id="7390844156055823192"><ref alias="Service-6"/></E_Service>
+		<B_Family id="-7201787980270486015">Linux</B_Family>
+		<G_Financial id="4404979447086302375"><ref alias="Financial-7"/></G_Financial>
+		<H_InstalledOn id="7997634441259851204"><ref alias="Server-4"/></H_InstalledOn>
+		<B_Version id="8118451669438869432">4</B_Version>
+		<A_Name id="5091994237706892343">Red Hat Linux</A_Name>
+		<icon>linux</icon>
+	</RedHatLinuxV4>
+	<RedHatLinuxV4 alias="RedHatLinuxV4-1" id="1553034894608033495" displayName="${A_Name} ${B_Version} (on ${H_InstalledOn})">
+		Red Hat Linux 4 (on Bravo 212.100.105.110)
+		<description>This CI defines a Red Hat Linux Operating System. It is installed on a System.</description>
+		<D_LicenseKey id="7141561747673513759">GHJU-7688-MOVF</D_LicenseKey>
+		<F_Maintenance id="5124558191348966052"><ref alias="Maintenance-4"/></F_Maintenance>
+		<E_Service id="-1831649602347819578"><ref alias="Service-6"/></E_Service>
+		<C_DSLEntry id="1048121095353691061">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_OS_Package.txt</C_DSLEntry>
+		<B_Family id="5480805454952744531">Linux</B_Family>
+		<G_Financial id="3094168876822816068"><ref alias="Financial-7"/></G_Financial>
+		<H_InstalledOn id="5969181107530263853"><ref alias="Server-2"/></H_InstalledOn>
+		<B_Version id="4839794902815593591">4</B_Version>
+		<A_Name id="8461990491568459028">Red Hat Linux</A_Name>
+		<icon>linux</icon>
+	</RedHatLinuxV4>
+	<RedHatLinuxV5 alias="RedHatLinuxV5-1" id="-5736112858218068506" displayName="${A_Name} ${B_Version} (on ${H_InstalledOn})">
+		Red Hat Linux 5 (on Echo 212.100.103.145)
+		<description>This CI defines a Red Hat Linux Operating System. It is installed on a System.</description>
+		<D_LicenseKey id="-5309126988679366714">FGHJ-3456-YUJK</D_LicenseKey>
+		<F_Maintenance id="-2730107917870732655"><ref alias="Maintenance-4"/></F_Maintenance>
+		<C_DSLEntry id="8323565357431059893">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_OS_Package.txt</C_DSLEntry>
+		<E_Service id="1209553417487998351"><ref alias="Service-6"/></E_Service>
+		<B_Family id="1567338520379089439">Linux</B_Family>
+		<G_Financial id="-4673450149554310356"><ref alias="Financial-7"/></G_Financial>
+		<H_InstalledOn id="-7998232980460293584"><ref alias="Server-5"/></H_InstalledOn>
+		<B_Version id="-2851641120814337822">5</B_Version>
+		<A_Name id="-5450506169348156301">Red Hat Linux</A_Name>
+		<icon>linux</icon>
+	</RedHatLinuxV5>
+	<MSOffice alias="MSOffice-1" id="-1569043514471642199" displayName="${A_Name} ${B_Version}">
+		MS Office 2003
+		<description>This CI defines MS Office</description>
+		<D_LicenseKey id="-5521560687503660474">MSOF-6767-7788-WERT</D_LicenseKey>
+		<F_Maintenance id="-9067682078024212082"><ref alias="Maintenance-5"/></F_Maintenance>
+		<C_DSLEntry id="-253935482488862869">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</C_DSLEntry>
+		<icon id="1803991634804338029">package</icon>
+		<G_Financial id="-7875214148239963832"><ref alias="Financial-5"/></G_Financial>
+		<H_InstalledOn id="5144334444335991529"><ref alias="WinXP_SP1-1"/></H_InstalledOn>
+		<B_Version id="3652755110397335236">2003</B_Version>
+		<A_Name id="7038529634537034926">MS Office</A_Name>
+	</MSOffice>
+	<MSOffice alias="MSOffice-2" id="-7666151021159074199" displayName="${A_Name} ${B_Version}">
+		MS Office 2003
+		<description>This CI defines MS Office</description>
+		<D_LicenseKey id="-6816796808743430158">MSOF-6767-7788-WERT</D_LicenseKey>
+		<F_Maintenance id="271611221003071044"><ref alias="Maintenance-5"/></F_Maintenance>
+		<C_DSLEntry id="-1441988165958163448">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</C_DSLEntry>
+		<icon id="207751150719882783">package</icon>
+		<G_Financial id="6000205902113784615"><ref alias="Financial-5"/></G_Financial>
+		<H_InstalledOn id="8166401003707743173"><ref alias="WinXP_SP1-2"/></H_InstalledOn>
+		<B_Version id="5266508500805357043">2003</B_Version>
+		<A_Name id="1374743151657610279">MS Office</A_Name>
+	</MSOffice>
+	<MSOutlook alias="MSOutlook-1" id="-2925657753797328864" displayName="${A_Name} ${B_Version}">
+		MS Outlook 2003
+		<description>This CI defines MS Outlook</description>
+		<D_LicenseKey id="7745227982972404194">MSOL-4566-7768-6786</D_LicenseKey>
+		<F_Maintenance id="-7048963468335862093"><ref alias="Maintenance-5"/></F_Maintenance>
+		<C_DSLEntry id="-5753870782993049145">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</C_DSLEntry>
+		<E_Service id="7602048294478660587"><ref alias="Service-4"/></E_Service>
+		<icon id="-4985204307113944035">package</icon>
+		<G_Financial id="-5497926884246264884"><ref alias="Financial-5"/></G_Financial>
+		<H_InstalledOn id="-4914734926834402613"><ref alias="WinXP_SP1-1"/></H_InstalledOn>
+		<B_Version id="-5352176909912621383">2003</B_Version>
+		<A_Name id="-3107912737381149866">MS Outlook</A_Name>
+	</MSOutlook>
+	<MSOutlook alias="MSOutlook-2" id="-3219276261341800893" displayName="${A_Name} ${B_Version}">
+		MS Outlook 2003
+		<description>This CI defines MS Outlook</description>
+		<D_LicenseKey id="-9186236094223309173">MSOL-4566-7768-6786</D_LicenseKey>
+		<F_Maintenance id="-8763193282473346275"><ref alias="Maintenance-5"/></F_Maintenance>
+		<E_Service id="-4429265691234095665"><ref alias="Service-4"/></E_Service>
+		<C_DSLEntry id="-8350759425845128988">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</C_DSLEntry>
+		<icon id="6791802261423713682">package</icon>
+		<G_Financial id="376385396999537873"><ref alias="Financial-5"/></G_Financial>
+		<H_InstalledOn id="-1531286835984754749"><ref alias="WinXP_SP1-2"/></H_InstalledOn>
+		<B_Version id="363496129353307408">2003</B_Version>
+		<A_Name id="-6783849218206268013">MS Outlook</A_Name>
+	</MSOutlook>
+	<MS_Exchange alias="MS_Exchange-1" id="-827669662219350568" displayName="${A_Name} ${B_Version}">
+		MS Exchange 2003
+		<description>This CI defines MS Exchange.</description>
+		<D_LicenseKey id="3837388676299656171">MSXC-2246-6678-8998</D_LicenseKey>
+		<F_Maintenance id="-6529886095761036427"><ref alias="Maintenance-5"/></F_Maintenance>
+		<E_Service id="-3075386786102687765"><ref alias="Service-4"/></E_Service>
+		<C_DSLEntry id="548056533872279490">http://onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</C_DSLEntry>
+		<icon id="7628227696869723634">package</icon>
+		<D_Protocol id="3886399622770928132"></D_Protocol>
+		<G_Financial id="3258774831540378485"><ref alias="Financial-5"/></G_Financial>
+		<B_Version id="8991172011165967112">2003</B_Version>
+		<A_Name id="6266891973113930207">MS Exchange</A_Name>
+	</MS_Exchange>
+	<Database alias="Database-2" id="-4305913299754998318" displayName="${A_Name}  ${B_Version}">
+		Oracle DB  V10
+		<description>This CI describes a database software.</description>
+		<D_LicenseKey id="2946181049809032979">See Agreement</D_LicenseKey>
+		<F_Maintenance id="3515244406306610982"><ref alias="Maintenance-3"/></F_Maintenance>
+		<C_DSLEntry id="-1480394621066200786">http://onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</C_DSLEntry>
+		<E_Service id="966012382958786451"><ref alias="Service-5"/></E_Service>
+		<icon id="-7699213044043264933">package</icon>
+		<G_Financial id="4539903365182206997"><ref alias="Financial-6"/></G_Financial>
+		<H_InstalledOn id="-8538104404252964158"><ref alias="RedHatLinuxV5-1"/></H_InstalledOn>
+		<B_Version id="-1690930044756625562">V10</B_Version>
+		<A_Name id="-1132529579407120051">Oracle DB</A_Name>
+	</Database>
+	<Database alias="Database-1" id="-8544659990813657650" displayName="${A_Name}  ${B_Version}">
+		MySQL  5.0
+		<description>This CI describes a database software.</description>
+		<D_LicenseKey id="-5587959091894377896">N.A</D_LicenseKey>
+		<F_Maintenance id="7916346283005319237"><ref alias="Maintenance-3"/></F_Maintenance>
+		<E_Service id="-1816404391980917779"><ref alias="Service-3"/></E_Service>
+		<C_DSLEntry id="5241920184017086398">http://onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</C_DSLEntry>
+		<icon id="6668043227052094967">package</icon>
+		<G_Financial id="-8382691178035428457"><ref alias="Financial-6"/></G_Financial>
+		<H_InstalledOn id="-3678021988189736551"><ref alias="RedHatLinuxV4-1"/></H_InstalledOn>
+		<B_Version id="1142332905642499871">5.0</B_Version>
+		<A_Name id="-5508577343394896351">MySQL</A_Name>
+	</Database>
+	<ServerApplication alias="ServerApplication-2" id="6901288109216182013" displayName="${A_Name}  ${B_Version}">
+		Server Application  Tomcat
+		<description>This CI defines a Server Application. A Server Application defines a listener port.</description>
+		<D_LicenseKey id="-5207219298840570215">N.A</D_LicenseKey>
+		<F_Maintenance id="8368763659883191239"><ref alias="Maintenance-3"/></F_Maintenance>
+		<C_DSLEntry id="-7198676409638081114">http://onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</C_DSLEntry>
+		<E_Service id="-8721746908873510975"><ref alias="Service-3"/></E_Service>
+		<icon id="4836988765471475164">package</icon>
+		<G_Financial id="-6122534846389176018"><ref alias="Financial-6"/></G_Financial>
+		<D_Port id="-766920847934137596">8080</D_Port>
+		<H_InstalledOn id="-4131784143119907724"><ref alias="RedHatLinuxV5-1"/></H_InstalledOn>
+		<B_Version id="2364371823509742872">Tomcat</B_Version>
+		<A_Name id="-1341415981311471791">Server Application</A_Name>
+	</ServerApplication>
+	<ServerApplication alias="ServerApplication-3" id="760101061182494888" displayName="${A_Name}  ${B_Version}">
+		Oracle Financials  9.4
+		<description>This CI defines a Server Application. A Server Application defines a listener port.</description>
+		<D_LicenseKey id="165484197421670588">See Agreement</D_LicenseKey>
+		<F_Maintenance id="-6092098966291206144"><ref alias="Maintenance-3"/></F_Maintenance>
+		<E_Service id="1715771266607358225"><ref alias="Service-5"/></E_Service>
+		<C_DSLEntry id="-2934949768380585698">http://onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</C_DSLEntry>
+		<icon id="-4803149353438716134">package</icon>
+		<D_Protocol id="4306212767582815298"></D_Protocol>
+		<G_Financial id="7811811885420264825"><ref alias="Financial-6"/></G_Financial>
+		<H_InstalledOn id="-8480061591157724336"><ref alias="RedHatLinuxV5-1"/></H_InstalledOn>
+		<B_Version id="2533484886998540020">9.4</B_Version>
+		<A_Name id="-6898992008400865680">Oracle Financials</A_Name>
+	</ServerApplication>
+	<ServerApplication alias="ServerApplication-1" id="-1058051538223227204" displayName="${A_Name}  ${B_Version}">
+		Apache  3.4
+		<description>This CI defines a Server Application. A Server Application defines a listener port.</description>
+		<D_LicenseKey id="-8390350208770204651">N.A</D_LicenseKey>
+		<F_Maintenance id="-2872683148655327863"><ref alias="Maintenance-3"/></F_Maintenance>
+		<C_DSLEntry id="-6217177192943546830">http://onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</C_DSLEntry>
+		<E_Service id="3263283962015563921"><ref alias="Service-7"/></E_Service>
+		<icon id="3834122171940138612">package</icon>
+		<G_Financial id="-9104386573091151315"><ref alias="Financial-6"/></G_Financial>
+		<D_Port id="1860407953652309242">80</D_Port>
+		<H_InstalledOn id="7016042146148210992"><ref alias="RedHatLinuxV4-2"/></H_InstalledOn>
+		<B_Version id="-2656373057915790088">3.4</B_Version>
+		<A_Name id="-2355992477807393191">Apache</A_Name>
+	</ServerApplication>
+	<WebApplication alias="WebApplication-1" id="-3614248760394097585" displayName="${A_Name}">
+		Web Mail
+		<description>This CI describes one web application, that is accessed through a web browser.</description>
+		<D_LicenseKey id="319883720190147026">ertf4545rtr78h</D_LicenseKey>
+		<F_Maintenance id="-5696387778198645064"><ref alias="Maintenance-3"/></F_Maintenance>
+		<E_Service id="-6722927599600491864"><ref alias="Service-7"/></E_Service>
+		<C_DSLEntry id="1636861953891047519"></C_DSLEntry>
+		<icon id="129541019652041313">package</icon>
+		<G_Financial id="-6477652007354759200"><ref alias="Financial-6"/></G_Financial>
+		<B_Version id="-7198228105995857015">1.0.0</B_Version>
+		<A_Name id="1206909446659821793">Web Mail</A_Name>
+	</WebApplication>
+	<Service alias="Service-6" id="1404256241529440288" displayName="${A_Name}">
+		Platform
+		<description>This CI defines a Service. All hardware and software belongs to a service. A service defines a number of SLA's and has many company that uses it.</description>
+		<C_SLA id="-4079496104407773349">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Service_Level_Agreement.pdf</C_SLA>
+		<B_UsedBy id="-3546043144965376258"><ref alias="Dummycust"/></B_UsedBy>
+		<B_UsedBy id="-8773317865583145615"><ref alias="Acme"/></B_UsedBy>
+		<B_UsedBy id="8759584720702978143"><ref alias="Company-1"/></B_UsedBy>
+		<icon id="3604676105832707077">service</icon>
+		<A_Name id="-4555467127735026439">Platform</A_Name>
+	</Service>
+	<Service alias="Service-4" id="4266344373693526953" displayName="${A_Name}">
+		E-mail
+		<description>This CI defines a Service. All hardware and software belongs to a service. A service defines a number of SLA's and has many company that uses it.</description>
+		<C_SLA id="3277713720695480631">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Service_Level_Agreement.pdf</C_SLA>
+		<B_UsedBy id="7056534058603149550"><ref alias="Acme"/></B_UsedBy>
+		<icon id="-7881231948183669496">service</icon>
+		<D_Uses id="-6252193327687979448"><ref alias="Service-6"/></D_Uses>
+		<D_Uses id="5290594188282238752"><ref alias="Service-3"/></D_Uses>
+		<A_Name id="839802165496233715">E-mail</A_Name>
+	</Service>
+	<Service alias="Service-2" id="5954585022821892630" displayName="${A_Name}">
+		SAN
+		<description>This CI defines a Service. All hardware and software belongs to a service. A service defines a number of SLA's and has many company that uses it.</description>
+		<C_SLA id="6986000222252375602">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Service_Level_Agreement.pdf</C_SLA>
+		<icon id="-3736179374528596815">service</icon>
+		<D_Uses id="3319991629688295856"><ref alias="Service-6"/></D_Uses>
+		<A_Name id="2066716279023677777">SAN</A_Name>
+	</Service>
+	<Service alias="Service-5" id="-324343957583868215" displayName="${A_Name}">
+		ERP
+		<description>This CI defines a Service. All hardware and software belongs to a service. A service defines a number of SLA's and has many company that uses it.</description>
+		<B_UsedBy id="6225114821013063491"><ref alias="Acme"/></B_UsedBy>
+		<C_SLA id="-5104745973098057669">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Service_Level_Agreement.pdf</C_SLA>
+		<icon id="9215654982227286955">service</icon>
+		<D_Uses id="-2291879425975355352"><ref alias="Service-6"/></D_Uses>
+		<D_Uses id="-1583006737984509324"><ref alias="Service-2"/></D_Uses>
+		<A_Name id="4715595085157989366">ERP</A_Name>
+	</Service>
+	<Service alias="Service-7" id="-4907024702290293046" displayName="${A_Name}">
+		Webhosting
+		<description>This CI defines a Service. All hardware and software belongs to a service. A service defines a number of SLA's and has many company that uses it.</description>
+		<C_SLA id="5247267703153087202">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Service_Level_Agreement.pdf</C_SLA>
+		<B_UsedBy id="251129669615887102"><ref alias="Company-1"/></B_UsedBy>
+		<icon id="1140823991194102557">service</icon>
+		<D_Uses id="-7599191352855762424"><ref alias="Service-6"/></D_Uses>
+		<D_Uses id="-8652872532621627635"><ref alias="Service-3"/></D_Uses>
+		<D_Uses id="-4679166436185699107"><ref alias="Service-2"/></D_Uses>
+		<A_Name id="285632275577295527">Webhosting</A_Name>
+	</Service>
+	<Service alias="Service-3" id="2606462117125062445" displayName="${A_Name}">
+		Single Sign On
+		<description>This CI defines a Service. All hardware and software belongs to a service. A service defines a number of SLA's and has many company that uses it.</description>
+		<C_SLA id="3071142309619060612">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Service_Level_Agreement.pdf</C_SLA>
+		<icon id="-1166193940649357349">service</icon>
+		<D_Uses id="-382879143329041154"><ref alias="Service-6"/></D_Uses>
+		<D_Uses id="-5225104971543687716"><ref alias="Service-2"/></D_Uses>
+		<A_Name id="-4204191194897553259">Single Sign On</A_Name>
+	</Service>
+	<Desktop alias="Desktop-2" id="-4476974528750764366" displayName="${A_Name} ${BA_IPAddress}">
+		Dgould Desktop 212.100.23.76
+		<description>This CI specifies one desktop computer system. A desktop computer System is located in one place and used by one person at a time.</description>
+		<BC_MAC_Address id="-8471002735326019050">46745764567</BC_MAC_Address>
+		<H_Financials id="2167212846398833729"><ref alias="Financial-1"/></H_Financials>
+		<D_SerialNumber id="-2139528028617700771">D-3453-34535-67</D_SerialNumber>
+		<C_Status id="9044822069251823983"><ref alias="OP_Status_In_Production"/></C_Status>
+		<F_Manufacturer id="-7564173104764884632"><ref alias="Dell"/></F_Manufacturer>
+		<BA_IPAddress id="-5005108204003173934">212.100.23.76</BA_IPAddress>
+		<N_Location id="2893399005995535063"><ref alias="Location-3"/></N_Location>
+		<A_Name id="-7508829492196985274">Dgould Desktop</A_Name>
+		<G_Maintenance id="-7212345898365885362"><ref alias="Maintenance-2"/></G_Maintenance>
+		<BD_Network id="-7204885020197849195"><ref alias="Network-2"/></BD_Network>
+		<icon id="2646469326950503489">computer</icon>
+	</Desktop>
+	<Desktop alias="Desktop-1" id="-8267105659463257308" displayName="${A_Name} ${BA_IPAddress}">
+		Jsmith Desktop 212.100.95.23
+		<description>This CI specifies one desktop computer system. A desktop computer System is located in one place and used by one person at a time.</description>
+		<BC_MAC_Address id="2846093156724590512">78785678</BC_MAC_Address>
+		<H_Financials id="-2747836746729986625"><ref alias="Financial-1"/></H_Financials>
+		<C_Status id="-2446665858694661540"><ref alias="OP_Status_In_Production"/></C_Status>
+		<D_SerialNumber id="-6049063353315718486">D-2134-987778</D_SerialNumber>
+		<F_Manufacturer id="-8526818186670813975"><ref alias="Dell"/></F_Manufacturer>
+		<BA_IPAddress id="-8839865324881058386">212.100.95.23</BA_IPAddress>
+		<N_Location id="6753281388940636398"><ref alias="Location-3"/></N_Location>
+		<A_Name id="-5012183141064239860">Jsmith Desktop</A_Name>
+		<G_Maintenance id="-4871233889527478626"><ref alias="Maintenance-2"/></G_Maintenance>
+		<BD_Network id="-66124760303623744"><ref alias="Network-2"/></BD_Network>
+		<icon id="-6279470910315160207">computer</icon>
+	</Desktop>
+	<Server alias="Server-5" id="-1529262667548206561" displayName="${A_Name} ${BA_IPAddress}">
+		Echo 212.100.103.145
+		<description>This CI specifies one server computer system. A Server Computer System is used to host server applications.</description>
+		<BC_MAC_Address id="8898172950812973153">12341234</BC_MAC_Address>
+		<H_Financials id="4532316070289737716"><ref alias="Financial-1"/></H_Financials>
+		<C_Status id="1754514538953275915"><ref alias="OP_Status_In_Production"/></C_Status>
+		<D_SerialNumber id="-3440199400946503311">D-435-WER-45656576</D_SerialNumber>
+		<E_Service id="5315510523750760243"><ref alias="Service-5"/></E_Service>
+		<F_Manufacturer id="4659320647219147400"><ref alias="Dell"/></F_Manufacturer>
+		<BA_IPAddress id="-7891624713848733280">212.100.103.145</BA_IPAddress>
+		<N_Location id="-2138543685025436943"><ref alias="Location-1"/></N_Location>
+		<A_Name id="664538557374655205">Echo</A_Name>
+		<BB_Hostname id="-6365769156813320936">appserver.acme.com</BB_Hostname>
+		<G_Maintenance id="7695207559722039182"><ref alias="Maintenance-2"/></G_Maintenance>
+		<BD_Network id="-1735352761614836243"><ref alias="Network-4"/></BD_Network>
+		<icon id="6558001933846610575">computer</icon>
+	</Server>
+	<Server alias="Server-1" id="-2686940760402651900" displayName="${A_Name} ${BA_IPAddress}">
+		Alpha 212.100.105.105
+		<description>This CI specifies one server computer system. A Server Computer System is used to host server applications.</description>
+		<H_Financials id="6187285917563208199"><ref alias="Financial-3"/></H_Financials>
+		<BC_MAC_Address id="-2024947165112593748">2345243</BC_MAC_Address>
+		<D_SerialNumber id="-1881226670955553833">3425-234523</D_SerialNumber>
+		<C_Status id="-7773618868225399647"><ref alias="OP_Status_In_Production"/></C_Status>
+		<E_Service id="1816668795585616631"><ref alias="Service-4"/></E_Service>
+		<F_Manufacturer id="3908143849525859891"><ref alias="Dell"/></F_Manufacturer>
+		<BA_IPAddress id="3674133519296546131">212.100.105.105</BA_IPAddress>
+		<N_Location id="475030271295833435"><ref alias="Location-1"/></N_Location>
+		<A_Name id="-3834189035046541369">Alpha</A_Name>
+		<BB_Hostname id="-3757446295370038637">mail.acme.com</BB_Hostname>
+		<G_Maintenance id="-288943779157236152"><ref alias="Maintenance-1"/></G_Maintenance>
+		<BD_Network id="5183161056716436110"><ref alias="Network-2"/></BD_Network>
+		<icon id="-6103530076968572159">computer</icon>
+	</Server>
+	<Server alias="Server-2" id="4500706153511666133" displayName="${A_Name} ${BA_IPAddress}">
+		Bravo 212.100.105.110
+		<description>This CI specifies one server computer system. A Server Computer System is used to host server applications.</description>
+		<BC_MAC_Address id="5533550416915033704">5464263</BC_MAC_Address>
+		<H_Financials id="-5862661066917042050"><ref alias="Financial-2"/></H_Financials>
+		<D_SerialNumber id="1122241095792123160">235-SDFG-2345</D_SerialNumber>
+		<C_Status id="3072147434801022392"><ref alias="OP_Status_In_Production"/></C_Status>
+		<F_Manufacturer id="8410194535251676446"><ref alias="Sun"/></F_Manufacturer>
+		<E_Service id="-4370196052468388804"><ref alias="Service-2"/></E_Service>
+		<BA_IPAddress id="-6374946524148855232">212.100.105.110</BA_IPAddress>
+		<N_Location id="5454214241331014941"><ref alias="Location-3"/></N_Location>
+		<A_Name id="3385731693437608762">Bravo</A_Name>
+		<G_Maintenance id="2823466530956993425"><ref alias="Maintenance-2"/></G_Maintenance>
+		<BD_Network id="8797196730798070288"><ref alias="Network-2"/></BD_Network>
+		<icon id="2623258777207972857">computer</icon>
+	</Server>
+	<Server alias="Server-3" id="6402602145423025920" displayName="${A_Name} ${BA_IPAddress}">
+		Charlie 212.100.120.003
+		<description>This CI specifies one server computer system. A Server Computer System is used to host server applications.</description>
+		<BC_MAC_Address id="-7664536593170627319">2345345234</BC_MAC_Address>
+		<H_Financials id="7910751042742761243"><ref alias="Financial-1"/></H_Financials>
+		<D_SerialNumber id="-6643080585010894791">ASDF-2342424</D_SerialNumber>
+		<C_Status id="4786281611743947455"><ref alias="OP_Status_Under_Test"/></C_Status>
+		<E_Service id="2829304246133471957"><ref alias="Service-5"/></E_Service>
+		<F_Manufacturer id="1958202186524465372"><ref alias="Dell"/></F_Manufacturer>
+		<BA_IPAddress id="-1160682658965543868">212.100.120.003</BA_IPAddress>
+		<N_Location id="-5114789751353605322"><ref alias="Location-2"/></N_Location>
+		<A_Name id="6085674007468431474">Charlie</A_Name>
+		<G_Maintenance id="-5398342851105609649"><ref alias="Maintenance-2"/></G_Maintenance>
+		<icon id="-6557067017043430492">computer</icon>
+	</Server>
+	<Server alias="Server-4" id="-5124508761518259260" displayName="${A_Name} ${BA_IPAddress}">
+		Delta 212.100.220.134
+		<description>This CI specifies one server computer system. A Server Computer System is used to host server applications.</description>
+		<BC_MAC_Address id="-8278883216761920975">432213423</BC_MAC_Address>
+		<H_Financials id="-2621366913607446807"><ref alias="Financial-3"/></H_Financials>
+		<C_Status id="-4985993345666782677"><ref alias="OP_Status_In_Production"/></C_Status>
+		<D_SerialNumber id="7624399172414297864">D-23455525</D_SerialNumber>
+		<F_Manufacturer id="4104110504828259286"><ref alias="Dell"/></F_Manufacturer>
+		<E_Service id="9191312744790804867"><ref alias="Service-3"/></E_Service>
+		<BA_IPAddress id="-2435563886269576567">212.100.220.134</BA_IPAddress>
+		<N_Location id="-8593254037247282890"><ref alias="Location-2"/></N_Location>
+		<A_Name id="-7422661328869497345">Delta</A_Name>
+		<G_Maintenance id="-173228679643448340"><ref alias="Maintenance-1"/></G_Maintenance>
+		<BD_Network id="-152140368872821165"><ref alias="Network-3"/></BD_Network>
+		<icon id="-6964848933496406925">computer</icon>
+	</Server>
+	<Company alias="Dummycust" id="8012419794329866751" displayName="${A_Name}">
+		Dummy Customer, Inc.
+		<description>This CI describes one company.</description>
+		<B_Web_Address id="-7014083920819617059">http://www.dumcust.com</B_Web_Address>
+		<icon id="4761639236344449514">resource</icon>
+		<C_Telephone id="8875700631707648062">(505) 888 3500</C_Telephone>
+		<A_Name id="-2896165422771487229">Dummy Customer, Inc.</A_Name>
+	</Company>
+	<Company alias="Dell" id="3316162792482135330" displayName="${A_Name}">
+		Dell Computers
+		<description>This CI describes one company.</description>
+		<B_Web_Address id="3804104165486723785">http://www.dell.com</B_Web_Address>
+		<icon id="4446947205571126929">resource</icon>
+		<C_Telephone id="-5083930134652273917">(265) 345 2000</C_Telephone>
+		<A_Name id="-9074980907505990141">Dell Computers</A_Name>
+	</Company>
+	<Company alias="Sun" id="1407528951812122063" displayName="${A_Name}">
+		Sun
+		<description>This CI describes one company.</description>
+		<B_Web_Address id="7466056943918003109">http://www.sun.com</B_Web_Address>
+		<icon id="-3974899969728848283">resource</icon>
+		<C_Telephone id="-4903700446250930728">(234) 200 4444</C_Telephone>
+		<A_Name id="7310741281645203563">Sun</A_Name>
+	</Company>
+	<Company alias="Company-1" id="-8594251712607928457" displayName="${A_Name}">
+		Customer Company, Inc.
+		<description>This CI describes one company.</description>
+		<icon id="-6749446891722548976">resource</icon>
+		<C_Telephone id="7299447150323362183">(651) 6677 2345</C_Telephone>
+		<A_Name id="4659645089687627908">Customer Company, Inc.</A_Name>
+	</Company>
+	<Company alias="Computercomp" id="3016434796971854897" displayName="${A_Name}">
+		Computer Company, Inc.
+		<description>This CI describes one company.</description>
+		<B_Web_Address id="3982764037509340629">http://www.compcomp.com</B_Web_Address>
+		<icon id="-8790152255822023209">resource</icon>
+		<C_Telephone id="8302080806209554425">(349) 100 2222</C_Telephone>
+		<A_Name id="2723935673593303291">Computer Company, Inc.</A_Name>
+	</Company>
+	<Company alias="Itsuppgroup" id="-197741445681987831" displayName="${A_Name}">
+		IT Support Group, Inc
+		<description>This CI describes one company.</description>
+		<B_Web_Address id="-6270108760757211636">http://www.itsupp.com</B_Web_Address>
+		<icon id="-2876400456264060622">resource</icon>
+		<C_Telephone id="-1268800398579414911">(212) 868 1000</C_Telephone>
+		<A_Name id="-4227644279733417121">IT Support Group, Inc</A_Name>
+	</Company>
+	<Company alias="Acme" id="-2194746235373209832" displayName="${A_Name}">
+		Acme, Inc
+		<description>This CI describes one company.</description>
+		<B_Web_Address id="-2324838396428159289">http://www.acme.com</B_Web_Address>
+		<icon id="3934313036418913200">resource</icon>
+		<C_Telephone id="8926700549874837783">(415) 345 6500</C_Telephone>
+		<A_Name id="5039753771145881546">Acme, Inc</A_Name>
+	</Company>
+	<Maintenance alias="Maintenance-1" id="4719429542472640360" displayName="${A_Name}">
+		HW Maintenance 7x24
+		<description>This CI contains maintenance information for one or several pieces of equipment or software packages</description>
+		<E_Maintenance_Agreement id="-4218157677248314474">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Maintenance_Agreement.pdf</E_Maintenance_Agreement>
+		<C_Maintenance_Org id="-7913335157402042294"><ref alias="Itsuppgroup"/></C_Maintenance_Org>
+		<B_Specialist id="4694950259441639118"><ref alias="Jsmith"/></B_Specialist>
+		<D_Maintenance_Level id="-8939685770109701414">7x24</D_Maintenance_Level>
+		<A_Name id="-3912026136540827040">HW Maintenance 7x24</A_Name>
+		<icon>maintenance</icon>
+	</Maintenance>
+	<Maintenance alias="Maintenance-2" id="-7749807226151530231" displayName="${A_Name}">
+		HW Maintenance 5x8
+		<description>This CI contains maintenance information for one or several pieces of equipment or software packages</description>
+		<E_Maintenance_Agreement id="-29413993067565582">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Maintenance_Agreement.pdf</E_Maintenance_Agreement>
+		<C_Maintenance_Org id="3076866288670351857"><ref alias="Itsuppgroup"/></C_Maintenance_Org>
+		<B_Specialist id="7116850306336844358"><ref alias="Jsmith"/></B_Specialist>
+		<D_Maintenance_Level id="-2518288318647465320">5x8</D_Maintenance_Level>
+		<A_Name id="-7509473604354159022">HW Maintenance 5x8</A_Name>
+		<icon>maintenance</icon>
+	</Maintenance>
+	<Maintenance alias="Maintenance-4" id="-690666171244595687" displayName="${A_Name}">
+		Linux Maintenance
+		<description>This CI describes the maintenance aggrement. The maintenance are typically associated with a Service, Software and Hardware.</description>
+		<E_Maintenance_Agreement id="-6389882555319247183">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Maintenance_Agreement.pdf</E_Maintenance_Agreement>
+		<C_Maintenance_Org id="449127114445635723"><ref alias="Computercomp"/></C_Maintenance_Org>
+		<B_Specialist id="-4763286266330341582"><ref alias="Dgould"/></B_Specialist>
+		<D_Maintenance_Level id="-4187684796241303727">5x8</D_Maintenance_Level>
+		<A_Name id="291078635335694567">Linux Maintenance</A_Name>
+		<icon>maintenance</icon>
+	</Maintenance>
+	<Maintenance alias="Maintenance-3" id="5468077913582295697" displayName="${A_Name}">
+		SW Maintenance 5x8
+		<description>This CI contains maintenance information for one or several pieces of equipment or software packages</description>
+		<E_Maintenance_Agreement id="70154916742769590">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Maintenance_Agreement.pdf</E_Maintenance_Agreement>
+		<C_Maintenance_Org id="-6110529131002982911"><ref alias="Itsuppgroup"/></C_Maintenance_Org>
+		<B_Specialist id="7813254042461422432"><ref alias="Dgould"/></B_Specialist>
+		<D_Maintenance_Level id="7159220794399908760">5x8</D_Maintenance_Level>
+		<A_Name id="2980104308297726494">SW Maintenance 5x8</A_Name>
+		<icon>maintenance</icon>
+	</Maintenance>
+	<Maintenance alias="Maintenance-5" id="155258626219139196" displayName="${A_Name}">
+		Microsoft Maintenance
+		<description>This CI describes the maintenance aggrement. The maintenance are typically associated with a Service, Software and Hardware.</description>
+		<E_Maintenance_Agreement id="455968893694876035">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Maintenance_Agreement.pdf</E_Maintenance_Agreement>		
+		<C_Maintenance_Org id="-5417434286815348335"><ref alias="Itsuppgroup"/></C_Maintenance_Org>
+		<B_Specialist id="1713061942381351988"><ref alias="Dgould"/></B_Specialist>
+		<D_Maintenance_Level id="-3243337577100154002">5x8</D_Maintenance_Level>
+		<A_Name id="-6648257164026034018">Microsoft Maintenance</A_Name>
+		<icon>maintenance</icon>	
+	</Maintenance>
+	<Network alias="Network-1" id="2390605738976724412" displayName="${A_Name}">
+		The Internet
+		<description>A logical network that a system belongs to.</description>
+		<icon id="-5554563159313539598">resource</icon>
+		<A_Name id="-1351204961964271698">The Internet</A_Name>
+	</Network>
+	<Network alias="Network-4" id="8412385694616969073" displayName="${A_Name}">
+		Dummy Customer LAN
+		<description>A logical network that a system belongs to.</description>
+		<icon id="2279053457116708852">resource</icon>
+		<A_Name id="8824633698123189218">Dummy Customer LAN</A_Name>
+	</Network>
+	<Network alias="Network-3" id="3509337883553548764" displayName="${A_Name}">
+		Acme Extranet
+		<description>A logical network that a system belongs to.</description>
+		<icon id="3698280653515843086">resource</icon>
+		<A_Name id="-6112882130783687187">Acme Extranet</A_Name>
+	</Network>
+	<Network alias="Network-2" id="-6663285206122343756" displayName="${A_Name}">
+		Acme Intranet
+		<description>A logical network that a system belongs to.</description>
+		<icon id="5390800641624142865">resource</icon>
+		<A_Name id="-1863438511664335154">Acme Intranet</A_Name>
+	</Network>
+	<Location alias="Location-1" id="-1802806242190784654" displayName="${A_Name}">
+		Atlanta
+		<description>This CI defines a Location. A location is defined by a symbolic name.</description>
+		<icon id="-8274969109982779641">resource</icon>
+		<A_Name id="-8461656972656290942">Atlanta</A_Name>
+	</Location>
+	<Location alias="Location-2" id="7245536825739873143" displayName="${A_Name}">
+		New York
+		<description>This CI defines a Location. A location is defined by a symbolic name.</description>
+		<icon id="5228619252837354317">resource</icon>
+		<A_Name id="-1967921505201644510">New York</A_Name>
+	</Location>
+	<Location alias="Location-3" id="-6830034645025421898" displayName="${A_Name}">
+		Los Angeles
+		<description>This CI defines a Location. A location is defined by a symbolic name.</description>
+		<icon id="-5877433743830535305">resource</icon>
+		<A_Name id="4711585524578030740">Los Angeles</A_Name>
+	</Location>
+	<Financial alias="Financial-4" id="4643924497802155072" displayName="${A_Name}">
+		Financials Microsoft (Bulk)
+		<description>This CI contains financial information for one or several pieces of equipment or software packages.</description>
+		<D_Depreciation id="-8257241574003775342">3</D_Depreciation>
+		<F_Purchase_Contract id="-8304784101600582684">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Purchase_Contract.pdf</F_Purchase_Contract>
+		<E_Maintenance_Fee id="6255450789923321835">35</E_Maintenance_Fee>
+		<B_Purchase_Prise id="-1720832750033871736">300</B_Purchase_Prise>		
+		<C_Purchase_Date id="8866547784047204525">20070901</C_Purchase_Date>
+		<A_Name id="6220731535513731958">Financials Microsoft (Bulk)</A_Name>
+		<icon>asset</icon>
+	</Financial>
+	<Financial alias="Financial-6" id="-8211442577530749392" displayName="${A_Name}">
+		Financials Applications
+		<description>This CI contains financial information for one or several pieces of equipment or software packages.</description>
+		<E_Maintenance_Fee id="7400126770754564020">850</E_Maintenance_Fee>
+		<D_Depreciation id="-6503731647110092270">5</D_Depreciation>
+		<F_Purchase_Contract id="-7677836524164707843">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Purchase_Contract.pdf</F_Purchase_Contract>
+		<B_Purchase_Prise id="9215268444235592088">4000</B_Purchase_Prise>		
+		<C_Purchase_Date id="6632394665527473124">20070820</C_Purchase_Date>
+		<A_Name id="932161891670006857">Financials Applications</A_Name>
+		<icon>asset</icon>
+	</Financial>
+	<Financial alias="Financial-3" id="-2855606487677637534" displayName="${A_Name}">
+		Financials Dell #2
+		<description>This CI contains financial information for one or several pieces of equipment or software packages.</description>
+		<E_Maintenance_Fee id="3130639061085993798">600</E_Maintenance_Fee>
+		<D_Depreciation id="-740413157994593492">5</D_Depreciation>
+		<F_Purchase_Contract id="4290669730197206051">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Purchase_Contract.pdf</F_Purchase_Contract>
+		<B_Purchase_Prise id="7344849748465838463">4000</B_Purchase_Prise>
+		<C_Purchase_Date id="2366892651881004246">20070401</C_Purchase_Date>
+		<A_Name id="1389858805130110229">Financials Dell #2</A_Name>
+		<icon>asset</icon>
+	</Financial>
+	<Financial alias="Financial-5" id="-3935101270768705424" displayName="${A_Name}">
+		Financials Microsoft (applic)
+		<description>This CI contains financial information for one or several pieces of equipment or software packages.</description>
+		<D_Depreciation id="4832085125072602237">3</D_Depreciation>
+		<F_Purchase_Contract id="-4351577733022302813">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Purchase_Contract.pdf</F_Purchase_Contract>
+		<E_Maintenance_Fee id="3887731212460342207">4</E_Maintenance_Fee>
+		<B_Purchase_Prise id="6611295668007318549">20</B_Purchase_Prise>
+		<C_Purchase_Date id="-1157405580495097676">20070601</C_Purchase_Date>
+		<A_Name id="6518258621366025293">Financials Microsoft (applic)</A_Name>
+		<icon>asset</icon>
+	</Financial>
+	<Financial alias="Financial-7" id="-1768612749766386463" displayName="${A_Name}">
+		Financials OS
+		<description>This CI describes the financial aspect of a CI.</description>
+		<E_Maintenance_Fee id="-2819092970967625426">100</E_Maintenance_Fee>
+		<F_Purchase_Contract id="-4745518435732676768">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Purchase_Contract.pdf</F_Purchase_Contract>
+		<D_Depreciation id="-5899475985219284534">3</D_Depreciation>
+		<B_Purchase_Prise id="-3046500631276040541">1000</B_Purchase_Prise>
+		<C_Purchase_Date id="9072643283111144649">20070701</C_Purchase_Date>
+		<A_Name id="-2987081590163575162">Financials OS</A_Name>
+		<icon>asset</icon>
+	</Financial>
+	<Financial alias="Financial-1" id="-8076577008991030295" displayName="${A_Name}">
+		Financials Dell #1
+		<description>This CI contains financial information for one or several pieces of equipment or software packages.</description>
+		<E_Maintenance_Fee id="-3183077289768948146">400</E_Maintenance_Fee>
+		<F_Purchase_Contract id="7918080289830437766">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Purchase_Contract.pdf</F_Purchase_Contract>
+		<D_Depreciation id="-2969789257887971907">5</D_Depreciation>
+		<B_Purchase_Prise id="-415222771882202491">3500</B_Purchase_Prise>
+		<C_Purchase_Date id="-8913198639989031335">20070101</C_Purchase_Date>
+		<A_Name id="-4305708446849307752">Financials Dell #1</A_Name>
+		<icon>asset</icon>
+	</Financial>
+	<Financial alias="Financial-2" id="-6843450133679166705" displayName="${A_Name}">
+		Financials Sun HW
+		<description>This CI contains financial information for one or several pieces of equipment or software packages.</description>
+		<F_Purchase_Contract id="-5169653165455692611">http://www.onecmdb.org/docs/BasicDatacenter/docs/Dummy_Purchase_Contract.pdf</F_Purchase_Contract>
+		<D_Depreciation id="6406550305232077721">3</D_Depreciation>
+		<E_Maintenance_Fee id="-6664429098235972485">600</E_Maintenance_Fee>
+		<B_Purchase_Prise id="-8808023381146517554">5000</B_Purchase_Prise>
+		<C_Purchase_Date id="-9111212899415117011">20061015</C_Purchase_Date>
+		<A_Name id="812692429657434870">Financials Sun HW</A_Name>
+		<icon>asset</icon>
+	</Financial>
+	<OperationalStatus alias="OP_Status_In_Production" id="-5739176539017524726" displayName="${A_Name}">
+		In Production
+		<description>The operational status for a CI. Typically this would be In Production, In Testing, Under installation etc.</description>
+		<icon id="8388592505996735552">resource</icon>
+		<A_Name id="-4431124955765660288">In Production</A_Name>
+	</OperationalStatus>
+	<OperationalStatus alias="OperationalStatus-1" id="1638601271722978050" displayName="${A_Name}">
+		Not Installed
+		<description>The operational status for a CI. Typically this would be In Production, In Testing, Under installation etc.</description>
+		<icon id="3395684125225364491">resource</icon>
+		<A_Name id="8071942998503531322">Not Installed</A_Name>
+	</OperationalStatus>
+	<OperationalStatus alias="OP_Status_Under_Test" id="-6290565633777713626" displayName="${A_Name}">
+		Under Test
+		<description>The operational status for a CI. Typically this would be In Production, In Testing, Under installation etc.</description>
+		<icon id="1513245316639834772">resource</icon>
+		<A_Name id="1962447207398513885">Under Test</A_Name>
+	</OperationalStatus>
+	<Person alias="Person-3" id="5246647628580712262" displayName="${A_Name}">
+		Ron Holland
+		<description>This CI describes one Person.</description>
+		<D_Telephone id="-6156832495026972119">(415) 345 6777</D_Telephone>
+		<icon id="8601821204603172223">people</icon>
+		<B_Organisation id="2837533039994162074"><ref alias="Acme"/></B_Organisation>
+		<C_Email id="7019503919782492422">rh@acme.com</C_Email>
+		<A_Name id="1108913379988958740">Ron Holland</A_Name>
+	</Person>
+	<Person alias="Person-2" id="-477946750260320141" displayName="${A_Name}">
+		Jill Andersen
+		<description>This CI describes one Person.</description>
+		<D_Telephone id="-3493666024387546524">(562) 888 7365</D_Telephone>
+		<icon id="7159505957914425992">people</icon>
+		<B_Organisation id="2238181890870902146"><ref alias="Dummycust"/></B_Organisation>
+		<C_Email id="8633534328997296181">ja@dummycust.com</C_Email>
+		<A_Name id="6448375334494315418">Jill Andersen</A_Name>
+	</Person>
+	<Person alias="Jsmith" id="2768202140434821423" displayName="${A_Name}">
+		John Smith
+		<description>This CI describes one Person.</description>
+		<D_Telephone id="6957127673824651802">(415) 345 6514</D_Telephone>
+		<E_OneCMDBAccount id="2956814739429704525"><ref alias="account-jsmith"/></E_OneCMDBAccount>
+		<icon id="-1031590149420209040">people</icon>
+		<B_Organisation id="1043683125596522519"><ref alias="Acme"/></B_Organisation>
+		<C_Email id="-1835479632555473436">js@acme.com</C_Email>
+		<A_Name id="7137980526621119569">John Smith</A_Name>
+	</Person>
+	<Person alias="Person-4" id="-2822857111128780937" displayName="${A_Name}">
+		Nick Jones
+		<description>This CI describes one Person.</description>
+		<D_Telephone id="-2143454490417139908">(212) 868 1012</D_Telephone>
+		<icon id="3716991632166297938">people</icon>
+		<B_Organisation id="-3157435364271629848"><ref alias="Acme"/></B_Organisation>
+		<C_Email id="7186786573895632743">nj@acme.com</C_Email>
+		<A_Name id="-6252104951664592093">Nick Jones</A_Name>
+	</Person>
+	<Person alias="Dgould" id="6820684516750636457" displayName="${A_Name}">
+		Donna Gould
+		<description>This CI describes one Person.</description>
+		<D_Telephone id="-2710763041504176547">(415) 345 6515</D_Telephone>
+		<icon id="5758909668163105015">people</icon>
+		<B_Organisation id="7892990490466508273"><ref alias="Acme"/></B_Organisation>
+		<C_Email id="8584300489103545422">dg@acme.com</C_Email>
+		<A_Name id="-4304806898805486845">Donna Gould</A_Name>
+	</Person>
+	<Person alias="Person-1" id="-225171125101606116" displayName="${A_Name}">
+		Bill Brown
+		<description>This CI describes one Person.</description>
+		<D_Telephone id="-7818279970352423404">(562) 888 7788</D_Telephone>
+		<icon id="-474997582038270577">people</icon>
+		<B_Organisation id="-6723275056056982418"><ref alias="Dummycust"/></B_Organisation>
+		<C_Email id="-5599593422107320335">bb@dummycust.com</C_Email>
+		<A_Name id="1649534347213464045">Bill Brown</A_Name>
+	</Person>
+</instances>
+</onecmdb>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+<templates>
+	<template alias="CiSerach">
+		<derivedFrom><ref alias="Root"/></derivedFrom>
+		<description>Key includes diffrent characters is 'öäå-אבגדה-лфавит-研修室的使用'</description>
+		<attribute attAlias="key">
+			<simpleType>xs:string</simpleType>
+		</attribute>
+		<setSimpleValue attAlias="key">öäå-אבגדה-лфавит-研修室的使用</setSimpleValue>
+	</template>
+</templates>
+</onecmdb>

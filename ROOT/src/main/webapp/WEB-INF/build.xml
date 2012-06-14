@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<project name="org.onecmdb" basedir="." >
+	
+	<target name="jar" description="Creates a JAR file of the classes">
+		<jar destfile="onecmdb-classes.jar">
+			<fileset dir="classes"></fileset>
+		</jar>
+	</target>
+</project>

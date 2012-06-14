@@ -1,0 +1,1998 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<onecmdb>
+<!-- Built in templates and instances are defines in XML files in subdirectories of org.onecmdb.core.internal -->  
+<templates>
+  <!-- Common templates -->
+	<template alias="Folder" displayName="Folder">
+		<derivedFrom>
+			<ref alias="Ci"/>
+		</derivedFrom>
+		<description>This is the master template for your folders.</description>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+	
+	<template alias="Resource" displayName="Resource">
+		<derivedFrom>
+			<ref alias="Ci"/>
+		</derivedFrom>
+		<description>This is the master template for your data center templates.</description>
+		<setSimpleValue attAlias="icon">resource</setSimpleValue>
+	</template>
+	
+	<template alias="MyDataCenterRef" displayName="MyDataCenterRef">
+		<derivedFrom>
+			<ref alias="Reference"/>
+		</derivedFrom>
+		<description>This is the master template for your references.</description>
+		<setSimpleValue attAlias="icon">reference</setSimpleValue>
+	</template>
+	
+	<template alias="Uses" displayName="Uses">
+		<derivedFrom>
+			<ref alias="MyDataCenterRef"/>
+		</derivedFrom>
+		<description>This is a general CI dependency reference.</description>
+		<setSimpleValue attAlias="icon">reference</setSimpleValue>
+	</template>
+	
+	<template alias="ImportModel" displayName="ImportModel">
+		<derivedFrom>
+			<ref alias="JobProcess"/>
+		</derivedFrom>
+		<description>This job imports configuration items from an XML file.</description>
+		<attribute attAlias="importUrl">
+		  <description>File path to XML file, e.g. "file:///tmp/myimportfile.xml"</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">job</setSimpleValue>
+		<setSimpleValue attAlias="javaClass">org.onecmdb.core.internal.job.workflow.sample.UrlImportProcess</setSimpleValue>
+	</template>
+
+	<template alias="ExportModel" displayName="ExportModel">
+		<derivedFrom>
+			<ref alias="JobProcess"/>
+		</derivedFrom>
+		<description>This job exports configuration items to an XML file.</description>
+		<attribute attAlias="instances">
+			<description>Export Instances if set.</description>
+			<simpleType>xs:boolean</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="exportFile">
+		  <description>Filename, e.g. "file:///tmp/myexportedfile.xml"</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="rootAlias">
+			<description>Export all CIs based on this template (enter alias). Will export this and descendants according to
+			the templates/instances attributes.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="templates">
+			<description>Export Templates if set.</description>
+			<simpleType>xs:boolean</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">job</setSimpleValue>
+		<setSimpleValue attAlias="javaClass">org.onecmdb.core.internal.job.workflow.sample.ExportModelProcess</setSimpleValue>
+	</template>
+	
+	<template alias="DiscoverJob" displayName="DiscoverJob">
+		<derivedFrom>
+			<ref alias="JobProcess"/>
+		</derivedFrom>
+		<description>A discovery job.</description>
+		<setSimpleValue attAlias="icon">job</setSimpleValue>
+	</template>
+	
+	<!-- Advanced templates -->
+	<template alias="DiscoverSystemsJob" displayName="Discover my Network">
+		<derivedFrom>
+			<ref alias="DiscoverJob"/>
+		</derivedFrom>
+		<description>This job discovers networking devices and configurations and puts the result into folders. 
+    You must edit the 'target' attribute to match your network to discover.</description>
+		<attribute attAlias="target" displayName="Target">
+			<description>Target format as specified by Nmap.  Ex: scanme.nmap.org, microsoft.com/24, 192.168.0.1; 10.0.0-255.1-254</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="nmapExecutable" displayName="Nmap">
+			<description>File path to Nmap executable.</description>
+      <simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="datacenter" displayName="Data center">
+			<description>This reference makes sure that the job shows up as a link in the GUI in the Data Center folder (under References section).</description>
+			<complexType>
+				<ref alias="DataCenterFolder"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="ipTemplate" displayName="IP template">
+			<description>Use this template to create IP address CIs.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+    <attribute attAlias="dnsEntryTemplate" displayName="DNS entry template">
+			<description>Use this template to create DNS entry CIs.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="netIfTemplate" displayName="Network interface template">
+			<description>Use this template to create Network Interface CIs.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="hostnameTemplate" displayName="Hostname template">
+			<description>Use this template to create hostname CIs.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="nicTemplate" displayName="NIC template">
+			<description>Use this template to create network intreface card CIs.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="netIfContainer" displayName="Network interface folder">
+			<description>List discovered network interfaces in this folder</description>
+			<complexType>
+				<ref alias="NetworkInterfaces"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="dnsEntryContainer" displayName="DNS entry folder">
+			<description>List discovered DNS entries in this folder.</description>
+			<complexType>
+				<ref alias="DNSEntries"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="nicContainer" displayName="NIC folder">
+			<description>List discovered network interface cards in this folder.</description>
+			<complexType>
+				<ref alias="NICs"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="ipContainer" displayName="IP folder">
+			<description>List discovered IP addresses in this folder.</description>
+			<complexType>
+				<ref alias="IPs"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="javaClass">org.onecmdb.utils.internal.nmap.NmapSystemDiscoverBeanProvider</setSimpleValue>
+	</template>
+	
+  <template alias="DataCenterFolder" displayName="Advanced Data Center">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>The 'Advanced Data Center' folder is the start point for browsing items in the configuration database. 
+    You can automatically populate the database with initital items by using the 'Discover Network' script available at Start Menu(Windows) or bin/discover.sh (UNIX).</description>
+		<attribute attAlias="SoftwareFolder" displayName="Software packages">
+			<description>This folder lists software packages in the DSL.</description>
+			<complexType>
+				<ref alias="SoftwareFolder"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+    <attribute attAlias="applicationFolder" displayName="Applications">
+			<description>This folder lists running applications.</description>
+			<complexType>
+				<ref alias="Applications"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="computerFolder" displayName="Computers">
+			<description>This folder lists computers.</description>
+			<complexType>
+				<ref alias="Computers"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="networkFolder" displayName="Network">
+			<description>This folder lists network items.</description>
+			<complexType>
+				<ref alias="Network"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="serviceFolder" displayName="Services">
+			<description>Folder lists high-level services.</description>
+			<complexType>
+				<ref alias="Services"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">datacenter</setSimpleValue>
+	</template>
+	
+	<template alias="IPs" displayName="IP Folder">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>This folder lists IP addresses.</description>
+		<attribute attAlias="ips" displayName="IP addresses">
+			<description>Lists IP addresses.</description>
+			<complexType>
+				<ref alias="IP"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+	
+	<template alias="Applications" displayName="Application Folder">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>The folder lists running server applications.</description>
+		<attribute attAlias="applications" displayName="Server Applications">
+			<description>Lists applications.</description>
+			<complexType>
+				<ref alias="ServerApplication"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+	
+	<template alias="SoftwareFolder" displayName="Software Folder">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>This folder lists available software packages in the DSL.</description>
+		<attribute attAlias="software" displayName="Software">
+			<description>Lists software packages.</description>
+			<complexType>
+				<ref alias="SoftwarePackage"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+	
+	<template alias="Computers" displayName="Computer Folder">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>This folder lists computers.</description>
+		<attribute attAlias="computers" displayName="Computers">
+			<description>Lists computers.</description>
+			<complexType>
+				<ref alias="ComputerSystem"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+	
+	<template alias="DNSEntries" displayName="Hostname Folder">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>This folder lists hostnames registered in the DNS. The names points to the discovered IP addresses.</description>
+		<attribute attAlias="dnsEntries" displayName="Hostnames">
+			<description>This folder lists the hostnames of discovered IP addresses.</description>
+			<complexType>
+				<ref alias="DNSEntry"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+	
+	<template alias="Switches" displayName="Switch Folder">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>This folder lists network switches.</description>
+		<attribute attAlias="switches" displayName="Switches">
+			<description>Lists switches.</description>
+			<complexType>
+				<ref alias="Switch"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+	
+	<template alias="Services" displayName="Service Folder">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>This folder lists high-level services.</description>
+		<attribute attAlias="services" displayName="Services">
+			<description>Lists services.</description>
+			<complexType>
+				<ref alias="Service"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+	
+	<template alias="Hubs" displayName="Hub Folder">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>This folder lists network hubs.</description>
+		<attribute attAlias="hubs" displayName="Hubs">
+			<description>Lists network hubs.</description>
+			<complexType>
+				<ref alias="Hub"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+	
+	<template alias="Network" displayName="Network Folder">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>This folder lists network items.</description>
+		<attribute attAlias="nicFolder" displayName="NICs">
+			<description>This folder lists network interface cards.</description>
+			<complexType>
+				<ref alias="NICs"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="ipFolder" displayName="IPs">
+			<description>This folder lists IP addresses.</description>
+			<complexType>
+				<ref alias="IPs"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="hubFolder" displayName="Hubs">
+			<description>This folder lists network hubs</description>
+			<complexType>
+				<ref alias="Hubs"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="switchFolder" displayName="Switches">
+			<description>This folder lists switches.</description>
+			<complexType>
+				<ref alias="Switches"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="dnsentryFolder" displayName="Hostnames">
+			<description>This folder lists IP-to-Hostname entries in the DNS.</description>
+			<complexType>
+				<ref alias="DNSEntries"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+	
+	<template alias="Maintainer" displayName="${name} ${surname}">
+		<derivedFrom>
+			<ref alias="People"/>
+		</derivedFrom>
+		<description>People maintaining the data center.</description>
+		<setSimpleValue attAlias="icon">people</setSimpleValue>
+		<setSimpleValue attAlias="name">Maintainer</setSimpleValue>
+	</template>
+	
+	<template alias="People" displayName="${name} ${surname}">
+		<derivedFrom>
+			<ref alias="Ci"/>
+		</derivedFrom>
+		<description>Use this template to create CIs of persons.</description>
+		<attribute attAlias="email" displayName="Email">
+			<description>E-mail address</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="name" displayName="Name">
+			<description>Given name of person.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="surname" displayName="Surname">
+			<description>Family name.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="phone" displayName="Phone">
+			<description>Phone number.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">people</setSimpleValue>
+		<setSimpleValue attAlias="name">People</setSimpleValue>
+		<setSimpleValue attAlias="surname"></setSimpleValue>
+	</template>
+	
+	<template alias="httpd.conf" displayName="httpd.conf">
+		<derivedFrom>
+			<ref alias="SoftwareConfigurationFile"/>
+		</derivedFrom>
+		<description>Configuration for an installation of Apache software, i.e. a running Application.</description>
+		<setSimpleValue attAlias="icon">softwareconfig</setSimpleValue>
+	</template>
+	
+	<template alias="RJ45" displayName="Port">
+		<derivedFrom>
+			<ref alias="HardwareDevice"/>
+		</derivedFrom>
+		<description>Physical port to connect network devices.</description>
+		<setSimpleValue attAlias="icon">unknown</setSimpleValue>
+	</template>
+	
+	<template alias="Hub16" displayName="Hub16 ${serialnumber}">
+		<derivedFrom>
+			<ref alias="Hub"/>
+		</derivedFrom>
+		<description>Data network hub with 16 ports.</description>
+		<attribute attAlias="ports" displayName="Ports">
+			<description>Physical ports to connect network cables.</description>
+			<complexType>
+				<ref alias="RJ45"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>16</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">rackunit</setSimpleValue>
+	</template>
+	
+	<template alias="Hub" displayName="Hub ${serialnumber}">
+		<derivedFrom>
+			<ref alias="HardwareUnit"/>
+		</derivedFrom>
+		<description>Data network hub.</description>
+		<setSimpleValue attAlias="icon">rackunit</setSimpleValue>
+	</template>
+	
+	<template alias="IP" displayName="${ipAddress}">
+		<derivedFrom>
+			<ref alias="SoftwareConfiguration"/>
+		</derivedFrom>
+		<description>IP address configured in operating system.</description>
+		<attribute attAlias="ipAddress" displayName="IP Address">
+			<description>IP address</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="addrType" displayName="Address type">
+			<description>IP address type/version (ipv4|ipv6)</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">softwareconfig</setSimpleValue>
+		<setSimpleValue attAlias="ipAddress">IP</setSimpleValue>
+	</template>
+	
+	<template alias="MicrosoftWindowsNTServer" displayName="Microsoft Windows NT Server">
+		<derivedFrom>
+			<ref alias="SoftwarePackage"/>
+		</derivedFrom>
+		<description>Operating System binaries/installation files.</description>
+		<setSimpleValue attAlias="icon">package</setSimpleValue>
+	</template>
+	
+	<template alias="ApacheHTTPServer" displayName="Apache HTTP Server">
+		<derivedFrom>
+			<ref alias="SoftwarePackage"/>
+		</derivedFrom>
+		<description>Application software binaries/installation files.</description>
+		<setSimpleValue attAlias="icon">package</setSimpleValue>
+	</template>
+	
+	<template alias="Apache" displayName="Apache">
+		<derivedFrom>
+			<ref alias="ServerApplication"/>
+		</derivedFrom>
+		<description>An Apache delivers web pages to web browsers.</description>
+		<setSimpleValue attAlias="icon">apache</setSimpleValue>
+	</template>
+	
+	<template alias="DHCP" displayName="DHCP">
+		<derivedFrom>
+			<ref alias="Service"/>
+		</derivedFrom>
+		<description>DHCP supplies network clients with an IP settings.</description>
+		<setSimpleValue attAlias="icon">service</setSimpleValue>
+	</template>
+	
+	<template alias="HardDiskDrive" displayName="Hard Disk Drive">
+		<derivedFrom>
+			<ref alias="HardwareDevice"/>
+		</derivedFrom>
+		<description>Hard disk drive.</description>
+		<attribute attAlias="capacity" displayName="Capacity (GB)">
+			<description>Hard disk capacity in gigabytes(GB).</description>
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">hdd</setSimpleValue>
+	</template>
+	
+	<template alias="Desktop" displayName="Desktop">
+		<derivedFrom>
+			<ref alias="ComputerSystem"/>
+		</derivedFrom>
+		<description>Complete computer hardware desktop.</description>
+		<setSimpleValue attAlias="icon">desktop</setSimpleValue>
+	</template>
+	
+	<template alias="Hostname" displayName="${hostname}">
+		<derivedFrom>
+			<ref alias="SoftwareConfiguration"/>
+		</derivedFrom>
+		<description>Hostname configured in DNS.</description>
+		<attribute attAlias="hostname" displayName="Hostname">
+			<description>Contains a hostname configured in the DNS.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="hostname">Hostname</setSimpleValue>
+		<setSimpleValue attAlias="icon">softwareconfig</setSimpleValue>
+	</template>
+	
+  <template alias="CPUType" displayName="${type} ${cpuSpeed}">
+		<derivedFrom>
+			<ref alias="HardwareDevice"/>
+		</derivedFrom>
+		<description>Type of CPU.</description>
+		<attribute attAlias="cpuSpeed" displayName="Speed">
+			<description>Speed in GHz</description>
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="type" displayName="Type">
+			<description></description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">unknown</setSimpleValue>
+		<setSimpleValue attAlias="type">CPU</setSimpleValue>
+	</template>
+	
+	<template alias="AMD-CPU">
+		<derivedFrom>
+			<ref alias="CPUType"/>
+		</derivedFrom>
+		<setSimpleValue attAlias="type">AMD</setSimpleValue>
+	</template>
+	
+  <template alias="Intel-CPU">
+		<derivedFrom>
+			<ref alias="CPUType"/>
+		</derivedFrom>
+		<setSimpleValue attAlias="type">Intel</setSimpleValue>
+	</template>
+	
+  <template alias="Sparc-CPU">
+		<derivedFrom>
+			<ref alias="CPUType"/>
+		</derivedFrom>
+		<setSimpleValue attAlias="type">Sparc</setSimpleValue>
+	</template>
+	
+	<template alias="Rack" displayName="Rack ${location}">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<attribute attAlias="location" displayName="Location">
+			<description>The rack is placed at this location.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<description>Rack for stacking hardware units.</description>
+		<attribute attAlias="width" displayName="Rack width">
+			<description>Width in rack units (1U=1 inch)</description>
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="height" displayName="Rack height">
+			<description>Height in rack units (1U=1 inch)</description>
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="depth" displayName="Rack depth">
+			<description>Depth in rack units (1U=1 inch)</description>
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">rack</setSimpleValue>
+	</template>
+	
+	<template alias="License" displayName="License">
+		<derivedFrom>
+			<ref alias="SoftwareConfigurationFile"/>
+		</derivedFrom>
+		<description>License for certain software installation, i.e. running Application.</description>
+		<setSimpleValue attAlias="icon">softwareconfig</setSimpleValue>
+	</template>
+	
+	<template alias="NetworkInterface" displayName="Network Interface ${nic}">
+		<derivedFrom>
+			<ref alias="SoftwareConfiguration"/>
+		</derivedFrom>
+		<description>Network interface settings.</description>
+		<attribute attAlias="ipAddress" displayName="IP Address">
+			<description>IP address</description>
+			<complexType>
+				<ref alias="IP"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="subnetMask" displayName="Subnet mask">
+			<description>Subnet mask.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="state" displayName="Interface state">
+			<description>State of interface (up|down).</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="nic" displayName="NIC">
+			<description>Network interface card.</description>
+			<complexType>
+				<ref alias="NIC"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="defaultGateway" displayName="Default Gateway">
+			<description>Default network gateway.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="dhcp" dispalyName="DHCP">
+			<description>Uses DHCP service for dynamic assignment of IP addresses.</description>
+			<simpleType>xs:boolean</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">softwareconfig</setSimpleValue>
+	</template>
+	
+	<template alias="MicrosoftWindows2003Server">
+		<derivedFrom>
+			<ref alias="SoftwarePackage"/>
+		</derivedFrom>
+		<description>Operating system binaries/installation files.</description>
+		<setSimpleValue attAlias="icon">package</setSimpleValue>
+		<setSimpleValue attAlias="name">Microsoft Windows 2003 Server</setSimpleValue>
+	</template>
+	
+  <template alias="RedHatEnterpriseLinux">
+		<derivedFrom>
+			<ref alias="SoftwarePackage"/>
+		</derivedFrom>
+		<description>Operating system binaries/installation files.</description>
+		<setSimpleValue attAlias="icon">package</setSimpleValue>
+		<setSimpleValue attAlias="name">Red Hat Enterprise Linux</setSimpleValue>
+	</template>
+	
+	<template alias="dhcpd">
+		<derivedFrom>
+			<ref alias="ServerApplication"/>
+		</derivedFrom>
+		<description>The DHCP application assignes IP addresses to client systems.</description>
+		<setSimpleValue attAlias="icon">application</setSimpleValue>
+		<setSimpleValue attAlias="name">DHCP application</setSimpleValue>
+	</template>
+	
+	<template alias="ServerApplication">
+		<derivedFrom>
+			<ref alias="Application"/>
+		</derivedFrom>
+		<description>This is a application running on a server, generally providing service to clients over a network.</description>
+		<attribute attAlias="os">
+			<description>The server application is runs on an operating system, hosted by a specific computer system.</description>
+			<complexType>
+				<ref alias="OperatingSystem"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="protocol" displayName="Protocol">
+			<description>Protocol for this server.</description>
+			<simpleType>xs:string</simpleType>
+		</attribute>
+		<attribute attAlias="port" displayName="Port">
+			<description>Listen port of this application server.</description>
+			<simpleType>xs:string</simpleType>
+		</attribute>
+		
+		<setSimpleValue attAlias="icon">application</setSimpleValue>
+		<setSimpleValue attAlias="name">Server Application</setSimpleValue>
+	</template>
+	
+	<template alias="RedHatLinux" displayName="Red Hat Linux">
+		<derivedFrom>
+			<ref alias="OperatingSystem"/>
+		</derivedFrom>
+		<description>Red Hat's suite of operating systems.</description>
+		<setSimpleValue attAlias="icon">linux</setSimpleValue>
+		<setSimpleValue attAlias="name">Red Hat Linux</setSimpleValue>
+	</template>
+	
+	<template alias="MicrosoftWindows">
+		<derivedFrom>
+			<ref alias="OperatingSystem"/>
+		</derivedFrom>
+		<description>Microsoft's suite of operating systems.</description>
+		<setSimpleValue attAlias="icon">mswindows</setSimpleValue>
+		<setSimpleValue attAlias="name">Microsoft Windows</setSimpleValue>
+	</template>
+	
+	<template alias="OperatingSystem">
+		<derivedFrom>
+			<ref alias="Application"/>
+		</derivedFrom>
+		<description>An operating system enables applications to run on a computer system.</description>
+		<attribute attAlias="computerSystem" displayName="Computer System">
+			<description>Operating system runs on a computer system</description>
+			<complexType>
+				<ref alias="ComputerSystem"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="netif" displayName="Network Interfaces">
+			<description>The OS has network interfaces setup to communicate over networks.</description>
+			<complexType>
+				<ref alias="NetworkInterface"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">application</setSimpleValue>
+		<setSimpleValue attAlias="name">Operating System</setSimpleValue>
+	</template>
+	
+	<template alias="WebServer" displayName="Web Server">
+		<derivedFrom>
+			<ref alias="Service"/>
+		</derivedFrom>
+		<description>A web server hosts web content and delivers it to clients.</description>
+		<setSimpleValue attAlias="icon">service</setSimpleValue>
+	</template>
+	
+	<template alias="DNS" displayName="DNS">
+		<derivedFrom>
+			<ref alias="Service"/>
+		</derivedFrom>
+		<description>Domain Name System.</description>
+		<setSimpleValue attAlias="icon">service</setSimpleValue>
+	</template>
+	
+	<template alias="Service" displayName="Service">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>High level services delivered by the data center.</description>
+		<attribute attAlias="maintainer" displayName="Maintainer">
+			<description>Person maintaining this service.</description>
+			<complexType>
+				<ref alias="Maintainer"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="applications" displayName="Applications">
+			<description>The service depends on a set of running applications.</description>
+			<complexType>
+				<ref alias="ServerApplication"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">service</setSimpleValue>
+	</template>
+	
+	<template alias="NIC" displayName="${mac}">
+		<derivedFrom>
+			<ref alias="HardwareDevice"/>
+		</derivedFrom>
+		<description>Network interface card.</description>
+		<attribute attAlias="mac" displayName="MAC address">
+			<description>Media Access Control adress</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="rj45" displayName="Port">
+			<description>Physical network interface</description>
+			<complexType>
+				<ref alias="RJ45"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="vendor" displayName="Chip manufacturer">
+			<description>Chip manufacturer</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">nic</setSimpleValue>
+		<setSimpleValue attAlias="mac">NIC</setSimpleValue>
+	</template>
+	
+	<template alias="HardwareDevice" displayName="Hardware Device">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>The master template for hardware devices.</description>
+		<attribute attAlias="manufacturer" displayName="Manufacturer">
+			<description>Manufacturer</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">device</setSimpleValue>
+	</template>
+	
+	<template alias="Notebook" displayName="Notebook">
+		<derivedFrom>
+			<ref alias="ComputerSystem"/>
+		</derivedFrom>
+		<description>Complete computer hardware notebook.</description>
+		<setSimpleValue attAlias="icon">portable</setSimpleValue>
+	</template>
+	
+	<template alias="Server" displayName="Server">
+		<derivedFrom>
+			<ref alias="ComputerSystem"/>
+		</derivedFrom>
+		<description>Complete server hardware unit.</description>
+		<setSimpleValue attAlias="icon">server</setSimpleValue>
+	</template>
+	
+	<template alias="ComputerSystem" displayName="Computer System">
+		<derivedFrom>
+			<ref alias="HardwareUnit"/>
+		</derivedFrom>
+		<description>Complete hardware computer system.</description>
+		<attribute attAlias="nics" displayName="NICs">
+			<description>Network interface cards</description>
+			<complexType>
+				<ref alias="NIC"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="cpuType" displayName="CPU">
+			<description>Type of CPU.</description>
+			<complexType>
+				<ref alias="CPUType"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="hdd" displayName="Hard disks">
+			<description>Hard disk drive</description>
+			<complexType>
+				<ref alias="HardDiskDrive"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="RAMSize" displayName="RAM Size(MB)">
+			<description>Memory size in megabytes(MB).</description>
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">server</setSimpleValue>
+	</template>
+	
+	<template alias="Switch" displayName="Switch">
+		<derivedFrom>
+			<ref alias="HardwareUnit"/>
+		</derivedFrom>
+		<description>Data network switch.</description>
+		<setSimpleValue attAlias="icon">rackunit</setSimpleValue>
+	</template>
+	
+	<template alias="HardwareUnit" displayName="Hardware Unit">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>The master template for most of the user defined templates.</description>
+		<attribute attAlias="manufacturer" displayName="Manufacturer">
+			<description>Manufacturer of unit.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="maintainer" displayName="Maintainer">
+			<description>Person maintaining this unit.</description>
+			<complexType>
+				<ref alias="Maintainer"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="serialnumber" displayName="Serialnumber">
+			<description>Unique serialnumber of unit.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="rack" displayName="Rack">
+			<description>The unit is mounted in a rack</description>
+			<complexType>
+				<ref alias="Rack"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="height" displayName="Unit height">
+			<description>Height in rack units (1U=1 inch)</description>
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="width" displayName="Unit width">
+			<description>Width in rack units(1U=1 inch)</description>
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">rackunit</setSimpleValue>
+	</template>
+	
+	<template alias="RedHatFeodora" displayName="Red Hat Fedora">
+		<derivedFrom>
+			<ref alias="SoftwarePackage"/>
+		</derivedFrom>
+		<description>Operating system binaries/installation files.</description>
+		<setSimpleValue attAlias="icon">package</setSimpleValue>
+		<setSimpleValue attAlias="version"></setSimpleValue>
+	</template>
+	
+	<template alias="SoftwarePackage" displayName="${name} ${version}">
+		<derivedFrom>
+			<ref alias="ApplicationSoftware"/>
+		</derivedFrom>
+		<description>Application software binaries/installation files.</description>
+		<attribute attAlias="name" displayName="Package name">
+			<description>Name of software package.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+    <attribute attAlias="version" displayName="Version">
+			<description>Version number of software package.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="packageFile" displayName="Package file">
+			<description>URL to software package file in the DSL.</description>
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="maintainer" displayName="Maintainer">
+			<description>Person maintaining this software package.</description>
+			<complexType>
+				<ref alias="Maintainer"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">package</setSimpleValue>
+		<setSimpleValue attAlias="name">Software Package</setSimpleValue>
+	</template>
+	
+	<template alias="SwitchApplication" displayName="Switch Application">
+		<derivedFrom>
+			<ref alias="Application"/>
+		</derivedFrom>
+		<description>The master template for most of the user defined templates.</description>
+		<setSimpleValue attAlias="icon">application</setSimpleValue>
+	</template>
+	
+	<template alias="Application" displayName="${name}">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>Application running on a specfic computer system.</description>
+		<attribute attAlias="maintainer" displayName="Maintainer">
+			<description>Person responsible for maintaining the running application.</description>
+			<complexType>
+				<ref alias="Maintainer"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="softwareConfiguration" displayName="Software Configuration">
+			<description>Software configuration of the running application.</description>
+			<complexType>
+				<ref alias="SoftwareConfiguration"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="installationDirectory" displayName="Installation Directory">
+			<description>Path to directory where software files of the running application is installed.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="name" displayName="Name">
+			<description>Application name</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="softwarePackage" displayName="Software Package">
+			<description>Software installation package of the application.</description>
+			<complexType>
+				<ref alias="SoftwarePackage"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">application</setSimpleValue>
+		<setSimpleValue attAlias="name">Application</setSimpleValue>
+	</template>
+	
+	<template alias="DNSEntry" displayName="DNSEntry ${hostname}">
+		<derivedFrom>
+			<ref alias="SoftwareConfiguration"/>
+		</derivedFrom>
+		<description>IP to Hostname mapping configured in DNS.</description>
+		<attribute attAlias="type" displayName="Record type">
+			<description></description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="hostname" displayName="Hostname">
+			<description>Hostname registered in DNS</description>
+			<complexType>
+				<ref alias="Hostname"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="ip" displayName="IP Address">
+			<description>IP address registered in DNS</description>
+			<complexType>
+				<ref alias="IP"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">softwareconfig</setSimpleValue>
+	</template>
+	
+	<template alias="SoftwareConfigurationFile" displayName="Software Configuration File">
+		<derivedFrom>
+			<ref alias="SoftwareConfiguration"/>
+		</derivedFrom>
+		<description>Application software configuration file.</description>
+		<attribute attAlias="configFile" displayName="Configuration file">
+			<description>URL to configuration file in the DSL.</description>
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">softwareconfig</setSimpleValue>
+	</template>
+	
+	<template alias="SoftwareConfiguration" displayName="Software Configuration">
+		<derivedFrom>
+			<ref alias="ApplicationSoftware"/>
+		</derivedFrom>
+		<description>Application software configuration.</description>
+    <attribute attAlias="version" displayName="Version">
+			<description>Version number of configuration.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+    <attribute attAlias="softwarePackage" displayName="Software Package">
+			<description>Configuration applicable to this software.</description>
+			<complexType>
+				<ref alias="SoftwarePackage"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">softwareconfig</setSimpleValue>
+	</template>
+	
+	<template alias="ApplicationSoftware" displayName="Software">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>Software files for installation.</description>
+		<setSimpleValue attAlias="icon">package</setSimpleValue>
+	</template>
+	
+	<template alias="Resource" displayName="Resource">
+		<derivedFrom>
+			<ref alias="Ci"/>
+		</derivedFrom>
+		<description>The master template for most of the user defined templates.</description>
+		<setSimpleValue attAlias="icon">resource</setSimpleValue>
+	</template>
+	
+	<template alias="NetworkInterfaces" displayName="Network Interfaces">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>The folder lists network interfaces.</description>
+		<attribute attAlias="networkInterfaces">
+			<description>Network interfaces</description>
+			<complexType>
+				<ref alias="NetworkInterface"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+		
+	<template alias="NICs" displayName="NIC Folder">
+		<derivedFrom>
+			<ref alias="Folder"/>
+		</derivedFrom>
+		<description>The folder lists network interface cards.</description>
+		<attribute attAlias="nics" displayName="NICs">
+			<description>Lists network interface cards</description>
+			<complexType>
+				<ref alias="NIC"/>
+				<refType><ref alias="Uses"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon">folder</setSimpleValue>
+	</template>
+</templates>
+
+<instances>
+<!-- Note, instance displayName and descriptions are copied from the templates according to default policies.
+     That is, if you set displayName or description below they will not be used. -->
+
+  <!-- Common instances -->
+	<ImportModel alias="defaultImport">
+		<javaClass>org.onecmdb.core.internal.job.workflow.sample.UrlImportProcess</javaClass>
+		<importUrl>file:///tmp/BasicModel.xml</importUrl>
+		<icon>job</icon>
+	</ImportModel>
+	
+	<ExportModel alias="defaultExport">
+		<javaClass>org.onecmdb.core.internal.job.workflow.sample.ExportModelProcess</javaClass>
+		<rootAlias>Root</rootAlias>
+		<instances>true</instances>
+		<templates>true</templates>
+		<exportFile>/tmp/ExportedModel.xml</exportFile>
+		<icon>job</icon>
+	</ExportModel>
+	
+	<JobManualTrigger alias="manualImportTrigger">
+		<icon>job</icon>
+		<process><ref alias="defaultImport"/></process>
+	</JobManualTrigger>
+	
+	<JobManualTrigger alias="manualExportTrigger">
+		<icon>job</icon>
+		<process><ref alias="defaultExport"/></process>
+	</JobManualTrigger>
+	
+	<!-- Advanced instances-->
+	<!--  Is performed through a script now. 
+  <DiscoverSystemsJob alias="MyDatacenterDiscovery">
+    <icon>job</icon>
+    <datacenter><ref alias="DataCenter"/></datacenter>
+    <target>192.168.1.0/24</target>
+    <ipTemplate>IP</ipTemplate>
+		<ipContainer><ref alias="IPs-1"/></ipContainer>
+    <nicTemplate>NIC</nicTemplate>
+    <nicContainer><ref alias="NICs-1"/></nicContainer>
+		<netIfTemplate>NetworkInterface</netIfTemplate>
+    <netIfContainer><ref alias="NetworkInterfaces-1"/></netIfContainer>
+		<dnsEntryTemplate>DNSEntry</dnsEntryTemplate>
+		<dnsEntryContainer><ref alias="DNSEntries-1"/></dnsEntryContainer>
+    <hostnameTemplate>Hostname</hostnameTemplate>
+    <javaClass>org.onecmdb.utils.internal.nmap.NmapSystemDiscoverBeanProvider</javaClass>
+		<nmapExecutable>./nmap-4.10/nmap.exe</nmapExecutable>
+    <state>IDLE</state>		
+    <progressPercentage>0</progressPercentage>						
+	</DiscoverSystemsJob>
+	
+  <JobManualTrigger alias="ManualDatacenterTrigger">
+		<icon>job</icon>
+		<process><ref alias="MyDatacenterDiscovery"/></process>
+	</JobManualTrigger>
+	-->
+	
+	<DataCenterFolder alias="DataCenter">
+		<icon>datacenter</icon>
+		<SoftwareFolder><ref alias="SoftwareFolder-1"/></SoftwareFolder>
+		<applicationFolder><ref alias="Applications-1"/></applicationFolder>
+		<networkFolder><ref alias="Network-1"/></networkFolder>
+		<computerFolder><ref alias="Computers-1"/></computerFolder>
+		<serviceFolder><ref alias="Services-1"/></serviceFolder>
+	</DataCenterFolder>
+	
+	<SoftwareFolder alias="SoftwareFolder-1">
+		<icon>folder</icon>
+	</SoftwareFolder>
+	
+	<NetworkInterfaces alias="NetworkInterfaces-1">
+		<icon>folder</icon>
+	</NetworkInterfaces>
+	
+	<Computers alias="Computers-1">
+		<icon>folder</icon>
+	</Computers>
+	
+	<DNSEntries alias="DNSEntries-1">
+		<icon>folder</icon>
+	</DNSEntries>
+	
+	<Switches alias="Switches-1">
+		<icon>folder</icon>
+	</Switches>
+	
+	<NICs alias="NICs-1">
+		<icon>folder</icon>
+	</NICs>
+	
+	<IPs alias="IPs-1">
+		<icon>folder</icon>
+	</IPs>
+	
+	<Hubs alias="Hubs-1">
+		<icon>folder</icon>
+	</Hubs>
+	
+	<Services alias="Services-1" displayName="Services">
+		<icon>folder</icon>
+	</Services>
+	
+	<Applications alias="Applications-1" displayName="Applications">
+		<icon>folder</icon>
+	</Applications>
+	
+	<Network alias="Network-1">
+		<icon>folder</icon>
+		<dnsentryFolder><ref alias="DNSEntries-1"/></dnsentryFolder>
+		<switchFolder><ref alias="Switches-1"/></switchFolder>
+		<ipFolder><ref alias="IPs-1"/></ipFolder>
+		<hubFolder><ref alias="Hubs-1"/></hubFolder>
+		<nicFolder><ref alias="NICs-1"/></nicFolder>
+	</Network>
+	
+	<!-- NMAP Transform instances -->
+	<DataSet alias="nmap-transform">
+		<instanceSelector>
+			<ref>
+				<ForwardInstanceSelector>
+					<name>Nmap</name>
+				</ForwardInstanceSelector>
+			</ref>
+		</instanceSelector>
+
+		<attributeSelector>
+			<ref>
+				<ComplexAttributeSelector>
+					<name>dns-entry-folder</name>
+					<dataSet>
+						<ref alias="nmap-dnsentry-folder" />
+					</dataSet>
+				</ComplexAttributeSelector>
+			</ref>
+		</attributeSelector>
+
+		<attributeSelector>
+			<ref>
+				<ComplexAttributeSelector>
+					<name>netif-folder</name>
+					<dataSet>
+						<ref alias="nmap-netif-folder" />
+					</dataSet>
+				</ComplexAttributeSelector>
+			</ref>
+		</attributeSelector>
+
+		<attributeSelector>
+			<ref>
+				<ComplexAttributeSelector>
+					<name>nic-folder</name>
+					<dataSet>
+						<ref alias="nmap-nic-folder" />
+					</dataSet>
+				</ComplexAttributeSelector>
+			</ref>
+		</attributeSelector>
+
+		<attributeSelector>
+			<ref>
+				<ComplexAttributeSelector>
+					<name>ip-folder</name>
+					<dataSet>
+						<ref alias="nmap-ip-folder" />
+					</dataSet>
+				</ComplexAttributeSelector>
+			</ref>
+		</attributeSelector>
+		<attributeSelector>
+			<ref>
+				<ComplexAttributeSelector>
+					<name>server applications</name>
+					<dataSet>
+						<ref alias="nmap-serverapplication" />
+					</dataSet>
+				</ComplexAttributeSelector>
+			</ref>
+		</attributeSelector>
+
+	</DataSet>
+
+	<DataSet alias="nmap-ip-folder">
+		<instanceSelector>
+			<ref>
+				<XPathInstanceSelector>
+					<name>ipFolder</name>
+					<xpath>/*</xpath>
+					<template>IPs</template>
+					<instance>IPs-1</instance>
+				</XPathInstanceSelector>
+			</ref>
+		</instanceSelector>
+
+		<attributeSelector>
+			<ref>
+				<XPathComplexAttributeSelector>
+					<name>ips</name>
+					<dataSet>
+						<ref alias="nmap-ipaddress" />
+					</dataSet>
+					<xpath>//host[status[@state='up']]/address[@addrtype='ipv4']</xpath>
+				</XPathComplexAttributeSelector>
+			</ref>
+		</attributeSelector>
+	</DataSet>
+	<DataSet alias="nmap-nic-folder">
+		<instanceSelector>
+			<ref>
+				<XPathInstanceSelector>
+					<name>nicFolder</name>
+					<xpath>/*</xpath>
+					<template>NICs</template>
+					<instance>NICs-1</instance>
+				</XPathInstanceSelector>
+			</ref>
+		</instanceSelector>
+
+		<attributeSelector>
+			<ref>
+				<XPathComplexAttributeSelector>
+					<name>nics</name>
+					<dataSet>
+						<ref alias="nmap-nic" />
+					</dataSet>
+					<xpath>//host[status[@state='up']]/address[@addrtype='mac']</xpath>
+				</XPathComplexAttributeSelector>
+			</ref>
+		</attributeSelector>
+
+	</DataSet>
+	<DataSet alias="nmap-dnsentry-folder">
+		<instanceSelector>
+			<ref>
+				<XPathInstanceSelector>
+					<name>dnsEntry</name>
+					<xpath>/*</xpath>
+					<template>DNSEntries</template>
+					<instance>DNSEntries-1</instance>
+				</XPathInstanceSelector>
+			</ref>
+		</instanceSelector>
+
+		<attributeSelector>
+			<ref>
+				<ComplexAttributeSelector>
+					<name>dnsEntries</name>
+					<dataSet>
+						<ref alias="nmap-dnsentry" />
+					</dataSet>
+					<naturalKey>true</naturalKey>
+				</ComplexAttributeSelector>
+			</ref>
+		</attributeSelector>
+
+	</DataSet>
+	<DataSet alias="nmap-netif-folder">
+		<instanceSelector>
+			<ref>
+				<XPathInstanceSelector>
+					<name>netifFolder</name>
+					<xpath>/*</xpath>
+					<template>NetworkInterfaces</template>
+					<instance>NetworkInterfaces-1</instance>
+				</XPathInstanceSelector>
+			</ref>
+		</instanceSelector>
+
+		<attributeSelector>
+			<ref>
+				<ComplexAttributeSelector>
+					<name>networkInterfaces</name>
+					<dataSet>
+						<ref alias="nmap-netif" />
+					</dataSet>
+					<naturalKey>true</naturalKey>
+				</ComplexAttributeSelector>
+			</ref>
+		</attributeSelector>
+	</DataSet>
+
+	<DataSet alias="nmap-dnsentry">
+		<instanceSelector>
+			<ref>
+				<XPathInstanceSelector>
+					<name>dnsEntry</name>
+					<xpath>//host[status[@state='up']]</xpath>
+					<template>DNSEntry</template>
+				</XPathInstanceSelector>
+			</ref>
+		</instanceSelector>
+
+		<attributeSelector>
+			<ref>
+				<ComplexAttributeSelector>
+					<name>ip</name>
+					<dataSet>
+						<ref alias="nmap-ipaddress" />
+					</dataSet>
+					<naturalKey>true</naturalKey>
+				</ComplexAttributeSelector>
+			</ref>
+		</attributeSelector>
+
+		<attributeSelector>
+			<ref>
+				<ComplexAttributeSelector>
+					<name>hostname</name>
+					<dataSet>
+						<ref alias="nmap-hostname" />
+					</dataSet>
+					<naturalKey>true</naturalKey>
+				</ComplexAttributeSelector>
+			</ref>
+		</attributeSelector>
+	</DataSet>
+
+	<DataSet alias="nmap-netif">
+		<instanceSelector>
+			<ref>
+				<XPathInstanceSelector>
+					<name>netIf</name>
+					<xpath>//host[status[@state='up']]</xpath>
+					<template>NetworkInterface</template>
+				</XPathInstanceSelector>
+			</ref>
+		</instanceSelector>
+
+		<attributeSelector>
+			<ref>
+				<ComplexAttributeSelector>
+					<name>ipAddress</name>
+					<dataSet>
+						<ref alias="nmap-ipaddress" />
+					</dataSet>
+					<naturalKey>true</naturalKey>
+				</ComplexAttributeSelector>
+			</ref>
+		</attributeSelector>
+
+		<attributeSelector>
+			<ref>
+				<ComplexAttributeSelector>
+					<name>nic</name>
+					<dataSet>
+						<ref alias="nmap-nic" />
+					</dataSet>
+					<naturalKey>true</naturalKey>
+				</ComplexAttributeSelector>
+			</ref>
+		</attributeSelector>
+	</DataSet>
+
+	<DataSet alias="nmap-ipaddress">
+		<instanceSelector>
+			<ref>
+				<XPathInstanceSelector>
+					<name>ipaddress</name>
+					<xpath>address[@addrtype='ipv4']</xpath>
+					<template>IP</template>
+				</XPathInstanceSelector>
+			</ref>
+		</instanceSelector>
+
+		<attributeSelector>
+			<ref>
+				<XPathAttributeSelector>
+					<name>ipAddress</name>
+					<xpath>@addr</xpath>
+					<naturalKey>true</naturalKey>
+				</XPathAttributeSelector>
+			</ref>
+		</attributeSelector>
+	</DataSet>
+
+	<DataSet alias="nmap-nic">
+		<instanceSelector>
+			<ref>
+				<XPathInstanceSelector>
+					<name>ipaddress</name>
+					<xpath>address[@addrtype='mac']</xpath>
+					<template>NIC</template>
+				</XPathInstanceSelector>
+			</ref>
+		</instanceSelector>
+
+		<attributeSelector>
+			<ref>
+				<XPathAttributeSelector>
+					<name>mac</name>
+					<xpath>@addr</xpath>
+					<naturalKey>true</naturalKey>
+				</XPathAttributeSelector>
+			</ref>
+		</attributeSelector>
+		<attributeSelector>
+			<ref>
+				<XPathAttributeSelector>
+					<name>vendor</name>
+					<xpath>@vendor</xpath>
+				</XPathAttributeSelector>
+			</ref>
+		</attributeSelector>
+		
+	</DataSet>
+
+	<DataSet alias="nmap-hostname">
+		<instanceSelector>
+			<ref>
+				<XPathInstanceSelector>
+					<name>hostname</name>
+					<xpath>hostnames/hostname</xpath>
+					<template>Hostname</template>
+				</XPathInstanceSelector>
+			</ref>
+		</instanceSelector>
+
+		<attributeSelector>
+			<ref>
+				<XPathAttributeSelector>
+					<name>hostname</name>
+					<xpath>@name</xpath>
+					<naturalKey>true</naturalKey>
+				</XPathAttributeSelector>
+			</ref>
+		</attributeSelector>
+	
+		</DataSet>
+		
+		<DataSet alias="nmap-serverapplication">
+			<instanceSelector>
+				<ref>
+					<XPathInstanceSelector>
+						<name>ServerApplication</name>
+						<xpath>//host[status[@state='up']]/ports/port[state[@state='open']]</xpath>
+						<template>ServerApplication</template>
+					</XPathInstanceSelector>
+				</ref>
+			</instanceSelector>
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector>
+						<name>port</name>
+						<xpath>@portid</xpath>
+						<naturalKey>true</naturalKey>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector>
+						<name>protocol</name>
+						<xpath>@protocol</xpath>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector>
+						<name>name</name>
+						<xpath>service/@name</xpath>
+						<naturalKey>false</naturalKey>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+			
+			<attributeSelector>
+				<ref>
+				 <ComplexAttributeSelector>
+					<name>os</name>
+					<dataSet>
+						<ref alias="nmap-os" />
+					</dataSet>
+					<naturalKey>true</naturalKey>
+				</ComplexAttributeSelector>
+				</ref>
+			</attributeSelector>
+		</DataSet>
+	
+		<DataSet alias="nmap-os">
+			<name>nmap-os</name>
+			<instanceSelector>
+				<ref>
+					<XPathInstanceSelector>
+						<name>os</name>
+						<xpath>ancestor::host/os</xpath>
+						<template>OperatingSystem</template>
+					</XPathInstanceSelector>
+				</ref>
+			</instanceSelector>
+
+			<attributeSelector>
+				<ref>
+					<XPathAttributeSelector>
+						<name>name</name>
+						<xpath>osmatch/@name</xpath>
+						<naturalKey>true</naturalKey>
+					</XPathAttributeSelector>
+				</ref>
+			</attributeSelector>
+			<attributeSelector>
+				<ref>
+				 <ComplexAttributeSelector>
+					<name>netif</name>
+					<dataSet>
+						<ref alias="nmap-netif2" />
+					</dataSet>
+					<naturalKey>true</naturalKey>
+				</ComplexAttributeSelector>
+				</ref>
+			</attributeSelector>
+
+		</DataSet>
+	
+	<DataSet alias="nmap-netif2">
+		<instanceSelector>
+			<ref>
+				<XPathInstanceSelector>
+					<name>netIf</name>
+					<xpath>ancestor::host</xpath>
+					<template>NetworkInterface</template>
+				</XPathInstanceSelector>
+			</ref>
+		</instanceSelector>
+
+		<attributeSelector>
+			<ref>
+				<ComplexAttributeSelector>
+					<name>ipAddress</name>
+					<dataSet>
+						<ref alias="nmap-ipaddress" />
+					</dataSet>
+					<naturalKey>true</naturalKey>
+				</ComplexAttributeSelector>
+			</ref>
+		</attributeSelector>
+
+		<attributeSelector>
+			<ref>
+				<ComplexAttributeSelector>
+					<name>nic</name>
+					<dataSet>
+						<ref alias="nmap-nic" />
+					</dataSet>
+					<naturalKey>true</naturalKey>
+				</ComplexAttributeSelector>
+			</ref>
+		</attributeSelector>
+	</DataSet>
+	
+		<!-- NMAP Transform instances END -->
+</instances>
+</onecmdb>

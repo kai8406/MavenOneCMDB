@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GraphQuery>
+	<ItemOffspringSelector id="server" template="Server" />
+	<ItemOffspringSelector id="disk" template="Disk" primary="true" />
+	<ItemRelationSelector id="disk2server" template="Reference">
+		<source>disk</source>
+		<target>server</target>
+	</ItemRelationSelector>
+</GraphQuery>
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+	<templates>
+		<!-- ###########################################  	-->
+		<!-- Organisation Definition 	-->
+		<!-- ###########################################  	-->
+		<template alias="Organisation" displayName="${name}">
+			<derivedFrom><ref alias="Ci"/></derivedFrom>
+			<attribute attAlias="name">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="name">Organisation</setSimpleValue>
+		</template>
+	
+		<!-- ###########################################  	-->
+		<!-- Resource Definition 	-->
+		<!-- ###########################################  	-->	
+		<template alias="Resource" displayName="${type}">
+			<derivedFrom><ref alias="Ci"/></derivedFrom>
+			<attribute attAlias="type">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="type">Resource</setSimpleValue>		
+		</template>
+		
+		<template alias="Platform">
+			<derivedFrom><ref alias="Resource"/></derivedFrom>
+			<setSimpleValue attAlias="type">Platform</setSimpleValue>		
+		</template>
+
+		<template alias="Software">
+			<derivedFrom><ref alias="Resource"/></derivedFrom>
+			
+			<setSimpleValue attAlias="type">Software</setSimpleValue>		
+		</template>
+	
+		
+		<template alias="Segment" displayName="${entityName} ${type}">
+			<derivedFrom><ref alias="Resource"/></derivedFrom>
+			<attribute attAlias="entityName">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="type">Segment</setSimpleValue>
+		</template>
+		
+		<!-- ###########################################  	-->
+		<!-- Service Definition 	-->
+		<!-- ###########################################  	-->	
+		
+		<template alias="Service" displayName="${entityName}">
+			<derivedFrom><ref alias="Ci"/></derivedFrom>
+			<attribute attAlias="user">
+				<complexType>
+					<ref alias="Organisation" />
+					<refType><ref alias="UsedBy"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>unbound</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="entityName">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="entityName">Service</setSimpleValue>
+		</template>
+	</templates>
+	
+</onecmdb>

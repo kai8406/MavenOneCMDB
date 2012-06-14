@@ -1,0 +1,11 @@
+<module>
+
+	<!-- Inherit the core Web Toolkit stuff.                  -->
+  
+	<inherits name='org.gwtiger.gwtiger' />
+
+	<!--  Specify rpc servlet  -->
+  	<servlet path='/onecmdb-gwt/wsdl' class='org.onecmdb.ui.gwt.toolkit.server.OneCMDBGWTService'/>
+  
+  
+</module>

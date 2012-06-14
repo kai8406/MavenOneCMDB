@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE 
+	beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- 
+	  -		Assembly of One|CMDB
+	  - 	References all parts needed to start the oneCmdb application
+	  -->
+	<bean id="onecmdb" class="org.onecmdb.core.internal.firstgo.OneCmdb">
+		<property name="daoReader">
+			<ref bean="daoHibbe" />
+		</property>
+		<property name="changeControl">
+			<ref bean="ccb" />
+		</property>
+
+		<!-- the services included -->
+		<property name="services">
+			<list>
+				<ref bean="ciservice" />
+				<ref bean="noservice" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="ciservice" class="org.onecmdb.core.internal.firstgo.CiService">
+		<property name="rootCi" ref="ROOT"/>
+	</bean>
+	<bean id="noservice" class="org.onecmdb.core.internal.notification.NotificationService">
+	</bean>
+
+
+
+
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- Intial (hives of) Objects                                 -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+	<!-- #1:ATTRIBUTE -->
+	<bean id="ATTRIBUTE" class="org.onecmdb.core.internal.firstgo.BasicAttribute">
+		<property name="itemId" value="1"/>
+		<property name="attributes">
+			<set>
+				<!--  name -->
+				<bean class="org.onecmdb.core.internal.firstgo.BasicAttribute">
+					<property name="name" value="icon" />
+					<property name="type" ref="image/gif" />
+					<property name="value"><idref bean="ATTRIBUTE"/></property>
+				</bean>
+				<!--  icon -->
+				<bean class="org.onecmdb.core.internal.firstgo.BasicAttribute">
+					<property name="name" value="icon" />
+					<property name="type" ref="image/gif" />
+				</bean>
+			</set>
+		</property>
+		<!--  display name -->
+		<property name="displayName" value="${name}" />
+	</bean>
+
+
+	<!--  #0:ROOT  -->
+	<!--  CI from where any other items is derived from -->
+    <bean id="ROOT" class="org.onecmdb.core.internal.firstgo.ConfigurationItem">
+    	<property name="itemId"><value>0</value></property>
+		<property name="attributes">
+		<set>
+			<!--  name -->
+			<bean class="org.onecmdb.core.internal.firstgo.BasicAttribute">
+				<property name="name"><value>name</value></property>
+				<property name="type"><ref bean="text/plain" /></property>
+				<property name="value"><idref bean="ROOT"/></property>
+			</bean>
+			<!--  icon -->
+			<bean class="org.onecmdb.core.internal.firstgo.BasicAttribute">
+				<property name="name"><value>icon</value></property>
+				<property name="type"><ref bean="image/gif" /></property>
+				<property name="value"><value>[base64]0x120x550x66</value></property>
+			</bean>
+		</set>
+		</property>
+			<!--  display name defaults to the name attribute -->
+			<property name="displayName" value="${name}" />
+    </bean>
+
+    <!-- #1:TYPE -->
+    <bean name="TYPE" class="org.onecmdb.core.internal.firstgo.ConfigurationItem">
+    	<property name="itemId" value="1" />
+    	<property name="attributes">
+    		<set>
+    			<!--  name -->
+    			<bean class="org.onecmdb.core.internal.firstgo.BasicAttribute">
+    				<property name="name">
+    					<value>name</value>
+    				</property>
+    				<property name="type">
+    					<ref bean="image/gif" />
+    				</property>
+    				<property name="value">
+    					<idref bean="TYPE" />
+    				</property>
+    			</bean>
+    			<!--  icon -->
+    			<bean class="org.onecmdb.core.internal.firstgo.BasicAttribute">
+    				<property name="name">
+    					<value>icon</value>
+    				</property>
+    				<property name="type">
+    					<ref bean="image/gif" />
+    				</property>
+    				<property name="value" value="[base64]icon"></property>
+    			</bean>
+    			<!--  mimetype -->
+    			<bean class="org.onecmdb.core.internal.firstgo.BasicAttribute">
+    				<property name="name">
+    					<value>mimeType</value>
+    				</property>
+    				<property name="type">
+    					<null />
+    				</property>
+    				<property name="value">
+    					<null />
+    				</property>
+    			</bean>
+    		</set>
+    	</property>
+    	<!--  display name defaults to the name attribute -->
+    	<property name="displayName" value="${name}" />
+
+    </bean>
+
+	<!--  specific implementatio of default mime types -->
+	<bean id="TYPE.1" name="image/gif" class="org.onecmdb.core.internal.firstgo.MimeType">
+		<property name="itemId" value="1" />
+		<property name="mimeType" value="image/gif" />
+	</bean>
+
+	<bean id="TYPE.2" name="text/plain" class="org.onecmdb.core.internal.firstgo.MimeType">
+		<property name="itemId" value="2" />
+		<property name="mimeType" value="text/plain" />
+	</bean>
+
+	<!--  a type, where the value holds a set of (references) to other items --> 
+	<bean id="TYPE.3" name="application/x-set" class="org.onecmdb.core.internal.firstgo.MimeType">
+		<property name="itemId" value="3" />
+		<property name="mimeType" value="application/x-set" />
+	</bean>
+
+
+
+
+	<!--  | CONTAINER | -->
+    <bean id="CONTAINER" class="org.onecmdb.core.internal.firstgo.ConfigurationItem">
+    	<property name="itemId" value="1" />
+    	<property name="attributes">
+    		<set>
+    			<!--  name -->
+    			<bean class="org.onecmdb.core.internal.firstgo.BasicAttribute">
+    				<property name="name">
+    					<value>name</value>
+    				</property>
+    				<property name="type">
+    					<ref bean="image/gif" />
+    				</property>
+    				<property name="value">
+    					<idref bean="CONTAINER" />
+    				</property>
+    			</bean>
+    			<!--  icon -->
+    			<bean class="org.onecmdb.core.internal.firstgo.BasicAttribute">
+    				<property name="name">
+    					<value>icon</value>
+    				</property>
+    				<property name="type">
+    					<ref bean="image/gif" />
+    				</property>
+    				<property name="value" value="[base64]icon"></property>
+    			</bean>
+    			<!--  collection of atttached items -->
+    			<bean class="org.onecmdb.core.internal.firstgo.BasicAttribute">
+    				<property name="name">
+    					<value>mimeType</value>
+    				</property>
+    				<property name="type" ref="application/x-set"/>
+    				<property name="value"><set></set>
+    				</property>
+    			</bean>
+    		</set>
+    	</property>
+    	<!--  display name defaults to the name attribute -->
+    	<property name="displayName" value="${name}" />
+
+    </bean>
+
+
+
+
+	<!--  | SERVICE | -->
+    <bean id="SERVICE" class="org.onecmdb.core.internal.firstgo.Service">
+    	<property name="itemId" value="1" />
+    	<property name="attributes">
+    		<set>
+    			<!--  name -->
+    			<bean class="org.onecmdb.core.internal.firstgo.BasicAttribute">
+    				<property name="name">
+    					<value>name</value>
+    				</property>
+    				<property name="type">
+    					<ref bean="image/gif" />
+    				</property>
+    				<property name="value">
+    					<idref bean="SERVICE" />
+    				</property>
+    			</bean>
+    			<!--  icon -->
+    			<bean class="org.onecmdb.core.internal.firstgo.BasicAttribute">
+    				<property name="name">
+    					<value>icon</value>
+    				</property>
+    				<property name="type">
+    					<ref bean="image/gif" />
+    				</property>
+    				<property name="value" value="[base64]icon"></property>
+    			</bean>
+    			<!--  collection of atttached items -->
+    			<bean class="org.onecmdb.core.internal.firstgo.BasicAttribute">
+    				<property name="name">
+    					<value>mimeType</value>
+    				</property>
+    				<property name="type" ref="application/x-set"/>
+    				<property name="value"><set></set>
+    				</property>
+    			</bean>
+    		</set>
+    	</property>
+    	<!--  display name defaults to the name attribute -->
+    	<property name="displayName" value="${name}" />
+
+    </bean>
+
+	<!--  | MODEL | -->
+
+
+
+
+
+	<bean id="iconProvider" class="org.onecmdb.core.internal.firstgo.ResourceProvider">
+	<property name="resource"><value>http://www.gno.se/favicon.gif</value></property>
+	</bean>
+
+
+
+
+
+
+
+
+    <bean id="daoHibbe" class="org.onecmdb.core.internal.storage.hibernate.HibernateDao">
+	</bean>
+	
+
+
+	<bean id="ccb" class="org.onecmdb.core.internal.ccb.LokomoCcb">
+		<property name="daoReader"><ref bean="daoHibbe"/></property>
+		<property name="daoWriter"><ref bean="daoHibbe"/></property>
+	</bean>
+
+	
+	<bean id="auth" class="org.onecmdb.core.internal.firstgo.AuthenticationBean">
+	<property name="username"><value>kalle</value></property>
+	<property name="password"><value>*****</value></property>
+	</bean>
+
+
+</beans>

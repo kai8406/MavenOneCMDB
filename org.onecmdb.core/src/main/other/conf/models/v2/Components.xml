@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+	<templates>
+		<!-- OS template definitions -->
+		
+		<!-- Logical Component -->
+		
+		<template alias="ApplicationComponent">
+			<derivedFrom><ref alias="Application"/></derivedFrom>
+		</template>
+		
+		<template alias="DatabaseInstance">
+			<derivedFrom><ref alias="ApplicationComponent"/></derivedFrom>
+		</template>
+		<template alias="Servlet">
+			<derivedFrom><ref alias="ApplicationComponent"/></derivedFrom>
+		</template>
+		<template alias="WebApp">
+			<derivedFrom><ref alias="ApplicationComponent"/></derivedFrom>
+		</template>
+		
+		<!-- Physical Component -->
+		<template alias="PlatformComponent">
+			<derivedFrom><ref alias="Component"/></derivedFrom>
+		</template>
+		
+		<template alias="Disk">
+			<derivedFrom><ref alias="PlatformComponent"/></derivedFrom>
+		</template>
+		
+		<template alias="CPU">
+			<derivedFrom><ref alias="PlatformComponent"/></derivedFrom>
+		</template>
+		
+		<template alias="FileSystem">
+			<derivedFrom><ref alias="PlatformComponent"/></derivedFrom>
+		</template>
+		
+		<template alias="OS">
+			<derivedFrom><ref alias="PlatformComponent"/></derivedFrom>
+					<attribute attAlias="partOf">
+				<complexType>
+					<ref alias="PlatformSystem" />
+					<refType><ref alias="BelongsTo"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>	
+		</template>
+		<template alias="Linux">
+			<derivedFrom><ref alias="OS"/></derivedFrom>
+		</template>
+		<template alias="Windows">
+			<derivedFrom><ref alias="OS"/></derivedFrom>
+		</template>
+		<template alias="Solaris">
+			<derivedFrom><ref alias="OS"/></derivedFrom>
+		</template>
+		<template alias="CiscoIOS">
+			<derivedFrom><ref alias="OS"/></derivedFrom>
+		</template>
+		
+	</templates>
+	
+</onecmdb>

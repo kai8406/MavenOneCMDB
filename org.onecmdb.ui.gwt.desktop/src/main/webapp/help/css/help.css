@@ -1,0 +1,32 @@
+
+.body {
+	background-color: #DFE8F6;
+}
+
+.title {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.text  {
+	font-size: 11px;
+	font-family: tahoma, arial, helvetica, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	
+}
+
+.text-larger  {
+	font-size: 12px;
+	font-family: tahoma, arial, helvetica, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	
+}
+
+.path {
+	font-size: 11px;
+	font-style: italic;
+}

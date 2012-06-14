@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<onecmdb>
+	<templates>
+
+		<!--  
+			- DEFINITION of types of References used in the model
+		-->
+		<template alias="Item">
+			<derivedFrom>
+				<ref alias="Ci" />
+			</derivedFrom>
+		</template>
+		
+		<template alias="SimpleAttributeRoot">
+			<derivedFrom>
+				<ref alias="Ci" />
+			</derivedFrom>
+			<description>the target of the reference is dependent on the source and cannot function without the source</description>
+			<!-- new attributes -->
+			<attribute attAlias="name">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="category">
+				<complexType>
+					<ref alias="Item" />
+					<refType>
+						<ref alias="Reference" />
+					</refType>
+				</complexType>
+				<policy>
+					<maxOccurs>unbound</maxOccurs>
+				</policy>
+			</attribute>
+			<!--  inherited attributes -->			
+		</template>
+
+		<template alias="Child1">
+			<derivedFrom>
+				<ref alias="SimpleAttributeRoot" />
+			</derivedFrom>
+			<setSimpleValue attAlias="name">root-name</setSimpleValue>
+			<setComplexValue attAlias="category">
+				<ref alias="Item1" />
+				</setComplexValue>
+		</template>
+	
+		<template alias="Child2">
+			<derivedFrom>
+				<ref alias="Child1" />
+			</derivedFrom>
+		</template>
+	
+		<template alias="Child3">
+			<derivedFrom>
+				<ref alias="Child2" />
+			</derivedFrom>
+		</template>
+	</templates>
+	
+	<instances>
+		<Item alias="Item1"/>
+		<Item alias="Item2"/>
+		<Item alias="Item3"/>
+		
+	</instances>
+</onecmdb>

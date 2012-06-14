@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE 
+	beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-dependency-check="none">
+	
+	<import resource="org/onecmdb/core/tests/resources/datasource/mysql-update-datasource.xml"/>
+	<!--  <import resource="datasource.xml"/>  -->
+	<import resource="empty-provider.xml"/>
+	
+	<bean id="onecmdb" class="org.onecmdb.core.internal.OneCmdb" init-method="init" 
+		destroy-method="close">
+		<property name="profiler" value="false"/>
+		
+		<property name="services">
+			<!--  The order here is vital -->
+			<!-- 
+				 1) ccb 
+				 2) model
+				 3) reference
+				 4) policy
+				 ... The rest.
+			 -->
+			<list>
+				<ref bean="ccbService" />
+				<ref bean="modelService" />
+				<ref bean="referenceService" />				
+				<ref bean="authenticationService"/>
+				<ref bean="authorizationService"/>
+				<ref bean="policyService" />
+				<ref bean="ciService" />
+				<ref bean="jobService" />
+				<ref bean="updateService" />
+				
+			</list>
+		</property>
+	</bean>
+	
+	
+	<bean id="modelService" class="org.onecmdb.core.internal.model.ModelService">
+		<property name="daoReader">
+			<ref bean="daoHibbe" />
+		</property>
+		<property name="rootAlias">
+			<value>Root</value>
+		</property>
+	</bean>
+
+	<bean id="ciService" class="org.onecmdb.core.internal.ciservice.CiService">
+		<property name="modelService">
+			<ref bean="modelService" />
+		</property>
+		<property name="rootAlias">
+			<value>Ci</value>
+		</property>
+		<property name="session">
+			<ref bean="initSession"/>
+		</property>
+		<property name="schemaProvider">
+			<ref bean="ciSchemaProvider"/>
+		</property>	
+	</bean>
+	<bean id="ciSchemaProvider" class="org.onecmdb.core.utils.xml.XmlParser">
+		<property name="URLs">
+			<list>
+				<value>res:org/onecmdb/core/internal/ciservice/CiSchema.xml</value>				
+			</list>
+		</property>
+	</bean>
+	
+
+	<bean id="referenceService" class="org.onecmdb.core.internal.reference.ReferenceService">
+		<property name="modelService">
+			<ref bean="modelService" />
+		</property>
+		<property name="daoReader">
+			<ref bean="daoHibbe" />
+		</property>
+		<property name="rootAlias">
+			<value>Reference</value>
+		</property>
+		<property name="session">
+			<ref bean="initSession"/>
+		</property>
+		<property name="schemaProvider">
+			<ref bean="referenceSchemaProvider"/>
+		</property>	
+
+	</bean>
+
+	<bean id="referenceSchemaProvider" class="org.onecmdb.core.utils.xml.XmlParser">
+		<property name="URLs">
+			<list>
+				<value>res:org/onecmdb/core/internal/reference/ReferenceSchema.xml</value>				
+			</list>
+		</property>
+	</bean>
+
+	<!-- 
+		==============================================
+		Policy Service.
+		
+		Documentation...
+		
+		
+		==============================================
+	-->
+	<bean id="policyService" class="org.onecmdb.core.internal.policy.PolicyService">
+		<property name="modelService">
+			<ref bean="modelService" />
+		</property>
+		<property name="rootAlias">
+			<value>Policy</value>
+		</property>
+		<property name="session">
+			<ref bean="initSession"/>
+		</property>
+		<property name="schemaProvider">
+			<ref bean="policySchemaProvider"/>
+		</property>	
+	</bean>
+	
+	<bean id="policySchemaProvider" class="org.onecmdb.core.utils.xml.XmlParser">
+		<property name="URLs">
+			<list>
+				<value>res:org/onecmdb/core/internal/policy/PolicySchema.xml</value>				
+			</list>
+		</property>
+	</bean>
+	<!--  
+		==============================================
+		Authorization Service.
+		
+		Documentation...
+		
+		
+		==============================================
+	-->
+	<bean id="authorizationService" class="org.onecmdb.core.internal.authorization.AuthorizationService">
+		<property name="session">
+			<ref bean="initSession"/>
+		</property>
+		<property name="schemaProvider">
+			<ref bean="authorizationSchemaProvider"/>
+		</property>	
+	</bean>
+	
+	<bean id="authorizationSchemaProvider" class="org.onecmdb.core.utils.xml.XmlParser">
+		<property name="URLs">
+			<list>
+				<value>classpath:org/onecmdb/core/internal/authorization/RBACSchema.xml</value>				
+			</list>
+		</property>
+	</bean>
+
+	<!--  
+		==============================================
+		Authentication Service.
+		
+		Documentation...
+		
+		
+		==============================================
+	-->
+	<bean id="authenticationService" class="org.onecmdb.core.internal.authentication.AuthenticationService">
+		<property name="session">
+			<ref bean="initSession"/>
+		</property>
+		<property name="schemaProvider">
+			<ref bean="authSchemaProvider"/>
+		</property>	
+	</bean>
+	
+	<bean id="authSchemaProvider" class="org.onecmdb.core.utils.xml.XmlParser">
+		<property name="URLs">
+			<list>
+				<value>classpath:org/onecmdb/core/internal/authentication/UserSchema.xml</value>				
+			</list>
+		</property>
+	</bean>
+
+		
+	<!-- 
+		==============================================
+		Job Service.
+		
+		Documentation...
+		
+		
+		==============================================
+	-->
+	<bean id="jobService" class="org.onecmdb.core.internal.job.JobService">
+		<property name="modelService">
+			<ref bean="modelService" />
+		</property>
+		<property name="rootAlias">
+			<value>Job</value>
+		</property>
+		<property name="session">
+			<ref bean="initSession"/>
+		</property>
+		<property name="schemaProvider">
+			<ref bean="jobSchemaProvider"/>
+		</property>	
+		
+		<property name="initScope">
+			<ref bean="initScope" />
+		</property>
+		<property name="initSession">
+			<ref bean="initSession" />
+		</property>
+	</bean>
+	
+	<bean id="jobSchemaProvider" class="org.onecmdb.core.utils.xml.XmlParser">
+		<property name="URLs">
+			<list>
+				<value>res:org/onecmdb/core/internal/job/JobSchema.xml</value>				
+			</list>
+		</property>
+	</bean>
+	
+
+	<bean id="containerService" class="org.onecmdb.core.internal.container.ContainerService">
+		<property name="modelService">
+			<ref bean="modelService" />
+		</property>
+		<property name="rootAlias">
+			<value>Container</value>
+		</property>
+		<property name="session">
+			<ref bean="initSession"/>
+		</property>
+		<property name="schemaProvider">
+			<ref bean="containerSchemaProvider"/>
+		</property>	
+	</bean>
+	
+	<bean id="containerSchemaProvider" class="org.onecmdb.core.utils.xml.XmlParser">
+		<property name="URLs">
+			<list>
+				<value>res:org/onecmdb/core/internal/container/ContainerSchema.xml</value>				
+			</list>
+		</property>
+	</bean>
+
+	<bean id="ccbService" class="org.onecmdb.core.internal.ccb.OneCmdbCcb">
+		<property name="daoReader">
+			<ref bean="daoHibbe" />
+		</property>
+		<property name="daoWriter">
+			<ref bean="daoHibbe" />
+		</property>
+		<property name="startupTransaction">
+			<ref bean="bootTx" />
+		</property>
+		<property name="session">
+			<ref bean="initSession"/>
+		</property>	
+		<property name="rfcWorkers">
+			<list>
+				<ref bean="ciRfcWorker" />
+				<ref bean="attributeRfcWorker" />
+				<ref bean="createRootCiRfcWorker" />
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="daoHibbe" class="org.onecmdb.core.internal.storage.hibernate.HibernateDao"
+	  destroy-method="destory">
+		<property name="sessionFactory" ref="mySessionFactory" />
+		<property name="interceptor" ref="daoReaderInterceptor" />
+	</bean>
+
+	<bean id="auth" class="org.onecmdb.core.internal.AuthenticationBean">
+		<property name="username">
+			<value>kalle</value>
+		</property>
+		<property name="password">
+			<value>*****</value>
+		</property>
+	</bean>
+
+
+	<bean id="daoReaderInterceptor" class="org.onecmdb.core.internal.storage.hibernate.DaoReaderInterceptor" />
+
+	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="mappingResources">
+			<list>
+				<value>org/onecmdb/core/internal/storage/hibernate/mapping/Ci.hbm.xml</value>
+				<value>org/onecmdb/core/internal/storage/hibernate/mapping/RFC.hbm.xml</value>
+			</list>
+		</property>
+		<property name="entityInterceptor" ref="daoReaderInterceptor" />
+
+		<!--  User configurable paremeters are imported -->
+		<!--  Is retrived from import datasource -->	 
+		<property name="hibernateProperties" ref="hibernateProperties"/>
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- Update service -->
+	<bean id="updateService" class="org.onecmdb.core.internal.update.UpdateService">
+		<property name="session">
+			<ref bean="initSession"/>
+		</property>
+	</bean>
+
+	<!--  RFC HANDLING -->
+	<bean id="ciRfcWorker" class="org.onecmdb.core.internal.ccb.workers.SimpleCiRfcWorker">
+		<property name="policyService">
+			<ref bean="policyService" />
+		</property>
+	</bean>
+	<bean id="createRootCiRfcWorker" class="org.onecmdb.core.internal.ccb.workers.SimpleCreateRootRfcWorker">
+		<property name="policyService">
+			<ref bean="policyService" />
+		</property>
+	</bean>
+	<bean id="attributeRfcWorker" class="org.onecmdb.core.internal.ccb.workers.SimpleAttributeRfcWorker">
+		<property name="policyService">
+			<ref bean="policyService" />
+		</property>
+		<property name="daoReader">
+			<ref bean="daoHibbe"/>
+		</property>
+	</bean>
+
+
+	<!--  Configuring Root CIs -->
+	<bean id="bootTx" class="org.onecmdb.core.internal.ccb.CmdbTransaction">
+		<property name="longId" value="0"/> 	
+		<property name="rfc">
+			<list>
+				<bean class="org.onecmdb.core.internal.ccb.rfc.RFCNewRootCi">
+					<property name="alias">
+						<value>Root</value>
+					</property>
+					<property name="rfcs">
+						<list>
+							<bean class="org.onecmdb.core.internal.ccb.rfc.RFCNewAttribute">
+								<property name="alias" value="icon" />
+								<property name="valueTypeAlias" value="xs:string" />
+								<property name="description"><value>Filename (no file extension) of icon image.</value></property>
+								<property name="rfcs">
+									<list>
+								 		<bean class="org.onecmdb.core.internal.ccb.rfc.RFCModifyDisplayNameExpression">
+									 		<property name="newDisplayNameExpression" value="Icon"/>
+							 			</bean>
+						 			</list>
+								</property>
+							</bean>						 	
+						 	<bean class="org.onecmdb.core.internal.ccb.rfc.RFCModifyDisplayNameExpression">
+						 		<property name="newDisplayNameExpression" value="Root"/>
+						 	</bean>
+						 	
+						 	<bean class="org.onecmdb.core.internal.ccb.rfc.RFCModifyDescription">
+						 		<property name="description"><value>Root is the master template for all configuration items in OneCMDB</value>
+						 		</property>
+						 	</bean>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="xsdString" class="org.onecmdb.core.internal.model.primitivetypes.StringType" />
+
+	<!-- Configuarting inition beans -->
+	<bean id="initSession" class="org.onecmdb.core.internal.session.Session">
+		<constructor-arg value="admin" />
+		<constructor-arg value="123" />
+		<constructor-arg ref="onecmdb" />
+		
+	</bean>
+
+
+
+	<bean id="initScope" class="org.onecmdb.core.utils.xml.BeanScope">
+		<property name="beanProvider">
+			<ref bean="defaultProvider" />
+		</property>
+		<property name="validation" value="false"/>
+	</bean>
+	
+
+	
+	<!-- ========================= Acegi Security ========================== -->
+
+    <!--  
+      -    
+      - We expect to find the following roles
+      -
+      - * admin   Administrators
+      - * user    Ordinary access
+      - 
+      - Note: roles are identified, in Acegi,by capital letters and a prefix of 
+      -       'ROLE_'. Make sure the authority populator make this 
+      -       transformation.
+      -->
+
+	<!--  Protect our bussiness objcts -->
+	<!-- This bean defines a proxy for the protected bean. Notice that -->
+	<!-- the id defined above is specified. When an application asks Spring -->
+	<!-- for a bookBean it will get this proxy instead. -->
+	<bean id='autoProxyCreator'
+		class='org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator'>
+		<property name='interceptorNames'>
+			<list>
+				<value>securityInterceptor</value>
+			</list>
+		</property>
+		<property name='beanNames'>
+			<list>
+				<value>onecmdb</value>
+				<value>session</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- This bean specifies which roles are authorized to execute which     -->
+	<!-- methods. Each line declares the security requirements per method.   -->
+	<bean id='securityInterceptor'
+		class='org.acegisecurity.intercept.method.aopalliance.MethodSecurityInterceptor'>
+		<property name='authenticationManager' ref='authenticationManager' />
+		<property name='accessDecisionManager' ref='accessDecisionManager' />
+		<property name='objectDefinitionSource'>
+			<value>
+				org.onecmdb.core.ISession.getDateCreated=ROLE_ADMIN
+			</value>
+		</property>
+	</bean>
+
+	<!-- This bean specifies that a user can access the protected methods    -->
+	<!-- if they have any one of the roles specified in the                  -->
+	<!-- objectDefinitionSource above.                                       -->
+	<bean id='accessDecisionManager'
+		class='org.acegisecurity.vote.AffirmativeBased'>
+		<property name='decisionVoters'>
+			<list>
+				<bean class='org.acegisecurity.vote.RoleVoter' />
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- This bean specifies the authentication manager, and all providers   -->
+	<!-- to make use of.                                                         -->
+	<bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
+    	<property name="providers">
+        	<list>
+            	<ref bean="anonymousAuthenticationProvider" />
+            	<!-- uncomment to include ldap provider
+            		<ref bean="ldapAuthenticationProvider" />
+            	-->
+            	<ref bean="memoryAuthenticationProvider" />
+            	<ref bean="onecmdbAuthenticationProvider" />
+        	</list>
+    	</property>
+	</bean>
+
+
+	<!-- =================================================================== -->
+	<!-- Anonymously                                                         -->
+	<!-- =================================================================== -->
+
+     <bean id="anonymousAuthenticationProvider" 
+     	class="org.acegisecurity.providers.anonymous.AnonymousAuthenticationProvider">
+		  <property name="key"><value>anon</value></property>
+	</bean>
+
+     <bean id="anonymousToken"
+     	class="org.acegisecurity.providers.anonymous.AnonymousAuthenticationToken">
+     	<constructor-arg value="anon" />
+     	<constructor-arg value="User" />
+     	<constructor-arg>
+     		<list>
+     			<bean class="org.acegisecurity.GrantedAuthorityImpl" >
+     				<constructor-arg value="ROLE_USER" />
+     			</bean>
+     		</list>
+     	</constructor-arg>
+     </bean>
+
+    <!-- =================================================================== -->
+	<!-- In Memory                                                           -->
+	<!-- =================================================================== -->
+
+	<bean id="memoryAuthenticationDao" class="org.acegisecurity.userdetails.memory.InMemoryDaoImpl">
+	    <property name="userMap" >
+		    <value>
+               kalle=123,ROLE_USER
+               admin=123,ROLE_USER,ROLE_ADMIN
+            </value>
+		</property>
+	</bean>
+
+
+	<bean id="memoryAuthenticationProvider" class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
+    	 <property name="userDetailsService">
+        	 <ref local="memoryAuthenticationDao"/>
+	     </property>
+	</bean>
+	
+
+	<!-- =================================================================== -->
+	<!-- OneCMDB -->
+	<!-- =================================================================== -->
+	<bean id="onecmdbAuthenticationDao" class="org.onecmdb.core.internal.authentication.OneCMDBAuthenticationDao">
+		<property name="userTemplateAlias">
+			<value>CMDBAccount</value>
+		</property>
+		<property name="session">
+			<ref bean="initSession"/>
+		</property>
+	</bean>
+	
+
+	<bean id="onecmdbAuthenticationProvider" class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
+    	 <property name="userDetailsService">
+        	 <ref local="onecmdbAuthenticationDao"/>
+	     </property>
+	</bean>
+
+	<!-- =================================================================== -->
+	<!-- LDAP                                                                -->
+	<!-- =================================================================== -->
+
+
+	<bean id="ldapAuthenticationProvider"
+		class="org.acegisecurity.providers.ldap.LdapAuthenticationProvider">
+
+		<constructor-arg>
+			<bean class="org.acegisecurity.providers.ldap.authenticator.PasswordComparisonAuthenticator">
+				<constructor-arg ref="initialDirContextFactory" />
+				<property name="userDnPatterns">
+					<list>
+						<value>uid={0},ou=people</value>
+					</list>
+				</property>
+			</bean>
+		</constructor-arg>
+		<constructor-arg>
+			<bean class="org.acegisecurity.providers.ldap.populator.DefaultLdapAuthoritiesPopulator">
+				<constructor-arg ref="initialDirContextFactory" />
+				<constructor-arg  value="ou=people" />
+				<property name="groupRoleAttribute" value="cn" />
+				<property name="convertToUpperCase" value="true" />
+				<property name="rolePrefix" value="ROLE_" />
+			</bean>
+		</constructor-arg>
+	</bean>
+
+	<bean id="initialDirContextFactory" class="org.acegisecurity.ldap.DefaultInitialDirContextFactory">
+      <constructor-arg value="ldap://pegon.gno:389/dc=gno,dc=se"/>
+      <!-- remove to bind at att connection
+      <property name="managerDn"><value>dc=gno,dc=se</value></property>
+      <property name="managerPassword"><value>password</value></property>
+      -->
+    </bean>
+
+
+
+
+	<!-- =================================================================== -->
+	<!--   All new sessions are created via this bean                        -->
+	<!-- =================================================================== -->
+
+	<bean id="session" singleton="false" 
+		class="org.onecmdb.core.internal.session.Session"
+		init-method="init">
+		
+		<constructor-arg><null /></constructor-arg>
+		<constructor-arg ref="onecmdb" />
+
+		<property name="authenticationManager" ref="authenticationManager"/>
+	</bean>
+	
+	
+</beans>

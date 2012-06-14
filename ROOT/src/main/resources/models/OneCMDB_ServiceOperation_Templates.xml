@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+	<templates>
+		<template alias="ServiceManagement" displayName="Service Management">
+			<derivedFrom>
+				<ref alias="Root"/>
+			</derivedFrom>
+			<description>Root for all Service Management objects</description>			
+		</template>
+		
+		<template alias="ServiceOperation" displayName="Service Operation">
+			<derivedFrom>
+				<ref alias="ServiceManagement"/>
+			</derivedFrom>
+
+			<attribute attAlias="ID" displayName="ID">
+				<description>An readable ID</description>
+				<simpleType>xs:string</simpleType>
+			</attribute>
+	
+			<attribute attAlias="title" displayName="Title">
+				<description>Title for this operation</description>
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<!--  Use description on CI
+			<attribute attAlias="opDescription" displayName="Description">
+				<description>Description for this incident</description>
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			-->
+	
+			<attribute attAlias="actionHistory" displayName="Action History">
+				<description>Action history for this incident</description>
+				<complexType>
+					<ref alias="ActionHistory"/>
+					<refType><ref alias="PointsTo"/></refType>
+				</complexType>
+				<policy>
+					<minOccurs>0</minOccurs>
+					<maxOccurs>unbound</maxOccurs>
+				</policy>
+			</attribute>
+			
+	
+			<attribute attAlias="ticketIssuer" displayName="Ticket issuer">
+				<description>The user that received the incident</description>
+				<complexType>
+					<ref alias="Person"/>
+					<refType><ref alias="PointsTo"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			
+			</attribute>
+			
+			<attribute attAlias="reportDate" displayName="Date Reported">
+				<description>When this item was reported.</description>
+				<simpleType>xs:dateTime</simpleType>
+			</attribute>
+		
+		</template>
+		
+		<template alias="ITIL_Incident" displayName="Incident ${ID} ${title}">
+			<derivedFrom>
+				<ref alias="ServiceOperation"/>
+			</derivedFrom>
+		
+			<description>Any event which is not part of the standard operation of a system that causes, or may cause, an interruption to, or a reduction in, the quality of service</description>			
+
+			
+			<attribute attAlias="affectedCIs" displayName="Affected CI:s">
+				<description>Which CI:s are affected by this incident</description>
+				<complexType>
+					<ref alias="Ci"/>
+					<refType><ref alias="PointsTo"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>unbound</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			
+			<attribute attAlias="problem" displayName="Problem">
+				<description>If this incident is link to a Problem/Known Error item</description>
+				<complexType>
+					<ref alias="ITIL_Problem"/>
+					<refType><ref alias="BelongsTo"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+				
+			<attribute attAlias="priority" displayName="Priority">
+				<description>The Priority of the incident</description>
+				<complexType>
+					<ref alias="IncidentPriority"/>
+					<refType><ref alias="PointsTo"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			
+			<attribute attAlias="status" displayName="Status">
+				<description>The current status of the incident</description>
+				<complexType>
+					<ref alias="IncidentStatus"/>
+					<refType><ref alias="PointsTo"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			
+			<attribute attAlias="reportedBy" displayName="Reported By">
+				<description>The user that has reported this.</description>
+				<complexType>
+					<ref alias="Person"/>
+					<refType><ref alias="PointsTo"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			
+			
+			<setComplexValue attAlias="status">
+				<ref alias="incidentStatus_New" />
+			</setComplexValue>
+			<setSimpleValue attAlias="icon">incident</setSimpleValue>
+			
+		</template>
+	
+		<template alias="IncidentPriority" displayName="${name}">
+			<derivedFrom>
+				<ref alias="ServiceManagement"/>
+			</derivedFrom>
+			<attribute attAlias="name" displayName="Name">
+				<description>The name for the priority</description>
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			
+			<attribute attAlias="level" displayName="Level">
+				<description>The numeric priority level, where 0 is the lowest priority</description>
+				<simpleType>xs:integer</simpleType>
+			</attribute>
+		 </template>
+		 
+		<template alias="IncidentStatus" displayName="${name}">
+			<derivedFrom>
+				<ref alias="ServiceManagement"/>
+			</derivedFrom>
+			<attribute attAlias="name" displayName="Name">
+				<description>The name of this status</description>
+				<simpleType>xs:string</simpleType>
+			</attribute>
+		 </template>
+		
+		<template alias="ProblemStatus" displayName="${name}">
+			<derivedFrom>
+				<ref alias="ServiceManagement"/>
+			</derivedFrom>
+			<attribute attAlias="name" displayName="Name">
+				<description>The name of this status</description>
+				<simpleType>xs:string</simpleType>
+			</attribute>
+		 </template>
+
+		
+		<template alias="ITIL_Problem" displayName="Problem ${ID} ${title}">
+			<derivedFrom>
+				<ref alias="ServiceOperation"/>
+			</derivedFrom>
+		
+			<description>Any event which is not part of the standard operation of a system that causes, or may cause, an interruption to, or a reduction in, the quality of service</description>			
+			
+			<attribute attAlias="affectedCIs" displayName="Affected CI:s">
+				<description>Which CI:s are affected by this problem/known error.</description>
+				<complexType>
+					<ref alias="Ci"/>
+					<refType><ref alias="PointsTo"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>unbound</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+		
+			<attribute attAlias="solution" displayName="Solution / Workaround">
+				<description>The workaround for this error</description>
+				<simpleType>xs:string</simpleType>
+			</attribute>
+		
+			<attribute attAlias="priority" displayName="Priority">
+				<description>The Priority of the problem</description>
+				<complexType>
+					<ref alias="IncidentPriority"/>
+					<refType><ref alias="PointsTo"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			
+			<attribute attAlias="status" displayName="Status">
+				<description>The current status of the problem</description>
+				<complexType>
+					<ref alias="ProblemStatus"/>
+					<refType><ref alias="PointsTo"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			
+			<setComplexValue attAlias="status">
+				<ref alias="problemStatus_New" />
+			</setComplexValue>
+			
+			<setSimpleValue attAlias="icon">problem</setSimpleValue>
+		</template>
+
+		<template alias="IncidentPriority" displayName="${name}">
+			<derivedFrom>
+				<ref alias="ServiceManagement"/>
+			</derivedFrom>
+			<attribute attAlias="name" displayName="Name">
+				<description>The name for the priority</description>
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			
+			<attribute attAlias="level" displayName="Level">
+				<description>The numeric priority level, where 0 is the lowest priority</description>
+				<simpleType>xs:integer</simpleType>
+			</attribute>
+		 </template>
+		 
+		 <template alias="ActionHistory" displayName="${actionDate} ${actionIssuer} :  ${actionMessage}">
+			<derivedFrom>
+				<ref alias="ServiceManagement"/>
+			</derivedFrom>
+			<attribute attAlias="actionMessage" displayName="Description">
+				<description>Info about this action history</description>
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="actionIssuer" displayName="Issuer">
+				<description>Issure for this action</description>
+				<complexType>
+					<ref alias="Person"/>
+					<refType><ref alias="PointsTo"/></refType>
+				</complexType>
+			</attribute>
+			<attribute attAlias="actionDate" displayName="When">
+				<description>Date of action</description>
+				<simpleType>xs:dateTime</simpleType>
+			</attribute>
+		 </template>
+	</templates>
+	
+	<instances>
+		<IncidentPriority alias="level-low">
+			<name>Low</name>
+			<level>0</level>
+		</IncidentPriority>
+		<IncidentPriority alias="level-medium">
+			<name>Medium</name>
+			<level>10</level>
+		</IncidentPriority>
+		<IncidentPriority alias="level-high">
+			<name>High</name>
+			<level>20</level>
+		</IncidentPriority>
+		
+		<IncidentStatus alias="incidentStatus_New">
+			<name>New</name>
+		</IncidentStatus>
+
+		<IncidentStatus alias="incidentStatus_UI">
+			<name>Open</name>
+		</IncidentStatus>
+		
+		<IncidentStatus alias="incidentStatus_Problem">
+			<name>Problem</name>
+		</IncidentStatus>
+		
+		<IncidentStatus alias="incidentStatus_KnownError">
+			<name>Known Error</name>
+		</IncidentStatus>
+
+		<IncidentStatus alias="incidentStatus_Closed">
+			<name>Closed</name>
+		</IncidentStatus>
+		
+		<ProblemStatus alias="problemStatus_New">
+			<name>New</name>
+		</ProblemStatus>
+		
+		<ProblemStatus alias="problemStatus_Problem">
+			<name>Problem</name>
+		</ProblemStatus>
+		
+		<ProblemStatus alias="problemStatus_KnownError">
+			<name>Known Error</name>
+		</ProblemStatus>
+		
+	</instances>
+
+</onecmdb>	

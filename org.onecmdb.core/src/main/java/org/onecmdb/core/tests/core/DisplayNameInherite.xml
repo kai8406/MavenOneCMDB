@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<onecmdb>
+	<templates>
+
+		<!--  
+			- DEFINITION of types of References used in the model
+		-->
+		<template alias="Item" displayName="${category}/${alias}">
+			<derivedFrom>
+				<ref alias="Ci" />
+			</derivedFrom>
+		
+			<attribute attAlias="category">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="category">Item.Category</setSimpleValue>
+		</template>
+		
+		<template alias="Child1">
+			<derivedFrom>
+				<ref alias="Item" />
+			</derivedFrom>
+			<setSimpleValue attAlias="category">Child1.Category</setSimpleValue>
+		</template>
+	
+		<template alias="Child2">
+			<derivedFrom>
+				<ref alias="Child1" />
+			</derivedFrom>
+		</template>
+	
+		<template alias="Child3">
+			<derivedFrom>
+				<ref alias="Child2" />
+			</derivedFrom>
+		</template>
+	</templates>
+	
+	<instances>
+		<Item alias="Item1"/>
+		<Item alias="Item2"/>
+		<Item alias="Item3"/>
+		
+	</instances>
+</onecmdb>

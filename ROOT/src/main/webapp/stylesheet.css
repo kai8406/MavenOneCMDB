@@ -1,0 +1,360 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	font-family: arial;
+	font-size: smaller;
+	color: #404040;
+}
+
+.header {
+	font-size: small;
+	margin-bottom: 3px;
+}
+
+.header table {
+	width: 100%;
+}
+
+.header td {
+	vertical-align: bottom;
+}
+
+div.heading {
+	color: white;
+	
+}
+
+div.heading table {
+	width: 100%;
+	Background: #6e6fbb;
+}
+
+div.heading h4 {
+	margin: 0;
+	color: white;
+}
+
+div.navcontainer {
+	float: left;
+	border: 1px solid #808080;
+}
+
+div.navigation {
+	margin: 0.5em;
+}
+
+div.navigation h4 {
+	margin: 0;
+	background: silver;
+}
+
+div.navigation table {
+	width: 100%;
+}
+
+div.navigation td {
+	font-size: smaller;
+}
+
+div.heading-text {
+	margin-left: 1em;
+	margin-bottom: 1em;
+}
+
+div.heading-text h4 {
+	margin-bottom: 0em;
+}
+
+div.content {
+	float: left;
+	display: inline;
+	margin-left: 1em;
+	border: 1px solid #808080;
+}
+
+div.content p {
+	margin: 1em;
+}
+
+.footer {
+	clear: both;
+	margin-top: 3em;
+	border-top: 1px solid silver;
+	padding: 0.5em;
+	font-size: smaller;
+	text-align: center;
+	color: silver;
+}
+
+.footer a:link {
+	color: silver;
+}
+
+.footer a:visited {
+	color: silver;
+}
+
+.footer a:visited {
+	color: silver;
+}
+
+.footer a:hover {
+	color: gray;
+}
+
+.footer a:active {
+	color: green;
+}
+
+div.instruction {
+	margin: 1em;
+	text-align: justify;
+}
+
+div.instruction h1 {
+	vertical-align: middle;
+	border-bottom: 1px solid silver;
+	padding-bottom: 1em;
+}
+
+div.instruction tr {
+	vertical-align: top;
+}
+
+div.instruction img {
+	margin-left: 1em;
+}
+
+.topsection {
+	margin: 0em 1em 0em 1em;
+	text-align: right;
+}
+
+.section {
+	margin: 0em 1em 1em 1em;
+	border: 1px solid silver;
+	padding-bottom: 1em;
+}
+
+.section h3 {
+	margin: 0;
+	padding-left: 0.5em;
+	background: silver;
+	font-size: small;
+}
+
+.section p {
+	margin: 1em;
+}
+
+.section table {
+	margin-top: 0.5em;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	border-collapse: collapse;
+}
+
+table.control {
+	margin: 0;
+	padding: 0;
+}
+
+th {
+	padding-right: 1em;
+	text-align: left;
+}
+
+.section thead {
+	border-bottom: 1px solid #808080;
+	font-weight: bold;
+}
+
+.section td {
+	padding: 2px;
+	padding-right: 1em;
+}
+
+.identry {
+	padding-left: 5px;
+	background: #f0f0f0;
+}
+
+span.selected {
+	padding: 2px 2px 2px 2px;
+	background: orange;
+	color: white;
+}
+
+span.unselected {
+	border-style: solid;
+	border: medium;
+	color: red;
+}
+
+td {
+	
+}
+
+.odd {
+	background: #f0f0f0;
+}
+
+.even {
+	
+}
+
+.odd2 {
+	background: #f7f7f7;
+}
+
+.even2 {
+	
+}
+
+.label {
+	font-weight: bold;
+}
+
+.highlight {
+	background-color: #aeafda;
+}
+
+.highlight2 {
+	background-color: #d8d9ee;
+}
+
+.error {
+	border: thick;
+	color: red;
+}
+
+.info {
+	border: thick;
+	color: blue;
+}
+
+span.selected {
+	padding: 2px 2px 2px 2px;
+	background: orange;
+	color: white;
+}
+
+//
+action links
+a.linkaselected {
+	background: orange;
+	color: silver;
+}
+
+a.linkaselected:link,a.linkaselected:visited {
+	background: orange;
+	color: white;
+	text-decoration: none;
+	padding: 1px;
+}
+
+a.linkb {
+	color: white;
+	background-color: transparent;
+	border: medium;
+	padding: .5em;
+	text-decoration: none;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+a.linkb:hover {
+	color: silver;
+}
+
+input.action,a.actionurl {
+	color: blue;
+}
+
+.info {
+	font-family: monospace;
+	font-weight: bold;
+}
+
+.info A:LINK {
+	color: blue;
+	text-decoration: none;
+}
+.info A:HOVER {
+	color: blue;
+	font-size: larger;
+	text-decoration: none;
+}
+.info A:VISITED {
+	color: blue;
+	text-decoration: none;
+}
+
+
+.popupLink:LINK {
+	color:windowtext;
+	text-decoration: none;
+}
+
+.popupLink:HOVER {
+	color:windowtext;
+	text-decoration: none;
+	font-weight: bolder;
+	cursor: help;
+}
+.popupLink:VISITED {
+	text-decoration: none;
+	color:windowtext;
+}
+
+
+.mem {
+	font-size: xx-small;
+	color: gray;
+	border: 1px solid gray;
+	padding-left: 1px;
+	padding-right: 1px;
+	background: silver;
+}
+
+.mem a:hover {
+	font-style: italic;
+	text-decoration: none;
+}
+
+.mem a:link, .mem a:visited {
+	color: gray;
+	text-decoration: none;
+}
+
+
+.mem-current {
+	font-size: xx-small;
+	color: green;
+	border: 1px solid gray;
+	padding-left: 1px;
+	padding-right: 1px;
+	background: silver;
+	font-style: italic;
+	font-weight: bold;
+}
+
+
+
+
+/* 
+ * http://developer.apple.com/internet/webcontent/hideshow_layer.html
+ */
+.popup {
+	position: absolute;
+	visibility: hidden;
+	background-color: infobackground;
+	layer-background-color: infobackground;
+	width: 200px;
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+	border-bottom: 3px solid black;
+	border-right: 3px solid black;
+	padding: 3px;
+	z-index: 10;
+}

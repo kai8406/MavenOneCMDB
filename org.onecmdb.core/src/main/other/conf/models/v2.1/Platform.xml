@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+	<templates>
+		<!-- ###########################################  	-->
+		<!-- Platform Definition 	-->
+		<!-- ###########################################  	-->	
+				
+		
+		<!-- ###########################################  	-->
+		<!-- Platform System Definition 	-->
+		<!-- ###########################################  	-->	
+		<template alias="PlatformSystem" displayName="${entityName} ${type}">
+			<derivedFrom><ref alias="Platform"/></derivedFrom>
+			<attribute attAlias="entityName">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="type">Platform System</setSimpleValue>
+		</template>
+		
+		<template alias="ComputerSystem">
+			<derivedFrom><ref alias="PlatformSystem"/></derivedFrom>
+			<setSimpleValue attAlias="type">Computer System</setSimpleValue>
+		</template>
+		<template alias="ServerSystem">
+			<derivedFrom><ref alias="ComputerSystem"/></derivedFrom>
+			<setSimpleValue attAlias="type">Server System</setSimpleValue>
+		</template>
+		<template alias="DesktopSystem">
+			<derivedFrom><ref alias="ComputerSystem"/></derivedFrom>
+			<setSimpleValue attAlias="type">Desktop System</setSimpleValue>
+		</template>
+		<template alias="LaptopSystem">
+			<derivedFrom><ref alias="ComputerSystem"/></derivedFrom>
+			<setSimpleValue attAlias="type">Laptop System</setSimpleValue>
+		</template>
+		<template alias="VirtualComputerSystem">
+			<derivedFrom><ref alias="ComputerSystem"/></derivedFrom>
+			<setSimpleValue attAlias="type">Virtual System</setSimpleValue>
+			<attribute attAlias="host">
+				<complexType>
+					<ref alias="ComputerSystem" />
+					<refType><ref alias="ComputerSystem"/></refType>
+				</complexType>
+			</attribute>
+		</template>
+		
+		<template alias="NetworkSystem">
+			<derivedFrom><ref alias="PlatformSystem"/></derivedFrom>
+			<setSimpleValue attAlias="type">Network System</setSimpleValue>
+		</template>
+		<template alias="RouterSystem">
+			<derivedFrom><ref alias="NetworkSystem"/></derivedFrom>
+			<setSimpleValue attAlias="type">Router System</setSimpleValue>
+		</template>
+		<template alias="SwitchSystem">
+			<derivedFrom><ref alias="NetworkSystem"/></derivedFrom>
+			<setSimpleValue attAlias="type">Switch System</setSimpleValue>
+		</template>
+		<template alias="PrinterSystem">
+			<derivedFrom><ref alias="PlatformSystem"/></derivedFrom>
+			<setSimpleValue attAlias="type">Printer System</setSimpleValue>
+		</template>
+		<template alias="StorageSystem">
+			<derivedFrom><ref alias="PlatformSystem"/></derivedFrom>
+			<setSimpleValue attAlias="type">Storage System</setSimpleValue>
+		</template>
+		
+		<!-- ###########################################  	-->
+		<!-- Platform Components Definition 	-->
+		<!-- ###########################################  	-->	
+		<template alias="OperatingSystem" displayName="${entityName} ${type}">
+			<derivedFrom><ref alias="PlatformComponent"/></derivedFrom>
+			<attribute attAlias="entityName">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="type">OS</setSimpleValue>
+		</template>
+		<template alias="UnixOperatingSystem">
+			<derivedFrom><ref alias="OperatingSystem"/></derivedFrom>
+			<setSimpleValue attAlias="type">UNIX</setSimpleValue>
+		</template>
+		<template alias="WindowsOperatingSystem">
+			<derivedFrom><ref alias="OperatingSystem"/></derivedFrom>
+			<setSimpleValue attAlias="type">Windows</setSimpleValue>
+		</template>
+		<template alias="NetworkOperatingSystem">
+			<derivedFrom><ref alias="OperatingSystem"/></derivedFrom>
+			<setSimpleValue attAlias="type">NetworkOS</setSimpleValue>
+		</template>
+		
+		
+		
+		<template alias="FileSystem">
+			<derivedFrom><ref alias="PlatformComponent"/></derivedFrom>
+			<attribute attAlias="size">
+				<simpleType>xs:integer</simpleType>
+			</attribute>
+			<attribute attAlias="path">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="volume">
+				<complexType>
+					<ref alias="StorageVolume" />
+					<refType><ref alias="Uses"/></refType>
+				</complexType>
+			</attribute>
+			<setSimpleValue attAlias="type">File System</setSimpleValue>
+		</template>
+		
+
+		<template alias="PlatformComponent" displayName="${type} on ${partOf}">
+			<derivedFrom><ref alias="Platform"/></derivedFrom>
+			<attribute attAlias="partOf">
+				<complexType>
+					<ref alias="PlatformSystem" />
+					<refType><ref alias="BelongsTo"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<setSimpleValue attAlias="type">Platform Component</setSimpleValue>
+		</template>
+		
+		<template alias="Disk">
+			<derivedFrom><ref alias="PlatformComponent"/></derivedFrom>
+			<setSimpleValue attAlias="type">Disk</setSimpleValue>
+		</template>
+		<template alias="CPU">
+			<derivedFrom><ref alias="PlatformComponent"/></derivedFrom>
+			<setSimpleValue attAlias="type">CPU</setSimpleValue>
+		</template>
+		<template alias="StorageVolume">
+			<derivedFrom><ref alias="PlatformComponent"/></derivedFrom>
+			<setSimpleValue attAlias="type">Volume</setSimpleValue>
+		</template>
+		<template alias="RAM">
+			<derivedFrom><ref alias="PlatformComponent"/></derivedFrom>
+			<setSimpleValue attAlias="type">RAM</setSimpleValue>
+		</template>
+		
+		
+		
+		<!-- ###########################################  	-->
+		<!-- Platform Service Definition 	-->
+		<!-- ###########################################  	-->		
+		<template alias="PlatformService" displayName="${entityName}">
+			<derivedFrom><ref alias="Service"/></derivedFrom>
+			<attribute attAlias="uses">
+				<complexType>
+					<ref alias="PlatformSystem" />
+					<refType><ref alias="Uses"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>unbound</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<setSimpleValue attAlias="entityName">Platform Service</setSimpleValue>
+		</template>
+	</templates>
+</onecmdb>

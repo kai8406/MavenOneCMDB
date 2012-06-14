@@ -1,0 +1,39 @@
+<!--
+Notes:
+    OneCMDB is an Open Source CMDB, Configuration Management Database
+        published under GPL Version 2.
+    Its homepage is:
+        http://www.onecmdb.org/
+
+    And these compiling projects and Maven scripts
+        are made by Konca Fung with the purpose of researching and
+        are made from the source codes package contained in OneCMDB installation folder.
+    
+    The homepage of Konca Fung is:
+        http://www.konca.com/
+
+                                                    Konca Fung
+                                                    May 10 2013
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.onecmdb</groupId>
+    <artifactId>onecmdb-publish</artifactId>
+    <version>2.1.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>org.onecmdb.applet.toolkit</module>
+        <module>org.onecmdb.core</module>
+        <module>org.onecmdb.nagios</module>
+        <module>org.onecmdb.rest.graph</module>
+        <module>org.onecmdb.ui.gwt.desktop</module>
+        <module>org.onecmdb.ui.gwt.itil</module>
+        <module>org.onecmdb.ui.gwt.modeller</module>
+        <module>org.onecmdb.ui.gwt.toolkit</module>
+        <module>org.onecmdb.utils</module>
+        <module>ROOT</module>
+    </modules>
+</project>

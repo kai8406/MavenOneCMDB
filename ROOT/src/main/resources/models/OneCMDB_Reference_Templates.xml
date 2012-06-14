@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+<templates>
+	<template alias="Reference" id="-7725434871389222016" displayName="Reference">
+		<derivedFrom>
+			<ref alias="Root"/>
+		</derivedFrom>
+		<description>Master template for references.</description>
+		<attribute attAlias="target" derived="false" id="-847514064625932908">
+			<description>The target of this reference</description>
+			<complexType>
+				<ref alias="Root"/>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="source" derived="false" id="-3341491576070824717">
+			<description>The source of this reference</description>
+			<complexType>
+				<ref alias="Root"/>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="7172081852998884302">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon" id="58328894254103042">reference</setSimpleValue>
+	</template>
+	<template alias="DependsOn" id="7344797766744539227" displayName="${source} depends on ${target}">
+		<derivedFrom>
+			<ref alias="Reference"/>
+		</derivedFrom>
+		<description>Reference that describes a dependency.</description>
+		<attribute attAlias="target" derived="true" id="-847514064625932908">
+			<description>The target of this reference</description>
+			<complexType>
+				<ref alias="Root"/>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="source" derived="true" id="-3341491576070824717">
+			<description>The source of this reference</description>
+			<complexType>
+				<ref alias="Root"/>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="7172081852998884302">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon" id="-2342984625798463757">reference</setSimpleValue>
+	</template>
+	<template alias="ConnectedTo" id="-5037626317815397805" displayName="${source} connected to ${target}">
+		<derivedFrom>
+			<ref alias="DependsOn"/>
+		</derivedFrom>
+		<description>Reference describes that the source is physically connected to the target.</description>
+		<attribute attAlias="target" derived="true" id="-847514064625932908">
+			<description>The target of this reference</description>
+			<complexType>
+				<ref alias="Root"/>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="source" derived="true" id="-3341491576070824717">
+			<description>The source of this reference</description>
+			<complexType>
+				<ref alias="Root"/>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="7172081852998884302">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon" id="-3041856061345233921">reference</setSimpleValue>
+	</template>
+	<template alias="InstalledOn" id="3249308138636841671" displayName="${source} installed on ${target}">
+		<derivedFrom>
+			<ref alias="DependsOn"/>
+		</derivedFrom>
+		<description>Reference describes that the source is installed on the target.</description>
+		<attribute attAlias="target" derived="true" id="-847514064625932908">
+			<description>The target of this reference</description>
+			<complexType>
+				<ref alias="Root"/>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="source" derived="true" id="-3341491576070824717">
+			<description>The source of this reference</description>
+			<complexType>
+				<ref alias="Root"/>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="7172081852998884302">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon" id="-2471215874310963620">reference</setSimpleValue>
+	</template>
+	<template alias="PointsTo" id="332743534504149125" displayName="${source} points to ${target}">
+		<derivedFrom>
+			<ref alias="Reference"/>
+		</derivedFrom>
+		<description>Reference describes that the source points to the target.</description>
+		<attribute attAlias="target" derived="true" id="-847514064625932908">
+			<description>The target of this reference</description>
+			<complexType>
+				<ref alias="Root"/>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="source" derived="true" id="-3341491576070824717">
+			<description>The source of this reference</description>
+			<complexType>
+				<ref alias="Root"/>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="7172081852998884302">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon" id="-2997684095474943166">reference</setSimpleValue>
+	</template>
+	
+	<!-- 
+	<template alias="Uses" displayName="${source} uses ${target}">
+		<derivedFrom>
+			<ref alias="Reference"/>
+		</derivedFrom>
+		<description>Reference describes that the source uses the target.</description>
+	</template>
+ 	-->
+
+	<template alias="BelongsTo" id="6732577159285719988" displayName="${source} belongs to ${target}">
+		<derivedFrom>
+			<ref alias="Reference"/>
+		</derivedFrom>
+		<description>Reference describes that the source belongs to the target.</description>
+		<attribute attAlias="target" derived="true" id="-847514064625932908">
+			<description>The target of this reference</description>
+			<complexType>
+				<ref alias="Root"/>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="source" derived="true" id="-3341491576070824717">
+			<description>The source of this reference</description>
+			<complexType>
+				<ref alias="Root"/>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="7172081852998884302">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon" id="5853335732205649374">reference</setSimpleValue>
+	</template>
+</templates>
+<instances>
+</instances>
+</onecmdb>

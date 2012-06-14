@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>OneCMDB</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+.style1 {font-family: Arial, Helvetica, sans-serif}
+.style4 {color: #666666}
+.style5 {font-size: small; font-family: Arial, Helvetica, sans-serif; }
+.style6 {font-size: small}
+-->
+</style>
+</head>
+<body>
+<h2 align="left" class="style1">The minimalistic Incident Management application</h2>
+<p align="left" class="style1">The following illustration shows the basic workflow in the application:</p>
+<p align="left" class="style1"><img src="images/Incident_app_illustration.gif" width="657" height="392"></p>
+<p align="left" class="style1">Each Incident is stored in the CMDB as an Instance (an object, just like a CI). Each Incident has an attribute named Status, with the following possible values; New, Open, Problem, Known Error or Closed. It is the Status value that determines how the Incident is treated in the application.</p>
+<p align="left" class="style1">All new incidents automatically gets status New. When a user (typically a helpdesk or support person) has opened the incident and done something with it, status changes to Open. Status remains Open as long as the helpdesk personnel is working with the incident. During work with an incident the helpdesk personnel can document actions taken with Action Notes (comments). The Action Notes are stored in the CMDB and referenced from the corresponding Problem. They can be viewed as an Action History.</p>
+<p align="left" class="style1">If an incident is resolved it can be closed and archived (status changes to Closed).</p>
+<p align="left" class="style1">If the incident can not be resolved and is likely to be caused by a problem in the data center, it can be associated with (linked to) an existing Problem in the CMDB. At this point the incident&acute;s status changes to Problem. The Incident Application can also issue a New Problem, which is stored in teh CMDB, and associate the incident with it. This is typically done when a new (unknown) problem is encountered.</p>
+<p align="left" class="style1">In a similar way can an incident be associated with a Known Error in the CMDB. The incident&acute;s status now changes to Known Error. Problems and Known Errors are managed in the Problem Management Application.</p>
+</body>
+</html>

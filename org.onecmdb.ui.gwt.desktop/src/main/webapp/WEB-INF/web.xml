@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	
+	<servlet>
+		<servlet-name>contentServlet</servlet-name>
+		<servlet-class>org.onecmdb.ui.gwt.desktop.server.servlet.ContentServiceServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>exportServlet</servlet-name>
+		<servlet-class>org.onecmdb.ui.gwt.desktop.server.servlet.TransformServiceServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>execServlet</servlet-name>
+		<servlet-class>org.onecmdb.ui.gwt.desktop.server.servlet.ExecServiceServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>changeServlet</servlet-name>
+		<servlet-class>org.onecmdb.ui.gwt.desktop.server.servlet.ChangeServiceServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>queryServlet</servlet-name>
+		<servlet-class>org.onecmdb.ui.gwt.desktop.server.servlet.QueryServiceServlet</servlet-class>
+	</servlet>
+	
+	
+	<servlet>
+		<servlet-name>iconServlet</servlet-name>
+		<servlet-class>org.onecmdb.ui.gwt.desktop.server.servlet.IconServiceServlet</servlet-class>
+	</servlet>
+		
+	
+	
+	<servlet>
+		<servlet-name>contentService</servlet-name>
+		<servlet-class>org.onecmdb.ui.gwt.desktop.server.service.content.ContentServiceImpl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>changeService</servlet-name>
+		<servlet-class>org.onecmdb.ui.gwt.desktop.server.service.change.ChangeServiceImpl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>modelService</servlet-name>
+		<servlet-class>org.onecmdb.ui.gwt.desktop.server.service.model.ModelServiceImpl</servlet-class>
+	</servlet>
+	
+	
+	
+	<servlet-mapping>
+		<servlet-name>iconServlet</servlet-name>
+		<url-pattern>/onecmdb/icon/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>contentServlet</servlet-name>
+		<url-pattern>/onecmdb/content/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>exportServlet</servlet-name>
+		<url-pattern>/onecmdb/export/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>execServlet</servlet-name>
+		<url-pattern>/onecmdb/exec/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>changeServlet</servlet-name>
+		<url-pattern>/onecmdb/change/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>queryServlet</servlet-name>
+		<url-pattern>/onecmdb/query/*</url-pattern>
+	</servlet-mapping>
+		
+	<servlet-mapping>
+		<servlet-name>contentService</servlet-name>
+		<url-pattern>/onecmdb-rpc/IContentService/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>changeService</servlet-name>
+		<url-pattern>/onecmdb-rpc/IChangeService/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>modelService</servlet-name>
+		<url-pattern>/onecmdb-rpc/IModelService/*</url-pattern>
+	</servlet-mapping>
+	
+
+</web-app>

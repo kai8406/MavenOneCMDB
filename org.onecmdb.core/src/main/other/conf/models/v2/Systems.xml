@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+	<templates>
+		
+		<template alias="PlatformSystem">
+			<derivedFrom><ref alias="System"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">Platform System</setSimpleValue>
+		</template>
+		<template alias="ComputerSystem">
+			<derivedFrom><ref alias="PlatformSystem"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">Computer System</setSimpleValue>
+		</template>
+		<template alias="ServerSystem">
+			<derivedFrom><ref alias="ComputerSystem"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">Server System</setSimpleValue>
+		</template>
+		<template alias="DesktopSystem">
+			<derivedFrom><ref alias="ComputerSystem"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">Desktop System</setSimpleValue>
+		</template>
+		<template alias="LaptopSystem">
+			<derivedFrom><ref alias="ComputerSystem"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">Laptop System</setSimpleValue>
+		</template>
+		<template alias="NetworkSystem">
+			<derivedFrom><ref alias="System"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">Network System</setSimpleValue>
+		</template>
+		<template alias="RouterSystem">
+			<derivedFrom><ref alias="NetworkSystem"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">Router System</setSimpleValue>
+		</template>
+		<template alias="SwitchSystem">
+			<derivedFrom><ref alias="NetworkSystem"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">Switch System</setSimpleValue>
+		</template>
+		<template alias="PrinterSystem">
+			<derivedFrom><ref alias="PlatformSystem"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">Printer System</setSimpleValue>
+		</template>
+		<template alias="StorageSystem">
+			<derivedFrom><ref alias="PlatformSystem"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">Storage System</setSimpleValue>
+		</template>
+		
+		<template alias="SoftwareSystem">
+			<derivedFrom><ref alias="System"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">Software System</setSimpleValue>
+		</template>
+		
+		<template alias="ConfigurationManagementSystem">
+			<derivedFrom><ref alias="SoftwareSystem"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">CMDB System</setSimpleValue>
+		</template>
+		<template alias="NetworkMonitorSystem">
+			<derivedFrom><ref alias="SoftwareSystem"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">Network Monitor System</setSimpleValue>
+		</template>
+		<template alias="TicketSystem">
+			<derivedFrom><ref alias="SoftwareSystem"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">Ticket System</setSimpleValue>
+		</template>
+		<template alias="DatabaseSystem">
+			<derivedFrom><ref alias="SoftwareSystem"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">Database System</setSimpleValue>
+		</template>
+		<template alias="WebSystem">
+			<derivedFrom><ref alias="SoftwareSystem"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">Web System</setSimpleValue>
+		</template>
+		<template alias="MailSystem">
+			<derivedFrom><ref alias="SoftwareSystem"/></derivedFrom>
+			<setSimpleValue attAlias="entityName">Mail System</setSimpleValue>
+		</template>
+	</templates>
+	
+</onecmdb>

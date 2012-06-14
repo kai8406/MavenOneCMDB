@@ -1,0 +1,1975 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+<templates>
+	<template alias="WinXP" id="6992048393303565304" displayName="${A_Name} ${B_Version} (on ${H_InstalledOn})">
+		<derivedFrom>
+			<ref alias="OS"/>
+		</derivedFrom>
+		<description>This CI defines a Windows XP Operating System. The OS is installed on a System.</description>
+		<attribute attAlias="E_Service" displayName="Service" derived="true" id="-3786493268145202498">
+			<complexType>
+				<ref alias="Service"/>
+				<refType><ref alias="BelongsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_LicenseKey" displayName="License Key" derived="true" id="-1414476092914251700">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Family" displayName="OS Family" derived="true" id="3734140865262479509">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_DSLEntry" displayName="DSL Entry" derived="true" id="-7158718286371599">
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="F_Maintenance" displayName="Maintenance Info" derived="true" id="-3463767410781740416">
+			<complexType>
+				<ref alias="Maintenance"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="H_InstalledOn" displayName="Installed On" derived="true" id="2688647756949692150">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="InstalledOn"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Version" displayName="Version" derived="true" id="-1622199541105505225">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="-4797407884618521049">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Name" displayName="Name" derived="true" id="171303480815732782">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="G_Financial" displayName="Financial Info" derived="true" id="-4141248550907568614">
+			<complexType>
+				<ref alias="Financial"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="3991994360664875755">Windows XP</setSimpleValue>
+		<setSimpleValue attAlias="B_Family" id="5959229569380070927">Windows</setSimpleValue>
+		<setSimpleValue attAlias="B_Version" id="4336081334252069146"></setSimpleValue>
+		<setSimpleValue attAlias="C_DSLEntry" id="-1940317352873733939">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_OS_Package.txt</setSimpleValue>
+		<setSimpleValue attAlias="D_LicenseKey" id="-3155876730514256127"></setSimpleValue>
+		<setComplexValue attAlias="E_Service" id="9058462434402625874"><ref alias="Service-6"/></setComplexValue>
+		<setComplexValue attAlias="F_Maintenance" id="574794759590182288"><ref alias="Maintenance-5"/></setComplexValue>
+		<setComplexValue attAlias="G_Financial" id="-3850041842872984981"><ref alias="Financial-4"/></setComplexValue>
+		<setSimpleValue attAlias="icon" id="-2040937215011331011">mswindows</setSimpleValue>
+	</template>
+	<template alias="WinXP_SP2" id="-3919582659390193862" displayName="${A_Name} ${B_Version} (on ${H_InstalledOn})">
+		<derivedFrom>
+			<ref alias="WinXP"/>
+		</derivedFrom>
+		<description>This CI defines a Windows XP Operating System. The OS is installed on a System.</description>
+		<attribute attAlias="E_Service" displayName="Service" derived="true" id="-3786493268145202498">
+			<complexType>
+				<ref alias="Service"/>
+				<refType><ref alias="BelongsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_LicenseKey" displayName="License Key" derived="true" id="-1414476092914251700">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_DSLEntry" displayName="DSL Entry" derived="true" id="-7158718286371599">
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Family" displayName="OS Family" derived="true" id="3734140865262479509">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="F_Maintenance" displayName="Maintenance Info" derived="true" id="-3463767410781740416">
+			<complexType>
+				<ref alias="Maintenance"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="H_InstalledOn" displayName="Installed On" derived="true" id="2688647756949692150">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="InstalledOn"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Version" displayName="Version" derived="true" id="-1622199541105505225">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="-4797407884618521049">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Name" displayName="Name" derived="true" id="171303480815732782">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="G_Financial" displayName="Financial Info" derived="true" id="-4141248550907568614">
+			<complexType>
+				<ref alias="Financial"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="-6942865916091627812">Windows XP</setSimpleValue>
+		<setSimpleValue attAlias="B_Family" id="-1312560482029696687">Windows</setSimpleValue>
+		<setSimpleValue attAlias="B_Version" id="6100350305658038775">SP2</setSimpleValue>
+		<setSimpleValue attAlias="C_DSLEntry" id="-2745760662556104330">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_OS_Package.txt</setSimpleValue>
+		<setSimpleValue attAlias="D_LicenseKey" id="-6841873878568922842">MSWR-1234-8765</setSimpleValue>
+		<setComplexValue attAlias="E_Service" id="-4143862647231657918"><ref alias="Service-6"/></setComplexValue>
+		<setComplexValue attAlias="F_Maintenance" id="-7237998866595118758"><ref alias="Maintenance-5"/></setComplexValue>
+		<setComplexValue attAlias="G_Financial" id="-772453814398849042"><ref alias="Financial-4"/></setComplexValue>
+		<setSimpleValue attAlias="icon" id="-2040937215011331011">mswindows</setSimpleValue>
+	</template>
+	<template alias="WinXP_SP1" id="-7405990828157862849" displayName="${A_Name} ${B_Version} (on ${H_InstalledOn})">
+		<derivedFrom>
+			<ref alias="WinXP"/>
+		</derivedFrom>
+		<description>This CI defines a Windows XP Operating System. The OS is installed on a System.</description>
+		<attribute attAlias="E_Service" displayName="Service" derived="true" id="-3786493268145202498">
+			<complexType>
+				<ref alias="Service"/>
+				<refType><ref alias="BelongsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_LicenseKey" displayName="License Key" derived="true" id="-1414476092914251700">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_DSLEntry" displayName="DSL Entry" derived="true" id="-7158718286371599">
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Family" displayName="OS Family" derived="true" id="3734140865262479509">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="F_Maintenance" displayName="Maintenance Info" derived="true" id="-3463767410781740416">
+			<complexType>
+				<ref alias="Maintenance"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="H_InstalledOn" displayName="Installed On" derived="true" id="2688647756949692150">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="InstalledOn"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Version" displayName="Version" derived="true" id="-1622199541105505225">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="-4797407884618521049">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Name" displayName="Name" derived="true" id="171303480815732782">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="G_Financial" displayName="Financial Info" derived="true" id="-4141248550907568614">
+			<complexType>
+				<ref alias="Financial"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="-8085497527601074901">Windows XP</setSimpleValue>
+		<setSimpleValue attAlias="B_Family" id="3493500773629747972">Windows</setSimpleValue>
+		<setSimpleValue attAlias="B_Version" id="-45701738683648528">SP1</setSimpleValue>
+		<setSimpleValue attAlias="C_DSLEntry" id="8592298315763358074">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_OS_Package.txt</setSimpleValue>
+		<setSimpleValue attAlias="D_LicenseKey" id="-566589832189534386">MSHJ-6543-6789</setSimpleValue>
+		<setComplexValue attAlias="E_Service" id="7012666069308358002"><ref alias="Service-6"/></setComplexValue>
+		<setComplexValue attAlias="F_Maintenance" id="6804259165090458144"><ref alias="Maintenance-5"/></setComplexValue>
+		<setComplexValue attAlias="G_Financial" id="7653915383303617106"><ref alias="Financial-4"/></setComplexValue>
+		<setSimpleValue attAlias="icon" id="-2040937215011331011">mswindows</setSimpleValue>
+	</template>
+	<template alias="RedHatLinux" id="-1833430110295024105" displayName="${A_Name} ${B_Version} (on ${H_InstalledOn})">
+		<derivedFrom>
+			<ref alias="OS"/>
+		</derivedFrom>
+		<description>This CI defines an Operating System. The OS is installed on a System.</description>
+		<attribute attAlias="E_Service" displayName="Service" derived="true" id="-3786493268145202498">
+			<complexType>
+				<ref alias="Service"/>
+				<refType><ref alias="BelongsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_LicenseKey" displayName="License Key" derived="true" id="-1414476092914251700">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Family" displayName="OS Family" derived="true" id="3734140865262479509">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_DSLEntry" displayName="DSL Entry" derived="true" id="-7158718286371599">
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="F_Maintenance" displayName="Maintenance Info" derived="true" id="-3463767410781740416">
+			<complexType>
+				<ref alias="Maintenance"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="H_InstalledOn" displayName="Installed On" derived="true" id="2688647756949692150">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="InstalledOn"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Version" displayName="Version" derived="true" id="-1622199541105505225">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="-4797407884618521049">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Name" displayName="Name" derived="true" id="171303480815732782">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="G_Financial" displayName="Financial Info" derived="true" id="-4141248550907568614">
+			<complexType>
+				<ref alias="Financial"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="-7681772007622670247">Red Hat Linux</setSimpleValue>
+		<setSimpleValue attAlias="B_Family" id="1361215561567281318">Linux</setSimpleValue>
+		<setComplexValue attAlias="E_Service" id="5386140541115939313"><ref alias="Service-6"/></setComplexValue>
+		<setComplexValue attAlias="F_Maintenance" id="2500773700507140151"><ref alias="Maintenance-4"/></setComplexValue>
+		<setComplexValue attAlias="G_Financial" id="9028110421926260385"><ref alias="Financial-7"/></setComplexValue>
+		<setSimpleValue attAlias="icon" id="7003686977618377503">linux</setSimpleValue>
+	</template>
+	<template alias="RedHatLinuxV4" id="7342163578105637959" displayName="${A_Name} ${B_Version} (on ${H_InstalledOn})">
+		<derivedFrom>
+			<ref alias="RedHatLinux"/>
+		</derivedFrom>
+		<description>This CI defines a Red Hat Linux Operating System. It is installed on a System.</description>
+		<attribute attAlias="E_Service" displayName="Service" derived="true" id="-3786493268145202498">
+			<complexType>
+				<ref alias="Service"/>
+				<refType><ref alias="BelongsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_LicenseKey" displayName="License Key" derived="true" id="-1414476092914251700">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_DSLEntry" displayName="DSL Entry" derived="true" id="-7158718286371599">
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Family" displayName="OS Family" derived="true" id="3734140865262479509">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="F_Maintenance" displayName="Maintenance Info" derived="true" id="-3463767410781740416">
+			<complexType>
+				<ref alias="Maintenance"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="H_InstalledOn" displayName="Installed On" derived="true" id="2688647756949692150">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="InstalledOn"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Version" displayName="Version" derived="true" id="-1622199541105505225">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="-4797407884618521049">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Name" displayName="Name" derived="true" id="171303480815732782">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="G_Financial" displayName="Financial Info" derived="true" id="-4141248550907568614">
+			<complexType>
+				<ref alias="Financial"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="-894161293392371587">Red Hat Linux</setSimpleValue>
+		<setSimpleValue attAlias="B_Family" id="-9058024889577850455">Linux</setSimpleValue>
+		<setSimpleValue attAlias="B_Version" id="7103808709078833267">4</setSimpleValue>
+		<setSimpleValue attAlias="C_DSLEntry" id="-7509814129652338165">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_OS_Package.txt</setSimpleValue>
+		<setSimpleValue attAlias="D_LicenseKey" id="-8833037674622723352">GHJU-7688-MOVF</setSimpleValue>
+		<setComplexValue attAlias="E_Service" id="6528052313529824125"><ref alias="Service-6"/></setComplexValue>
+		<setComplexValue attAlias="F_Maintenance" id="-1563993575453110011"><ref alias="Maintenance-4"/></setComplexValue>
+		<setComplexValue attAlias="G_Financial" id="-1311856273332178314"><ref alias="Financial-7"/></setComplexValue>
+		<setSimpleValue attAlias="icon" id="7003686977618377503">linux</setSimpleValue>
+	</template>
+	<template alias="RedHatLinuxV5" id="9039957270587336333" displayName="${A_Name} ${B_Version} (on ${H_InstalledOn})">
+		<derivedFrom>
+			<ref alias="RedHatLinux"/>
+		</derivedFrom>
+		<description>This CI defines a Red Hat Linux Operating System. It is installed on a System.</description>
+		<attribute attAlias="E_Service" displayName="Service" derived="true" id="-3786493268145202498">
+			<complexType>
+				<ref alias="Service"/>
+				<refType><ref alias="BelongsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_LicenseKey" displayName="License Key" derived="true" id="-1414476092914251700">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_DSLEntry" displayName="DSL Entry" derived="true" id="-7158718286371599">
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Family" displayName="OS Family" derived="true" id="3734140865262479509">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="F_Maintenance" displayName="Maintenance Info" derived="true" id="-3463767410781740416">
+			<complexType>
+				<ref alias="Maintenance"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="H_InstalledOn" displayName="Installed On" derived="true" id="2688647756949692150">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="InstalledOn"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Version" displayName="Version" derived="true" id="-1622199541105505225">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="-4797407884618521049">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Name" displayName="Name" derived="true" id="171303480815732782">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="G_Financial" displayName="Financial Info" derived="true" id="-4141248550907568614">
+			<complexType>
+				<ref alias="Financial"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="-1761577365370567082">Red Hat Linux</setSimpleValue>
+		<setSimpleValue attAlias="B_Family" id="8073403116543419064">Linux</setSimpleValue>
+		<setSimpleValue attAlias="B_Version" id="-6820144269347366949">5</setSimpleValue>
+		<setSimpleValue attAlias="C_DSLEntry" id="1678956051621342687">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_OS_Package.txt</setSimpleValue>
+		<setSimpleValue attAlias="D_LicenseKey" id="-8972838230604174196">FGHJ-3456-YUJK</setSimpleValue>
+		<setComplexValue attAlias="E_Service" id="-2598458530962473555"><ref alias="Service-6"/></setComplexValue>
+		<setComplexValue attAlias="F_Maintenance" id="-8457293280698764295"><ref alias="Maintenance-4"/></setComplexValue>
+		<setComplexValue attAlias="G_Financial" id="9171535734246400978"><ref alias="Financial-7"/></setComplexValue>
+		<setSimpleValue attAlias="icon" id="7003686977618377503">linux</setSimpleValue>
+	</template>
+	<template alias="MSOffice" id="-7099617141571574730" displayName="${A_Name} ${B_Version}">
+		<derivedFrom>
+			<ref alias="ClientApplication"/>
+		</derivedFrom>
+		<description>This CI defines MS Office</description>
+		<attribute attAlias="E_Service" displayName="Service" derived="true" id="-3786493268145202498">
+			<complexType>
+				<ref alias="Service"/>
+				<refType><ref alias="BelongsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_LicenseKey" displayName="License Key" derived="true" id="-1414476092914251700">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_DSLEntry" displayName="DSL Entry" derived="true" id="-7158718286371599">
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="F_Maintenance" displayName="Maintenance Info" derived="true" id="-3463767410781740416">
+			<complexType>
+				<ref alias="Maintenance"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="H_InstalledOn" displayName="Installed On" derived="true" id="-7604318699078127251">
+			<complexType>
+				<ref alias="OS"/>
+				<refType><ref alias="InstalledOn"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Version" displayName="Version" derived="true" id="-1622199541105505225">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="-4797407884618521049">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Name" displayName="Name" derived="true" id="171303480815732782">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="G_Financial" displayName="Financial Info" derived="true" id="-4141248550907568614">
+			<complexType>
+				<ref alias="Financial"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="8709621984351880954">MS Office</setSimpleValue>
+		<setSimpleValue attAlias="B_Version" id="-1367778682364195919">2003</setSimpleValue>
+		<setSimpleValue attAlias="C_DSLEntry" id="4655503471083504081">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</setSimpleValue>
+		<setSimpleValue attAlias="D_LicenseKey" id="-2691405493182205062">MSOF-6767-7788-WERT</setSimpleValue>
+		<setComplexValue attAlias="F_Maintenance" id="1287908430944022556"><ref alias="Maintenance-5"/></setComplexValue>
+		<setComplexValue attAlias="G_Financial" id="8759946050634505065"><ref alias="Financial-5"/></setComplexValue>
+		<setSimpleValue attAlias="icon" id="-8438164772113241201">package</setSimpleValue>
+	</template>
+	<template alias="MSOutlook" id="7887956521889740089" displayName="${A_Name} ${B_Version}">
+		<derivedFrom>
+			<ref alias="ClientApplication"/>
+		</derivedFrom>
+		<description>This CI defines MS Outlook</description>
+		<attribute attAlias="E_Service" displayName="Service" derived="true" id="-3786493268145202498">
+			<complexType>
+				<ref alias="Service"/>
+				<refType><ref alias="BelongsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_LicenseKey" displayName="License Key" derived="true" id="-1414476092914251700">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_DSLEntry" displayName="DSL Entry" derived="true" id="-7158718286371599">
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="F_Maintenance" displayName="Maintenance Info" derived="true" id="-3463767410781740416">
+			<complexType>
+				<ref alias="Maintenance"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="H_InstalledOn" displayName="Installed On" derived="true" id="-7604318699078127251">
+			<complexType>
+				<ref alias="OS"/>
+				<refType><ref alias="InstalledOn"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Version" displayName="Version" derived="true" id="-1622199541105505225">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="-4797407884618521049">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Name" displayName="Name" derived="true" id="171303480815732782">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="G_Financial" displayName="Financial Info" derived="true" id="-4141248550907568614">
+			<complexType>
+				<ref alias="Financial"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="-2819850259985358819">MS Outlook</setSimpleValue>
+		<setSimpleValue attAlias="B_Version" id="-1044314658738203534">2003</setSimpleValue>
+		<setSimpleValue attAlias="C_DSLEntry" id="4678167498952562227">http://www.onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</setSimpleValue>
+		<setSimpleValue attAlias="D_LicenseKey" id="9081311408313787848">MSOL-4566-7768-6786</setSimpleValue>
+		<setComplexValue attAlias="E_Service" id="-3977221182808625702"><ref alias="Service-4"/></setComplexValue>
+		<setComplexValue attAlias="F_Maintenance" id="-190790959658884679"><ref alias="Maintenance-5"/></setComplexValue>
+		<setComplexValue attAlias="G_Financial" id="6743152187769240754"><ref alias="Financial-5"/></setComplexValue>
+		<setSimpleValue attAlias="icon" id="8321577200444696888">package</setSimpleValue>
+	</template>
+	<template alias="MS_Exchange" id="4272145007544639909" displayName="${A_Name} ${B_Version}">
+		<derivedFrom>
+			<ref alias="ServerApplication"/>
+		</derivedFrom>
+		<description>This CI defines MS Exchange.</description>
+		<attribute attAlias="D_Port" displayName="Port" derived="true" id="7046025496952833580">
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="E_Service" displayName="Service" derived="true" id="-3786493268145202498">
+			<complexType>
+				<ref alias="Service"/>
+				<refType><ref alias="BelongsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_LicenseKey" displayName="License Key" derived="true" id="-1414476092914251700">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_DSLEntry" displayName="DSL Entry" derived="true" id="-7158718286371599">
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="F_Maintenance" displayName="Maintenance Info" derived="true" id="-3463767410781740416">
+			<complexType>
+				<ref alias="Maintenance"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="H_InstalledOn" displayName="Installed On" derived="true" id="-7604318699078127251">
+			<complexType>
+				<ref alias="OS"/>
+				<refType><ref alias="InstalledOn"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_Protocol" displayName="Protocol" derived="true" id="6510678819633125505">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Version" displayName="Version" derived="true" id="-1622199541105505225">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="-4797407884618521049">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Name" displayName="Name" derived="true" id="171303480815732782">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="G_Financial" displayName="Financial Info" derived="true" id="-4141248550907568614">
+			<complexType>
+				<ref alias="Financial"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="1851318368798976584">MS Exchange</setSimpleValue>
+		<setSimpleValue attAlias="B_Version" id="-4630494182668010355">2003</setSimpleValue>
+		<setSimpleValue attAlias="C_DSLEntry" id="4366663735442616194">http://onecmdb.org/docs/BasicDatacenter/DSL/Dummy_Software_Package.txt</setSimpleValue>
+		<setSimpleValue attAlias="D_LicenseKey" id="-3888394565857973280"></setSimpleValue>
+		<setSimpleValue attAlias="D_Protocol" id="-6574565223972616512"></setSimpleValue>
+		<setComplexValue attAlias="E_Service" id="-1257316325819995698"><ref alias="Service-4"/></setComplexValue>
+		<setComplexValue attAlias="F_Maintenance" id="-662012769117086498"><ref alias="Maintenance-5"/></setComplexValue>
+		<setComplexValue attAlias="G_Financial" id="5423055600672043535"><ref alias="Financial-5"/></setComplexValue>
+		<setSimpleValue attAlias="icon" id="-9090482165955959808">package</setSimpleValue>
+	</template>
+	
+	<template alias="Application" id="1871090905808351515" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Software"/>
+		</derivedFrom>
+		<description>This CI defines an Application. An application is installed on a OS.</description>
+		<attribute attAlias="H_InstalledOn" displayName="Installed On" derived="false" id="5897964772827671869">
+			<complexType>
+				<ref alias="OS"/>
+				<refType><ref alias="InstalledOn"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="-8870167258344711581">Application</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-8705014383360023888">package</setSimpleValue>
+	</template>
+	<template alias="ClientApplication" id="-8254577235409195975" displayName="${A_Name} ${B_Version}">
+		<derivedFrom>
+			<ref alias="Application"/>
+		</derivedFrom>
+		<description>This CI defines a Client Application. A Client Application is not receiving network events, but may communicate with application servers.</description>
+		<setSimpleValue attAlias="A_Name" id="-7309306324344864156">Client Appl.</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-5909016383746836303">package</setSimpleValue>
+	</template>
+	<template alias="Company" id="-1773303773657214875" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>This CI describes one company.</description>
+		<attribute attAlias="B_Web_Address" displayName="Web Address" derived="false" id="701559259885697263">
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_Telephone" displayName="Telephone" derived="false" id="-3626590290766526331">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="4157073534574249776">Company</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="7127635313030733484">resource</setSimpleValue>
+	</template>
+	<template alias="Component" id="377405344140459223" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Hardware"/>
+		</derivedFrom>
+		<description>This CI specifies one hardware component. A component is part of a System.</description>
+		<setSimpleValue attAlias="A_Name" id="-4353110287085881299">Component</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-7424328565000141143">rackunit</setSimpleValue>
+	</template>
+	<template alias="Computer" id="1552910136392135438" displayName="${A_Name} ${BA_IPAddress}">
+		<derivedFrom>
+			<ref alias="System"/>
+		</derivedFrom>
+		<description>This CI specifies one computer system. A Computer System has different components installed on it, like harddrive, memory, network card etc.</description>
+		<setSimpleValue attAlias="A_Name" id="2400847411695000933">Computer</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="7871046908069504632">computer</setSimpleValue>
+	</template>
+	<template alias="DHCP" id="-219914257262518752" displayName="${A_Name}  ${B_Version}">
+		<derivedFrom>
+			<ref alias="NetworkApplication"/>
+		</derivedFrom>
+		<description>This CI describes a DHCP (Dynamic Host Configuration Protocol) Server.</description>
+		<setSimpleValue attAlias="A_Name" id="-6356501463180814926">DHCP</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-3180218096413934401">package</setSimpleValue>
+	</template>
+	<template alias="DNS" id="-6010746622914177072" displayName="${A_Name}  ${B_Version}">
+		<derivedFrom>
+			<ref alias="NetworkApplication"/>
+		</derivedFrom>
+		<description>This CI one DNS (Domain Name System) Server Application.</description>
+		<setSimpleValue attAlias="A_Name" id="-1353146055843675934">DNS</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="7577615606070896311">package</setSimpleValue>
+	</template>
+	<template alias="Database" id="5678014668227444222" displayName="${A_Name}  ${B_Version}">
+		<derivedFrom>
+			<ref alias="ServerApplication"/>
+		</derivedFrom>
+		<description>This CI describes a database software.</description>
+		<setSimpleValue attAlias="A_Name" id="4987619311524310168">DB</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="3662510865359436047">package</setSimpleValue>
+	</template>
+	<template alias="Desktop" id="3230496835389685670" displayName="${A_Name} ${BA_IPAddress}">
+		<derivedFrom>
+			<ref alias="Computer"/>
+		</derivedFrom>
+		<description>This CI specifies one desktop computer system. A desktop computer System is located in one place and used by one person at a time.</description>
+		<setSimpleValue attAlias="A_Name" id="-2452255659956026371">Desktop</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-4428464033877173013">desktop</setSimpleValue>
+	</template>
+	<template alias="Financial" id="3755940307779170143" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>This CI describes the financial aspect of a CI.</description>
+		<attribute attAlias="C_Purchase_Date" displayName="Purchase Date" derived="false" id="-7621590101738006940">
+			<simpleType>xs:date</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_Depreciation" displayName="Depreciation (years)" derived="false" id="5119686485091777736">
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="E_Maintenance_Fee" displayName="Maintenance Fee (USD/Year)" derived="false" id="-1080847185314904275">
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Purchase_Prise" displayName="Purchase Prise (USD)" derived="false" id="-578320439493908736">
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="F_Purchase_Contract" displayName="Purchase Contract" derived="false" id="-5729334454378112687">
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="-8756276315926836060">Financials</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-8531509054471292900">asset</setSimpleValue>
+	</template>
+	<template alias="HardDiskDrive" id="-2750918895842435133" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Component"/>
+		</derivedFrom>
+		<description>a hard disk drive is a non-volatile storage device which stores digitally encoded data.</description>
+		<setSimpleValue attAlias="A_Name" id="-928290520481324443">HDD</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-8700896475448711460">hdd</setSimpleValue>
+	</template>
+	<template alias="Hardware" id="-4839274991248333637" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Ci"/>
+		</derivedFrom>
+		<description>This CI specifies one hardware. All hardware belongs to a service.</description>
+		<attribute attAlias="C_Status" displayName="Status" derived="false" id="-224267902517190002">
+			<complexType>
+				<ref alias="OperationalStatus"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="G_Maintenance" displayName="Maintenance Info" derived="false" id="-3917677472489811838">
+			<complexType>
+				<ref alias="Maintenance"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="E_Service" displayName="Service" derived="false" id="-6748224384437821330">
+			<complexType>
+				<ref alias="Service"/>
+				<refType><ref alias="BelongsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="N_Location" displayName="Location" derived="false" id="-7505505171402138456">
+			<complexType>
+				<ref alias="Location"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Name" displayName="Name" derived="false" id="8372399225869537158">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="H_Financials" displayName="Financial Info" derived="false" id="922441404838268268">
+			<complexType>
+				<ref alias="Financial"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_SerialNumber" displayName="Serial Number" derived="false" id="6213987134914963648">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="F_Manufacturer" displayName="Manufacturer" derived="false" id="7795241051790156607">
+			<complexType>
+				<ref alias="Company"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="8372399225869537158">Hardware</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-8262060136248660365">computer</setSimpleValue>
+	</template>
+	<template alias="J2EEServer" id="3416535259900788723" displayName="${A_Name}  ${B_Version}">
+		<derivedFrom>
+			<ref alias="ServerApplication"/>
+		</derivedFrom>
+		<description>This CI describes a Java EE server.</description>
+		<setSimpleValue attAlias="A_Name" id="-4726872602898648490">J2EE Server</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-5906150999184098522">package</setSimpleValue>
+	</template>
+	
+	<template alias="Laptop" id="-2320489534900631798" displayName="${A_Name} ${BA_IPAddress}">
+		<derivedFrom>
+			<ref alias="Computer"/>
+		</derivedFrom>
+		<description>This CI specifies one laptop computer system. A laptop computer system can may not be  located in one place.Is owned by one person at a time.</description>
+		<setSimpleValue attAlias="A_Name" id="7711474334009203380">Laptop</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="8318727044170403060">portable</setSimpleValue>
+	</template>
+	<template alias="Location" id="2568568820754624246" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>This CI defines a Location. A location is defined by a symbolic name.</description>
+		<setSimpleValue attAlias="A_Name" id="7971385341813654577">Location</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-2043132284837370430">resource</setSimpleValue>
+	</template>
+	<template alias="Maintenance" id="6015545331271991592" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>This CI describes the maintenance aggrement. The maintenance are typically associated with a Service, Software and Hardware.</description>
+		<attribute attAlias="C_Maintenance_Org" displayName="Maintenance Org." derived="false" id="9027785244447458933">
+			<complexType>
+				<ref alias="Company"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="E_Maintenance_Agreement" displayName="Maintenance Agreement" derived="false" id="1232101536949171811">
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_Maintenance_Level" displayName="Maintenance Level" derived="false" id="1850082896931426005">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Specialist" displayName="Specialist (internal)" derived="false" id="4286294067910365797">
+			<complexType>
+				<ref alias="Person"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="1742247727415865720">Maintenance</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-427238397763600737">maintenance</setSimpleValue>
+	</template>
+	<template alias="Network" id="7075788717755218908" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>A logical network that a system belongs to.</description>
+		<setSimpleValue attAlias="A_Name" id="-4596510880210518684">Network</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="7294141264793001466">resource</setSimpleValue>
+	</template>
+	<template alias="NetworkApplication" id="4769158269242120612" displayName="${A_Name}  ${B_Version}">
+		<derivedFrom>
+			<ref alias="ServerApplication"/>
+		</derivedFrom>
+		<description>This CI describes a network application.</description>
+		<setSimpleValue attAlias="A_Name" id="-2506095986073567618">Network Application</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="8237906867260443950">package</setSimpleValue>
+	</template>
+	<template alias="NetworkDevice" id="1760729472231331305" displayName="${A_Name} ${BA_IPAddress}">
+		<derivedFrom>
+			<ref alias="System"/>
+		</derivedFrom>
+		<description>This CI specifies a network device.</description>
+		<setSimpleValue attAlias="A_Name" id="5751990833630796986">Network Device</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-4136164229749835617">netcomp</setSimpleValue>
+	</template>
+	<template alias="OS" id="4824949059624750187" displayName="${A_Name} ${B_Version}">
+		<derivedFrom>
+			<ref alias="Software"/>
+		</derivedFrom>
+		<description>This CI defines an Operating System. The OS is installed on a System.</description>
+		<attribute attAlias="H_InstalledOn" displayName="Installed On" derived="false" id="7791389494424708865">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="InstalledOn"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Family" displayName="OS Family" derived="false" id="1525791815026039625">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="-3077429541004678934">OS</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-5685240572962995948">package</setSimpleValue>
+	</template>
+	
+	
+	<template alias="OperationalStatus" id="5198703486575307376" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>The operational status for a CI. Typically this would be In Production, In Testing, Under installation etc.</description>
+		<setSimpleValue attAlias="A_Name" id="-1552042485168899599">Operational Status</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="5259772953880583703">resource</setSimpleValue>
+	</template>
+	
+	<template alias="Person" id="-5371952177054902514" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Resource"/>
+		</derivedFrom>
+		<description>This CI describes one Person.</description>
+		<attribute attAlias="C_Email" displayName="E-Mail" derived="false" id="3070911091272505396">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="E_OneCMDBAccount" displayName="OneCMDB Account" derived="false" id="-8174567555354305980">
+			<complexType>
+				<ref alias="CMDBAccount"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_Telephone" displayName="Telephone" derived="false" id="9012651140235486596">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Organisation" displayName="Organization" derived="false" id="-5358928486657720823">
+			<complexType>
+				<ref alias="Company"/>
+				<refType><ref alias="BelongsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="3798503099859897464">Person</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="2470013788186920828">people</setSimpleValue>
+	</template>
+	
+	<template alias="Resource" id="5601415196085170533" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Ci"/>
+		</derivedFrom>
+		<description>This CI defines a Resource. A resource is something that must be knowned in the datacenter, like a Company, Location and People etc.</description>
+		<attribute attAlias="A_Name" displayName="Name" derived="false" id="4207147143625811071">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="4207147143625811071">Resource</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="6204337175353814010">resource</setSimpleValue>
+	</template>
+	<template alias="Router" id="1490728364771377702" displayName="${A_Name} ${BA_IPAddress}">
+		<derivedFrom>
+			<ref alias="NetworkDevice"/>
+		</derivedFrom>
+		<description>This CI specifies a network device router.</description>
+		<attribute attAlias="W_WAN_IPAddress" displayName="WAN IP Address">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="W_WAN_Hostname" displayName="WAN Hostname">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+	
+		<attribute attAlias="X_Uplink" displayName="Uplink" derived="false" id="1911670496899376051">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="-8372913132651578006">Router</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-8773524488554586762">netcomp</setSimpleValue>
+	</template>
+	
+	<template alias="Router16Port" id="8231209806899014081" displayName="${A_Name} ${BA_IPAddress}">
+		<derivedFrom>
+			<ref alias="Router"/>
+		</derivedFrom>
+		<description>This CI specifies a network device router. This router has 16 ports avaliable.</description>
+		<attribute attAlias="P_Port7" displayName="Port 7" derived="false" id="-2200630656727570214">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port6" displayName="Port 6" derived="false" id="-2172531137179646951">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port11" displayName="Port 11" derived="false" id="-4380455153675334747">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port3" displayName="Port 3" derived="false" id="-6371179948876275400">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port13" displayName="Port 13" derived="false" id="-6093525416947226877">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port7" displayName="Port 7" derived="false" id="-7385397570943886851">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port4" displayName="Port 4" derived="false" id="6878085830622568861">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port10" displayName="Port 10" derived="false" id="-1996778537649142910">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port16" displayName="Port 16" derived="false" id="8674664714833564788">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port9" displayName="Port 9" derived="false" id="-1980423595779821100">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port12" displayName="Port 12" derived="false" id="-6413142692249074645">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port6" displayName="Port 6" derived="false" id="3184029442067101131">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port15" displayName="Port 15" derived="false" id="-2932040653240691059">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port8" displayName="Port 8" derived="false" id="-4563368936812056959">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port14" displayName="Port 14" derived="false" id="4187446380905875811">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port1" displayName="Port 1" derived="false" id="2716953391266983403">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port5" displayName="Port 5" derived="false" id="-992479249474742220">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port2" displayName="Port 2" derived="false" id="3407368068092097621">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="1509257649087305785">Router16Port</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="3093427203703262479">netcomp</setSimpleValue>
+	</template>
+	<template alias="Router4PortWireless" id="-3462830902534898547" displayName="${A_Name} ${BA_IPAddress}">
+		<derivedFrom>
+			<ref alias="Router"/>
+		</derivedFrom>
+		<description>This CI specifies a network device router. This router has 4 ports avaliable and has wireless capabilities.</description>
+		<attribute attAlias="P_Port4" displayName="Port 4" derived="false" id="2664443149377360576">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port3" displayName="Port 3" derived="false" id="-8724195087316285177">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port1" displayName="Port 1" derived="false" id="-4815171461757526795">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port2" displayName="Port 2" derived="false" id="342099161255896719">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="4831291112931247368">Router4PortWireless</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-7612516457339930942">netcomp</setSimpleValue>
+	</template>
+	<template alias="Server" id="9198702774707727571" displayName="${A_Name} ${BA_IPAddress}">
+		<derivedFrom>
+			<ref alias="Computer"/>
+		</derivedFrom>
+		<description>This CI specifies one server computer system. A Server Computer System is used to host server applications.</description>
+		<setSimpleValue attAlias="A_Name" id="-4554172589943990608">Server</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-1217616154872164385">computer</setSimpleValue>
+	</template>
+	<template alias="ServerApplication" id="-973087314540758928" displayName="${A_Name}  ${B_Version}">
+		<derivedFrom>
+			<ref alias="Application"/>
+		</derivedFrom>
+		<description>This CI defines a Server Application. A Server Application defines a listener port.</description>
+		<attribute attAlias="D_Port" displayName="Port" derived="false" id="-1429024286743894137">
+			<simpleType>xs:integer</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_Protocol" displayName="Protocol" derived="false" id="3184900574007936272">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="-4126142654962875686">Server Application</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="5931576914464478246">package</setSimpleValue>
+	</template>
+	<template alias="Service" id="9216808384187055538" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Ci"/>
+		</derivedFrom>
+		<description>This CI defines a Service. All hardware and software belongs to a service. A service defines a number of SLA&apos;s and has many company that uses it.</description>
+		<attribute attAlias="B_UsedBy" displayName="Used By" derived="false" id="8440724036128445914">
+			<complexType>
+				<ref alias="Company"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="D_Uses" displayName="Uses" derived="false" id="-2744085890279040601">
+			<complexType>
+				<ref alias="Service"/>
+				<refType><ref alias="DependsOn"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_SLA" displayName="SLA" derived="false" id="8783774967524967872">
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Name" displayName="Name" derived="false" id="-1878341175325058373">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="-1878341175325058373">Service</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="6461260575776967759">service</setSimpleValue>
+	</template>
+	<template alias="ServletContainer" id="-9174649429318187456" displayName="${A_Name} ${B_Version}">
+		<derivedFrom>
+			<ref alias="ServerApplication"/>
+		</derivedFrom>
+		<description>This CI describes a container for servlets.</description>
+		<setSimpleValue attAlias="A_Name" id="8565194327396334104">Servlet Container</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-2489332516975577559">package</setSimpleValue>
+	</template>
+	<template alias="Software" id="6481714641526494002" displayName="${A_Name} ${B_Version}">
+		<derivedFrom>
+			<ref alias="Ci"/>
+		</derivedFrom>
+		<description>This CI specifies an installable software.</description>
+		<attribute attAlias="D_LicenseKey" displayName="License Key" derived="false" id="-2394929409192189987">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="E_Service" displayName="Service" derived="false" id="-6937971235051599095">
+			<complexType>
+				<ref alias="Service"/>
+				<refType><ref alias="BelongsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="C_DSLEntry" displayName="DSL Entry" derived="false" id="4320894775598174283">
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="A_Name" displayName="Name" derived="false" id="-2741092176729372861">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="G_Financial" displayName="Financial Info" derived="false" id="737497329967929469">
+			<complexType>
+				<ref alias="Financial"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="F_Maintenance" displayName="Maintenance Info" derived="false" id="-1835334333561247027">
+			<complexType>
+				<ref alias="Maintenance"/>
+				<refType><ref alias="PointsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="B_Version" displayName="Version" derived="false" id="-6244791233069339608">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="-2741092176729372861">Software</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="73845153254896393">package</setSimpleValue>
+	</template>
+	<template alias="Switch" id="-1027501234247124804" displayName="${A_Name} ${BA_IPAddress}">
+		<derivedFrom>
+			<ref alias="NetworkDevice"/>
+		</derivedFrom>
+		<description>This CI specifies one switch network device.</description>
+		<attribute attAlias="X_Uplink" displayName="Uplink" derived="false" id="-3967307385283402629">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="4287749837721945650">Switch</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="7012883714945967678">netcomp</setSimpleValue>
+	</template>
+	<template alias="Switch16Port" id="3359437547778639533" displayName="${A_Name} ${BA_IPAddress}">
+		<derivedFrom>
+			<ref alias="Switch"/>
+		</derivedFrom>
+		<description>This CI specifies one switch network device.</description>
+		<attribute attAlias="P_Port2" displayName="Port 2" derived="false" id="7536414699566264237">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port16" displayName="Port 16" derived="false" id="2879250378457478389">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port7" displayName="Port 7" derived="false" id="-732518596445459133">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port12" displayName="Port 12" derived="false" id="-4091151456026161849">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port1" displayName="Port 1" derived="false" id="3902299796949994959">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port3" displayName="Port 3" derived="false" id="-2297934517203814088">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port9" displayName="Port 9" derived="false" id="-3762186541694781516">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port5" displayName="Port 5" derived="false" id="1155860193046183067">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port6" displayName="Port 6" derived="false" id="2119022312466437685">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port13" displayName="Port 13" derived="false" id="-422182639801116874">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port14" displayName="Port 14" derived="false" id="5259042299409639511">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port15" displayName="Port 15" derived="false" id="2853851754712058442">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port8" displayName="Port 8" derived="false" id="-1355969565531507040">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port4" displayName="Port 4" derived="false" id="5270581193491034795">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port10" displayName="Port 10" derived="false" id="-7166054425661216817">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port7" displayName="Port 7" derived="false" id="3239938864574735497">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port11" displayName="Port 11" derived="false" id="-2861064371341021016">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="P_Port6" displayName="Port 6" derived="false" id="-3279921742935333009">
+			<complexType>
+				<ref alias="System"/>
+				<refType><ref alias="ConnectedTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="2982439737288785356">Switch16Port</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-6571794873075804414">netcomp</setSimpleValue>
+	</template>
+	<template alias="System" id="-1309499869603040129" displayName="${A_Name} ${BA_IPAddress}">
+		<derivedFrom>
+			<ref alias="Hardware"/>
+		</derivedFrom>
+		<description>This CI specifies one system. A System is connected to a network.</description>
+		<attribute attAlias="BC_MAC_Address" displayName="MAC Address" derived="false" id="7257256829026902473">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="BB_Hostname" displayName="Hostname" derived="false" id="6297153400537349873">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="BD_Network" displayName="Network" derived="false" id="-6312661298587714379">
+			<complexType>
+				<ref alias="Network"/>
+				<refType><ref alias="BelongsTo"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="BA_IPAddress" displayName="IP Address" derived="false" id="-994418775241507924">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="6309151508343346022">System</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="-8220647077230852061">computer</setSimpleValue>
+	</template>
+	<template alias="WebApplication" id="-4277393612394300226" displayName="${A_Name}">
+		<derivedFrom>
+			<ref alias="Application"/>
+		</derivedFrom>
+		<description>This CI describes one web application, that is accessed through a web browser.</description>
+		<setSimpleValue attAlias="A_Name" id="5516262254526775155">Web Application</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="5527043854954668796">package</setSimpleValue>
+	</template>
+	<template alias="WebService" id="5030266451794307539" displayName="${A_Name} ${B_Version}">
+		<derivedFrom>
+			<ref alias="ServerApplication"/>
+		</derivedFrom>
+		<description>This CI describes one web service.</description>
+		<attribute attAlias="F_WSDL_URL" displayName="WSDL URL" derived="false" id="-2980676014070345911">
+			<simpleType>xs:anyURI</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="A_Name" id="5639257664045389723">Web Service</setSimpleValue>
+		<setSimpleValue attAlias="icon" id="6668537351117200492">package</setSimpleValue>
+	</template>
+</templates>
+<instances>
+</instances>
+</onecmdb>

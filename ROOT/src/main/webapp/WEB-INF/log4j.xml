@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="%d %p - %C{1}.%M(%L) | %m%n"/>
+        </layout>
+    </appender> 
+   
+<appender name="onecmdb.log" class="org.apache.log4j.RollingFileAppender">
+	<param name="file" value="onecmdb.log"/>
+	<param name="maxFileSize" value="512KB"/>
+	<param name="maxBackupIndex" value="3"/>
+      	
+	<layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="%d %p - %C{1}.%M(%L) | %m%n"/>
+        </layout>
+</appender>
+
+<appender name="onecmdb.err" class="org.apache.log4j.RollingFileAppender">
+	<param name="file" value="onecmdb.err"/>
+	<param name="maxFileSize" value="512KB"/>	
+	<param name="maxBackupIndex" value="3"/>
+      	
+	<layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="%d %p - %C{1}.%M(%L) | %m%n"/>
+        </layout>
+            <filter class="org.apache.log4j.varia.LevelRangeFilter" >
+            <param name="LevelMin" value="warn"/>            
+            <!-- <param name="LevelMax" value="warn"/> -->
+            <param name="AcceptOnMatch" value="true"/>
+         </filter>
+        <filter class="org.apache.log4j.varia.DenyAllFilter"/>
+</appender>
+
+
+    <logger name="org.acegisecurity">
+        <level value="WARN"/>
+    </logger>
+
+
+    <logger name="org.apache">
+        <level value="WARN"/>
+    </logger>
+
+    <logger name="servletunit.struts">
+        <level value="INFO"/>
+    </logger>
+    
+    <logger name="net.sf.hibernate">
+        <level value="WARN"/>
+    </logger>
+
+    <logger name="com.opensymphony.oscache">
+        <level value="WARN"/>
+    </logger>
+
+    <logger name="org.springframework">
+        <level value="INFO"/>
+    </logger>
+   
+    
+    <logger name="org.onecmdb">
+        <level value="INFO"/>
+        <appender-ref ref="onecmdb.log"/>
+		<appender-ref ref="onecmdb.err"/>
+    </logger>
+  
+    
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+  
+   
+</log4j:configuration>

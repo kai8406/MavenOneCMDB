@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GraphQuery>
+	<ItemOffspringSelector id="brukare">
+		<template>Brukare</template>
+			<ItemAndGroupConstraint>
+				<AttributeValueConstraint>
+					<alias>name</alias>
+					<operation>LIKE</operation>
+					<type>String</type>
+					<value>A%</value>
+				</AttributeValueConstraint>
+			</ItemAndGroupConstraint>
+	</ItemOffspringSelector>
+	
+	<ItemOffspringSelector id="access">
+		<template>WANAccess</template>
+			<ItemAndGroupConstraint>
+				<RelationConstraint>
+					<direction>source</direction>
+					<selector>b2a</selector>
+				</RelationConstraint>
+			</ItemAndGroupConstraint>
+	</ItemOffspringSelector>
+	
+	<ItemRelationSelector id="b2a">
+		<template>Reference</template>
+		<source>acccess</source>
+		<target>brukare</target>
+	</ItemRelationSelector>
+</GraphQuery>

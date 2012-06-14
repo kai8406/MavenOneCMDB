@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE 
+	beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- 
+	Definition of the datasource.
+	Need to specify the folowing beans:
+		dataSource - defines driver/url/user/pwd
+		hibernateProperties - defines the db dialect
+		shutdownDb - true if hsql in process else false.
+
+ -->
+ 
+<beans default-dependency-check="none">
+
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://192.168.1.15/cygate" />
+		<property name="username" value="Cygate" />
+		<property name="password" value="cygate" />
+		<property name="initialSize">
+			<value>5</value>
+		</property>
+	</bean>
+	
+	<bean id="hibernateProperties" class="org.onecmdb.core.internal.storage.HibernateProperty">
+		<property name="properties">
+				<props>
+					<prop key="hibernate.dialect">
+						 org.hibernate.dialect.MySQLInnoDBDialect 
+						 
+					</prop>
+					<prop key="show_sql">true</prop>
+					
+					<prop key="transaction.factory_class">
+						org.hibernate.transaction.JDBCTransactionFactory
+					</prop>
+					
+					<prop key="hibernate.cache.provider_class">						
+						org.hibernate.cache.HashtableCacheProvider
+					</prop>
+					
+					<prop key="hibernate.hbm2ddl.auto">
+						update
+					</prop>
+					
+				</props>
+		</property>
+	</bean>
+</beans>

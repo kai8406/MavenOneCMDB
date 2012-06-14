@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+<!DOCTYPE onecmdb SYSTEM "onecmdb.dtd">
+ -->
+<onecmdb>
+	<templates>
+	
+		<!--  Refrence Definition -->
+		<template alias="CMDBAccount" displayName="${username}">
+			<derivedFrom><ref alias="Root"/></derivedFrom>
+			<description>This describes one user account in OneCMDB.</description>
+		
+			<attribute attAlias="username" displayName="Username">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="password" displayName="Password">
+				<simpleType>xs:password</simpleType>
+			</attribute>
+			<attribute attAlias="enabled" displayName="Enabled">
+				<simpleType>xs:boolean</simpleType>
+			</attribute>
+			<attribute attAlias="accountExpired" displayName="Account Expired">
+				<simpleType>xs:boolean</simpleType>
+			</attribute>
+			<attribute attAlias="credentialsExpired" displayName="Credential Expired">
+				<simpleType>xs:boolean</simpleType>
+			</attribute>
+			<attribute attAlias="accountLocked" displayName="Account Locked">
+				<simpleType>xs:boolean</simpleType>
+			</attribute>
+			
+			<attribute attAlias="role" displayName="Role">
+				<simpleType>xs:string</simpleType>
+				<policy>
+					<minOccurs>0</minOccurs>
+					<maxOccurs>unbound</maxOccurs>
+				</policy>			
+			</attribute>
+			<attribute attAlias="defaultRole" displayName="Default Role">
+				<simpleType>xs:string</simpleType>
+				<policy>
+					<minOccurs>1</minOccurs>
+					<maxOccurs>1</maxOccurs>
+				</policy>			
+			</attribute>
+			
+	
+			<setSimpleValue attAlias="enabled">true</setSimpleValue>
+			<setSimpleValue attAlias="accountExpired">false</setSimpleValue>
+			<setSimpleValue attAlias="credentialsExpired">false</setSimpleValue>			
+			<setSimpleValue attAlias="accountLocked">false</setSimpleValue>
+			<setSimpleValue attAlias="username">Account</setSimpleValue>			
+			<setSimpleValue attAlias="icon">useraccount</setSimpleValue>
+		</template>
+	</templates>
+	
+	<instances>
+		
+	</instances>
+
+</onecmdb>

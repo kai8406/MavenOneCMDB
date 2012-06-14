@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+	<templates>
+		<!-- Connector Component -->		
+		
+		<template alias="NetworkConnector">
+			<derivedFrom><ref alias="Connector"/></derivedFrom>
+			<attribute attAlias="partOf">
+				<complexType>
+					<ref alias="PlatformSystem" />
+					<refType><ref alias="BelongsTo"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>	
+		</template>
+		
+		<template alias="IPConnector">
+			<derivedFrom><ref alias="Connector"/></derivedFrom>
+			<attribute attAlias="networkConnector">
+				<complexType>
+					<ref alias="NetworkConnector" />
+					<refType><ref alias="Uses"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="partOf">
+				<complexType>
+					<ref alias="PlatformSystem" />
+					<refType><ref alias="BelongsTo"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>	
+		</template>
+		
+		<template alias="ApplicationConnector">
+			<derivedFrom><ref alias="Connector"/></derivedFrom>
+				<attribute attAlias="ipConnector">
+				<complexType>
+					<ref alias="IPConnector" />
+					<refType><ref alias="Uses"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="partOf">
+				<complexType>
+					<ref alias="Application" />
+					<refType><ref alias="BelongsTo"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>	
+		</template>
+		<template alias="UDPConnector">
+			<derivedFrom><ref alias="ApplicationConnector"/></derivedFrom>
+		</template>
+		<template alias="ClientUDPConnector">
+			<derivedFrom><ref alias="UDPConnector"/></derivedFrom>
+		</template>
+		<template alias="ServerUDPConnector">
+			<derivedFrom><ref alias="UDPConnector"/></derivedFrom>
+		</template>
+		
+		<template alias="TCPConnector">
+			<derivedFrom><ref alias="ApplicationConnector"/></derivedFrom>
+		</template>
+		<template alias="ServerTCPConnector">
+			<derivedFrom><ref alias="TCPConnector"/></derivedFrom>
+		</template>
+		<template alias="ClientTCPConnector">
+			<derivedFrom><ref alias="TCPConnector"/></derivedFrom>
+		</template>
+		<template alias="ServerURLConnector">
+			<derivedFrom><ref alias="TCPConnector"/></derivedFrom>
+			<attribute attAlias="path">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="protocol">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+		</template>
+		
+	
+		<!-- Segments -->
+		<template alias="PhysicalSegment">
+			<derivedFrom><ref alias="Segment"/></derivedFrom>
+			<setSimpleValue attAlias="name">Physical Segment</setSimpleValue>
+		</template>
+		
+		<template alias="CollisionDomainSegment">
+			<derivedFrom><ref alias="Segment"/></derivedFrom>
+			<setSimpleValue attAlias="name">Collision Domain Segment</setSimpleValue>
+		</template>
+		
+		<template alias="BroadcastDomainSegment">
+			<derivedFrom><ref alias="Segment"/></derivedFrom>
+			<setSimpleValue attAlias="name">Broadcast Domain Segment</setSimpleValue>
+		</template>
+		
+		<template alias="SubNetSegment">
+			<derivedFrom><ref alias="Segment"/></derivedFrom>
+			<attribute attAlias="subnetMask">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="numberOfHosts">
+				<simpleType>xs:integer</simpleType>
+			</attribute>
+			<attribute attAlias="defaultGateway">
+				<complexType>
+					<ref alias="IPConnector" />
+					<refType><ref alias="Uses"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<setSimpleValue attAlias="name">SubNet Segment</setSimpleValue>
+		</template>
+		
+		<template alias="LANSegment">
+			<derivedFrom><ref alias="Segment"/></derivedFrom>
+			<setSimpleValue attAlias="name">Segment Physical</setSimpleValue>
+		</template>
+		
+		<template alias="WANSegment">
+			<derivedFrom><ref alias="Segment"/></derivedFrom>
+			<setSimpleValue attAlias="name">Segment Physical</setSimpleValue>
+		</template>
+	</templates>
+	
+</onecmdb>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+<!DOCTYPE onecmdb SYSTEM "onecmdb.dtd">
+ -->
+<onecmdb>
+	<templates>
+		
+		<!-- Root Ci Template -->
+		<template alias="Container">
+			<derivedFrom><ref alias="Root"/></derivedFrom>
+			<description>The root container item template</description>
+		</template>
+
+	</templates>
+
+</onecmdb>

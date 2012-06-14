@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+
+<beans>
+
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+   		<property name="basename"><value>messages</value></property>
+	</bean>
+
+	<bean id="customEditorConfigurer"
+		class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="org.onecmdb.core.IPath">
+					<bean
+						class="org.onecmdb.core.internal.model.StringPathEditor">
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.JstlView</value>
+		</property>
+		<property name="prefix">
+			<value>/WEB-INF/jsp/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+
+
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="alwaysUseFullPath" value="true" />
+		<property name="mappings">
+			<props>
+				<prop key="/index.mvc">/index.mvc</prop>
+				<prop key="/help.mvc">/help.mvc</prop>
+				<prop key="/icons/*">iconGenerator</prop>
+				<prop key="/graphs/*">graphGenerator</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<!-- 
+		<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename"><value>messages</value></property>
+		</bean>
+	-->
+
+	<bean id="multipartResolver"
+    	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+	    <!-- one of the properties available; the maximum file size in bytes -->
+    	<property name="maxUploadSize">
+        	<value>10000</value>
+	    </property>
+	</bean>
+
+
+
+	<!--  {{{ Controllers -->
+	
+	<!--  generates images for configuration items -->
+	<bean id="iconGenerator" class="org.onecmdb.web.IconGenerator"
+	init-method="init">
+		<property name="siteController"><ref  bean="/index.mvc"/></property>
+		<property name="methodNameResolver" ><bean 
+		class="org.springframework.web.servlet.mvc.multiaction.InternalPathMethodNameResolver">
+		<property name="prefix" value="" />
+		<property name="suffix" value="Handler" />
+		</bean>
+		</property>
+	</bean>
+
+	<!--  generates images for configuration items -->
+	<bean id="graphGenerator" class="org.onecmdb.web.GraphGenerator"
+	init-method="init">
+		<property name="methodNameResolver" ><bean 
+		class="org.springframework.web.servlet.mvc.multiaction.InternalPathMethodNameResolver">
+		<property name="prefix" value="" />
+		<property name="suffix" value="Handler" />
+		</bean>
+		</property>
+		
+		<property name="siteController" ref="/index.mvc" />
+	</bean>
+	
+
+	<!--  used to generate help information  -->
+	<bean name="/help.mvc" class="org.onecmdb.web.HelpController">
+	</bean>
+
+
+	<bean name="/index.mvc" class="org.onecmdb.web.SiteController" 
+		init-method="init">
+
+		<property name="commandClass"><value>org.onecmdb.web.SiteCommand</value></property>
+		<property name="commandName"><value>site</value></property>
+		<property name="bindOnNewForm" value="true" />
+		<property name="siteView" value="site" />  
+		<property name="sessionForm" value="true" />
+		<property name="oneCmdb"><bean parent="onecmdb"/></property>
+		
+		<!-- initial objects -->
+
+		<property name="dataCenter" value="Root/Ci" />
+		<property name="refsBase"  value="Root/Reference" />
+		<property name="templateBase"  value="Root/Ci" />
+		
+	</bean>
+
+<!-- 
+	<bean id="attributeNameValidator" class="org.onecmdb.web.ViewDataValidator">
+	</bean>
+ -->	
+
+	<!--  }}} -->
+
+
+
+
+
+</beans>

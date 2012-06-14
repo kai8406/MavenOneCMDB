@@ -1,0 +1,159 @@
+<!--
+Notes:
+    OneCMDB is an Open Source CMDB, Configuration Management Database
+        published under GPL Version 2.
+    Its homepage is:
+        http://www.onecmdb.org/
+
+    And these compiling projects and Maven scripts
+        are made by Konca Fung with the purpose of researching and
+        are made from the source codes package contained in OneCMDB installation folder.
+    
+    The homepage of Konca Fung is:
+        http://www.konca.com/
+
+                                                    Konca Fung
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.onecmdb</groupId>
+	<artifactId>onecmdb-gwt-toolkit</artifactId>
+	<packaging>jar</packaging>
+	<version>0.0.1</version>
+	<name>onecmdb-gwt-toolkit</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<gwtVersion>1.7.1</gwtVersion>
+	</properties>
+
+	<!-- include the GWT-Maven repo as plugin, and as standard -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>gwt-maven</id>
+			<url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo</url>
+		</pluginRepository>
+	</pluginRepositories>
+	<repositories>
+		<repository>
+			<id>gwt-maven</id>
+			<url>
+            http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/
+          </url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.onecmdb</groupId>
+			<artifactId>onecmdb-core</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>proxool</groupId>
+			<artifactId>proxool</artifactId>
+			<version>0.8.3</version>
+		</dependency>
+
+		<!-- GWT deps (from central repo) -->
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-servlet</artifactId>
+			<version>${gwtVersion}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<version>${gwtVersion}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwtVersion}</version>
+			<classifier>${platform}-libs</classifier>
+			<type>zip</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwtVersion}</version>
+			<classifier>${platform}</classifier>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.googlecode</groupId>
+			<artifactId>gwtiger</artifactId>
+			<version>0.1</version>
+		</dependency>
+	</dependencies>
+
+
+	<!-- profiles (with activation per platform) -->
+	<profiles>
+		<profile>
+			<id>gwt-dev-windows</id>
+			<properties>
+				<platform>windows</platform>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<os>
+					<family>windows</family>
+				</os>
+			</activation>
+		</profile>
+		<profile>
+			<id>gwt-dev-mac</id>
+			<properties>
+				<platform>mac</platform>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<os>
+					<family>mac</family>
+				</os>
+			</activation>
+		</profile>
+		<profile>
+			<id>gwt-dev-linux</id>
+			<properties>
+				<platform>linux</platform>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<os>
+					<name>linux</name>
+				</os>
+			</activation>
+		</profile>
+	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

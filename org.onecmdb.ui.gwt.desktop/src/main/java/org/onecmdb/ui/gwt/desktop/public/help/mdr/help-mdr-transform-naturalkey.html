@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="../css/help.css" type="text/css">
+	</head>
+<body class="body">
+<p class="title">
+NATURAL KEYS
+</p>
+<pre class="text">
+Shows how CMDB Templates and Attributes will be populated with this transformation. 
+
+The Natural Key function defines how new instances shall be created.
+In this way you can normalize (not create duplicates) of the input data. 
+
+Example:
+
+Source Data in Excel
+Row 1: Server A	Service X
+Row 2: Server B	Service X
+Row 3: Server C	Service Y
+
+Result in the CMDB with no Template defined as Natural Key:
+Server A -> Service X
+Server B -> Service X
+Server C -> Service Y
+
+I.e. six instances are created
+
+
+Result in the CMDB with Template "Service" defined as a Natural Key
+Server A ->
+	    Service X
+Server B -> 
+
+Server C -> Service Y
+
+I.e. five instances are created
+
+You can check the impact of having different Natural Keys by 
+clicking on the 'Calculate Instances' button. The 'Number of instances' 
+column will display the total number of instances that will be 
+created. The 'Found in CMDB' indicates how many instances that
+are already present in the CMDB, as identified by the Natural Key.
+
+NOTE: The number indicates the instance count per template, 
+      not per attribute.
+
+In general each Template shall have one natural key checked.
+
+When you are satisfied, select "Save" and then close the configurator.
+
+</pre>
+
+</body>
+</html>
+<html><body></body></html>

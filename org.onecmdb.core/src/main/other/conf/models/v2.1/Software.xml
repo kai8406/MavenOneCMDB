@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+	<templates>
+		<!-- ###########################################  	-->
+		<!-- Software Definition 	-->
+		<!-- ###########################################  	-->
+		
+		
+			
+		<!-- ###########################################  	-->
+		<!-- Software System Definition 	-->
+		<!-- ###########################################  	-->	
+		<template alias="SoftwareSystem" displayName="${entityName} ${type}">
+			<derivedFrom><ref alias="Software"/></derivedFrom>
+			<attribute attAlias="entityName">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="installedOn">
+				<complexType>
+					<ref alias="OperatingSystem" />
+					<refType><ref alias="InstalledOn"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="installedFileSystem">
+				<complexType>
+					<ref alias="FileSystem" />
+					<refType><ref alias="InstalledOn"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="installedPath">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="type">Software System</setSimpleValue>
+		</template>
+		
+	
+		<!-- ###########################################  	-->
+		<!-- Software Components Definition 	-->
+		<!-- ###########################################  	-->	
+		<template alias="SoftwareComponent" displayName="${type} on ${partOf}">
+			<derivedFrom><ref alias="Software"/></derivedFrom>
+			<setSimpleValue attAlias="type">SW Component</setSimpleValue>
+			<attribute attAlias="partOf">
+				<complexType>
+					<ref alias="Software" />
+					<refType><ref alias="BelongsTo"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+		</template>
+		
+		
+		<!-- ###########################################  	-->
+		<!-- Software Service Definition 	-->
+		<!-- ###########################################  	-->	
+		
+		<template alias="SoftwareService" displayName="${entityName}">
+			<derivedFrom><ref alias="Service"/></derivedFrom>
+			<attribute attAlias="uses">
+				<complexType>
+					<ref alias="SoftwareSystem" />
+					<refType><ref alias="Uses"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>unbound</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<setSimpleValue attAlias="entityName">Software Service</setSimpleValue>
+		</template>
+	</templates>
+	
+</onecmdb>

@@ -1,0 +1,124 @@
+<!--
+Notes:
+    OneCMDB is an Open Source CMDB, Configuration Management Database
+        published under GPL Version 2.
+    Its homepage is:
+        http://www.onecmdb.org/
+
+    And these compiling projects and Maven scripts
+        are made by Konca Fung with the purpose of researching and
+        are made from the source codes package contained in OneCMDB installation folder.
+    
+    The homepage of Konca Fung is:
+        http://www.konca.com/
+
+                                                    Konca Fung
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.onecmdb</groupId>
+	<artifactId>onecmdb-utils</artifactId>
+	<version>0.9.0</version>
+	<packaging>jar</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+            <groupId>org.onecmdb</groupId>
+            <artifactId>onecmdb-core</artifactId>
+            <version>2.1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>3.3.0.ga</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate</artifactId>
+			<version>3.2.0.ga</version>
+		</dependency>
+<dependency>
+    <groupId>org.acegisecurity</groupId>
+    <artifactId>acegi-security</artifactId>
+    <version>1.0.3</version>
+</dependency>
+<dependency>
+    <groupId>quartz</groupId>
+    <artifactId>quartz</artifactId>
+    <version>1.5.2</version>
+</dependency>
+<dependency>
+    <groupId>commons-jxpath</groupId>
+    <artifactId>commons-jxpath</artifactId>
+    <version>1.2</version>
+</dependency>
+<dependency>
+    <groupId>org.codehaus.xfire</groupId>
+    <artifactId>xfire-core</artifactId>
+    <version>1.2.6</version>
+</dependency>
+<dependency>
+    <groupId>commons-dbcp</groupId>
+    <artifactId>commons-dbcp</artifactId>
+    <version>1.2.2</version>
+</dependency>
+<dependency>
+    <groupId>commons-pool</groupId>
+    <artifactId>commons-pool</artifactId>
+    <version>1.2</version>
+</dependency>
+<!--
+<dependency>
+    <groupId>com.oracle.toplink</groupId>
+    <artifactId>toplink</artifactId>
+    <version>10.1.3</version>
+</dependency>
+-->
+<dependency>
+    <groupId>net.sourceforge.jexcelapi</groupId>
+    <artifactId>jxl</artifactId>
+    <version>2.6.10</version>
+</dependency>
+<dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>1.2.9</version>
+</dependency>
+<dependency>
+  <groupId>com.oracle.toplink</groupId>
+  <artifactId>toplink-api</artifactId>
+  <version>1.0.0</version>
+</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

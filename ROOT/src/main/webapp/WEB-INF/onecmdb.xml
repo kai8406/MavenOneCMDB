@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- ==================== OneCMDB Core Dependency ====================== -->
+
+	<bean id="onecmdbFactory"
+		class="org.onecmdb.core.utils.SpringFactoryBean"
+		destroy-method="close">
+		<property name="onecmdbProvider" value="onecmdb.xml" />
+	</bean>
+
+	<bean id="onecmdb" factory-bean="onecmdbFactory"
+		factory-method="getInstance">
+	</bean>
+</beans>

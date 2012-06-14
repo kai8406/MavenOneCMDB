@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+	<templates>
+		<!-- ###########################################  	-->
+		<!-- Segment Definition 	-->
+		<!-- ###########################################  	-->	
+		<template alias="PhysicalSegment">
+			<derivedFrom><ref alias="Segment"/></derivedFrom>
+			<attribute attAlias="connectionCode">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="type">Physical Segment</setSimpleValue>
+		</template>
+		
+		<template alias="CollisionDomainSegment">
+			<derivedFrom><ref alias="Segment"/></derivedFrom>
+			<setSimpleValue attAlias="type">Collision Domain Segment</setSimpleValue>
+		</template>
+		
+		<template alias="BroadcastDomainSegment">
+			<derivedFrom><ref alias="Segment"/></derivedFrom>
+			<setSimpleValue attAlias="type">Broadcast Domain Segment</setSimpleValue>
+		</template>
+		
+		<template alias="SubNet">
+			<derivedFrom><ref alias="NetworkSegment"/></derivedFrom>
+			<attribute attAlias="subnetMask">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="numberOfHosts">
+				<simpleType>xs:integer</simpleType>
+			</attribute>
+			<attribute attAlias="defaultGateway">
+				<complexType>
+					<ref alias="IPConnector" />
+					<refType><ref alias="Uses"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<setSimpleValue attAlias="type">SubNet</setSimpleValue>
+		</template>
+		
+		<template alias="NetworkSegment">
+			<derivedFrom><ref alias="Segment"/></derivedFrom>
+			<attribute attAlias="parent">
+				<complexType>
+					<ref alias="NetworkSegment" />
+					<refType><ref alias="MemberOf"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+		</template>
+		
+		
+		<template alias="VLAN">
+			<derivedFrom><ref alias="NetworkSegment"/></derivedFrom>
+			<setSimpleValue attAlias="type">Virtual LAN </setSimpleValue>
+			<attribute attAlias="vlanid"><simpleType>xs:string</simpleType></attribute>
+		</template>
+		
+		<template alias="WLAN">
+			<derivedFrom><ref alias="NetworkSegment"/></derivedFrom>
+			<setSimpleValue attAlias="type">Wireless LAN Segment</setSimpleValue>
+			<attribute attAlias="SSID"><simpleType>xs:string</simpleType></attribute>
+			<attribute attAlias="passphrase"><simpleType>xs:password</simpleType></attribute>
+		</template>
+		
+	
+		<!-- ###########################################  	-->
+		<!-- Connector Definition 	-->
+		<!-- ###########################################  	-->	
+		
+		<!-- ###########################################  	-->
+		<!-- Physical Connector Definition 	-->
+		<!-- ###########################################  	-->	
+		<template alias="NetworkConnector" displayName="${ifName}/${partOf}">
+			<derivedFrom><ref alias="PlatformComponent"/></derivedFrom>
+			<attribute attAlias="physicalSegment">
+				<complexType>
+					<ref alias="PhysicalSegment" />
+					<refType><ref alias="MemberOf"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			
+			<attribute attAlias="ifName">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="rxSpeed">
+				<simpleType>xs:integer</simpleType>
+			</attribute>
+			<attribute attAlias="txSpeed">
+				<simpleType>xs:integer</simpleType>
+			</attribute>
+			<attribute attAlias="mac">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			
+			<attribute attAlias="broadcastDomain">
+				<complexType>
+					<ref alias="BroadcastDomainSegment" />
+					<refType><ref alias="MemberOf"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="collisionDomain">
+				<complexType>
+					<ref alias="CollisionDomainSegment" />
+					<refType><ref alias="MemberOf"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<setSimpleValue attAlias="type">Network Connection</setSimpleValue>
+		</template>
+		
+		<!-- ###########################################  	-->
+		<!-- Address Connector Definition 	-->
+		<!-- ###########################################  	-->	
+		<template alias="AddressConnector" displayName="${type}">
+			<derivedFrom><ref alias="PlatformComponent"/></derivedFrom>
+		</template>
+		
+		<!-- ###########################################  	-->
+		<!-- IP Connector Definition 	-->
+		<!-- ###########################################  	-->	
+		<template alias="IPConnector" displayName="${ipAddress}">
+			<derivedFrom><ref alias="AddressConnector"/></derivedFrom>
+			<attribute attAlias="networkConnector">
+				<complexType>
+					<ref alias="NetworkConnector" />
+					<refType><ref alias="Uses"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="network">
+				<complexType>
+					<ref alias="NetworkSegment" />
+					<refType><ref alias="MemberOf"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>1</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="ipAddress">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="type">IP Address</setSimpleValue>
+		</template>
+		
+		<!-- ###########################################  	-->
+		<!-- Hostname Mapping Definition 	-->
+		<!-- ###########################################  	-->	
+		<template alias="Hostname" displayName="${hostname}.${domainName}">
+			<derivedFrom><ref alias="AddressConnector"/></derivedFrom>
+			<attribute attAlias="hostname">
+				<simpleType >xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="domainName">
+				<complexType >
+					<ref alias="DomainName"/>
+					<refType><ref alias="MemberOf"/></refType>
+				</complexType>
+			</attribute>
+			<attribute attAlias="ip">
+				<complexType >
+					<ref alias="IPConnector"/>
+					<refType><ref alias="AssignedTo"/></refType>
+				</complexType>
+			</attribute>
+			
+			<setSimpleValue attAlias="type">Hostname</setSimpleValue>
+		</template>
+		
+		<template alias="DomainName" displayName="${domainName}.${parent}">
+			<derivedFrom><ref alias="Segment"/></derivedFrom>
+			<attribute attAlias="domainName">
+				<simpleType >xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="parent">
+				<complexType >
+					<ref alias="DomainName"/>
+					<refType><ref alias="MemberOf"/></refType>
+				</complexType>
+			</attribute>
+			
+			<setSimpleValue attAlias="type">Domain name</setSimpleValue>
+			
+		</template>
+		
+		<!-- ###########################################  	-->
+		<!-- Software Connector Definition 	-->
+		<!-- ###########################################  	-->	
+		<template alias="SoftwareConnector" displayName="${type} on ${partOf}">
+			<derivedFrom><ref alias="SoftwareComponent"/></derivedFrom>
+			<attribute attAlias="platformAddress">
+				<complexType>
+					<ref alias="AddressConnector" />
+					<refType><ref alias="Uses"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<setSimpleValue attAlias="type">Software Connector</setSimpleValue>
+		</template>
+		
+		<template alias="UDPConnector">
+			<derivedFrom><ref alias="SoftwareConnector"/></derivedFrom>
+			<setSimpleValue attAlias="type">UDP</setSimpleValue>
+		</template>
+		
+		<template alias="ClientUDPConnector" displayName="${partOf} to ${serverConnector}">
+			<derivedFrom><ref alias="UDPConnector"/></derivedFrom>
+			<attribute attAlias="serverConnector">
+				<complexType>
+					<ref alias="ServerUDPConnector" />
+					<refType><ref alias="Uses"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			
+	
+		</template>
+
+		<template alias="ServerUDPConnector" displayName="${host}:${port} ${svcName}">
+			<derivedFrom><ref alias="UDPConnector"/></derivedFrom>
+			<attribute attAlias="port">
+				<simpleType>xs:integer</simpleType>
+			</attribute>
+			<attribute attAlias="svcName">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+		</template>
+		
+		<template alias="TCPConnector">
+			<derivedFrom><ref alias="SoftwareConnector"/></derivedFrom>
+			<setSimpleValue attAlias="type">TCP</setSimpleValue>
+		</template>
+		
+		<template alias="ServerTCPConnector" displayName="${host}:${port} ${svcName}">
+			<derivedFrom><ref alias="TCPConnector"/></derivedFrom>
+			
+			<attribute attAlias="port">
+				<simpleType>xs:integer</simpleType>
+			</attribute>
+			<attribute attAlias="svcName">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+		</template>
+		
+		<template alias="ClientTCPConnector" displayName="${partOf} to ${serverConnector}">
+			<derivedFrom><ref alias="TCPConnector"/></derivedFrom>
+			<attribute attAlias="serverConnector">
+				<complexType>
+					<ref alias="ServerTCPConnector" />
+					<refType><ref alias="Uses"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+		</template>
+
+		<template alias="URLConnector">
+			<derivedFrom><ref alias="SoftwareConnector"/></derivedFrom>
+		</template>
+	
+		<template alias="ServerURLConnector" displayName="${protocol}://${tcpConnector}/${path}">
+			<derivedFrom><ref alias="URLConnector"/></derivedFrom>
+			<attribute attAlias="tcpConnector">
+				<complexType>
+					<ref alias="ServerTCPConnector" />
+					<refType><ref alias="Uses"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			
+			<attribute attAlias="path">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="protocol">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+		</template>
+		
+		<template alias="ClientURLConnector" displayName="${urlConnector}">
+			<derivedFrom><ref alias="URLConnector"/></derivedFrom>
+			<attribute attAlias="urlConnector">
+				<complexType>
+					<ref alias="ServerURLConnector" />
+					<refType><ref alias="Uses"/></refType>
+				</complexType>
+				<policy>
+					<maxOccurs>1</maxOccurs>
+					<minOccurs>0</minOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="username">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="password">
+				<simpleType>xs:password</simpleType>
+			</attribute>
+		</template>
+	</templates>
+	
+</onecmdb>

@@ -1,0 +1,27 @@
+
+<TableModel alias="model1" name="Servers">
+	
+	<TableColumn alias="c1">
+		<name>Server Name</name>
+		<id>server.name</id>
+		<width>10</width>
+	</TableColumn>
+	
+	
+	<GraphQuery>
+		<ItemOffspringSelector id="server" template="Server">
+		</ItemOffspringSelector>
+		
+		<ItemOffspringSelector id="interface" template="Interface">
+		</ItemOffspringSelector>
+		
+		<ItemOffspringSelector id="endpoint" template="IP_EndPoint">
+		</ItemOffspringSelector>
+		
+		<ItemRelationSelector id="server2interface" template="Reference">
+			<source>interface</source>>
+			<target>server</target>
+		</ItemRelationSelector>
+	</GraphQuery>
+
+</TableModel>

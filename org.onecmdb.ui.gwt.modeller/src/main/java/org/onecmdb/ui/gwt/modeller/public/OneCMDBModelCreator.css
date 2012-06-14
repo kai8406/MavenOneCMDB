@@ -1,0 +1,36 @@
+.onecmdb-template-description {
+	float: left;
+	margin-left: 1em;
+	margin-bottom: 1em;
+	font-style: italic;
+}
+
+.test-color {
+	background-color: yellow;
+}
+
+.error-style {
+	background-color: red;
+}
+
+.loading-style {
+	background-color: blue;
+}
+
+.gwt-DisclosurePanel {
+  	width: 100%
+}
+
+.gwt-DisclosurePanel-open { 
+  	font-weight: bold;
+  	background-color: #AAAAAA;
+ 	padding: 2px;
+  	cursor: default;
+}
+
+.gwt-DisclosurePanel-closed { 
+  	font-weight: bold;
+	background-color: #c7c7c7;
+ 	padding: 2px;
+  	cursor: pointer;
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+	<templates>
+		<template alias="DirectorySyncronizationProcess"
+			displayName="DirectorySyncronization">
+			<derivedFrom>
+				<ref alias="JobProcess" />
+			</derivedFrom>
+			<description>
+				This job imports configuration items from an XML file.
+			</description>
+			<setSimpleValue attAlias="icon">job</setSimpleValue>
+			<setSimpleValue attAlias="javaClass">
+				org.onecmdb.core.internal.job.workflow.sample.ImportSyncronizationModel
+			</setSimpleValue>
+		</template>
+		
+		<template alias="DirectoryChangeTrigger" displayName="DirectoryChangeTrigger ${path}">
+			<derivedFrom><ref alias="JobTrigger"/></derivedFrom>
+			<description>Template for directory change triggers. Use this template if you want to monitor directory modifications.</description>			
+			<attribute attAlias="path">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="scanIntervall">
+				<simpleType>xs:integer</simpleType>
+			</attribute>
+			<attribute attAlias="javaClass" name="Java class">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<setSimpleValue attAlias="scanIntervall">10000</setSimpleValue>
+			<setSimpleValue attAlias="javaClass">org.onecmdb.core.internal.job.workflow.DirectoryChangeTrigger</setSimpleValue>
+		</template>
+	</templates>
+
+	<instances>
+		<DirectorySyncronizationProcess alias="test1">
+		</DirectorySyncronizationProcess>
+
+		<DirectoryChangeTrigger alias="directory-change-trigger-test1">
+			<icon>job</icon>
+			<process>
+				<ref alias="test1" />
+			</process>
+			<path>d:/home/niklas/onecmdb</path>
+		</DirectoryChangeTrigger>
+
+	</instances>
+</onecmdb>

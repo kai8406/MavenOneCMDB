@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<onecmdb>
+<templates>
+	<template alias="MDR_Reference">
+		<derivedFrom>
+			<ref alias="Reference"/>
+		</derivedFrom>
+	</template>
+	
+	<template alias="MDR_Model_Config" id="7445496510790482362" displayName="${name}" created="2008-10-17T09:59:04.914" lastModified="2008-10-17T15:37:50.950">
+		<derivedFrom>
+			<ref alias="MDR_ConfigEntry"/>
+		</derivedFrom>
+		<description>The master template for all CI (Configuration Items).</description>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="365207592694139536">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="status" displayName="Status" derived="true" id="-1393642157046851743">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="modelFiles" displayName="Models" derived="false" id="-8459295793399391047">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="program" displayName="Program" derived="true" id="5669849318227807573">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="name" displayName="Name" derived="true" id="-1777165297676006990">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="autoCommit" displayName="Auto Commit" derived="true" id="-7235779889238309616">
+			<simpleType>xs:boolean</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="name" id="519927035042105841">MDR Config</setSimpleValue>
+		<setSimpleValue attAlias="program" id="-5120574137530080874">bin/upload</setSimpleValue>
+	</template>
+	<template alias="MDR" id="1218405718925292492" displayName="${name}" created="2008-10-11T16:35:49.533">
+		<derivedFrom>
+			<ref alias="Root"/>
+		</derivedFrom>
+		<description>The master template for all CI (Configuration Items).</description>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="365207592694139536">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="name" displayName="Name" derived="false" id="-1777165297676006990">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon" id="6339449408698629601">ci</setSimpleValue>
+		<setSimpleValue attAlias="name" id="-1777165297676006990">MDR</setSimpleValue>
+	</template>
+	<template alias="MDR_Repository" id="1247626140759607869" displayName="${name}" created="2008-10-11T16:35:49.595" lastModified="2008-10-17T19:56:14.925">
+		<derivedFrom>
+			<ref alias="MDR"/>
+		</derivedFrom>
+		<description>The master template for all CI (Configuration Items).</description>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="365207592694139536">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="configAlias" displayName="Config Alias" derived="false" id="576510216739218648">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="name" displayName="Name" derived="true" id="-1777165297676006990">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon" id="7276827501270205781">mdr</setSimpleValue>
+		<setSimpleValue attAlias="name" id="2452171579142111610">MDR</setSimpleValue>
+	</template>
+	
+	<template alias="MDR_HistoryEntry" id="4672667677232045269" displayName="${name}" created="2008-10-11T16:35:49.549" lastModified="2008-10-17T09:33:10.218">
+		<derivedFrom>
+			<ref alias="MDR"/>
+		</derivedFrom>
+		<description>The master template for all CI (Configuration Items).</description>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="365207592694139536">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="status" displayName="Status" derived="false" id="7084324205404596068">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="error" displayName="Error" derived="false" id="-3633050750449899256">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="commitStart" displayName="Start" derived="false" id="-1416890105610873486">
+			<simpleType>xs:dateTime</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="stdout" displayName="Stdout" derived="false" id="7587299059985824721">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="rejected" displayName="Rejected" derived="false" id="-6785632760402966629">
+			<simpleType>xs:boolean</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="modified" displayName="Modified objects" derived="false" id="-5088036558176311149">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="name" displayName="Name" derived="true" id="-1777165297676006990">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="txid" displayName="TX ID" derived="false" id="7852006420644910291">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="execMessage" displayName="Exec Message" derived="false" id="-7275476532346207804">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="rejectCause" displayName="Reject Cause" derived="false" id="-5576598351086066461">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="exitCode" displayName="Exit Code" derived="false" id="5312233168857789368">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="commitStop" displayName="Stop" derived="false" id="6477259681719676389">
+			<simpleType>xs:dateTime</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="files" displayName="Entries" derived="false" id="-947508949577756898">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>unbound</maxOccurs>
+				<minOccurs>0</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="deleted" displayName="Deleted objects" derived="false" id="-3210716889911026012">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="added" displayName="Added objects" derived="false" id="2349162174953883414">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="mdrConfigEntry" displayName="Config Entry" derived="false" id="-5388704036431321143">
+			<complexType>
+				<ref alias="MDR_ConfigEntry"/>
+				<refType><ref alias="MDR_Reference"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="stderr" displayName="Stderr" derived="false" id="-3266543608786287134">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon" id="6386024423326401359">mdrHistory</setSimpleValue>
+		<setSimpleValue attAlias="name" id="-5799113871393332798">MDR Execution Result</setSimpleValue>
+	</template>
+	<template alias="MDR_ConfigEntry" id="9000365825990771309" displayName="${name}" created="2008-10-11T16:35:49.564" lastModified="2008-10-14T11:51:36.665">
+		<derivedFrom>
+			<ref alias="MDR"/>
+		</derivedFrom>
+		<description>The master template for all CI (Configuration Items).</description>
+		<attribute attAlias="icon" displayName="Icon" derived="true" id="365207592694139536">
+			<description>Filename (no file extension) of icon image.</description>
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="status" displayName="Status" derived="false" id="-1393642157046851743">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="program" displayName="Program" derived="false" id="5669849318227807573">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="name" displayName="Name" derived="true" id="-1777165297676006990">
+			<simpleType>xs:string</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="autoCommit" displayName="Auto Commit" derived="false" id="-7235779889238309616">
+			<simpleType>xs:boolean</simpleType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<attribute attAlias="mdrRepository" displayName="MDR Repository" derived="false" id="3555710786583502">
+			<complexType>
+				<ref alias="MDR_Repository"/>
+				<refType><ref alias="MDR_Reference"/></refType>
+			</complexType>
+			<policy>
+				<maxOccurs>1</maxOccurs>
+				<minOccurs>1</minOccurs>
+			</policy>
+		</attribute>
+		<setSimpleValue attAlias="icon" id="-3138232214530823412">mdrConfig</setSimpleValue>
+		<setSimpleValue attAlias="name" id="5789056225185731741">MDR Config</setSimpleValue>
+	</template>
+</templates>
+<instances>
+	<MDR_Repository alias="MDR_Model-1">
+		<name>Models</name>
+		<configAlias>MDR_Model_Config</configAlias>
+	</MDR_Repository>
+	
+	<MDR_Model_Config alias="MDR_Model_Config-1">
+		<mdrRepository><ref alias="MDR_Model-1"/></mdrRepository>
+		<name>defaultModels</name>
+	</MDR_Model_Config>
+	
+</instances>
+</onecmdb>

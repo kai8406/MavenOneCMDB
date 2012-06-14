@@ -1,0 +1,134 @@
+<onecmdb>
+	<templates>
+	
+		<!--  Reference Definition -->
+		<template alias="PolicyReference" displayName="PolicyReference">
+			<derivedFrom><ref alias="Reference"/></derivedFrom>
+		</template>
+		
+		<!--  Root Policy  -->
+		<template alias="Policy" displayName="Policy">
+			<derivedFrom><ref alias="Root"/></derivedFrom>
+		</template>
+			
+		<!--  Base Template -->
+		<template alias="PolicyTrigger" displayName="PolicyTrigger">
+			<derivedFrom><ref alias="Policy"/></derivedFrom>
+			<description>On which ci this policy is applied to</description>
+			<attribute attAlias="policyFor" name="Policy for ci">
+				<complexType>
+					<ref alias="Root"/>
+					<refType><ref alias="PolicyReference"/></refType>
+				</complexType>
+			</attribute>
+			<attribute attAlias="ciPolicy" name="Policy for ci">
+				<complexType>
+					<ref alias="CiPolicy"/>
+					<refType><ref alias="PolicyReference"/></refType>
+				</complexType>
+			</attribute>
+			<attribute attAlias="attributePolicy" name="Policy for ci">
+				<complexType>
+					<ref alias="AttributePolicy"/>
+					<refType><ref alias="PolicyReference"/></refType>
+				</complexType>
+				<policy>
+					<minOccurs>1</minOccurs>
+					<maxOccurs>unbound</maxOccurs>
+				</policy>
+			</attribute>
+			<attribute attAlias="eventPolicy" name="Policy for ci">
+				<complexType>
+					<ref alias="EventPolicy"/>
+					<refType><ref alias="PolicyReference"/></refType>
+				</complexType>
+				<policy>
+					<minOccurs>1</minOccurs>
+					<maxOccurs>unbound</maxOccurs>
+				</policy>
+			</attribute>
+		</template>
+		
+		<template alias="CiPolicy" displayName="CiPolicy">
+			<derivedFrom><ref alias="Policy"/></derivedFrom>
+			<description>Policy for a configuration item</description>		
+			<attribute attAlias="allowNewAttributes">
+				<simpleType>xs:boolean</simpleType>
+				<setSimpleValue>true</setSimpleValue>
+			</attribute>
+			<attribute attAlias="allowAliasChange">
+				<simpleType>xs:boolean</simpleType>
+				<setSimpleValue>true</setSimpleValue>
+			</attribute>
+			<attribute attAlias="propagateDisplayName">
+				<simpleType>xs:boolean</simpleType>
+				<setSimpleValue>true</setSimpleValue>
+			</attribute>
+			<attribute attAlias="allowDelete">
+				<simpleType>xs:boolean</simpleType>
+				<setSimpleValue>true</setSimpleValue>
+			</attribute>
+		</template>
+		
+		<template alias="AttributePolicy" displayName="AttributePolicy">
+			<derivedFrom><ref alias="Policy"/></derivedFrom>
+			<description>Policy for an attribute</description>
+			<!-- General -->
+			<attribute attAlias="attributeAliasPattern">
+				<simpleType>xs:string</simpleType>
+				<setSimpleValue>.*.</setSimpleValue>
+			</attribute>
+			<!-- Value changes -->
+			<attribute attAlias="propagateValueChangeToTemplates">
+				<simpleType>xs:boolean</simpleType>
+				<setSimpleValue>false</setSimpleValue>
+			</attribute>
+			<attribute attAlias="propagateValueChangeToInstances">
+				<simpleType>xs:boolean</simpleType>
+				<setSimpleValue>false</setSimpleValue>
+			</attribute>
+			<attribute attAlias="valueUniqueInInstance">
+				<simpleType>xs:boolean</simpleType>
+				<setSimpleValue>false</setSimpleValue>
+			</attribute>
+			<attribute attAlias="valueUniqueOnAllInstances">
+				<simpleType>xs:boolean</simpleType>
+				<setSimpleValue>false</setSimpleValue>
+			</attribute>
+			<attribute attAlias="allowValueChange">
+				<simpleType>xs:boolean</simpleType>
+				<setSimpleValue>true</setSimpleValue>
+			</attribute>
+			<attribute attAlias="valuePattern">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<!-- Type changes -->		
+			<attribute attAlias="allowTypeChange">
+				<simpleType>xs:boolean</simpleType>
+				<setSimpleValue>false</setSimpleValue>
+			</attribute>
+		</template>
+		
+		<template alias="EventPolicy" displayName="EventPolicy">
+			<derivedFrom><ref alias="Policy"/></derivedFrom>
+			<description>Event callback handling for a ci</description>
+			<attribute attAlias="attributePattern">
+				<simpleType>xs:string</simpleType>
+			</attribute>	
+			<attribute attAlias="onRfc">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="callbackClass">
+				<simpleType>xs:string</simpleType>
+			</attribute>
+			<attribute attAlias="callbackClasspath">
+				<simpleType>xs:string</simpleType>
+				<policy>
+					<minOccurs>0</minOccurs> 
+					<maxOccurs>unbound</maxOccurs>
+				</policy>
+			</attribute>
+		</template>
+
+	</templates>
+</onecmdb>	

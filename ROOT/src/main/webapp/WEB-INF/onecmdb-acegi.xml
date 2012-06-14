@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- ======================= ACEGI SEURITY ============================= -->
+	<!--                         (web wiring)                                -->
+
+	<bean id="filterChainProxy"
+		class="org.acegisecurity.util.FilterChainProxy">
+		<property name="filterInvocationDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/**=httpSessionContextIntegrationFilter,accessDeniedFilter
+			</value>
+		</property>
+	</bean>
+
+	<!--  make usre the Securitycontext -->
+	<bean id="httpSessionContextIntegrationFilter"
+		class="org.acegisecurity.context.HttpSessionContextIntegrationFilter">
+	</bean>
+
+	<bean id="accessDeniedFilter"
+		class="org.onecmdb.web.acegi.AccessDeniedFilter">
+		<property name="accessDeniedHandler">
+			<bean
+				class="org.acegisecurity.ui.AccessDeniedHandlerImpl">
+				<property name="errorPage" value="/index.mvc?navigate=denied" />
+			</bean>
+		</property>
+	</bean>
+
+</beans>
